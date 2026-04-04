@@ -7,4 +7,4 @@ categories: project
 course: "SNU GSDS (Grand Prize, Ambient AI Competition)"
 ---
 
-Built a real-time emergency sign language interpreter using LSTM/GRU classifiers on MediaPipe keypoints, trained on a custom 70-word dataset and deployed as a full-stack tablet application.
+Built a real-time emergency sign language interpreter using <strong>LSTM/GRU</strong> classifiers on <strong>MediaPipe</strong> keypoints, trained on a custom 70-word dataset and deployed as a full-stack tablet application.
