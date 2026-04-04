@@ -7,4 +7,4 @@ categories: project
 course: "SNU GSDS (Grand Prize, Ambient AI Competition)"
 ---
 
-Real-time emergency sign language interpreter — **Grand Prize**, Ambient AI Competition, SNU GSDS.
+Real-time emergency sign language interpreter.
