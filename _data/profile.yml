@@ -1,0 +1,62 @@
+# ============================================================
+# 개인 정보 — 여기만 수정하면 사이트 전체에 반영됩니다
+# ============================================================
+
+name: Yohan Lee
+profile_image: images/profile_pic.jpg   # images/ 폴더에 업로드한 파일명
+cv: pdfs/YohanLee_CV.pdf               # pdfs/ 폴더에 업로드한 파일명
+
+# 홈 상단 링크 (Email / GitHub / LinkedIn / CV)
+links:
+  email: "mailto:john1111369@gmail.com"
+  github: "https://github.com/yh-lee01"
+  linkedin: "https://www.linkedin.com/in/yh-lee01"
+
+# 프로필 소개 문단 (HTML 사용 가능, 문단별로 - 로 구분)
+bio:
+  - 'I am an undergraduate research intern at <a href="https://sites.google.com/view/pixel-lab-ai/home">Pixel Lab</a>, Korea University, advised by <a href="https://sites.google.com/view/sangmin-lee/home">Prof. Sangmin Lee</a>, where I co-authored one paper on sound separation. I am pursuing a B.S. in Computer Science and Engineering at Sungkyunkwan University (expected Aug. 2027), and am actively looking for graduate research opportunities for Fall 2027.'
+
+# ============================================================
+# Research 섹션
+# ============================================================
+
+research_goal:
+  title: "Research"
+  paragraphs:
+    - "I build generative models that structure how robots act — so they can reason and adapt beyond the data they were trained on."
+    - "My current focus is <strong>Flow Matching</strong> as a framework for action space learning in robot manipulation. I am also interested in open robot learning datasets that could do for embodied AI what ImageNet did for vision."
+  image: images/lab_automation.png
+  image_alt: research
+  image_caption: "Lab automation (by GPT-4o)"
+
+# ============================================================
+# 섹션 제목 / 설명
+# ============================================================
+
+sections:
+  publications: "Publications"
+  projects: "Projects"
+  projects_description: "These include coursework, side projects and unpublished research work."
+  posts: "Posts"
+
+# ============================================================
+# Blog post 토픽 목록
+# 새 토픽 추가: label(표시 이름)과 category(_posts 파일의 categories 값) 작성
+# 새 포스트는 _templates/blogpost.md 참고
+# ============================================================
+
+post_topics:
+  - label: "Reinforcement Learning"
+    category: "RL"
+  - label: "Paper Review"
+    category: "paper_review"
+  # - label: "Generative Models"
+  #   category: "generative"
+
+# ============================================================
+# 푸터
+# ============================================================
+
+footer:
+  text: "Jon Barron's website"
+  url: "https://jonbarron.info"
