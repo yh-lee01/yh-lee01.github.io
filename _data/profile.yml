@@ -21,10 +21,10 @@ bio:
 # ============================================================
 
 research_goal:
-  title: "Research"
+  title: "Research Goal"
   paragraphs:
-    - "I build generative models that structure how robots act — so they can reason and adapt beyond the data they were trained on."
-    - "My current focus is <strong>Flow Matching</strong> as a framework for action space learning in robot manipulation. I am also interested in open robot learning datasets that could do for embodied AI what ImageNet did for vision."
+    - "My goal is to develop AI that works reliably in the real world. I believe this requires learning to model the world itself — and generative approaches, in my view, are the most promising path toward this."
+    - "What drew me in was seeing generative models begin to solve problems in RL that had long resisted other approaches. My current focus is <strong>Flow Matching</strong> as a framework for structured action space learning in robot manipulation."
   image: images/lab_automation.png
   image_alt: research
   image_caption: "Lab automation (by GPT-4o)"
