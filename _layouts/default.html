@@ -72,17 +72,18 @@
 
         <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
           <tr style="padding:0px">
-            <td style="padding:2.5%;width:75%;vertical-align:middle">
+            <td style="padding:2.5%;width:100%;vertical-align:middle">
               <h2>{{ site.data.profile.research_goal.title }}</h2>
               {% for para in site.data.profile.research_goal.paragraphs %}
               <p>{{ para }}</p>
               {% endfor %}
-            </td>
-            <td style="padding:2.5%;width:25%;max-width:25%;vertical-align:middle">
-              <figure style="width:100%;max-width:100%;text-align:center;">
-                <img style="width:100%;max-width:100%" alt="{{ site.data.profile.research_goal.image_alt }}" src="{{ site.data.profile.research_goal.image }}">
-                <figcaption style="font-size:0.7em;color:#666;margin-top:3px;">{{ site.data.profile.research_goal.image_caption }}</figcaption>
-              </figure>
+              {% if site.data.profile.research_goal.references %}
+              <p style="font-size:small;color:#666;">
+                {% for ref in site.data.profile.research_goal.references %}
+                [{{ forloop.index }}] <a href="{{ ref.url }}">{{ ref.title }}</a>{% unless forloop.last %}<br>{% endunless %}
+                {% endfor %}
+              </p>
+              {% endif %}
             </td>
           </tr>
         </table>

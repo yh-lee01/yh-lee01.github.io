@@ -25,9 +25,9 @@ research_goal:
   paragraphs:
     - "My goal is to develop AI that works reliably in the real world. I believe this requires learning to model the world itself — and generative approaches, in my view, are the most promising path toward this."
     - "What drew me in was seeing generative models begin to solve problems in RL that had long resisted other approaches. My current focus is <strong>Flow Matching</strong> as a framework for structured action space learning in robot manipulation."
-  image: images/lab_automation.png
-  image_alt: research
-  image_caption: "Lab automation (by GPT-4o)"
+  references:
+    - title: "Zhendong et al., Guided Flows for Generative Modeling and Decision Making (2023)"
+      url: "https://arxiv.org/abs/2311.13443"
 
 # ============================================================
 # 섹션 제목 / 설명
