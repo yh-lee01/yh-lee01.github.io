@@ -111,7 +111,7 @@
               {{post.authors}}
 
               <br>
-              <em>{{post.venue}}</em>
+              <em>{{post.venue}}</em>, {{ post.date | date: "%Y" }}
               <br>
               {% if post.projectpage %}
               <a href="{{post.projectpage}}">project page</a> /
