@@ -11,10 +11,24 @@ links:
   email: "mailto:john1111369@gmail.com"
   github: "https://github.com/yh-lee01"
   linkedin: "https://www.linkedin.com/in/yh-lee01"
+  scholar: "" # 예: "https://scholar.google.com/citations?user=본인아이디" (값을 넣으면 홈에 자동 표시)
+  twitter: "" # 예: "https://x.com/본인아이디" (값을 넣으면 홈에 자동 표시)
 
 # 프로필 소개 문단 (HTML 사용 가능, 문단별로 - 로 구분)
 bio:
   - 'I am an undergraduate research intern at <a href="https://sites.google.com/view/pixel-lab-ai/home">Pixel Lab</a>, Korea University, under professor <a href="https://sites.google.com/view/sangmin-lee/home">Sangmin Lee</a>, where I co-authored a paper on <strong>audio-visual sound separation</strong>. I am pursuing a B.S. in Computer Science and Engineering at Sungkyunkwan University (expected Aug. 2027), and am actively looking for graduate research opportunities for <strong>Fall 2027</strong>.'
+
+# ============================================================
+# News (최근 근황)
+# ============================================================
+
+news_title: "News"
+news:
+  - date: "2024. 09"
+    text: 'Joined <a href="https://sites.google.com/view/pixel-lab-ai/home">Pixel Lab</a> at Korea University as a research intern.'
+  # 아래 형식을 참고해서 새로운 소식이 있을 때마다 위에 추가하세요.
+  # - date: "2025. 03"
+  #   text: 'Our paper on audio-visual sound separation was accepted at ...'
 
 # ============================================================
 # Research 섹션

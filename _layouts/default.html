@@ -58,8 +58,14 @@
               {% endfor %}
               <p style="text-align:center">
                 <a target="_blank" href="{{ site.data.profile.links.email }}">Email</a> &nbsp;/&nbsp;
+                {% if site.data.profile.links.scholar != "" %}
+                <a target="_blank" href="{{ site.data.profile.links.scholar }}">Google Scholar</a> &nbsp;/&nbsp;
+                {% endif %}
                 <a href="{{ site.data.profile.links.github }}">GitHub</a> &nbsp;/&nbsp;
                 <a href="{{ site.data.profile.links.linkedin }}">LinkedIn</a> &nbsp;/&nbsp;
+                {% if site.data.profile.links.twitter != "" %}
+                <a target="_blank" href="{{ site.data.profile.links.twitter }}">Twitter</a> &nbsp;/&nbsp;
+                {% endif %}
                 <a href="{{ site.baseurl }}/{{ site.data.profile.cv }}" target="_blank">CV</a>
               </p>
             </td>
@@ -67,6 +73,19 @@
               <a href="{{ site.data.profile.profile_image }}">
                 <img style="width:100%;max-width:100%;object-fit:cover;border-radius:50%;" alt="profile photo" src="{{ site.data.profile.profile_image }}">
               </a>
+            </td>
+          </tr>
+        </table>
+
+        <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
+          <tr style="padding:0px">
+            <td style="padding:2.5%;width:100%;vertical-align:middle">
+              <h2>{{ site.data.profile.news_title }}</h2>
+              <ul style="margin:0; padding-left:20px; line-height: 1.6;">
+                {% for item in site.data.profile.news limit: 5 %}
+                <li style="margin-bottom:0.4em;"><strong>[{{ item.date }}]</strong> {{ item.text }}</li>
+                {% endfor %}
+              </ul>
             </td>
           </tr>
         </table>
@@ -221,21 +240,22 @@
             <td style="padding:2.5%;width:100%;vertical-align:middle">
               <h2>{{ site.data.profile.sections.posts }}</h2>
               <div style="margin-top:1em;"></div>
-              {% assign sortedposts = site.posts | sort: 'date' | reverse %}
+              
+              <ul style="margin:0; padding-left:20px; line-height: 1.8;">
               {% for topic in site.data.profile.post_topics %}
-              <div style="margin-bottom:1.4em;">
-                <h4 style="margin-bottom:0.4em;">{{ topic.label }}</h4>
-                <ul style="margin:0;">
-                  {% for post in sortedposts %}
-                  {% for cat in post.categories %}
-                  {% if cat == topic.category %}
-                    <li><a href="{{ post.url }}">{{ post.title }}</a></li>
+                {% assign count = 0 %}
+                {% for post in site.posts %}
+                  {% if post.categories contains topic.category %}
+                    {% assign count = count | plus: 1 %}
                   {% endif %}
-                  {% endfor %}
-                  {% endfor %}
-                </ul>
-              </div>
+                {% endfor %}
+                <li style="margin-bottom:0.6em; font-size:1.1em;">
+                  <strong><a href="{{ site.baseurl }}/posts/#{{ topic.category }}">{{ topic.label }}</a></strong>
+                  &nbsp;<span style="color:#888; font-size:0.85em;">({{ count }} posts)</span>
+                </li>
               {% endfor %}
+              </ul>
+              
             </td>
           </tr>
         </table>
