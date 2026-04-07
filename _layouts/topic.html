@@ -1,0 +1,47 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+{% include head.html %}
+
+<body>
+  <table style="width:100%;max-width:800px;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
+    <tr style="padding:0px">
+      <td style="padding:2.5%">
+
+        <p><a href="{{ site.baseurl }}/">← Back</a></p>
+
+        <article>
+          <div style="margin-top:1em;"></div>
+
+          <div style="margin-bottom:1.5em;">
+            <h2 style="border-bottom: 1px solid #eee; padding-bottom: 0.3em; margin-bottom: 0.8em;">{{ page.title }}</h2>
+            <ul style="list-style-type: disc; padding-left: 20px;">
+              {% assign count = 0 %}
+              {% assign sortedposts = site.posts | sort: 'date' | reverse %}
+              {% for post in sortedposts %}
+                {% if post.categories contains page.topic_category %}
+                  <li style="margin-bottom:0.3em;">
+                    <a href="{{ post.url }}" style="font-size: 1.05em;">{{ post.title }}</a> 
+                    <span style="font-size:0.85em; color:#999; margin-left:10px;">{{ post.date | date: "%B %d, %Y" }}</span>
+                  </li>
+                  {% assign count = count | plus: 1 %}
+                {% endif %}
+              {% endfor %}
+              {% if count == 0 %}
+                <li style="color:gray; font-style:italic;">No posts yet.</li>
+              {% endif %}
+            </ul>
+          </div>
+        </article>
+
+        <br>
+        <p style="text-align:center;font-size:small;">
+          Design and source code from <a style="font-size:small;" href="{{ site.data.profile.footer.url }}">{{ site.data.profile.footer.text }}</a>
+        </p>
+
+      </td>
+    </tr>
+  </table>
+</body>
+
+</html>

@@ -80,6 +80,7 @@ post_topics:
   - label: "Generative Models"   # 화면에 표시될 이름
     category: "generative"       # 포스트 categories 값과 일치해야 함
 ```
+이후 `_templates/topic.md`를 복사하여 `topics/generative.md` 파일을 생성해야 해당 카테고리 페이지가 정상적으로 동작합니다.
 
 수식 지원: 인라인 `$...$`, 블록 `$$...$$`
 
