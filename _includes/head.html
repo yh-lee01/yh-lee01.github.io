@@ -15,7 +15,13 @@
     src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
   </script>
 
-  <title>{{ page.title | default: site.data.profile.name }}</title>
+  <title>
+    {% if page.layout == "default" %}
+      {{ site.data.profile.name }}
+    {% else %}
+      {{ page.title }} — {{ site.data.profile.name }}
+    {% endif %}
+  </title>
 
   <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
   <meta name="timezone" content="Asia/Seoul">
@@ -23,7 +29,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   
   <!-- OpenGraph Metadata -->
-  <meta property="og:title" content="{{ page.title | default: site.data.profile.name }}" />
+  {% if page.layout == "default" %}
+    <meta property="og:title" content="{{ site.data.profile.name }}" />
+  {% else %}
+    <meta property="og:title" content="{{ page.title }} — {{ site.data.profile.name }}" />
+  {% endif %}
   <meta property="og:type" content="website" />
   <meta property="og:url" content="{{ site.url }}{{ page.url }}" />
   {% if site.data.profile.profile_image %}
