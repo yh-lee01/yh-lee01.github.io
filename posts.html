@@ -8,13 +8,13 @@ permalink: /posts/
 
 {% assign sortedposts = site.posts | sort: 'date' | reverse %}
 {% for topic in site.data.profile.post_topics %}
-<div style="margin-bottom:2.5em;" id="{{ topic.category }}">
+<div style="margin-bottom:1.5em;" id="{{ topic.category }}" class="topic-section">
   <h2 style="border-bottom: 1px solid #eee; padding-bottom: 0.3em; margin-bottom: 0.8em;">{{ topic.label }}</h2>
   <ul style="list-style-type: disc; padding-left: 20px;">
     {% assign count = 0 %}
     {% for post in sortedposts %}
       {% if post.categories contains topic.category %}
-        <li style="margin-bottom:0.5em;">
+        <li style="margin-bottom:0.3em;">
           <a href="{{ post.url }}" style="font-size: 1.05em;">{{ post.title }}</a> 
           <span style="font-size:0.85em; color:#999; margin-left:10px;">{{ post.date | date: "%B %d, %Y" }}</span>
         </li>
@@ -27,3 +27,28 @@ permalink: /posts/
   </ul>
 </div>
 {% endfor %}
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  function filterTopics() {
+    var hash = window.location.hash.substring(1);
+    var sections = document.querySelectorAll('.topic-section');
+    if (hash) {
+      sections.forEach(function(sec) {
+        if (sec.id === hash) {
+          sec.style.display = 'block';
+        } else {
+          sec.style.display = 'none';
+        }
+      });
+    } else {
+      sections.forEach(function(sec) {
+        sec.style.display = 'block';
+      });
+    }
+  }
+  
+  filterTopics();
+  window.addEventListener("hashchange", filterTopics);
+});
+</script>
