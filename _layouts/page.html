@@ -1,36 +1,7 @@
 <!DOCTYPE HTML>
 <html lang="en">
 
-<head>
-  {% if site.google_analytics %}
-  <script async src="https://www.googletagmanager.com/gtag/js?id={{ site.google_analytics }}"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', '{{ site.google_analytics }}');
-  </script>
-  {% endif %}
-
-  <!-- MathJax: inline $...$ and block $$...$$ -->
-  <script>
-    window.MathJax = {
-      tex: { inlineMath: [['$', '$']], displayMath: [['$$', '$$']] }
-    };
-  </script>
-  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-
-  <title>{{ page.title }} — {{ site.data.profile.name }}</title>
-
-  <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-  <meta name="author" content="{{ site.data.profile.name }}" />
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  <link rel="icon" href="{{ site.baseurl }}/favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" type="text/css" href="{{ site.baseurl }}/style.css" />
-  <link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}">
-  <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
-</head>
+{% include head.html %}
 
 <body>
   <table style="width:100%;max-width:800px;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">

@@ -1,0 +1,48 @@
+<head>
+  {% if site.google_analytics %}
+  <script async src="https://www.googletagmanager.com/gtag/js?id={{ site.google_analytics }}"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', '{{ site.google_analytics }}');
+  </script>
+  {% endif %}
+
+  <!-- mathjax support -->
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+  </script>
+
+  <title>{{ page.title | default: site.data.profile.name }}</title>
+
+  <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+  <meta name="timezone" content="Asia/Seoul">
+  <meta name="author" content="{{ site.data.profile.name }}" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <!-- OpenGraph Metadata -->
+  <meta property="og:title" content="{{ page.title | default: site.data.profile.name }}" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="{{ site.url }}{{ page.url }}" />
+  {% if site.data.profile.profile_image %}
+  <meta property="og:image" content="{{ site.url }}/{{ site.data.profile.profile_image }}" />
+  {% endif %}
+
+  <link rel="icon" href="{{ site.baseurl }}/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" type="text/css" href="{{ site.baseurl }}/style.css" />
+  <link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}">
+  <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+  
+  <style>
+    /* Ensure consistent vertical alignment for all table cells */
+    table td { vertical-align: middle; }
+    /* Remove baseline gaps under images that can affect alignment */
+    img { display: block; }
+    /* Avoid extra spacing around figure that can shift visual alignment */
+    figure { margin: 0; }
+    details > summary { user-select: none; }
+    details[open] > summary span { transform: rotate(90deg); display: inline-block; }
+  </style>
+</head>

@@ -1,0 +1,68 @@
+        <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
+          <tr>
+            <td style="padding:2.5%;width:100%;vertical-align:middle">
+              <h2>{{ site.data.profile.sections.projects }}</h2>
+              <p>{{ site.data.profile.sections.projects_description }}</p>
+            </td>
+          </tr>
+        </table>
+        <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
+
+          {% for post in site.posts %}
+          {% for cat in post.categories %}
+          {% if cat == 'project'%}
+          <tr>
+            <td style="padding:2.5%;width:25%;vertical-align:middle;min-width:120px">
+              <img src="{{ site.baseurl }}/tn{{post.image}}" alt="project image" style="width:auto; height:auto; max-width:100%;" />
+            </td>
+            <td style="padding:2.5%;width:75%;vertical-align:middle">
+              <span class="papertitle">{{post.title}}</span>
+              <br>
+              <em>{{post.course}}</em>
+              <br>
+              {{ post.date | date: "%Y-%m-%d" }}
+
+              <br>
+              {% if post.website %}
+              <a rel="noopener noreferrer" target="_blank" href="{{post.website}}">website</a> /
+              {% endif %}
+              {% if post.paper %}
+              <a rel="noopener noreferrer" target="_blank" href="{{post.paper}}">paper</a> /
+              {% endif %}
+              {% if post.patent %}
+              <a rel="noopener noreferrer" target="_blank" href="{{post.patent}}">patent</a> /
+              {% endif %}
+              {% if post.patent2 %}
+              <a rel="noopener noreferrer" target="_blank" href="{{post.patent2}}">patent #2</a> /
+              {% endif %}
+              {% if post.patent3 %}
+              <a rel="noopener noreferrer" target="_blank" href="{{post.patent3}}">patent #3</a> /
+              {% endif %}
+              {% if post.video %}
+              <a rel="noopener noreferrer" target="_blank" href="{{post.video}}">video</a> /
+              {% endif %}
+              {% if post.video2 %}
+              <a rel="noopener noreferrer" target="_blank" href="{{post.video2}}">video #2</a> /
+              {% endif %}
+              {% if post.code %}
+              <a rel="noopener noreferrer" target="_blank" href="{{post.code}}">code</a> /
+              {% endif %}
+              {% if post.poster %}
+              <a rel="noopener noreferrer" target="_blank" href="{{post.poster}}">poster</a> /
+              {% endif %}
+              {% if post.slides %}
+              <a rel="noopener noreferrer" target="_blank" href="{{post.slides}}">slides</a> /
+              {% endif %}
+              {% if post.blogpost %}
+              <a rel="noopener noreferrer" target="_blank" href="{{post.blogpost}}">blog post</a> /
+              {% endif %}
+              <p></p>
+              {{ post.excerpt }}
+            </td>
+          </tr>
+          {% endif %}
+          {% endfor %}
+          {% endfor %}
+        </table>
+        <br>
+        <br>

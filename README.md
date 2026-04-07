@@ -94,7 +94,7 @@ images/파일명.png       ← 원본
 tn/images/파일명.png    ← 썸네일 (작은 사이즈로 직접 리사이즈)
 ```
 
-> `_make_thumbnails.sh` 스크립트로 자동 생성 가능 (ImageMagick 필요)
+> `scripts/make_thumbnails.sh` 스크립트로 자동 생성 가능 (ImageMagick 필요)
 
 ---
 
