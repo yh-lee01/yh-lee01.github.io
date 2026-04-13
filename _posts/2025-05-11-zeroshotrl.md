@@ -4,7 +4,7 @@ title: "What is Zero shot RL?"
 date: 2025-05-11
 categories: RL
 permalink: /RL/zeroshotrl/
-author: "Joonkyu Min"
+author: "Yohan Lee"
 ---
 
 To develop a truly generalized reinforcement learning agent, it must be capable of generating useful policies for arbitrary rewards without training specified agent for each tasks.
@@ -15,10 +15,10 @@ Recent advancement on zero-shot RL build on successor representations, which mod
 Successor features(SF) based methods generalizes successor representations by expressing rewards as linear combinations of predefined features, allowing the Q-function to be decomposed as a linear span of successor features.
 
 $$
-\begin{align}
+\begin{aligned}
 r(s,a,s') & = \phi(s,a,s')^Tw \\
 Q^\pi(s,a) & = \psi^\pi(s,a)^Tw
-\end{align}
+\end{aligned}
 $$
 
 By learning the decoupled dynamics of the environment from reward, SF allows to transfer agents across tasks.

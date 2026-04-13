@@ -4,7 +4,7 @@ title: "What is Policy Iteration?"
 date: 2025-04-14
 categories: RL
 permalink: /RL/policy-iteration/
-author: "Joonkyu Min"
+author: "Yohan Lee"
 ---
 
 Policy iteration a method used to compute the **optimal policy** that comes from the classical dynamic programming for reinforcement learning with a discrete MDP.
@@ -32,9 +32,9 @@ Using the 1-step property of value function, we approximate $V^\pi(s)\approx r_{
 The approximate stochastic gradient from the 1-step Bellman gap becomes
 
 $$
-\begin{align}
+\begin{aligned}
 \nabla_{\phi} \frac{1}{2}\left( V_{\phi}-r_{0}-\gamma V_{\phi}(s_{1})\big|_{\text{stop grad}} \right) 
-\end{align}
+\end{aligned}
 $$
 
 This is not a unbiased estimate of stochastic gradient of $L$, but it is the most practical method to train the value function.
@@ -51,10 +51,10 @@ $$
 It is easily shown that $V^{\pi_{k+1}}\ge V^{\pi_{k}}$. By definition,
 
 $$
-\begin{align}
+\begin{aligned}
 V^{\pi_{k+1}} & =B^*[V^{\pi_{k}}]=\max_{a} \left[ r(s,a) + \gamma \sum_{s'} P(s'|s,a) V^{\pi_k}(s') \right] \\
  & \ge \mathbb{E}_{a\sim \pi_{k}(\cdot|s)}r(s,a) + \gamma \sum_{s'} P(s'|s,a) V^{\pi_k}(s')=B^{\pi_{k}}[V^{\pi_{k}}]
-\end{align}
+\end{aligned}
 $$
 
 $V^{\pi_{k}}$ is the fixed point of the Bellman operator, so $V^{\pi_{k+1}}\ge V^{\pi_{k}}$.

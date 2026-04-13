@@ -64,8 +64,8 @@ post_topics:
     category: "RL"
   - label: "Paper Review"
     category: "paper_review"
-  # - label: "Generative Models"
-  #   category: "generative"
+  - label: "Information Theory"
+    category: "infotheory"
 
 # ============================================================
 # 푸터

@@ -15,6 +15,7 @@
 a {
   color: #1772d0;
   text-decoration: none;
+  transition: color 0.2s ease-in-out;
 }
 
 a:focus,
@@ -30,40 +31,22 @@ tr,
 p,
 a {
   font-family: 'Lato', Verdana, Helvetica, sans-serif;
-  font-size: 14px;
+  font-size: 15px;
+  line-height: 1.6;
   font-display: auto;
 }
 
 strong {
   font-family: 'Lato', Verdana, Helvetica, sans-serif;
-  font-size: 14px;
-  font-display: auto;
-}
-
-h2 {
-  font-family: 'Lato', Verdana, Helvetica, sans-serif;
-  font-size: 22px;
-  font-display: auto;
-  font-weight: normal;
-  padding: 0px;
-  margin: 0px;
-  display:inline; 
-}
-
-h3 {
-  font-family: 'Lato', Verdana, Helvetica, sans-serif;
-  font-size: 14px;
+  font-size: 15px;
   font-weight: 700;
   font-display: auto;
-  padding: 0px;
-  margin: 0px;
-  display:inline; 
 }
 
 h1 {
   font-family: 'Lato', Verdana, Helvetica, sans-serif;
-  font-size: 32px;
-  font-weight: normal;
+  font-size: 28px;
+  font-weight: 700;
   font-display: auto;
   text-align: center;
   padding: 0px;
@@ -71,8 +54,45 @@ h1 {
   margin-block-end: 14px;
   margin-left: 0px;
   margin-right: 0px;
-
 }
+
+h2 {
+  font-family: 'Lato', Verdana, Helvetica, sans-serif;
+  font-size: 22px;
+  font-weight: 700;
+  font-display: auto;
+  padding: 0px;
+  margin: 0px;
+  display:inline; 
+}
+
+h3 {
+  font-family: 'Lato', Verdana, Helvetica, sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  font-display: auto;
+  padding: 0px;
+  margin: 0px;
+  display:inline; 
+}
+
+hr {
+  border: 0;
+  height: 1px;
+  background: #eee;
+  margin: 1.5em 0;
+}
+
+blockquote {
+  border-left: 4px solid #eee;
+  padding-left: 1em;
+  color: #666;
+  font-style: italic;
+  margin-left: 0;
+}
+
+::-moz-selection { background: #e2ecf5; }
+::selection { background: #e2ecf5; }
 
 .one {
   width: 160px;
@@ -105,7 +125,7 @@ h1 {
 
 .papertitle {
   font-family: 'Lato', Verdana, Helvetica, sans-serif;
-  font-size: 14px;
+  font-size: 15px;
   font-weight: 700;
 }
 
@@ -113,7 +133,34 @@ span.highlight {
   background-color: #ffffd0;
 }
 
+.post-content {
+  max-width: 100%;
+}
+
+.post-content code {
+  background: #f4f4f4;
+  padding: 0.1em 0.3em;
+  border-radius: 3px;
+  font-family: 'Bitstream Vera Sans Mono', 'Courier', monospace;
+  font-size: 0.9em;
+}
+
+/* Mobile basic responsive fix */
+@media screen and (max-width: 768px) {
+  table td {
+    display: block;
+    width: 100% !important;
+    text-align: center;
+  }
+  .papertitle, p, h2, h3 {
+    text-align: left;
+  }
+  .name {
+    padding-top: 0;
+  }
+}
+
 // Settled on moving the import of syntax highlighting to the bottom of the CSS
 // ... Otherwise it really bloats up the top of the CSS file and makes it difficult to find the start
-//@import "highlights";
+@import "highlights";
 //@import "svg-icons";

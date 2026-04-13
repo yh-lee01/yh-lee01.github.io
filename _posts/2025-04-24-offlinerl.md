@@ -4,7 +4,7 @@ title: "What is Offline RL?"
 date: 2025-04-24
 categories: RL
 permalink: /RL/offlinerl/
-author: "Joonkyu Min"
+author: "Yohan Lee"
 ---
 
 **Offline reinforcement learning**, also known as batch reinforcement learning is a method in between standard online RL and data-driven machine learning.

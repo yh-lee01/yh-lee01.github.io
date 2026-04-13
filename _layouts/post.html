@@ -12,10 +12,33 @@
 
         <article>
           <h1>{{ page.title }}</h1>
-          <p style="font-size:small; color:gray;">{{ page.date | date: "%B %d, %Y" }}</p>
+          <p style="font-size:small; color:gray;">
+            {{ page.date | date: "%B %d, %Y" }}
+            {% assign words = content | number_of_words %}
+            {% if words < 200 %}
+              • 1 min read
+            {% else %}
+              • {{ words | divided_by: 200 }} min read
+            {% endif %}
+          </p>
           <hr>
-          {{ content }}
+          <div class="post-content">
+            {{ content }}
+          </div>
         </article>
+
+        <div style="margin-top: 2em; display: flex; justify-content: space-between; font-size: small;">
+          {% if page.previous %}
+            <a href="{{ site.baseurl }}{{ page.previous.url }}">← {{ page.previous.title | truncate: 40 }}</a>
+          {% else %}
+            <span></span>
+          {% endif %}
+          {% if page.next %}
+            <a href="{{ site.baseurl }}{{ page.next.url }}">{{ page.next.title | truncate: 40 }} →</a>
+          {% else %}
+            <span></span>
+          {% endif %}
+        </div>
 
         <br>
         <p style="text-align:center;font-size:small;">

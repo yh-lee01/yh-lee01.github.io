@@ -4,7 +4,7 @@ title: "What is a value function?"
 date: 2025-04-11
 categories: RL
 permalink: /RL/value-function/
-author: "Joonkyu Min"
+author: "Yohan Lee"
 ---
 
 In RL, we try to maximize the long-term collected discounted rewards, or return.
@@ -37,10 +37,10 @@ $$
 Due to the Markovian property, value function holds the following 1-step transition property.
 
 $$
-\begin{align}
+\begin{aligned}
 V^\pi(s)&=\mathbb{E}_{a\sim \pi(\cdot|s), s'\sim p(\cdot|s,a)}[r+\gamma V^\pi(s')|s_{0}=s] \\
 Q^\pi(s)&=\mathbb{E}_{a'\sim \pi(\cdot|s'), s'\sim p(\cdot|s,a)}[r+\gamma Q^\pi(s',a')|s_{0}=s,a_{0}=a]
-\end{align}
+\end{aligned}
 $$
 
 This leads to the famous **Bellman equation**.

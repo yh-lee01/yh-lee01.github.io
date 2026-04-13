@@ -4,17 +4,17 @@ title: "What is Entropy Rate?"
 date: 2025-03-18
 categories: infotheory
 permalink: /infotheory/entropy-rate/
-author: "Joonkyu Min"
+author: "Yohan Lee"
 ---
 
 
 **Entropy rate** is defined in a random process, a sequence or set of random variables.
 
 $$
-\begin{align}
+\begin{aligned}
 H(\chi) & =\lim_{ n \to \infty } \frac{1}{n} H(X_{1},\dots,X_{n}) \\
 H(\chi) & =\lim_{ n \to \infty } H(X_{n}|X_{1},\dots,X_{n-1})
-\end{align}
+\end{aligned}
 $$
 
 How do we know the conditional entropy **converges**?
@@ -22,19 +22,19 @@ If the random process is **stationary process**, it is known that both definitio
 **Stationary process** is a random process that the joint distribution doesn't change.
 
 $$
-\begin{align}
+\begin{aligned}
 P(X_{1},\dots X_{k})=P(X_{n+1},\dots X_{n+k})
-\end{align}
+\end{aligned}
 $$
 
 For a **stationary process**, 
 $H(X_{n}|X^{n-1}_{1})$ is a decreasing sequence, which has a lower bound 0.
 
 $$
-\begin{align}
+\begin{aligned}
 H(X_{n}|X^{n-1}_{1}) & \leq H(X_{n}|X_{2}^{n-1}) \\
  & =H(X_{n-1}|X_{1}^{n-2})
-\end{align}
+\end{aligned}
 $$
 
 Therefore, it converges.
@@ -47,11 +47,11 @@ Since it is stationary process, random variable $X_{i}$ have a stationary distri
 Entropy rate of stationary Markov process can be computed by
 
 $$
-\begin{align}
+\begin{aligned}
 H(X) & =\lim_{ n \to \infty }H(X_{n}|X_{1}^{n-1}) \\
  & =\lim_{ n \to \infty } H(X_{n}|X_{n-1})=H(X_{2}|X_{1}) \\
  & =\sum_{i}\mu_{i}\left( \sum_{j}-P_{ij}\log P_{ij} \right)
-\end{align}
+\end{aligned}
 $$
 
 Using this result, we can somehow prove the **second law of thermodynamics**, 
@@ -67,13 +67,13 @@ This assumption is natural when the system is ideally isolated and symmetric, so
 First, relative entropy of two Markov distributions with same transition probability decreases.
 
 $$
-\begin{align}
+\begin{aligned}
  & D(p(x_{n},x_{n+1})\parallel q(x_{n},x_{n+1}))  \\ \\
  & =D(p(x_{n})\parallel q(x_{n}))+D(p(x_{n+1}|x_{n})\parallel q(x_{n+1}|x_{n}))  \\
 & = D(p(x_{n})\parallel q(x_{n}))  (\because p(x_{n+1}|x_{n})=q(x_{n+1}|x_{n})) \\ \\
 & =D(p(x_{n+1})\parallel q(x_{n+1}))+D(p(x_{n}|x_{n+1})\parallel q(x_{n}|x_{n+1})) \\
  & \geq D(p(x_{n+1})\parallel q(x_{n+1}))  (\because D_{KL}\geq 0)
-\end{align}
+\end{aligned}
 $$
 
 Therefore, by setting $q=\mu$ be a uniform stationary distribution, 

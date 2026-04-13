@@ -59,11 +59,8 @@ version: v1.2.0
 kramdown:
   # Use GitHub flavored markdown, including triple backtick fenced code blocks
   input: GFM
-  # Jekyll 3 and GitHub Pages now only support rouge for syntax highlighting
-  math_engine: mathjax
-  math_engine_opts:
-    inline_delimiters: ['$','$']
-    block_delimiters: ['$$','$$']
+  # Disable built-in math engine — KaTeX handles rendering via auto-render.js
+  math_engine: null
 
   syntax_highlighter: rouge
   syntax_highlighter_opts:

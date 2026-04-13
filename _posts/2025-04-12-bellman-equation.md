@@ -4,15 +4,15 @@ title: "What is Bellman equation?"
 date: 2025-04-12
 categories: RL
 permalink: /RL/bellman-equation/
-author: "Joonkyu Min"
+author: "Yohan Lee"
 ---
 
 The following equation is the 1-step transition property of value function.
 
 $$
-\begin{align}
+\begin{aligned}
 V^\pi(s)&=\mathbb{E}_{a\sim \pi(\cdot|s), s'\sim p(\cdot|s,a)}[r+\gamma V^\pi(s')|s_{0}=s]
-\end{align}
+\end{aligned}
 $$
 
 By defining a **Bellman operator** as a **functional** of value function,

@@ -9,11 +9,25 @@
   </script>
   {% endif %}
 
-  <!-- mathjax support -->
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-  <script id="MathJax-script" async
-    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
-  </script>
+  {% if page.layout == "post" or page.layout == "topic" %}
+  <!-- KaTeX — fast LaTeX rendering (loaded only on post/topic pages) -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css"
+        integrity="sha384-nB0miv6/jRmo5UMMR1wu3Gz6NLsoTkbqJghGIsx//Rlm+ZU03BU6SQNC66uf4l5+"
+        crossorigin="anonymous">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"
+          integrity="sha384-7zkQWkzuo3B5mTepMUcHkMB5jZaolc2xDwL6Vfwg7ZFOiMlOSOoOtDBIRg9pfF4z"
+          crossorigin="anonymous"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"
+          integrity="sha384-43gviWU0YVjaDtb/GhzOouOXtZMP/7XUzwPTstBeZFe/+rCMvRjNZcPHINpMbwFl"
+          crossorigin="anonymous"
+          onload="renderMathInElement(document.body, {
+            delimiters: [
+              {left: '$$', right: '$$', display: true},
+              {left: '$', right: '$', display: false}
+            ],
+            throwOnError: false
+          });"></script>
+  {% endif %}
 
   <title>
     {% if page.layout == "default" %}
@@ -27,7 +41,16 @@
   <meta name="timezone" content="Asia/Seoul">
   <meta name="author" content="{{ site.data.profile.name }}" />
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  
+
+  <!-- Meta Description -->
+  {% if page.description %}
+    <meta name="description" content="{{ page.description | strip_html | truncate: 160 }}">
+  {% elsif page.excerpt %}
+    <meta name="description" content="{{ page.excerpt | strip_html | truncate: 160 }}">
+  {% elsif page.layout == "default" %}
+    <meta name="description" content="{{ site.data.profile.name }} — Academic personal website. {{ site.data.profile.bio[0] | strip_html | truncate: 120 }}">
+  {% endif %}
+
   <!-- OpenGraph Metadata -->
   {% if page.layout == "default" %}
     <meta property="og:title" content="{{ site.data.profile.name }}" />
@@ -39,12 +62,17 @@
   {% if site.data.profile.profile_image %}
   <meta property="og:image" content="{{ site.url }}/{{ site.data.profile.profile_image }}" />
   {% endif %}
+  {% if page.description %}
+    <meta property="og:description" content="{{ page.description | strip_html | truncate: 200 }}" />
+  {% elsif page.excerpt %}
+    <meta property="og:description" content="{{ page.excerpt | strip_html | truncate: 200 }}" />
+  {% endif %}
 
   <link rel="icon" href="{{ site.baseurl }}/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" type="text/css" href="{{ site.baseurl }}/style.css" />
   <link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}">
-  <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
-  
+  <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+
   <style>
     /* Ensure consistent vertical alignment for all table cells */
     table td { vertical-align: middle; }

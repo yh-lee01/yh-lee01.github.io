@@ -4,7 +4,7 @@ title: "What is Mutual Information?"
 date: 2025-03-17
 categories: infotheory
 permalink: /infotheory/mutual-information/
-author: "Joonkyu Min"
+author: "Yohan Lee"
 ---
 
 
@@ -23,12 +23,12 @@ What is the relation with **entropy**?
 Mutual information is the amount of information of $X$ that is reduced when conditioned by another random variable $Y$.
 
 $$
-\begin{align}
+\begin{aligned}
 I(X;Y) & =\sum_{x,y}p(x,y)\log {\frac{p(x,y)}{p(x)p(y)}} \\
  & =\sum_{x,y}p(x,y)\log {\frac{p(x|y)}{p(x)}} \\
  & = -\mathbb{E}_{p}\log{p(x)} + \mathbb{E}_p\log {p(x|y)} \\
  & = H(X)-H(X|Y)
-\end{align}
+\end{aligned}
 $$
 
 This gives intuition that conditioning reduces entropy, 
@@ -62,11 +62,11 @@ $$
 data processing inequality says $I(X;Y)\ge I(X;Z)$, which means that as the data is processed, mutual information is lost.
 
 $$
-\begin{align}
+\begin{aligned}
 I(X;Y,Z) & =I(X;Y)+I(X;Z|Y)=I(X;Y) \\
 I(X;Z,Y) & =I(X;Z)+I(X;Y|Z)\ge I(X;Z) \\ \\
 \therefore I(X;Y) & \ge I(X;Z)
-\end{align}
+\end{aligned}
 $$
 
 
@@ -88,13 +88,13 @@ Also maximizing $I(Y;Z)$ is making the representation $Z$ to maximize informatio
 Precisely,
 
 $$
-\begin{align}
+\begin{aligned}
 I(X;Z,Y) &= I(X;Z) + I(X;Y|Z) = I(X;Z) \\
 &= I(X;Y)+I(X;Z|Y) \\ \\
 
 I(Y;X,Z) &= I(Y;Z)+I(Y;X|Z)=I(Y;Z) \\
 &= I(Y;X)+I(Y;Z|X) \\ \\
-\end{align}
+\end{aligned}
 $$
 
 Minimizing $I(X;Z)$ is minimizing $I(X;Z|Y)$, 

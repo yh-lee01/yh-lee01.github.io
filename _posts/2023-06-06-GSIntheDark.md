@@ -3,8 +3,8 @@ layout: default
 title:  "Gaussian Splatting in the dark"
 date:   2023-06-06 +00:00
 image: /images/GS_in_the_dark.png
-categories: project_bak
-author: "Joonkyu Min"
+categories: project
+author: "Yohan Lee"
 # subtitle: "Efficient learning of Gaussian Splatting in dark, blurry scenes"
 paper: /pdfs/3D_Gaussian_Splatting_in_the_Dark.pdf
 course: "3D Computer Vision"

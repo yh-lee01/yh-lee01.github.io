@@ -3,7 +3,7 @@ layout: post
 title: "Can Zero-shot RL enable test time safety?"
 date: 2025-06-01 +00:00
 permalink: /post/zeroshotrlenablesafety/
-author: "Joonkyu Min"
+author: "Yohan Lee"
 ---
 
 To develop a truly generalized agent, it is essential to enable it to perform well on multiple unseen tasks without training a separate agent for each scenario. In standard reinforcement learning (RL), an agent trained on a single, fixed reward function typically lacks the ability to generalize beyond that task. Zero-shot RL addresses this challenge by training agents without access to explicit reward signals and aims to produce policies that can be conditioned on any given reward instantly at test time. This capability is particularly valuable in offline RL settings, where agents are pretrained on large-scale datasets that do not contain reward labels.

@@ -4,7 +4,7 @@ title: "What is Policy Gradient?"
 date: 2025-04-15
 categories: RL
 permalink: /RL/policy-gradient/
-author: "Joonkyu Min"
+author: "Yohan Lee"
 ---
 
 **Policy gradient** is a method of RL that optimize the policy directly, by computing the gradient of the objective function w.r.t. the policy function parameters $\theta$.
@@ -26,13 +26,13 @@ $$
 The gradient of the objective w.r.t. $\theta$ becomes the expectation form of gradient of log likelihood.
 
 $$
-\begin{align}
+\begin{aligned}
 \nabla_{\theta}U(\theta) & = \nabla_{\theta}\sum_{\tau}P(\tau;\theta)R(\tau)  \\
  & =\sum_{\tau}\nabla_{\theta}P(\tau;\theta)R(\tau) \\
 & = \sum_{\tau}P(\tau;\theta) \frac{\nabla_{\theta}P(\tau;\theta)}{P(\tau;\theta)}R(\tau) \\
  & = \sum_{\tau}P(\tau;\theta) \nabla_{\theta}\log P(\tau;\theta)R(\tau) \\ 
  & =\mathbb{E}[\nabla_{\theta}\log P(\tau;\theta)R(\tau)]
-\end{align}
+\end{aligned}
 $$
 
 Doing gradient ascent intuitively updates the parameter to the direction of pushing up the likelihood proportional to the rewards.
@@ -40,29 +40,29 @@ Doing gradient ascent intuitively updates the parameter to the direction of push
 The gradient of likelihood can be computed via gradient of the policy because
 
 $$
-\begin{align}
+\begin{aligned}
 \log P(\tau;\theta) & =\log\left[ \prod P(s_{t+1}|s_{t},a_{t})\pi_{\theta}(a_{t}|s_{t}) \right] \\
  & =\sum_{t}\log P(s_{t+1}|s_{t},a_{t}) + \sum_{t} \log\pi_{\theta}(a_{t}|s_{t})
-\end{align}
+\end{aligned}
 $$
 
 and the first term has nothing to do with $\theta$.
 Thus, we can compute the unbiased estimate of the gradient by this way.
 
 $$
-\begin{align}
+\begin{aligned}
 \nabla_{\theta}U(\theta)
  & =\mathbb{E}\left[ \left(\sum_{t} \nabla_{\theta}\log \pi_{\theta}(a_{t}|s_{t})\right)R(\tau) \right]
-\end{align}
+\end{aligned}
 $$
 
 We can also subtract a baseline without harming the unbiasedness, but reducing variance.
 
 $$
-\begin{align}
+\begin{aligned}
 \nabla_{\theta}U(\theta)
  & =\mathbb{E}\left[ \left(\sum_{t} \nabla_{\theta}\log \pi_{\theta}(a_{t}|s_{t})\right)(R(\tau)-b) \right]
-\end{align}
+\end{aligned}
 $$
 
 This vanilla policy gradient is known as REINFORCE algorithm.
@@ -75,12 +75,12 @@ We can reduce the variance in following ways.
 **1. Remove past rewards**
 
 $$
-\begin{align}
+\begin{aligned}
 \nabla_{\theta}U(\theta)
  & =\mathbb{E}\left[ \left(\sum_{t} \nabla_{\theta}\log \pi_{\theta}(a_{t}|s_{t})\sum_{t'}\gamma^{t'} r_{t'} \right) \right] \\
  & =\mathbb{E}\left[ \sum_{t} \nabla_{\theta}\log \pi_{\theta}(a_{t}|s_{t})\left(\sum_{t'=0}^{t-1}\gamma^{t'} r_{t'}+\gamma^t\sum_{t'=t}\gamma^{t'-t} r_{t'} \right) \right] \\ 
  & =\mathbb{E}\left[ \sum_{t} \nabla_{\theta}\log \pi_{\theta}(a_{t}|s_{t})\gamma^tG_{t} \right] \\ 
-\end{align}
+\end{aligned}
 $$
 
 The past rewards is not influenced by the random action at time $t$, which makes the expected derivative 0.
@@ -88,10 +88,10 @@ The past rewards is not influenced by the random action at time $t$, which makes
 **2. Use value function as a baseline function**
 
 $$
-\begin{align}
+\begin{aligned}
 \nabla_{\theta}U(\theta)
  & =\mathbb{E}\left[\sum_{t} \nabla_{\theta}\log \pi_{\theta}(a_{t}|s_{t})\gamma^t(G_{t}-V(s_{t})) \right]
-\end{align}
+\end{aligned}
 $$
 
 Using the value function as a baseline is a intuitive choice. It doesn't depend on actions, so it is still unbiased.
@@ -103,10 +103,10 @@ Typically in practice, we train a value function network.
 We can first substitute $G_t$ with a $Q$-value estimate without introducing bias.
 
 $$
-\begin{align}
+\begin{aligned}
 \nabla_{\theta}U(\theta)
  & =\mathbb{E}\left[\sum_{t} \nabla_{\theta}\log \pi_{\theta}(a_{t}|s_{t})\gamma^t(\hat{Q}_{t}-V(s_{t})) \right]
-\end{align}
+\end{aligned}
 $$
 
 However, replacing a new network for Q-value will significantly increase variance and bias, especially in the initial training phase.
@@ -114,11 +114,11 @@ We can use TD for $Q$-value estimate, in order to lower the variance.
 We can choose how much $k$ steps to look ahead, where there exist a tradeoff between variance and bias: the more steps we look ahead, the lower the bias but the higher the variance.
 
 $$
-\begin{align}
+\begin{aligned}
 Q^\pi(s_{t}, a_{t})& = \mathbb{E}[r_{t}+\gamma V^\pi(s_{t+1})]  & &\approx \mathbb{E}[r_{t}+\gamma V_{\phi}(s_{t+1})]\\
  & = \mathbb{E}[r_{t}+\gamma r_{t+1}+\gamma^2V^\pi(s_{t+2})]   & &\approx \mathbb{E}[r_{t}+\gamma r_{t+1}+\gamma^2V_\phi(s_{t+2})] \\
  & = \cdots
-\end{align}
+\end{aligned}
 $$
 
 There is also an advanced technique called **GAE** (Generalized Advantage Estimation), which is geometrically summing up all the estimators instead of choosing $k$.
@@ -130,10 +130,10 @@ $$
 Adding these three techniques to the vanilla policy gradient method, it leads to **A2C/A3C** algorithm.
 
 $$
-\begin{align}
+\begin{aligned}
 \nabla_{\theta}U(\theta)
  & =\mathbb{E}\left[\sum_{t} \nabla_{\theta}\log \pi_{\theta}(a_{t}|s_{t})\gamma^t(\hat{Q}-V_{\phi}(s_{t})) \right]
-\end{align}
+\end{aligned}
 $$
 
 
