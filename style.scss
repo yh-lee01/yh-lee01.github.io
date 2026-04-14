@@ -188,11 +188,13 @@ span.highlight {
   }
   .profile-image {
     padding: 0;
-    margin-bottom: 10px;
+    margin-bottom: -5px; /* Pull the name up slightly */
   }
   .profile-image img {
-    max-width: 160px;
+    max-width: 115px; /* Significantly shrank the oversized profile picture */
     margin: 0 auto;
+    border: 3px solid #f9f9f9; /* Add subtle border for polish */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.05); /* Slight elevation */
   }
   td img {
     margin: 0 auto;
@@ -206,8 +208,9 @@ span.highlight {
     margin-top: 10px;
     margin-bottom: 10px;
   }
-  .name {
-    padding-top: 0;
+  .profile-text .name {
+    padding-top: 10px;
+    font-size: 28px; /* Slightly smaller name on mobile */
   }
 }
 
