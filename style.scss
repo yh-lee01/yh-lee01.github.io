@@ -212,13 +212,11 @@ span.highlight {
     grid-row: 1 / 2;
     padding: 0;
     margin: 0 0 4px 0;
-    font-size: 27px;
-    font-weight: 800;
-    letter-spacing: -0.5px;
+    font-size: 28px; /* Slightly refined but thinner naturally */
     line-height: 1.1; 
     text-align: left;
     align-self: center; /* Center the name relative to the photo horizontally */
-    color: #222;
+    color: #333; /* Softer color closer to original */
   }
   .profile-text .profile-links {
     grid-column: 1 / 3; /* Span full width! */
@@ -226,10 +224,7 @@ span.highlight {
     margin: 15px 0 0 0; /* Add a nice gap above the centered links */
     padding: 0;
     text-align: center; /* User requested centered! */
-    font-size: 0.9em; /* Slightly larger since it's centered */
-  }
-  .profile-text .profile-links a {
-    font-weight: 600;
+    font-size: 0.9em;
   }
   .profile-bio {
     grid-column: 1 / 3; /* Full width */
