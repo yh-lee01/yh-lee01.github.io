@@ -8,7 +8,7 @@ cv: pdfs/YohanLee_CV.pdf               # pdfs/ 폴더에 업로드한 파일명
 
 # 홈 상단 링크 (Email / GitHub / LinkedIn / CV)
 links:
-  email: "mailto:john1111369@gmail.com"
+  email: "mailto:john1111369@g.skku.edu"
   github: "https://github.com/yh-lee01"
   linkedin: "https://www.linkedin.com/in/yh-lee01"
   scholar: "" # 예: "https://scholar.google.com/citations?user=본인아이디" (값을 넣으면 홈에 자동 표시)
@@ -16,7 +16,7 @@ links:
 
 # 프로필 소개 문단 (HTML 사용 가능, 문단별로 - 로 구분)
 bio:
-  - 'I am an undergraduate research intern at <a href="https://sites.google.com/view/pixel-lab-ai/home">Pixel Lab</a>, Korea University, under professor <a href="https://sites.google.com/view/sangmin-lee/home">Sangmin Lee</a>, where I co-authored a paper on <strong>audio-visual sound separation</strong>. I am pursuing a B.S. in Computer Science and Engineering at Sungkyunkwan University (expected Aug. 2027), and am actively looking for graduate research opportunities for <strong>Fall 2027</strong>.'
+  - 'I am an undergraduate researcher at <a href="https://sites.google.com/view/pixel-lab-ai/home">Pixel Lab</a> (Korea University, advised by <a href="https://sites.google.com/view/sangmin-lee/home">Prof. Sangmin Lee</a>). I study the intersection of <strong>generative models</strong> and <strong>sequential decision-making</strong> — how to represent complex action distributions with expressive generative priors and how to optimize them through reinforcement learning. I am pursuing a B.S. in Computer Science and Engineering at Sungkyunkwan University (expected Aug. 2027) and am actively seeking graduate research opportunities for <strong>Fall 2027</strong>.'
 
 # ============================================================
 # News (최근 근황)
@@ -24,24 +24,25 @@ bio:
 
 news_title: "News"
 news:
+  - date: "2025. 04"
+    text: 'Submitted a first-authored paper on Flow Matching-based audio-visual sound separation to <strong>Interspeech 2026</strong>.'
   - date: "2025. 02"
     text: 'Joined <a href="https://sites.google.com/view/pixel-lab-ai/home">Pixel Lab</a> at Korea University as a research intern.'
-  # 아래 형식을 참고해서 새로운 소식이 있을 때마다 위에 추가하세요.
-  # - date: "2025. 03"
-  #   text: 'Our paper on audio-visual sound separation was accepted at ...'
 
 # ============================================================
 # Research 섹션
 # ============================================================
 
 research_goal:
-  title: "Research Goal"
+  title: "Research Interests"
   paragraphs:
-    - "My goal is to develop AI that works reliably in the real world. I believe this requires learning to model the world itself — and <strong>generative approaches</strong>, in my view, are the most promising path toward this."
-    - "What drew me in was seeing generative models begin to solve problems in <strong>RL</strong> that had long resisted other approaches. My current focus is <strong>Flow Matching</strong> as a framework for structured action space learning in <strong>robot manipulation</strong>."
+    - "I study the intersection of <strong>generative models</strong> (G) and <strong>sequential decision-making</strong> (D). Methods change every few years, but the fundamental problems — how to sample from complex distributions and how to make optimal decisions over time — persist for decades. I aim to work on these lasting problems rather than chasing transient techniques."
+    - "Concretely, I am interested in how expressive generative priors (Flow Matching, Diffusion) can represent multimodal action distributions for <strong>embodied agents</strong>, and how <strong>reinforcement learning</strong> can fine-tune these generative policies while maintaining safety and alignment. My experience includes integrating Conditional Flow Matching priors into RL loops (<a href='https://github.com/lyh011113/spirl'>SPiRL</a>) and first-authoring a Flow Matching-based paper submitted to Interspeech 2026."
   references:
-    - title: "Cao et al., Diffusion Models for Reinforcement Learning: A Survey (2023)"
-      url: "https://arxiv.org/abs/2311.01223"
+    - title: "Pertsch et al., Accelerating Reinforcement Learning with Learned Skill Priors, CoRL 2021"
+      url: "https://arxiv.org/abs/2010.11944"
+    - title: "Lipman et al., Flow Matching for Generative Modeling, ICLR 2023"
+      url: "https://arxiv.org/abs/2210.02747"
 
 # ============================================================
 # 섹션 제목 / 설명
