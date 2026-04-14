@@ -24,10 +24,8 @@ bio:
 
 news_title: "News"
 news:
-  - date: "2025. 04"
-    text: 'Submitted a first-authored paper on Flow Matching-based audio-visual sound separation to <strong>Interspeech 2026</strong>.'
-  - date: "2025. 02"
-    text: 'Joined <a href="https://sites.google.com/view/pixel-lab-ai/home">Pixel Lab</a> at Korea University as a research intern.'
+  - date: "TBD"
+    text: "To be updated."
 
 # ============================================================
 # Research 섹션
@@ -37,7 +35,7 @@ research_goal:
   title: "Research Interests"
   paragraphs:
     - "I study the intersection of <strong>generative models</strong> (G) and <strong>sequential decision-making</strong> (D). Methods change every few years, but the fundamental problems — how to sample from complex distributions and how to make optimal decisions over time — persist for decades. I aim to work on these lasting problems rather than chasing transient techniques."
-    - "Concretely, I am interested in how expressive generative priors (Flow Matching, Diffusion) can represent multimodal action distributions for <strong>embodied agents</strong>, and how <strong>reinforcement learning</strong> can fine-tune these generative policies while maintaining safety and alignment. My experience includes integrating Conditional Flow Matching priors into RL loops (<a href='https://github.com/lyh011113/spirl'>SPiRL</a>) and first-authoring a Flow Matching-based paper submitted to Interspeech 2026."
+    - "Concretely, I am interested in how expressive generative priors (Flow Matching, Diffusion) can represent multimodal action distributions for <strong>embodied agents</strong>, and how <strong>reinforcement learning</strong> can fine-tune these generative policies while maintaining safety and alignment."
   references:
     - title: "Pertsch et al., Accelerating Reinforcement Learning with Learned Skill Priors, CoRL 2021"
       url: "https://arxiv.org/abs/2010.11944"

@@ -150,10 +150,33 @@ span.highlight {
   table td {
     display: block;
     width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box;
+  }
+  .profile-row {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+  .profile-pic-td {
     text-align: center;
+    margin-bottom: 10px;
+  }
+  .profile-pic {
+    max-width: 180px !important;
+    margin: 0 auto;
+  }
+  td img {
+    margin: 0 auto;
+    display: block;
   }
   .papertitle, p, h2, h3 {
+    /* inline styles will override this where needed */
     text-align: left;
+  }
+  h2, h3 {
+    display: block;
+    margin-top: 10px;
+    margin-bottom: 10px;
   }
   .name {
     padding-top: 0;
