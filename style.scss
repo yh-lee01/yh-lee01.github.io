@@ -145,6 +145,36 @@ span.highlight {
   font-size: 0.9em;
 }
 
+/* Custom Profile Layout */
+.profile-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin: 0 auto;
+}
+.profile-text {
+  flex: 3;
+  padding: 2.5%;
+}
+.profile-text .name {
+  text-align: center;
+}
+.profile-text .profile-links {
+  text-align: center;
+  font-size: 0.9em;
+}
+.profile-image {
+  flex: 1;
+  padding: 2.5%;
+  text-align: center;
+}
+.profile-image img {
+  width: 100%;
+  max-width: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
 /* Mobile basic responsive fix */
 @media screen and (max-width: 768px) {
   table td {
@@ -153,16 +183,15 @@ span.highlight {
     max-width: 100% !important;
     box-sizing: border-box;
   }
-  .profile-row {
-    display: flex;
+  .profile-container {
     flex-direction: column-reverse;
   }
-  .profile-pic-td {
-    text-align: center;
+  .profile-image {
+    padding: 0;
     margin-bottom: 10px;
   }
-  .profile-pic {
-    max-width: 180px !important;
+  .profile-image img {
+    max-width: 160px;
     margin: 0 auto;
   }
   td img {
@@ -170,7 +199,6 @@ span.highlight {
     display: block;
   }
   .papertitle, p, h2, h3 {
-    /* inline styles will override this where needed */
     text-align: left;
   }
   h2, h3 {
