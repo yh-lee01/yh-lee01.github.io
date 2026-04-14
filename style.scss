@@ -148,7 +148,7 @@ span.highlight {
 /* Custom Profile Layout */
 .profile-container {
   display: flex;
-  flex-direction: row;
+  flex-direction: row-reverse; /* Image is right, Text is left */
   align-items: center;
   margin: 0 auto;
 }
@@ -184,17 +184,26 @@ span.highlight {
     box-sizing: border-box;
   }
   .profile-container {
-    flex-direction: column-reverse;
+    display: block; /* Disable flex globally for mobile container */
   }
   .profile-image {
-    padding: 0;
-    margin-bottom: -5px; /* Pull the name up slightly */
+    float: right; /* Elegantly place it on the top right */
+    width: 35%; /* Fixed width proportion */
+    max-width: 120px; 
+    padding: 0 0 10px 15px; /* Spacing so text doesn't touch it */
+    margin: 0;
   }
   .profile-image img {
-    max-width: 115px; /* Significantly shrank the oversized profile picture */
-    margin: 0 auto;
-    border: 3px solid #f9f9f9; /* Add subtle border for polish */
-    box-shadow: 0 4px 8px rgba(0,0,0,0.05); /* Slight elevation */
+    width: 100%;
+    margin: 0;
+    max-width: none;
+    border: 3px solid #f9f9f9;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+  }
+  .profile-text {
+    display: block;
+    width: 100%;
+    padding: 0;
   }
   td img {
     margin: 0 auto;
@@ -209,10 +218,15 @@ span.highlight {
     margin-bottom: 10px;
   }
   .profile-text .name {
-    padding-top: 10px;
-    font-size: 28px; /* Slightly smaller name on mobile */
+    padding-top: 5px;
+    font-size: 28px;
+    text-align: left; /* Must be left-aligned when floating */
+  }
+  .profile-text .profile-links {
+    text-align: left; /* Must be left-aligned when floating */
   }
 }
+
 
 // Settled on moving the import of syntax highlighting to the bottom of the CSS
 // ... Otherwise it really bloats up the top of the CSS file and makes it difficult to find the start

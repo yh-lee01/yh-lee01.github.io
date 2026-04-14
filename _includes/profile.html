@@ -1,4 +1,9 @@
         <div class="profile-container">
+          <div class="profile-image">
+            <a href="{{ site.data.profile.profile_image }}">
+              <img alt="profile photo" src="{{ site.data.profile.profile_image }}">
+            </a>
+          </div>
           <div class="profile-text">
             <p class="name">
               {{ site.data.profile.name }}
@@ -18,10 +23,5 @@
               {% endif %}
               &nbsp;/&nbsp; <a rel="noopener noreferrer" target="_blank" href="{{ site.baseurl }}/{{ site.data.profile.cv }}">CV</a>
             </p>
-          </div>
-          <div class="profile-image">
-            <a href="{{ site.data.profile.profile_image }}">
-              <img alt="profile photo" src="{{ site.data.profile.profile_image }}">
-            </a>
           </div>
         </div>
