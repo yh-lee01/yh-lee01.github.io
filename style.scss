@@ -184,26 +184,57 @@ span.highlight {
     box-sizing: border-box;
   }
   .profile-container {
-    display: block; /* Disable flex globally for mobile container */
+    display: grid;
+    grid-template-columns: 85px 1fr;
+    grid-template-rows: auto auto auto;
+    column-gap: 20px;
+    align-items: center;
+    margin-bottom: 20px;
   }
   .profile-image {
-    float: right; 
-    width: 90px; /* Reduced to an elegant avatar size */
-    max-width: 90px; 
-    padding: 0; 
-    margin: 5px 0 10px 15px; /* 5px top push for perfect alignment with 'Yohan Lee' */
+    grid-column: 1 / 2;
+    grid-row: 1 / 3; /* Spans name and links */
+    padding: 0;
+    margin: 0;
   }
   .profile-image img {
     width: 100%;
     margin: 0;
-    max-width: none;
-    border: 1px solid #eaeaea; /* Very subtle, modern thin border */
-    box-shadow: 0 4px 12px rgba(0,0,0,0.06); /* Soft, modern shadow */
+    max-width: 85px; 
+    border: 1px solid #eaeaea;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.06);
   }
   .profile-text {
-    display: block;
-    width: 100%;
+    display: contents; /* Unwraps children into the grid */
+  }
+  .profile-text .name {
+    grid-column: 2 / 3;
+    grid-row: 1 / 2;
     padding: 0;
+    margin: 0 0 4px 0;
+    font-size: 26px;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+    text-align: left;
+    align-self: end; /* Push down to center against photo */
+    color: #222;
+  }
+  .profile-text .profile-links {
+    grid-column: 2 / 3;
+    grid-row: 2 / 3;
+    margin: 0;
+    padding: 0;
+    text-align: left;
+    font-size: 0.85em;
+    align-self: start;
+  }
+  .profile-text .profile-links a {
+    font-weight: 600;
+  }
+  .profile-bio {
+    grid-column: 1 / 3; /* Full width */
+    grid-row: 3 / 4;
+    margin-top: 15px;
   }
   td img {
     margin: 0 auto;
@@ -217,25 +248,7 @@ span.highlight {
     margin-top: 10px;
     margin-bottom: 10px;
   }
-  .profile-text .name {
-    padding-top: 0;
-    margin-bottom: 8px; /* Breathing room before bio */
-    font-size: 32px;
-    font-weight: 800; /* Modern, heavy weight for the dominant header */
-    letter-spacing: -0.5px; /* Tighter modern look */
-    text-align: left; 
-    color: #222; /* High contrast */
-  }
-  .profile-text .profile-links {
-    text-align: left; 
-    margin-top: 15px; /* Push links slightly further down from bio */
-    font-size: 0.95em;
-  }
-  .profile-text .profile-links a {
-    font-weight: 600; /* Make links pop */
-  }
 }
-
 
 // Settled on moving the import of syntax highlighting to the bottom of the CSS
 // ... Otherwise it really bloats up the top of the CSS file and makes it difficult to find the start
