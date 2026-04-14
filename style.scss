@@ -187,18 +187,18 @@ span.highlight {
     display: block; /* Disable flex globally for mobile container */
   }
   .profile-image {
-    float: right; /* Elegantly place it on the top right */
-    width: 35%; /* Fixed width proportion */
-    max-width: 120px; 
-    padding: 0 0 10px 15px; /* Spacing so text doesn't touch it */
-    margin: 0;
+    float: right; 
+    width: 90px; /* Reduced to an elegant avatar size */
+    max-width: 90px; 
+    padding: 0; 
+    margin: 5px 0 10px 15px; /* 5px top push for perfect alignment with 'Yohan Lee' */
   }
   .profile-image img {
     width: 100%;
     margin: 0;
     max-width: none;
-    border: 3px solid #f9f9f9;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+    border: 1px solid #eaeaea; /* Very subtle, modern thin border */
+    box-shadow: 0 4px 12px rgba(0,0,0,0.06); /* Soft, modern shadow */
   }
   .profile-text {
     display: block;
@@ -218,12 +218,21 @@ span.highlight {
     margin-bottom: 10px;
   }
   .profile-text .name {
-    padding-top: 5px;
-    font-size: 28px;
-    text-align: left; /* Must be left-aligned when floating */
+    padding-top: 0;
+    margin-bottom: 8px; /* Breathing room before bio */
+    font-size: 32px;
+    font-weight: 800; /* Modern, heavy weight for the dominant header */
+    letter-spacing: -0.5px; /* Tighter modern look */
+    text-align: left; 
+    color: #222; /* High contrast */
   }
   .profile-text .profile-links {
-    text-align: left; /* Must be left-aligned when floating */
+    text-align: left; 
+    margin-top: 15px; /* Push links slightly further down from bio */
+    font-size: 0.95em;
+  }
+  .profile-text .profile-links a {
+    font-weight: 600; /* Make links pop */
   }
 }
 
