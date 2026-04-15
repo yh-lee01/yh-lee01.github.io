@@ -15,6 +15,11 @@
 
           <div style="margin-bottom:1.5em;">
             <h2 style="border-bottom: 1px solid #eee; padding-bottom: 0.3em; margin-bottom: 0.8em;">{{ page.title }}</h2>
+            {% if content != "" %}
+            <div style="color: #555; font-size: 0.95em; line-height: 1.7; margin-bottom: 1.2em;">
+              {{ content }}
+            </div>
+            {% endif %}
             <ul style="list-style-type: disc; padding-left: 20px;">
               {% assign count = 0 %}
               {% assign sortedposts = site.posts | sort: 'date' | reverse %}

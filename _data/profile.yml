@@ -23,9 +23,9 @@ bio:
 # ============================================================
 
 news_title: "News"
-news:
-  - date: "TBD"
-    text: "To be updated."
+# news:
+#   - date: "TBD"
+#     text: "To be updated."
 
 # ============================================================
 # Research 섹션
@@ -59,6 +59,8 @@ sections:
 # ============================================================
 
 post_topics:
+  - label: "Background"
+    category: "background"
   - label: "Reinforcement Learning"
     category: "RL"
   - label: "Paper Review"

@@ -8,11 +8,6 @@
             <p class="name">
               {{ site.data.profile.name }}
             </p>
-            <div class="profile-bio">
-              {% for para in site.data.profile.bio %}
-              <p>{{ para }}</p>
-              {% endfor %}
-            </div>
             <p class="profile-links">
               <a rel="noopener noreferrer" target="_blank" href="{{ site.data.profile.links.email }}">Email</a> &nbsp;/&nbsp;
               {% if site.data.profile.links.scholar != "" %}
@@ -25,5 +20,10 @@
               {% endif %}
               &nbsp;/&nbsp; <a rel="noopener noreferrer" target="_blank" href="{{ site.baseurl }}/{{ site.data.profile.cv }}">CV</a>
             </p>
+            <div class="profile-bio">
+              {% for para in site.data.profile.bio %}
+              <p>{{ para }}</p>
+              {% endfor %}
+            </div>
           </div>
         </div>
