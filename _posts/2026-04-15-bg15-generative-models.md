@@ -3,6 +3,7 @@ layout: post
 title: "15. Generative Models"
 date: 2026-04-15
 categories: background
+status: "In Progress"
 permalink: /background/15-generative-models/
 author: "Yohan Lee"
 ---

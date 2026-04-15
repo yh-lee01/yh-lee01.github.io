@@ -3,6 +3,7 @@ layout: post
 title: "글 제목"
 date: YYYY-MM-DD
 categories: RL          # _data/profile.yml의 post_topics category 값과 일치해야 함
+status: "Draft"           # "Draft", "In Progress", "Completed", etc.
 permalink: /RL/slug/    # URL 경로 (선택사항, 없으면 자동 생성)
 ---
 
