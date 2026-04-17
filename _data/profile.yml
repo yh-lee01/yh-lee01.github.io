@@ -15,7 +15,7 @@ links:
   twitter: ""
 
 bio:
-  - 'I am a senior undergraduate at <a href="https://www.skku.edu">Sungkyunkwan University</a> (Computer Science and Engineering, expected Aug. 2027). I have research experience at <a href="https://sites.google.com/view/pixel-lab-ai/home">Pixel Lab</a> (Korea University), <a href="https://aiot.snu.ac.kr/home">AIoT Lab</a> (Seoul National University), and V-Lab (Sungkyunkwan University, now at Yonsei University). I am actively seeking graduate research opportunities for <strong>Fall 2027</strong>.'
+  - 'I am a senior undergraduate at <a href="https://www.skku.edu">Sungkyunkwan University</a> (Computer Science and Engineering, expected Aug. 2027). I have research experience at <a href="https://sites.google.com/view/pixel-lab-ai/home">Pixel Lab</a> (Korea University), <a href="https://aiot.snu.ac.kr/home">AIoT Lab</a> (Seoul National University), and <a href="https://v-laboratory.github.io/#/">V-Lab</a> (Sungkyunkwan University, now at Yonsei University). I am actively seeking graduate research opportunities for <strong>Fall 2027</strong>.'
 
 # ============================================================
 # News (최근 근황)
@@ -33,14 +33,8 @@ news_title: "News"
 research_goal:
   title: "Research Interests"
   paragraphs:
-    - 'I am interested in the intersection of <strong>generative models</strong>, <strong>decision-making</strong>, and <strong>AI safety</strong>. I view generative models as mathematical tools whose capability and safety are governed by the same underlying properties — and believe that as these models move from generating images to generating actions in the physical world, ensuring they remain safe and aligned becomes a central research challenge.'
-    - 'Concretely, my research focuses on three intertwined directions:'
-  bullets:
-    - '<strong>Generative Priors for Action:</strong> Representing multimodal action distributions for embodied agents using expressive generative models (Flow Matching, Diffusion).'
-    - '<strong>RL Fine-tuning:</strong> Optimizing generative policies through reinforcement learning while preserving their pre-trained structure.'
-    - '<strong>Safety under Optimization:</strong> Preventing misalignment and reward hacking that emerge when capability and optimization pressure increase.'
-  closing:
-    - 'My previous work spans OOD robustness and benchmark design (ImageNet-ES), DDPM-based 3D synthesis, and Flow Matching-based multi-modal generation. Reflecting on this trajectory, I became convinced that the most meaningful research lies not merely in making models more powerful, but in ensuring powerful models remain safe.'
+    - 'I am interested in the intersection of <strong>generative models</strong>, <strong>sequential decision-making</strong>, and <strong>AI safety</strong>. Specifically, I explore how expressive generative priors (e.g., Flow Matching, Diffusion) can represent complex behaviors for embodied agents, and how we can use reinforcement learning to fine-tune these generative policies safely.'
+    - 'My previous work spans out-of-distribution robustness (ImageNet-ES), 3D synthesis (DDPM), and multi-modal generation (Flow Matching). Through these experiences, I have come to view the capability and safety of generative models as two sides of the same equation. As these models expand from generating content to taking actions in the physical world, my core objective is to ensure that powerful policy models remain safe and aligned.'
 
 # ============================================================
 # 섹션 제목 / 설명
