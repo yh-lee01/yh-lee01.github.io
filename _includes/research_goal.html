@@ -5,6 +5,20 @@
               {% for para in site.data.profile.research_goal.paragraphs %}
               <p>{{ para }}</p>
               {% endfor %}
+              
+              {% if site.data.profile.research_goal.bullets %}
+              <ul>
+                {% for item in site.data.profile.research_goal.bullets %}
+                <li style="margin-bottom:0.5em;">{{ item }}</li>
+                {% endfor %}
+              </ul>
+              {% endif %}
+
+              {% if site.data.profile.research_goal.closing %}
+              {% for para in site.data.profile.research_goal.closing %}
+              <p>{{ para }}</p>
+              {% endfor %}
+              {% endif %}
             </td>
           </tr>
         </table>
