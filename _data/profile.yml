@@ -11,21 +11,21 @@ links:
   email: "mailto:john1111369@g.skku.edu"
   github: "https://github.com/yh-lee01"
   linkedin: "https://www.linkedin.com/in/yh-lee01"
-  scholar: "" # 예: "https://scholar.google.com/citations?user=본인아이디" (값을 넣으면 홈에 자동 표시)
-  twitter: "" # 예: "https://x.com/본인아이디" (값을 넣으면 홈에 자동 표시)
+  scholar: ""
+  twitter: ""
 
 # 프로필 소개 문단 (HTML 사용 가능, 문단별로 - 로 구분)
 bio:
-  - 'I am an undergraduate researcher at <a href="https://sites.google.com/view/pixel-lab-ai/home">Pixel Lab</a> (Korea University, advised by <a href="https://sites.google.com/view/sangmin-lee/home">Prof. Sangmin Lee</a>). I study the intersection of <strong>generative models</strong> and <strong>sequential decision-making</strong> — how to represent complex action distributions with expressive generative priors and how to optimize them through reinforcement learning. I am pursuing a B.S. in Computer Science and Engineering at Sungkyunkwan University (expected Aug. 2027) and am actively seeking graduate research opportunities for <strong>Fall 2027</strong>.'
+  - 'I am a senior undergraduate at <a href="https://www.skku.edu">Sungkyunkwan University</a> (Software Engineering, expected Aug. 2027). I have worked at <a href="https://sites.google.com/view/pixel-lab-ai/home">Pixel Lab</a> (Korea University), <a href="https://snu-aiot.github.io/">AIoT Lab</a> (Seoul National University), and V-Lab (Sungkyunkwan University). I am actively seeking graduate research opportunities for <strong>Fall 2027</strong>.'
 
 # ============================================================
 # News (최근 근황)
 # ============================================================
 
 news_title: "News"
-# news:
-#   - date: "TBD"
-#     text: "To be updated."
+news:
+  - date: "Jan. 2026"
+    text: "Submitted a paper on Flow Matching-based audio-visual sound separation to <strong>Interspeech 2026</strong> as co-first author (under review)."
 
 # ============================================================
 # Research 섹션
@@ -34,13 +34,8 @@ news_title: "News"
 research_goal:
   title: "Research Interests"
   paragraphs:
-    - "I study the intersection of <strong>generative models</strong> (G) and <strong>sequential decision-making</strong> (D). Methods change every few years, but the fundamental problems — how to sample from complex distributions and how to make optimal decisions over time — persist for decades. I aim to work on these lasting problems rather than chasing transient techniques."
-    - "Concretely, I am interested in how expressive generative priors (Flow Matching, Diffusion) can represent multimodal action distributions for <strong>embodied agents</strong>, and how <strong>reinforcement learning</strong> can fine-tune these generative policies while maintaining safety and alignment."
-  references:
-    - title: "Pertsch et al., Accelerating Reinforcement Learning with Learned Skill Priors, CoRL 2021"
-      url: "https://arxiv.org/abs/2010.11944"
-    - title: "Lipman et al., Flow Matching for Generative Modeling, ICLR 2023"
-      url: "https://arxiv.org/abs/2210.02747"
+    - 'I am interested in the intersection of <strong>generative models</strong>, <strong>decision-making</strong>, and <strong>AI safety</strong>. I view generative models as mathematical tools whose capability and safety are governed by the same underlying properties — and believe that as these models move from generating images to generating actions in the physical world, ensuring they remain safe becomes a central research challenge.'
+    - 'My previous work spans OOD robustness and benchmark design, DDPM-based 3D synthesis, and Flow Matching-based multi-modal generation. Through these experiences, I became convinced that the most meaningful research lies not in making models more powerful, but in ensuring powerful models remain safe and aligned.'
 
 # ============================================================
 # 섹션 제목 / 설명
@@ -54,8 +49,6 @@ sections:
 
 # ============================================================
 # Blog post 토픽 목록
-# 새 토픽 추가: label(표시 이름)과 category(_posts 파일의 categories 값) 작성
-# 새 포스트는 _templates/blogpost.md 참고
 # ============================================================
 
 post_topics:

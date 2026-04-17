@@ -5,13 +5,6 @@
               {% for para in site.data.profile.research_goal.paragraphs %}
               <p>{{ para }}</p>
               {% endfor %}
-              {% if site.data.profile.research_goal.references %}
-              <p style="font-size:small;color:#666;">
-                {% for ref in site.data.profile.research_goal.references %}
-                [{{ forloop.index }}] <a rel="noopener noreferrer" target="_blank" href="{{ ref.url }}">{{ ref.title }}</a>{% unless forloop.last %}<br>{% endunless %}
-                {% endfor %}
-              </p>
-              {% endif %}
             </td>
           </tr>
         </table>
