@@ -33,7 +33,9 @@ news_title: "News"
 research_goal:
   title: "Research Interests"
   paragraphs:
-    - 'I view generative models as mathematical tools for representing distributions, where the same mathematical properties shape both capability and safety. My work has spanned Flow Matching for multi-modal generation (Interspeech 2026), diffusion-based 3D synthesis, and out-of-distribution robustness. I am particularly interested in how generative priors and RL fine-tuning interact in decision-making agents, and how principled foundations can make these systems both more capable and safer.'
+    - 'I study the <strong>intersection of generative models and sequential decision-making</strong>, with a focus on <strong>safety</strong>. I view generative models as mathematical tools where capability and safety are shaped by the same underlying mathematics.'
+    - 'My recent work spans multi-modal generation (Flow Matching), 3D synthesis (DDPM), and out-of-distribution robustness (ImageNet-ES). As generative models and RL algorithms expand from merely generating content to making sequential decisions in the physical world, <strong>safety must be a foundational consideration in every step</strong>.'
+    - 'Ultimately, my research goal is to build capable AI systems that remain safe, robust, and aligned with human intentions.'
 
 # ============================================================
 # 섹션 제목 / 설명
