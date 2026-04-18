@@ -15,7 +15,7 @@ links:
   twitter: ""
 
 bio:
-  - 'I am a senior undergraduate at <a href="https://www.skku.edu">Sungkyunkwan University</a> (Computer Science and Engineering, expected Aug. 2027). I have research experience at <a href="https://sites.google.com/view/pixel-lab-ai/home">Pixel Lab</a> (Korea University), <a href="https://aiot.snu.ac.kr/home">AIoT Lab</a> (Seoul National University), and <a href="https://v-laboratory.github.io/#/">V-Lab</a> (Sungkyunkwan University, now at Yonsei University). I am actively seeking graduate research opportunities for <strong>Fall 2027</strong>.'
+  - 'I am a senior undergraduate at <a href="https://www.skku.edu">Sungkyunkwan University</a> (Computer Science and Engineering, expected Aug. 2027), working at the intersection of generative models and sequential decision-making, with a focus on AI safety. I have research experience at <a href="https://sites.google.com/view/pixel-lab-ai/home">Pixel Lab</a> (Korea University), <a href="https://aiot.snu.ac.kr/home">AIoT Lab</a> (Seoul National University), and <a href="https://v-laboratory.github.io/#/">V-Lab</a> (Sungkyunkwan University). I am seeking graduate research opportunities for <strong>Fall 2027</strong>.'
 
 # ============================================================
 # News (최근 근황)
@@ -33,8 +33,7 @@ news_title: "News"
 research_goal:
   title: "Research Interests"
   paragraphs:
-    - 'I am broadly interested in <strong>Generative Models</strong>, <strong>Reinforcement Learning</strong>, and <strong>AI Safety</strong>. My recent work spans multi-modal generation (Flow Matching), 3D synthesis (DDPM), and out-of-distribution robustness (ImageNet-ES).'
-    - 'Through these experiences, I have come to view the capability and safety of AI systems as two sides of the same equation. As generative models and RL algorithms expand from merely generating content to making sequential decisions in the physical world, my core philosophy is that <strong>safety must be a foundational consideration in every step</strong>. Ultimately, my research goal is to build capable AI systems that remain safe, robust, and aligned with human intentions.'
+    - 'I view generative models as mathematical tools for representing distributions, where the same mathematical properties shape both capability and safety. My work has spanned Flow Matching for multi-modal generation (Interspeech 2026), diffusion-based 3D synthesis, and out-of-distribution robustness. I am particularly interested in how generative priors and RL fine-tuning interact in embodied and decision-making agents, and how data-centric foundations can make these systems both more capable and safer.'
 
 # ============================================================
 # 섹션 제목 / 설명
