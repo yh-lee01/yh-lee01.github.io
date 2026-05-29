@@ -59,9 +59,15 @@ samp {
   padding-left: 15px;
 }
 
-/* Desktop layout (navbar-expand-sm behaves at min-width: 576px) */
+/*
+ * CRITICAL: Use #navbarNav ID selector for high specificity.
+ * The theme/Tailwind sets .collapse { display: none } which beats class-only
+ * media queries. ID selectors win regardless of source order.
+ */
+
+/* Desktop: always show the navbar menu */
 @media (min-width: 576px) {
-  .navbar-collapse.collapse {
+  #navbarNav {
     display: flex !important;
     flex-grow: 1 !important;
     justify-content: flex-end !important;
@@ -74,28 +80,27 @@ samp {
     justify-content: flex-end !important;
     align-items: center !important;
     margin-left: auto !important;
+    flex-wrap: nowrap !important;
   }
 
-  /* Reset theme's auto-margin splitting the search/toggles */
   .navbar-nav .nav-item,
   .navbar-nav .toggle-container {
     margin-left: 0 !important;
   }
 
-  /* Add consistent spacing between navbar items */
   .navbar-nav > li,
   .navbar-nav > div {
     margin-left: 0.75rem !important;
   }
 }
 
-/* Mobile layout adaptation */
+/* Mobile: hide/show via .show class */
 @media (max-width: 575.98px) {
-  .navbar-collapse.collapse:not(.show) {
+  #navbarNav {
     display: none !important;
   }
 
-  .navbar-collapse.collapse.show {
+  #navbarNav.show {
     display: flex !important;
     flex-direction: column !important;
     width: 100% !important;
@@ -127,7 +132,7 @@ samp {
     flex-wrap: wrap !important;
   }
 
-  .navbar-collapse {
+  #navbarNav {
     flex-basis: 100% !important;
   }
 }
@@ -166,6 +171,50 @@ samp {
 .navbar-brand.title {
   font-size: 1.15rem;
   letter-spacing: -0.01em;
+}
+
+/* ---- Navbar Toggler (Hamburger Icon) ---- */
+.navbar-toggler {
+  display: none;
+  padding: 0.5rem 0.75rem !important;
+  background: transparent !important;
+  border: 1px solid var(--global-divider-color) !important;
+  border-radius: 8px !important;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.navbar-toggler:hover {
+  background-color: rgba(105, 65, 198, 0.08) !important;
+}
+
+@media (max-width: 575.98px) {
+  .navbar-toggler {
+    display: flex !important;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+  }
+}
+
+.navbar-toggler .icon-bar {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background-color: var(--global-text-color, #191919);
+  border-radius: 1px;
+  transition: transform 0.25s ease, opacity 0.25s ease;
+}
+
+.navbar-toggler:not(.collapsed) .icon-bar.top-bar {
+  transform: translateY(6px) rotate(45deg);
+}
+.navbar-toggler:not(.collapsed) .icon-bar.middle-bar {
+  opacity: 0;
+}
+.navbar-toggler:not(.collapsed) .icon-bar.bottom-bar {
+  transform: translateY(-6px) rotate(-45deg);
 }
 
 /* ---- Search & Light Toggle Styling ---- */
@@ -222,10 +271,9 @@ samp {
   width: 100% !important;
   height: 100% !important;
   object-fit: cover !important;
-  /* Zoom in 1.25x and shift 55% right and 15% up to cut out side people */
   object-position: 55% 15% !important;
   transform: scale(1.25) !important;
-  border-radius: 0 !important; /* let parent figure handle circle crop */
+  border-radius: 0 !important;
   transition: transform 0.3s ease;
 }
 
@@ -418,10 +466,13 @@ article p {
 
 /* ---- Footer ---- */
 footer {
+  position: relative !important;
   background-color: var(--global-footer-bg-color) !important;
   color: var(--global-footer-text-color);
   font-size: 0.8rem;
   letter-spacing: 0.01em;
+  padding: 1rem 0;
+  margin-top: 3rem;
 }
 
 footer a {
@@ -597,11 +648,14 @@ html {
 }
 
 /* ---- BibTeX Collapsible Style ---- */
-.bibtex.collapse {
+/* Only hide bibtex/abstract collapse blocks, NOT the navbar */
+.bibtex.collapse,
+.abstract.collapse {
   display: none !important;
 }
 
-.bibtex.collapse.show {
+.bibtex.collapse.show,
+.abstract.collapse.show {
   display: block !important;
 }
 
@@ -717,51 +771,6 @@ select,
   ::selection {
     background-color: rgba(105, 65, 198, 0.2);
   }
-}
-
-/* ---- Navbar Toggler (Hamburger Icon) ---- */
-.navbar-toggler {
-  display: none;
-  padding: 0.5rem 0.75rem !important;
-  background: transparent !important;
-  border: 1px solid var(--global-divider-color) !important;
-  border-radius: 8px !important;
-  cursor: pointer;
-  transition: background-color 0.2s ease;
-}
-
-.navbar-toggler:hover {
-  background-color: rgba(105, 65, 198, 0.08) !important;
-}
-
-@media (max-width: 575.98px) {
-  .navbar-toggler {
-    display: flex !important;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 4px;
-  }
-}
-
-.navbar-toggler .icon-bar {
-  display: block;
-  width: 22px;
-  height: 2px;
-  background-color: var(--global-text-color, #191919);
-  border-radius: 1px;
-  transition: transform 0.25s ease, opacity 0.25s ease;
-}
-
-/* Animated hamburger → X when open */
-.navbar-toggler:not(.collapsed) .icon-bar.top-bar {
-  transform: translateY(6px) rotate(45deg);
-}
-.navbar-toggler:not(.collapsed) .icon-bar.middle-bar {
-  opacity: 0;
-}
-.navbar-toggler:not(.collapsed) .icon-bar.bottom-bar {
-  transform: translateY(-6px) rotate(-45deg);
 }
 
 /* ---- Fixed Navbar Positioning Fallbacks ---- */
