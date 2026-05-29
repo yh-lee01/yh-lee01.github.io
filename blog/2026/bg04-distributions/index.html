@@ -1,0 +1,519 @@
+<!DOCTYPE html> <html lang="en"> <head> <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> <meta charset="utf-8"> <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> <meta http-equiv="X-UA-Compatible" content="IE=edge"> <title> 4. Common Distributions | Yohan Lee </title> <meta name="author" content="Yohan Lee"> <meta name="description" content="A catalog of the most frequently used distributions in ML, including Bernoulli, Gaussian, exponential family, and Gaussian mixture models."> <meta name="keywords" content="ai-safety, reinforcement-learning, generative-models, flow-matching, academic-website"> <meta property="og:site_name" content="Yohan Lee"> <meta property="og:type" content="article"> <meta property="og:title" content="Yohan Lee | 4. Common Distributions"> <meta property="og:url" content="https://yh-lee01.github.io/blog/2026/bg04-distributions/"> <meta property="og:description" content="A catalog of the most frequently used distributions in ML, including Bernoulli, Gaussian, exponential family, and Gaussian mixture models."> <meta property="og:locale" content="en"> <meta name="twitter:card" content="summary"> <meta name="twitter:title" content="4. Common Distributions"> <meta name="twitter:description" content="A catalog of the most frequently used distributions in ML, including Bernoulli, Gaussian, exponential family, and Gaussian mixture models."> <script type="application/ld+json">
+    {
+        "author":
+        {
+            "@type": "Person",
+            "name": "Yohan Lee"
+        },
+        "url": "https://yh-lee01.github.io/blog/2026/bg04-distributions/",
+        "@type": "BlogPosting",
+        "description": "A catalog of the most frequently used distributions in ML, including Bernoulli, Gaussian, exponential family, and Gaussian mixture models.",
+        "headline": "4. Common Distributions",
+        
+        "sameAs": ["https://github.com/yh-lee01","https://www.linkedin.com/in/yh-lee01",null],
+        
+        "name": "Yohan Lee",
+        "@context": "https://schema.org"
+    }
+  </script> <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https:; style-src 'self' 'unsafe-inline' https:; img-src 'self' data: https:; font-src 'self' data: https:; media-src 'self' https:; frame-src 'self' https:; connect-src 'self' https:;"> <style>:root{--max-content-width:930px}</style> <link rel="stylesheet" href="/assets/css/tailwind.css?v=50c64c15cbb9fd1ce6056fdb8bcb4b62"> <link defer rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tocbot@4.36.4/dist/tocbot.css" integrity="sha256-zTN0r+0OKaIv2xqeNNIYxNk0pWJ6+IqPGc1iDgVzWF0=" crossorigin="anonymous"> <link defer rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.2.0/css/all.min.css" integrity="sha256-MVopmdyC2tYTiJ8wlktf0uh0v4NgT+vNdyVFepi7Q0c=" crossorigin="anonymous"> <link defer rel="stylesheet" href="https://cdn.jsdelivr.net/npm/academicons@1.9.5/css/academicons.min.css" integrity="sha256-SzrCOBJbGVFMahewkgjwnApaV2+av1DwMAA+/QGLyZw=" crossorigin="anonymous"> <link defer rel="stylesheet" href="https://cdn.jsdelivr.net/npm/scholar-icons@1.0.3/css/scholar-icons.css" integrity="sha256-VY3hHVj/hNX3fYG6wtbA6TcKJQl7+FthzGSyIB64klY=" crossorigin="anonymous"> <link defer rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:100,300,400,500,700|Material+Icons&amp;display=swap"> <link defer rel="stylesheet" href="/assets/css/jekyll-pygments-themes-github.css?v=591dab5a4e56573bf4ef7fd332894c99" media="" id="highlight_theme_light"> <link rel="shortcut icon" href="data:image/svg+xml,&lt;svg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%20100%20100%22&gt;&lt;text%20y=%22.9em%22%20font-size=%2290%22&gt;%F0%9F%A4%96&lt;/text&gt;&lt;/svg&gt;"> <link rel="stylesheet" href="/assets/css/main.css?v=d41d8cd98f00b204e9800998ecf8427e"> <link rel="canonical" href="https://yh-lee01.github.io/blog/2026/bg04-distributions/"> <script src="/assets/js/theme.js?v=7af685e2ba20b37fef545c97b8064050"></script> <link defer rel="stylesheet" href="/assets/css/jekyll-pygments-themes-native.css?v=5847e5ed4a4568527aa6cfab446049ca" media="none" id="highlight_theme_dark"> <script>
+    initTheme();
+  </script> </head> <body class="fixed-top-nav "> <header> <nav id="navbar" class="navbar navbar-light navbar-expand-sm fixed-top" role="navigation"> <div class="container"> <a class="navbar-brand title font-weight-lighter" href="/"> <span class="font-weight-bold">Yohan</span> Lee </a> <button class="navbar-toggler collapsed navbar-toggler-main" type="button" data-nav-toggle="navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar top-bar"></span> <span class="icon-bar middle-bar"></span> <span class="icon-bar bottom-bar"></span> </button> <div class="collapse navbar-collapse navbar-collapse-main" id="navbarNav"> <ul class="navbar-nav navbar-menu-list flex-nowrap"> <li class="nav-item "> <a class="nav-link" href="/">about </a> </li> <li class="nav-item active"> <a class="nav-link" href="/blog/">blog </a> </li> <li class="nav-item "> <a class="nav-link" href="/publications/">publications </a> </li> <li class="nav-item "> <a class="nav-link" href="/projects/">projects </a> </li> <li class="nav-item "> <a class="nav-link" href="/cv/">CV </a> </li> <li class="nav-item"> <button id="search-toggle" type="button" title="Search" aria-label="Open search"> <span class="nav-link">ctrl k <i class="fa-solid fa-magnifying-glass"></i></span> </button> </li> <li class="toggle-container"> <button id="light-toggle" type="button" title="Change theme" aria-label="Change color theme"> <i class="fa-half-sun-moon" id="light-toggle-system"></i> <i class="fa-solid fa-moon" id="light-toggle-dark"></i> <i class="fa-solid fa-sun" id="light-toggle-light"></i> </button> </li> </ul> </div> </div> </nav> <progress id="progress" value="0"> <div class="progress-container"> <span class="progress-bar"></span> </div> </progress> </header> <div class="container mt-5" role="main"> <div class="row"> <div class="col-sm-3"> <nav id="toc-sidebar" class="sticky-top toc toc-sidebar" aria-label="Table of contents" data-toc-collapse="expanded" data-toc-collapse-depth=""></nav> </div> <div class="col-sm-9"> <div class="post"> <header class="post-header"> <h1 class="post-title">4. Common Distributions</h1> <p class="post-meta"> Created on April 15, 2026 </p> <p class="post-tags"> <a href="/blog/2026"> <i class="fa-solid fa-calendar fa-sm"></i> 2026 </a>   ·   <a href="/blog/tag/machine-learning"> <i class="fa-solid fa-hashtag fa-sm"></i> machine-learning</a>   <a href="/blog/tag/probability"> <i class="fa-solid fa-hashtag fa-sm"></i> probability</a>   <a href="/blog/tag/distributions"> <i class="fa-solid fa-hashtag fa-sm"></i> distributions</a>   <a href="/blog/tag/statistics"> <i class="fa-solid fa-hashtag fa-sm"></i> statistics</a>   ·   <a href="/blog/category/background"> <i class="fa-solid fa-tag fa-sm"></i> background</a> </p> </header> <article class="post-content"> <div id="markdown-content"> <p>Knowing the right distribution family is half the modeling battle. Here we catalog the distributions that appear most frequently in ML.</p> <h2 id="discrete-distributions">Discrete Distributions</h2> <p><strong>Bernoulli</strong>: a single binary trial with success probability $p$.</p> \[p(x) = p^x (1-p)^{1-x}, \quad x \in \{0, 1\}\] <p><strong>Categorical</strong>: generalization to $K$ classes with probabilities $\boldsymbol{\pi}$.</p> \[p(x = k) = \pi_k, \quad \sum_{k=1}^K \pi_k = 1\] <p>The output of a softmax layer defines a categorical distribution over classes.</p> <h2 id="gaussian-normal-distribution">Gaussian (Normal) Distribution</h2> <p>The most important distribution in ML:</p> \[\mathcal{N}(x \mid \mu, \sigma^2) = \frac{1}{\sqrt{2\pi\sigma^2}} \exp\left( -\frac{(x - \mu)^2}{2\sigma^2} \right)\] <p><strong>Multivariate Gaussian</strong> with mean $\boldsymbol{\mu}$ and covariance $\Sigma$:</p> \[\mathcal{N}(\mathbf{x} \mid \boldsymbol{\mu}, \Sigma) = \frac{1}{(2\pi)^{d/2} |\Sigma|^{1/2}} \exp\left( -\frac{1}{2} (\mathbf{x} - \boldsymbol{\mu})^\top \Sigma^{-1} (\mathbf{x} - \boldsymbol{\mu}) \right)\] <p>Why Gaussians are everywhere:</p> <ul> <li> <strong>CLT</strong>: sums of many independent variables → Gaussian</li> <li> <strong>Maximum entropy</strong>: among distributions with fixed mean and variance, Gaussian has the highest entropy</li> <li> <strong>Conjugate prior</strong>: Gaussian likelihood × Gaussian prior = Gaussian posterior</li> </ul> <h2 id="exponential-family">Exponential Family</h2> <p>Many common distributions belong to the <strong>exponential family</strong>:</p> \[p(x \mid \boldsymbol{\eta}) = h(x) \exp\left( \boldsymbol{\eta}^\top \mathbf{T}(x) - A(\boldsymbol{\eta}) \right)\] <p>where $\boldsymbol{\eta}$ are natural parameters, $\mathbf{T}(x)$ are sufficient statistics, and $A(\boldsymbol{\eta})$ is the log-partition function.</p> <p>Members include: Gaussian, Bernoulli, Categorical, Poisson, Gamma, Beta.</p> <p>The log-partition function $A(\boldsymbol{\eta})$ is <strong>always convex</strong>, which guarantees that MLE has a unique solution.</p> <h2 id="mixture-models">Mixture Models</h2> <p>A <strong>Gaussian mixture model</strong> (GMM):</p> \[p(\mathbf{x}) = \sum_{k=1}^K \pi_k \, \mathcal{N}(\mathbf{x} \mid \boldsymbol{\mu}_k, \Sigma_k)\] <p>GMMs are <strong>universal approximators</strong> of densities: with enough components, they can approximate any continuous distribution. They are trained via the <strong>EM algorithm</strong>.</p> <hr> <p><strong>Reference</strong></p> <p>K. Murphy, <em>Probabilistic Machine Learning: An Introduction</em>. MIT Press, 2022, Ch. 2–3.</p> </div> </article> <br> <hr> <br> <h2 class="text-3xl font-semibold mb-4 mt-12">Enjoy Reading This Article?</h2> <p class="mb-2">Here are some more articles you might like to read next:</p> <ul class="list-disc pl-7 my-3 space-y-2 marker:text-[var(--global-theme-color)]"> <li class="leading-relaxed"> <a class="underline decoration-1 hover:text-[var(--global-hover-color)]" href="/blog/2026/bg15-generative-models/">15. Generative Models</a> </li> <li class="leading-relaxed"> <a class="underline decoration-1 hover:text-[var(--global-hover-color)]" href="/blog/2026/bg14-transformers/">14. Transformers &amp; Self-Attention</a> </li> <li class="leading-relaxed"> <a class="underline decoration-1 hover:text-[var(--global-hover-color)]" href="/blog/2026/bg13-sequence-models/">13. Sequence Models</a> </li> <li class="leading-relaxed"> <a class="underline decoration-1 hover:text-[var(--global-hover-color)]" href="/blog/2026/bg12-cnn/">12. CNNs &amp; Representation Learning</a> </li> <li class="leading-relaxed"> <a class="underline decoration-1 hover:text-[var(--global-hover-color)]" href="/blog/2026/bg11-neural-networks/">11. Neural Networks &amp; Backpropagation</a> </li> <li class="leading-relaxed"> <a class="underline decoration-1 hover:text-[var(--global-hover-color)]" href="/blog/2026/bg10-pgm/">10. Probabilistic Graphical Models</a> </li> <li class="leading-relaxed"> <a class="underline decoration-1 hover:text-[var(--global-hover-color)]" href="/blog/2026/bg09-svm/">9. Kernel Methods &amp; SVM</a> </li> <li class="leading-relaxed"> <a class="underline decoration-1 hover:text-[var(--global-hover-color)]" href="/blog/2026/bg08-bias-variance/">8. Bias-Variance Tradeoff</a> </li> <li class="leading-relaxed"> <a class="underline decoration-1 hover:text-[var(--global-hover-color)]" href="/blog/2026/bg07-linear-models/">7. Linear Models</a> </li> <li class="leading-relaxed"> <a class="underline decoration-1 hover:text-[var(--global-hover-color)]" href="/blog/2026/bg06-mle-map/">6. Maximum Likelihood &amp; MAP</a> </li> </ul> </div> </div> </div> </div> <footer class="fixed-bottom" role="contentinfo"> <div class="container mt-0"> © Copyright 2026 Yohan Lee. Powered by <a href="https://jekyllrb.com/" target="_blank" rel="external nofollow noopener">Jekyll</a> with <a href="https://github.com/alshedivat/al-folio" rel="external nofollow noopener" target="_blank">al-folio</a> theme. Hosted by <a href="https://pages.github.com/" target="_blank" rel="external nofollow noopener">GitHub Pages</a>. Last updated: May 29, 2026. </div> </footer> <script>
+  window.alFolio = {
+    compatBootstrap: false
+  };
+</script> <script src="/assets/js/nav-toggle.js?v=141bd79a73ebc0f0b6ea58e440ae79fc"></script> <script defer src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js" integrity="sha256-Nn1q/fx0H7SNLZMQ5Hw5JLaTRZp0yILA/FRexe19VdI=" crossorigin="anonymous"></script> <script defer src="https://cdn.jsdelivr.net/npm/imagesloaded@5.0.0/imagesloaded.pkgd.min.js" integrity="sha256-htrLFfZJ6v5udOG+3kNLINIKh2gvoKqwEhHYfTTMICc=" crossorigin="anonymous"></script> <script defer src="/assets/js/masonry.js?v=e49affc7bd2646f6acdad1dbe02c2359" type="text/javascript"></script> <script defer type="text/javascript" id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.js" integrity="sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI=" crossorigin="anonymous"></script> <script src="/assets/al_math/js/mathjax-setup.js"></script> <script defer src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6" crossorigin="anonymous"></script> <script src="/assets/js/tooltips-setup.js?v=fe487e99db6c43751e6e7bdb2d6a0611"></script> <script defer src="https://cdn.jsdelivr.net/npm/tocbot@4.36.4/dist/tocbot.min.js" integrity="sha256-lo/r+jQ81wWrxdIiiiEEd538z4+dTJTt+leOuAS7GCw=" crossorigin="anonymous"></script> <script src="/assets/js/no_defer.js?v=53b1b1a645525975c963ce8bf8bfefcf"></script> <script defer src="/assets/js/common.js?v=87baac90f765f2f3362dcf6aaf312a8a"></script> <script defer src="/assets/js/copy_code.js?v=c8a01c11a92744d44b093fc3bda915df" type="text/javascript"></script> <script defer src="/assets/js/jupyter_new_tab.js?v=896d254890d9b47f0281f63bfccf0dee"></script> <script defer src="https://cdn.jsdelivr.net/npm/medium-zoom@1.1.0/dist/medium-zoom.min.js" integrity="sha256-ZgMyDAIYDYGxbcpJcfUnYwNevG/xi9OHKaR/8GK+jWc=" crossorigin="anonymous"></script> <script defer src="/assets/al_img_tools/js/zoom.js"></script> <script defer src="/assets/js/progress-bar.js?v=499464c5c63ced6cf7ad62509f1e2610" type="text/javascript"></script> <script src="https://cdn.jsdelivr.net/npm/vanilla-back-to-top@7.2.1/dist/vanilla-back-to-top.min.js" integrity="sha256-uMJJ3EoTyfRBoTbR+lrfu1uRQ87RZG8AR3cVNuQVeFg=" crossorigin="anonymous"></script> <script>
+    addBackToTop();
+  </script> <script type="module" src="/assets/al_search/js/search/ninja-keys.min.js"></script> <ninja-keys hidebreadcrumbs noautoloadmdicons placeholder="Type to start searching"></ninja-keys> <script src="/assets/al_search/js/search-setup.js"></script> <script>
+// get the ninja-keys element
+const ninja = document.querySelector('ninja-keys');
+
+// add the home and posts menu items
+ninja.data = [{
+    id: "nav-about",
+    title: "about",
+    section: "Navigation",
+    handler: () => {
+      window.location.href = "/";
+    },
+  },{id: "nav-blog",
+          title: "blog",
+          description: "",
+          section: "Navigation",
+          handler: () => {
+            window.location.href = "/blog/";
+          },
+        },{id: "nav-publications",
+          title: "publications",
+          description: "Publications in reversed chronological order.",
+          section: "Navigation",
+          handler: () => {
+            window.location.href = "/publications/";
+          },
+        },{id: "nav-projects",
+          title: "projects",
+          description: "Research projects and coursework.",
+          section: "Navigation",
+          handler: () => {
+            window.location.href = "/projects/";
+          },
+        },{id: "nav-cv",
+          title: "CV",
+          description: "Download my CV as PDF.",
+          section: "Navigation",
+          handler: () => {
+            window.location.href = "/cv/";
+          },
+        },{id: "post-15-generative-models",
+        
+          title: "15. Generative Models",
+        
+        description: "A survey of major generative model paradigms — VAEs, GANs, normalizing flows, diffusion models, and flow matching — for learning data distributions.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2026/bg15-generative-models/";
+          
+        },
+      },{id: "post-14-transformers-amp-self-attention",
+        
+          title: "14. Transformers &amp; Self-Attention",
+        
+        description: "The Transformer replaced recurrence with pure attention, enabling massive parallelism and scaling to billions of parameters through self-attention and positional encoding.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2026/bg14-transformers/";
+          
+        },
+      },{id: "post-13-sequence-models",
+        
+          title: "13. Sequence Models",
+        
+        description: "Sequential data requires models that handle variable-length inputs and capture temporal dependencies, covering RNNs, LSTMs, GRUs, and the attention mechanism.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2026/bg13-sequence-models/";
+          
+        },
+      },{id: "post-12-cnns-amp-representation-learning",
+        
+          title: "12. CNNs &amp; Representation Learning",
+        
+        description: "Convolutional neural networks exploit spatial structure through local connectivity, weight sharing, and hierarchical feature extraction, including ResNets and transfer learning.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2026/bg12-cnn/";
+          
+        },
+      },{id: "post-11-neural-networks-amp-backpropagation",
+        
+          title: "11. Neural Networks &amp; Backpropagation",
+        
+        description: "Neural networks are compositions of simple functions that can approximate any continuous mapping, covering MLPs, activation functions, backpropagation, and initialization.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2026/bg11-neural-networks/";
+          
+        },
+      },{id: "post-10-probabilistic-graphical-models",
+        
+          title: "10. Probabilistic Graphical Models",
+        
+        description: "Graphical models provide a language for expressing the structure of joint probability distributions, covering Bayesian networks, HMMs, EM, and variational inference.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2026/bg10-pgm/";
+          
+        },
+      },{id: "post-9-kernel-methods-amp-svm",
+        
+          title: "9. Kernel Methods &amp; SVM",
+        
+        description: "Kernel methods allow linear algorithms to learn non-linear decision boundaries by implicitly mapping data to high-dimensional feature spaces, with SVMs finding maximum-margin hyperplanes.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2026/bg09-svm/";
+          
+        },
+      },{id: "post-8-bias-variance-tradeoff",
+        
+          title: "8. Bias-Variance Tradeoff",
+        
+        description: "The bias-variance decomposition explains the central challenge of generalization, covering overfitting, underfitting, regularization, and cross-validation.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2026/bg08-bias-variance/";
+          
+        },
+      },{id: "post-7-linear-models",
+        
+          title: "7. Linear Models",
+        
+        description: "Linear models — including linear regression, logistic regression, and softmax regression — are the simplest parametric models and the building blocks of deep learning.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2026/bg07-linear-models/";
+          
+        },
+      },{id: "post-6-maximum-likelihood-amp-map",
+        
+          title: "6. Maximum Likelihood &amp; MAP",
+        
+        description: "The two most fundamental estimation principles — MLE and MAP — for fitting models to data, including their connection to regularization and cross-entropy loss.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2026/bg06-mle-map/";
+          
+        },
+      },{id: "post-5-optimization-theory",
+        
+          title: "5. Optimization Theory",
+        
+        description: "Understanding the landscape of loss functions through convexity, gradient descent, SGD, momentum, Adam, and constrained optimization with KKT conditions.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2026/bg05-optimization/";
+          
+        },
+      },{id: "post-4-common-distributions",
+        
+          title: "4. Common Distributions",
+        
+        description: "A catalog of the most frequently used distributions in ML, including Bernoulli, Gaussian, exponential family, and Gaussian mixture models.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2026/bg04-distributions/";
+          
+        },
+      },{id: "post-3-probability-fundamentals",
+        
+          title: "3. Probability Fundamentals",
+        
+        description: "Probability theory is the framework for reasoning under uncertainty, covering probability spaces, Bayes&#39; rule, random variables, and the central limit theorem.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2026/bg03-probability/";
+          
+        },
+      },{id: "post-2-calculus-for-optimization",
+        
+          title: "2. Calculus for Optimization",
+        
+        description: "Calculus provides the tools for finding and characterizing minima of loss functions, covering gradients, the chain rule, Hessians, and Taylor expansions.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2026/bg02-calculus/";
+          
+        },
+      },{id: "post-1-linear-algebra-essentials",
+        
+          title: "1. Linear Algebra Essentials",
+        
+        description: "Linear algebra is the language of data — covering vectors, matrices, eigendecomposition, SVD, and positive definite matrices essential for machine learning.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2026/bg01-linear-algebra/";
+          
+        },
+      },{id: "post-flow-matching-for-generative-modeling",
+        
+          title: "Flow Matching for Generative Modeling",
+        
+        description: "Flow Matching is a simulation-free framework for training Continuous Normalizing Flows that directly regresses a vector field transporting samples from a prior to the data distribution.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2026/flow-matching/";
+          
+        },
+      },{id: "post-can-zero-shot-rl-enable-test-time-safety",
+        
+          title: "Can Zero-shot RL enable test time safety?",
+        
+        description: "FB-safe extends Forward-Backward representations to enable zero-shot reinforcement learning agents to satisfy safety constraints at test time without additional training.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2025/zeroshotrlenablesafety/";
+          
+        },
+      },{id: "post-what-is-zero-shot-rl",
+        
+          title: "What is Zero shot RL?",
+        
+        description: "Zero-shot RL trains agents without explicit reward signals to produce sub-optimal policies for arbitrary new rewards at test time, using successor representations and forward-backward methods.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2025/zeroshotrl/";
+          
+        },
+      },{id: "post-what-is-safe-rl",
+        
+          title: "What is Safe RL?",
+        
+        description: "Safe RL uses constrained MDPs to train agents that maximize returns while satisfying safety constraints defined through cost functions and risk measures.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2025/saferl/";
+          
+        },
+      },{id: "post-what-is-offline-rl",
+        
+          title: "What is Offline RL?",
+        
+        description: "Offline reinforcement learning aims to learn policies from a fixed dataset without environment interaction, bridging the gap between standard RL and data-driven machine learning.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2025/offlinerl/";
+          
+        },
+      },{id: "post-what-is-sac",
+        
+          title: "What is SAC?",
+        
+        description: "SAC (Soft Actor-Critic) is an off-policy actor-critic method based on maximum entropy reinforcement learning that encourages exploration through an entropy bonus.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2025/SAC/";
+          
+        },
+      },{id: "post-what-is-ddpg",
+        
+          title: "What is DDPG?",
+        
+        description: "DDPG is a continuous actor-critic method using deterministic policy gradients and Q-function learning, enabling efficient off-policy training.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2025/DDPG/";
+          
+        },
+      },{id: "post-what-is-grpo",
+        
+          title: "What is GRPO?",
+        
+        description: "GRPO simplifies PPO for LLM training by replacing the learned baseline function with a normalization of rewards, as used in Deepseek.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2025/GRPO/";
+          
+        },
+      },{id: "post-what-is-ppo",
+        
+          title: "What is PPO?",
+        
+        description: "PPO (Proximal Policy Optimization) provides a simpler alternative to TRPO using either a KL penalty or clipped surrogate objective for stable policy updates.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2025/PPO/";
+          
+        },
+      },{id: "post-what-is-trpo",
+        
+          title: "What is TRPO?",
+        
+        description: "TRPO (Trust Region Policy Optimization) improves policy gradient methods by using importance sampling with a KL divergence constraint to ensure stable updates.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2025/TRPO/";
+          
+        },
+      },{id: "post-what-is-policy-gradient",
+        
+          title: "What is Policy Gradient?",
+        
+        description: "Policy gradient methods optimize the policy directly by computing gradients of the objective function, forming the basis of REINFORCE and A2C/A3C algorithms.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2025/policy-gradient/";
+          
+        },
+      },{id: "post-what-is-policy-iteration",
+        
+          title: "What is Policy Iteration?",
+        
+        description: "Policy iteration alternates between policy evaluation and policy improvement to compute the optimal policy, providing the foundation for actor-critic methods.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2025/policy-iteration/";
+          
+        },
+      },{id: "post-what-is-value-iteration",
+        
+          title: "What is Value Iteration?",
+        
+        description: "Value iteration computes the optimal value function by repeatedly applying the Bellman optimality operator, providing a foundation for methods like DQN.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2025/value-iteration/";
+          
+        },
+      },{id: "post-what-is-bellman-equation",
+        
+          title: "What is Bellman equation?",
+        
+        description: "The Bellman equation defines the value function as a fixed point of the Bellman operator, and extends to the Bellman optimality equation for optimal policies.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2025/bellman-equation/";
+          
+        },
+      },{id: "post-what-is-a-value-function",
+        
+          title: "What is a value function?",
+        
+        description: "Value functions map states (or state-action pairs) to expected returns under a given policy, forming the foundation for the Bellman equation.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2025/value-function/";
+          
+        },
+      },{id: "post-what-is-a-mdp",
+        
+          title: "What is a MDP?",
+        
+        description: "MDP (Markov Decision Process) is a sequential decision problem modeling that holds a Markov property, serving as the basic assumption in reinforcement learning.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2025/mdp/";
+          
+        },
+      },{id: "post-what-is-entropy-rate",
+        
+          title: "What is Entropy Rate?",
+        
+        description: "Entropy rate extends the concept of entropy to random processes, measuring the per-symbol uncertainty in a sequence of random variables.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2025/entropy-rate/";
+          
+        },
+      },{id: "post-what-is-mutual-information",
+        
+          title: "What is Mutual Information?",
+        
+        description: "Mutual information measures the amount of information one random variable contains about another.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2025/mutual-information/";
+          
+        },
+      },{id: "post-what-is-kl-divergence",
+        
+          title: "What is KL divergence?",
+        
+        description: "KL divergence, or relative entropy, is a measure of the distance between two probability distributions.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2025/kl/";
+          
+        },
+      },{id: "post-what-is-entropy",
+        
+          title: "What is Entropy?",
+        
+        description: "Entropy is a fundamental measure of uncertainty or self-information of a random variable in information theory.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2025/entropy/";
+          
+        },
+      },{id: "projects-sign-language-interpreter-in-emergency-situations",
+          title: 'Sign Language Interpreter in Emergency Situations',
+          description: "Real-time emergency sign language interpreter using LSTM/GRU on MediaPipe keypoints (Grand Prize, SNU GSDS Ambient AI Competition)",
+          section: "Projects",handler: () => {
+              window.location.href = "/projects/sign_language_interpreter/";
+            },},{
+        id: 'social-email',
+        title: 'email',
+        section: 'Socials',
+        handler: () => {
+          window.open("mailto:%6A%6F%68%6E%31%31%31%31%33%36%39@%67.%73%6B%6B%75.%65%64%75", "_blank");
+        },
+      },{
+        id: 'social-github',
+        title: 'GitHub',
+        section: 'Socials',
+        handler: () => {
+          window.open("https://github.com/yh-lee01", "_blank");
+        },
+      },{
+        id: 'social-linkedin',
+        title: 'LinkedIn',
+        section: 'Socials',
+        handler: () => {
+          window.open("https://www.linkedin.com/in/yh-lee01", "_blank");
+        },
+      },{
+        id: 'social-rss',
+        title: 'RSS Feed',
+        section: 'Socials',
+        handler: () => {
+          window.open("/feed.xml", "_blank");
+        },
+      },{
+        id: 'social-cv',
+        title: 'CV',
+        section: 'Socials',
+        handler: () => {
+          window.open("/assets/pdf/YohanLee_CV.pdf", "_blank");
+        },
+      },{
+      id: 'light-theme',
+      title: 'Change theme to light',
+      description: 'Change the theme of the site to Light',
+      section: 'Theme',
+      handler: () => {
+        setThemeSetting("light");
+      },
+    },
+    {
+      id: 'dark-theme',
+      title: 'Change theme to dark',
+      description: 'Change the theme of the site to Dark',
+      section: 'Theme',
+      handler: () => {
+        setThemeSetting("dark");
+      },
+    },
+    {
+      id: 'system-theme',
+      title: 'Use system default theme',
+      description: 'Change the theme of the site to System Default',
+      section: 'Theme',
+      handler: () => {
+        setThemeSetting("system");
+      },
+    },];
+
+</script> <script src="/assets/al_search/js/shortcut-key.js"></script> </body> </html>
