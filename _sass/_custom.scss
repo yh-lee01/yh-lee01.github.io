@@ -1,0 +1,261 @@
+/* ==========================================================================
+   Custom Styles — Yohan Lee Academic Site
+   Additional overrides layered on top of the gem's Tailwind-based theme.
+   ========================================================================== */
+
+/* ---- Navbar ---- */
+.navbar {
+  backdrop-filter: saturate(180%) blur(20px);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  background-color: var(--global-navbar-bg-color, rgba(255, 255, 255, 0.85)) !important;
+  border-bottom: 1px solid var(--global-divider-color);
+  transition: box-shadow 0.3s ease, background-color 0.3s ease;
+}
+
+.navbar.scrolled {
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.06);
+}
+
+.navbar .nav-link {
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  padding: 0.5rem 0.75rem !important;
+  border-radius: 6px;
+  transition: color 0.2s ease, background-color 0.2s ease;
+}
+
+.navbar .nav-link:hover {
+  color: var(--global-theme-color) !important;
+  background-color: rgba(67, 97, 238, 0.06);
+}
+
+.navbar .nav-item.active .nav-link {
+  color: var(--global-theme-color) !important;
+  font-weight: 600;
+}
+
+.navbar-brand.title {
+  font-size: 1.15rem;
+  letter-spacing: -0.01em;
+}
+
+/* ---- About Page Profile ---- */
+.profile .img-fluid {
+  border-radius: 12px !important;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.profile .img-fluid:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+}
+
+/* ---- Post List ---- */
+.post-list li {
+  padding: 1.25rem 0;
+  border-bottom: 1px solid var(--global-divider-color);
+  transition: background-color 0.2s ease;
+}
+
+.post-list li:last-child {
+  border-bottom: none;
+}
+
+.post-list .post-title {
+  font-weight: 600;
+  color: var(--global-text-color);
+  transition: color 0.2s ease;
+}
+
+.post-list .post-title:hover {
+  color: var(--global-theme-color);
+}
+
+.post-list .post-meta {
+  color: var(--global-text-color-light, #6e6e73);
+  font-size: 0.875rem;
+}
+
+/* ---- Publication Cards ---- */
+.publications .row {
+  padding: 1rem 0;
+  border-radius: 8px;
+  transition: background-color 0.2s ease;
+}
+
+.publications .row:hover {
+  background-color: rgba(67, 97, 238, 0.03);
+}
+
+.publications .preview {
+  border-radius: 8px !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.publications .title {
+  font-weight: 600;
+}
+
+.publications .author em {
+  color: var(--global-theme-color);
+  font-style: normal;
+  font-weight: 600;
+}
+
+.publications .links .btn {
+  border-radius: 6px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  padding: 0.25rem 0.75rem;
+  transition: all 0.2s ease;
+}
+
+/* ---- Project Cards ---- */
+.projects .card {
+  border: 1px solid var(--global-divider-color);
+  border-radius: 12px !important;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.projects .card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1);
+}
+
+.projects .card .card-title {
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.projects .card .card-text {
+  font-size: 0.875rem;
+  color: var(--global-text-color-light, #6e6e73);
+}
+
+/* ---- Latest Posts Table (About page) ---- */
+.news .table td a.news-title {
+  font-weight: 500;
+  color: var(--global-theme-color);
+  transition: color 0.2s ease;
+}
+
+.news .table td a.news-title:hover {
+  color: var(--global-hover-color);
+}
+
+.news .table th {
+  color: var(--global-text-color-light, #6e6e73);
+  font-weight: 400;
+  font-size: 0.875rem;
+}
+
+/* ---- Tags & Categories ---- */
+.tag-category-list li a {
+  color: var(--global-text-color-light, #6e6e73);
+  font-weight: 500;
+  font-size: 0.875rem;
+  transition: color 0.2s ease;
+}
+
+.tag-category-list li a:hover {
+  color: var(--global-theme-color);
+}
+
+/* ---- Post Content ---- */
+.post-content h2 {
+  margin-top: 2.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--global-divider-color);
+}
+
+/* ---- Footer ---- */
+footer {
+  background-color: var(--global-footer-bg-color) !important;
+  color: var(--global-footer-text-color);
+  font-size: 0.8rem;
+  letter-spacing: 0.01em;
+}
+
+footer a {
+  color: var(--global-footer-link-color) !important;
+  transition: opacity 0.2s ease;
+}
+
+footer a:hover {
+  opacity: 0.75;
+}
+
+/* ---- Search Toggle ---- */
+#search-toggle .nav-link {
+  font-size: 0.85rem;
+  opacity: 0.7;
+  transition: opacity 0.2s ease;
+}
+
+#search-toggle .nav-link:hover {
+  opacity: 1;
+}
+
+/* ---- Heading styles ---- */
+.post-header .post-title {
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.post-header .post-description {
+  color: var(--global-text-color-light, #6e6e73);
+  font-size: 1.05rem;
+}
+
+/* ---- Section headings on about page ---- */
+h2 a[style] {
+  transition: color 0.2s ease;
+}
+
+/* ---- Smooth scroll ---- */
+html {
+  scroll-behavior: smooth;
+}
+
+/* ---- Selection highlight ---- */
+::selection {
+  background-color: rgba(67, 97, 238, 0.15);
+  color: var(--global-text-color);
+}
+
+/* ---- Dark mode adjustments ---- */
+[data-theme="dark"] {
+  .navbar {
+    border-bottom-color: rgba(255, 255, 255, 0.06);
+  }
+
+  .navbar .nav-link:hover {
+    background-color: rgba(124, 140, 248, 0.08);
+  }
+
+  .projects .card {
+    border-color: rgba(255, 255, 255, 0.06);
+  }
+
+  .projects .card:hover {
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+  }
+
+  .profile .img-fluid {
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.3);
+  }
+
+  .profile .img-fluid:hover {
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+  }
+
+  .publications .row:hover {
+    background-color: rgba(124, 140, 248, 0.04);
+  }
+
+  ::selection {
+    background-color: rgba(124, 140, 248, 0.2);
+  }
+}
