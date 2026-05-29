@@ -52,14 +52,15 @@ on:
 permissions:
   contents: write
 
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout 🛎️
         uses: actions/checkout@v4
-        env:
-          FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
       - name: Setup Ruby 💎
         uses: ruby/setup-ruby@v1
         with:
@@ -72,8 +73,7 @@ jobs:
       - name: Setup Node 🧰
         uses: actions/setup-node@v4
         with:
-          node-version: "20"
-          cache: "npm"
+          node-version: "22"
       - name: Install JS deps 📦
         run: npm install
       - name: Update _config.yml ⚙️
