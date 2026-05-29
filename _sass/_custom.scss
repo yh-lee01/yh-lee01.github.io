@@ -9,8 +9,26 @@ body {
 }
 
 /* ---- Navbar Layout & Alignment ---- */
-.navbar-nav {
-  margin-left: auto !important; /* Pushes the menu list to the far right */
+@media (min-width: 576px) {
+  .navbar-nav {
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: flex-end !important;
+    width: 100%;
+    align-items: center;
+  }
+
+  /* Reset theme's auto-margin splitting the search/toggles */
+  .navbar-nav .nav-item,
+  .navbar-nav .toggle-container {
+    margin-left: 0 !important;
+  }
+
+  /* Add consistent spacing between navbar items */
+  .navbar-nav > li,
+  .navbar-nav > div {
+    margin-left: 0.5rem !important;
+  }
 }
 
 .navbar {
