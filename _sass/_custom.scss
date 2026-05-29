@@ -8,8 +8,18 @@ body {
   padding-top: 1rem;
 }
 
+.container.mt-5 {
+  margin-top: 6rem !important;
+}
+
 /* ---- Navbar Layout & Alignment ---- */
 @media (min-width: 576px) {
+  .navbar-collapse {
+    display: flex !important;
+    flex-grow: 1 !important;
+    align-items: center !important;
+  }
+
   .navbar-nav {
     display: flex !important;
     flex-direction: row !important;
@@ -55,7 +65,7 @@ body {
 
 .navbar .nav-link:hover {
   color: var(--global-theme-color) !important;
-  background-color: rgba(67, 97, 238, 0.06);
+  background-color: rgba(38, 152, 186, 0.08);
 }
 
 .navbar .nav-item.active .nav-link {
@@ -87,7 +97,7 @@ body {
 
 #search-toggle:hover,
 #light-toggle:hover {
-  background-color: rgba(67, 97, 238, 0.06) !important;
+  background-color: rgba(38, 152, 186, 0.08) !important;
   color: var(--global-theme-color) !important;
 }
 
@@ -101,16 +111,36 @@ body {
   margin-bottom: 1.5rem;
 }
 
-.profile .img-fluid {
+.profile figure {
+  width: 160px;
+  height: 160px;
+  border-radius: 50% !important;
+  overflow: hidden !important;
+  display: inline-block;
   box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
   transition:
     transform 0.3s ease,
     box-shadow 0.3s ease;
 }
 
-.profile .img-fluid:hover {
+.profile figure:hover {
   transform: translateY(-2px);
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+}
+
+.profile img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  /* Zoom in 1.25x and shift 55% right and 15% up to cut out side people */
+  object-position: 55% 15% !important;
+  transform: scale(1.25) !important;
+  border-radius: 0 !important; /* let parent figure handle circle crop */
+  transition: transform 0.3s ease;
+}
+
+.profile img:hover {
+  transform: scale(1.3) !important;
 }
 
 .profile .more-info {
@@ -154,7 +184,7 @@ body {
 }
 
 .publications .row:hover {
-  background-color: rgba(67, 97, 238, 0.03);
+  background-color: rgba(38, 152, 186, 0.04);
 }
 
 .publications .preview {
@@ -281,7 +311,7 @@ html {
 
 /* ---- Selection highlight ---- */
 ::selection {
-  background-color: rgba(67, 97, 238, 0.15);
+  background-color: rgba(38, 152, 186, 0.15);
   color: var(--global-text-color);
 }
 
@@ -294,7 +324,7 @@ html {
   .navbar .nav-link:hover,
   #search-toggle:hover,
   #light-toggle:hover {
-    background-color: rgba(124, 140, 248, 0.08) !important;
+    background-color: rgba(38, 152, 186, 0.12) !important;
   }
 
   .projects .card {
@@ -314,10 +344,10 @@ html {
   }
 
   .publications .row:hover {
-    background-color: rgba(124, 140, 248, 0.04);
+    background-color: rgba(38, 152, 186, 0.06);
   }
 
   ::selection {
-    background-color: rgba(124, 140, 248, 0.2);
+    background-color: rgba(38, 152, 186, 0.2);
   }
 }
