@@ -29,7 +29,6 @@ $$
 V^\pi(s)=\mathbb{E}^\pi[G_t|s_{t}=s]
 $$
 
-
 - **State action value function**
 
 State-action value function, or **Q-function**, is a mapping from state $s$ and action $a$ to the expected return starting from state $s$ and action $a$, following a particular policy $\pi$ .
@@ -48,7 +47,6 @@ Q^\pi(s)&=\mathbb{E}_{a'\sim \pi(\cdot|s'), s'\sim p(\cdot|s,a)}[r+\gamma Q^\pi(
 $$
 
 This leads to the famous **Bellman equation**.
-
 
 ---
 

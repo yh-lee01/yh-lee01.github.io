@@ -11,7 +11,6 @@ toc:
   sidebar: left
 ---
 
-
 **Mutual information** is a measure of information of one random variable containing about the another.
 It can be thought as correlation between two distribution.
 
@@ -35,7 +34,7 @@ I(X;Y) & =\sum_{x,y}p(x,y)\log {\frac{p(x,y)}{p(x)p(y)}} \\
 \end{aligned}
 $$
 
-This gives intuition that conditioning reduces entropy, 
+This gives intuition that conditioning reduces entropy,
 $H(X|Y)\leq H(X)$.
 
 Since $H(X\mid Y)=H(X,Y)-H(Y)$, mutual information can be also expressed as a symmetric form.
@@ -52,12 +51,11 @@ $$
 I(X_{1},X_{2},\dots,X_{n};Y)=\sum_{i=1}^nI(X_{i};Y|X_{1},\dots,X_{i-1})
 $$
 
-
 <!-- **Data processing inequality** -->
 
 One important result of mutual information is the **data processing inequality**.
 
-In a Markov chain 
+In a Markov chain
 
 $$
 X\to Y\to Z
@@ -73,7 +71,6 @@ I(X;Z,Y) & =I(X;Z)+I(X;Y|Z)\ge I(X;Z) \\ \\
 \end{aligned}
 $$
 
-
 Using the mutual information, there is an important principle in ML called Information Bottleneck.
 
 In a compression framework, which finds an representation $Z$ of $X$, expressed as a Markov chain.
@@ -84,7 +81,7 @@ $$
 
 The IB objective is $L=I(X;Z)-\beta I(Z;Y)$, where $I(X;Y)$ is a fixed quantity.
 
-Using the results of data processing inequality, $I(X;Z)$ is always larger than $I(X;Y)$, 
+Using the results of data processing inequality, $I(X;Z)$ is always larger than $I(X;Y)$,
 so minimizing $I(X;Z)$ is reducing the gap with $I(X;Y)$ by losing the unnecessary information of input $X$.
 
 Also maximizing $I(Y;Z)$ is making the representation $Z$ to maximize information about target $Y$.
@@ -101,12 +98,13 @@ I(Y;X,Z) &= I(Y;Z)+I(Y;X|Z)=I(Y;Z) \\
 \end{aligned}
 $$
 
-Minimizing $I(X;Z)$ is minimizing $I(X;Z|Y)$, 
+Minimizing $I(X;Z)$ is minimizing $I(X;Z|Y)$,
 which indicates the irrelevant information of $Y$ from $X$.
-Maximizing $I(Y;Z)$ is maximizing $I(Y;Z|X)$, 
+Maximizing $I(Y;Z)$ is maximizing $I(Y;Z|X)$,
 which indicates extra information of $Y$ in $Z$.
 
 ---
+
 **Reference**
 
 T. Cover, Elements of information theory. John Wiley & Sons, 2006.

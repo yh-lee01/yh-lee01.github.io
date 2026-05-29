@@ -1,11 +1,27 @@
 /* ==========================================================================
-   Custom Styles — Yohan Lee Academic Site
-   Additional overrides layered on top of the gem's Tailwind-based theme.
+   Custom Styles — Yohan Lee Academic Site (Notion Design Theme)
    ========================================================================== */
 
-/* ---- Spacing & Body ---- */
+/* ---- Typography & Font Family ---- */
 body {
   padding-top: 1rem;
+  font-family:
+    "Plus Jakarta Sans",
+    "Inter",
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    Helvetica,
+    Arial,
+    sans-serif !important;
+}
+
+code,
+pre,
+kbd,
+samp {
+  font-family: "JetBrains Mono", monospace !important;
 }
 
 .container.mt-5 {
@@ -13,35 +29,10 @@ body {
 }
 
 /* ---- Navbar Layout & Alignment ---- */
-@media (min-width: 576px) {
-  .navbar-collapse {
-    display: flex !important;
-    flex-grow: 1 !important;
-    align-items: center !important;
-  }
-
-  .navbar-nav {
-    display: flex !important;
-    flex-direction: row !important;
-    justify-content: flex-end !important;
-    width: 100%;
-    align-items: center;
-  }
-
-  /* Reset theme's auto-margin splitting the search/toggles */
-  .navbar-nav .nav-item,
-  .navbar-nav .toggle-container {
-    margin-left: 0 !important;
-  }
-
-  /* Add consistent spacing between navbar items */
-  .navbar-nav > li,
-  .navbar-nav > div {
-    margin-left: 0.5rem !important;
-  }
-}
-
 .navbar {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
   box-shadow: none !important;
   backdrop-filter: saturate(180%) blur(20px);
   -webkit-backdrop-filter: saturate(180%) blur(20px);
@@ -53,11 +44,69 @@ body {
   transition: background-color 0.3s ease;
 }
 
+.navbar .container {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  width: 100% !important;
+  max-width: 930px !important;
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+/* Desktop layout (navbar-expand-sm behaves at min-width: 576px) */
+@media (min-width: 576px) {
+  .navbar-collapse {
+    display: flex !important;
+    flex-grow: 1 !important;
+    justify-content: flex-end !important;
+    align-items: center !important;
+  }
+
+  .navbar-nav {
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: flex-end !important;
+    align-items: center !important;
+    margin-left: auto !important;
+  }
+
+  /* Reset theme's auto-margin splitting the search/toggles */
+  .navbar-nav .nav-item,
+  .navbar-nav .toggle-container {
+    margin-left: 0 !important;
+  }
+
+  /* Add consistent spacing between navbar items */
+  .navbar-nav > li,
+  .navbar-nav > div {
+    margin-left: 0.75rem !important;
+  }
+}
+
+/* Mobile layout adaptation */
+@media (max-width: 575.98px) {
+  .navbar-collapse {
+    width: 100% !important;
+  }
+  .navbar-nav {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-end !important;
+    width: 100% !important;
+    margin-top: 1rem !important;
+  }
+  .navbar-nav > li {
+    margin-bottom: 0.5rem !important;
+  }
+}
+
 .navbar .nav-link {
   font-weight: 500;
   letter-spacing: 0.01em;
   padding: 0.5rem 0.75rem !important;
-  border-radius: 6px;
+  border-radius: 8px;
   transition:
     color 0.2s ease,
     background-color 0.2s ease;
@@ -65,7 +114,7 @@ body {
 
 .navbar .nav-link:hover {
   color: var(--global-theme-color) !important;
-  background-color: rgba(38, 152, 186, 0.08);
+  background-color: rgba(105, 65, 198, 0.08) !important;
 }
 
 .navbar .nav-item.active .nav-link {
@@ -85,7 +134,7 @@ body {
   align-items: center;
   justify-content: center;
   padding: 0.5rem 0.75rem !important;
-  border-radius: 6px;
+  border-radius: 8px;
   border: none;
   background: transparent;
   color: var(--global-text-color) !important;
@@ -97,7 +146,7 @@ body {
 
 #search-toggle:hover,
 #light-toggle:hover {
-  background-color: rgba(38, 152, 186, 0.08) !important;
+  background-color: rgba(105, 65, 198, 0.08) !important;
   color: var(--global-theme-color) !important;
 }
 
@@ -172,23 +221,23 @@ body {
 }
 
 .post-list .post-meta {
-  color: var(--global-text-color-light, #6e6e73);
+  color: var(--global-text-color-light, #5a5a5a);
   font-size: 0.875rem;
 }
 
 /* ---- Publication Cards ---- */
 .publications .row {
   padding: 1rem 0;
-  border-radius: 8px;
+  border-radius: 12px;
   transition: background-color 0.2s ease;
 }
 
 .publications .row:hover {
-  background-color: rgba(38, 152, 186, 0.04);
+  background-color: rgba(105, 65, 198, 0.04) !important;
 }
 
 .publications .preview {
-  border-radius: 8px !important;
+  border-radius: 12px !important;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
 }
 
@@ -203,7 +252,7 @@ body {
 }
 
 .publications .links .btn {
-  border-radius: 6px;
+  border-radius: 8px;
   font-size: 0.8rem;
   font-weight: 500;
   padding: 0.25rem 0.75rem;
@@ -232,7 +281,7 @@ body {
 
 .projects .card .card-text {
   font-size: 0.875rem;
-  color: var(--global-text-color-light, #6e6e73);
+  color: var(--global-text-color-light, #5a5a5a);
 }
 
 /* ---- Latest Posts Table (About page) ---- */
@@ -247,21 +296,43 @@ body {
 }
 
 .news .table th {
-  color: var(--global-text-color-light, #6e6e73);
+  color: var(--global-text-color-light, #5a5a5a);
   font-weight: 400;
   font-size: 0.875rem;
 }
 
 /* ---- Tags & Categories ---- */
+.tag-category-list ul {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  align-items: center !important;
+  list-style: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  gap: 0.5rem 0.75rem !important;
+}
+
+.tag-category-list li {
+  display: inline-flex !important;
+  align-items: center !important;
+}
+
 .tag-category-list li a {
-  color: var(--global-text-color-light, #6e6e73);
+  color: var(--global-text-color-light, #5a5a5a);
   font-weight: 500;
   font-size: 0.875rem;
   transition: color 0.2s ease;
+  text-decoration: none !important;
 }
 
 .tag-category-list li a:hover {
-  color: var(--global-theme-color);
+  color: var(--global-theme-color) !important;
+}
+
+.tag-category-list li.bullet {
+  color: var(--global-divider-color) !important;
+  user-select: none;
+  font-size: 0.875rem;
 }
 
 /* ---- Post Content ---- */
@@ -295,7 +366,7 @@ footer a:hover {
 }
 
 .post-header .post-description {
-  color: var(--global-text-color-light, #6e6e73);
+  color: var(--global-text-color-light, #5a5a5a);
   font-size: 1.05rem;
 }
 
@@ -311,8 +382,171 @@ html {
 
 /* ---- Selection highlight ---- */
 ::selection {
-  background-color: rgba(38, 152, 186, 0.15);
+  background-color: rgba(105, 65, 198, 0.15);
   color: var(--global-text-color);
+}
+
+/* ---- Pagination Styling (Horizontal bar) ---- */
+.pagination {
+  display: flex !important;
+  flex-direction: row !important;
+  justify-content: center !important;
+  align-items: center !important;
+  list-style: none !important;
+  padding-left: 0 !important;
+  margin: 3rem 0 1.5rem 0 !important;
+  gap: 0.25rem !important;
+}
+
+.pagination .page-item {
+  display: inline-block !important;
+  margin: 0 !important;
+}
+
+.pagination .page-link {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 2.25rem !important;
+  height: 2.25rem !important;
+  padding: 0 !important;
+  color: var(--global-text-color-light, #5a5a5a) !important;
+  background-color: transparent !important;
+  border: 1px solid transparent !important;
+  border-radius: 8px !important;
+  font-weight: 500 !important;
+  transition: all 0.2s ease !important;
+  text-decoration: none !important;
+}
+
+.pagination .page-link:hover {
+  color: var(--global-theme-color) !important;
+  background-color: rgba(105, 65, 198, 0.08) !important;
+  border-color: rgba(105, 65, 198, 0.15) !important;
+}
+
+.pagination .page-item.active .page-link {
+  color: #ffffff !important;
+  background-color: var(--global-theme-color) !important;
+  border-color: var(--global-theme-color) !important;
+  font-weight: 600 !important;
+}
+
+.pagination .page-item.disabled .page-link {
+  color: rgba(0, 0, 0, 0.15) !important;
+  pointer-events: none !important;
+  cursor: not-allowed !important;
+}
+
+[data-theme="dark"] .pagination .page-item.disabled .page-link {
+  color: rgba(255, 255, 255, 0.15) !important;
+}
+
+[data-theme="dark"] .pagination .page-link:hover {
+  background-color: rgba(105, 65, 198, 0.15) !important;
+}
+
+/* ---- Grid & Layout Fallbacks (Row & Columns) ---- */
+.row {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  margin-right: -15px !important;
+  margin-left: -15px !important;
+}
+
+.col,
+.col-1,
+.col-2,
+.col-3,
+.col-4,
+.col-5,
+.col-6,
+.col-7,
+.col-8,
+.col-9,
+.col-10,
+.col-11,
+.col-12,
+.col-sm,
+.col-sm-1,
+.col-sm-2,
+.col-sm-3,
+.col-sm-4,
+.col-sm-5,
+.col-sm-6,
+.col-sm-7,
+.col-sm-8,
+.col-sm-9,
+.col-sm-10,
+.col-sm-11,
+.col-sm-12,
+.col-md,
+.col-md-1,
+.col-md-2,
+.col-md-3,
+.col-md-4,
+.col-md-5,
+.col-md-6,
+.col-md-7,
+.col-md-8,
+.col-md-9,
+.col-md-10,
+.col-md-11,
+.col-md-12 {
+  position: relative !important;
+  width: 100% !important;
+  padding-right: 15px !important;
+  padding-left: 15px !important;
+  box-sizing: border-box !important;
+}
+
+@media (min-width: 576px) {
+  .col-sm-3 {
+    flex: 0 0 25% !important;
+    max-width: 25% !important;
+  }
+  .col-sm-9 {
+    flex: 0 0 75% !important;
+    max-width: 75% !important;
+  }
+}
+
+@media (min-width: 768px) {
+  .col-md-3 {
+    flex: 0 0 25% !important;
+    max-width: 25% !important;
+  }
+  .col-md-9 {
+    flex: 0 0 75% !important;
+    max-width: 75% !important;
+  }
+}
+
+/* ---- BibTeX Collapsible Style ---- */
+.bibtex.collapse {
+  display: none !important;
+}
+
+.bibtex.collapse.show {
+  display: block !important;
+}
+
+/* ---- Notion Geometry & Base Radii ---- */
+.btn,
+.button,
+input,
+textarea,
+select,
+#search-toggle,
+#light-toggle {
+  border-radius: 8px !important;
+}
+
+.card,
+.projects .card,
+.publications .preview,
+.news .table {
+  border-radius: 12px !important;
 }
 
 /* ---- Dark mode adjustments ---- */
@@ -324,7 +558,7 @@ html {
   .navbar .nav-link:hover,
   #search-toggle:hover,
   #light-toggle:hover {
-    background-color: rgba(38, 152, 186, 0.12) !important;
+    background-color: rgba(105, 65, 198, 0.12) !important;
   }
 
   .projects .card {
@@ -344,10 +578,10 @@ html {
   }
 
   .publications .row:hover {
-    background-color: rgba(38, 152, 186, 0.06);
+    background-color: rgba(105, 65, 198, 0.06) !important;
   }
 
   ::selection {
-    background-color: rgba(38, 152, 186, 0.2);
+    background-color: rgba(105, 65, 198, 0.2);
   }
 }

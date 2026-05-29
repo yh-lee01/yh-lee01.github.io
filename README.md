@@ -6,14 +6,14 @@ Personal academic website based on [Jon Barron's website](https://jonbarron.info
 
 ## 수정 포인트 요약
 
-| 수정 내용 | 파일 |
-|---|---|
-| 이름 / 소개 / 링크 / CV | `_data/profile.yml` |
-| Research 섹션 텍스트 | `_data/profile.yml` → `research_goal` |
-| 섹션 제목 변경 | `_data/profile.yml` → `sections` |
-| 블로그 토픽 추가/삭제 | `_data/profile.yml` → `post_topics` |
-| Google Analytics ID | `_config.yml` → `google_analytics` |
-| 사이트 URL | `_config.yml` → `url` |
+| 수정 내용               | 파일                                  |
+| ----------------------- | ------------------------------------- |
+| 이름 / 소개 / 링크 / CV | `_data/profile.yml`                   |
+| Research 섹션 텍스트    | `_data/profile.yml` → `research_goal` |
+| 섹션 제목 변경          | `_data/profile.yml` → `sections`      |
+| 블로그 토픽 추가/삭제   | `_data/profile.yml` → `post_topics`   |
+| Google Analytics ID     | `_config.yml` → `google_analytics`    |
+| 사이트 URL              | `_config.yml` → `url`                 |
 
 ---
 
@@ -26,6 +26,7 @@ _templates/publication.md 복사 → _posts/YYYY-MM-DD-논문제목.md
 ```
 
 필수 front matter:
+
 ```yaml
 layout: default
 title: "논문 제목"
@@ -47,6 +48,7 @@ _templates/project.md 복사 → _posts/YYYY-MM-DD-프로젝트제목.md
 ```
 
 필수 front matter:
+
 ```yaml
 layout: default
 title: "프로젝트 제목"
@@ -67,19 +69,22 @@ _templates/blogpost.md 복사 → _posts/YYYY-MM-DD-제목.md
 ```
 
 필수 front matter:
+
 ```yaml
 layout: post
 title: "글 제목"
 date: 2025-04-10
-categories: RL    # _data/profile.yml의 post_topics category 값과 일치
+categories: RL # _data/profile.yml의 post_topics category 값과 일치
 ```
 
 **새 토픽 추가** (`_data/profile.yml`):
+
 ```yaml
 post_topics:
-  - label: "Generative Models"   # 화면에 표시될 이름
-    category: "generative"       # 포스트 categories 값과 일치해야 함
+  - label: "Generative Models" # 화면에 표시될 이름
+    category: "generative" # 포스트 categories 값과 일치해야 함
 ```
+
 이후 `_templates/topic.md`를 복사하여 `topics/generative.md` 파일을 생성해야 해당 카테고리 페이지가 정상적으로 동작합니다.
 
 수식 지원: 인라인 `$...$`, 블록 `$$...$$`

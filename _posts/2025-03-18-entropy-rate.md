@@ -11,7 +11,6 @@ toc:
   sidebar: left
 ---
 
-
 **Entropy rate** is defined in a random process, a sequence or set of random variables.
 
 $$
@@ -31,7 +30,7 @@ P(X_{1},\dots X_{k})=P(X_{n+1},\dots X_{n+k})
 \end{aligned}
 $$
 
-For a **stationary process**, 
+For a **stationary process**,
 $H(X_{n}|X^{n-1}_{1})$ is a decreasing sequence, which has a lower bound 0.
 
 $$
@@ -43,7 +42,7 @@ $$
 
 Therefore, it converges.
 
-A useful random process is a case of **stationary Markov process**, which is a Markov process with transition probability is fixed. 
+A useful random process is a case of **stationary Markov process**, which is a Markov process with transition probability is fixed.
 The transition matrix can be defined as $M=[P(x_{t+1}=i|x_{t}=j)]$.
 
 Since it is stationary process, random variable $X_{i}$ have a stationary distribution $\mu$, which satisfies $\mu=\mu M$.
@@ -58,7 +57,7 @@ H(X) & =\lim_{ n \to \infty }H(X_{n}|X_{1}^{n-1}) \\
 \end{aligned}
 $$
 
-Using this result, we can somehow prove the **second law of thermodynamics**, 
+Using this result, we can somehow prove the **second law of thermodynamics**,
 
 "Entropy of a closed physical system always increases".
 
@@ -80,14 +79,15 @@ $$
 \end{aligned}
 $$
 
-Therefore, by setting $q=\mu$ be a uniform stationary distribution, 
+Therefore, by setting $q=\mu$ be a uniform stationary distribution,
 $D(\mu_{n}\parallel \mu)\geq D(\mu_{n+1}\parallel \mu)$.
 
-Since $\mu$ is uniform, 
-$D(\mu_{n}\parallel \mu)=\log|\chi|-H(\mu_{n})$ is a decreasing sequence, 
+Since $\mu$ is uniform,
+$D(\mu_{n}\parallel \mu)=\log|\chi|-H(\mu_{n})$ is a decreasing sequence,
 so $H(\mu_{n})$ is an increasing sequence.
 
 ---
+
 **Reference**
 
 T. Cover, Elements of information theory. John Wiley & Sons, 2006.

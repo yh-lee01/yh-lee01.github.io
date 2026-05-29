@@ -5,64 +5,64 @@
 
 /* ---- Light Mode ---- */
 :root {
-  /* Primary colors — ICLR Blogposts turquoise accent */
-  --global-theme-color: #2698ba;
-  --global-hover-color: #1e7a96;
+  /* Notion Purple primary accent */
+  --global-theme-color: #6941c6;
+  --global-hover-color: #5329b3;
   --global-hover-text-color: #ffffff;
 
   /* Backgrounds */
   --global-bg-color: #ffffff;
-  --global-code-bg-color: #f5f5f7;
+  --global-code-bg-color: #f9f9fb;
   --global-card-bg-color: #ffffff;
 
-  /* Text */
-  --global-text-color: #000000;
-  --global-text-color-light: #828282;
+  /* Text - Notion warm charcoal ink */
+  --global-text-color: #191919;
+  --global-text-color-light: #5a5a5a;
 
   /* Navbar */
   --global-navbar-bg-color: rgba(255, 255, 255, 0.95);
-  --global-navbar-text-color: #000000;
+  --global-navbar-text-color: #191919;
 
   /* Footer */
-  --global-footer-bg-color: #1c1c1d;
-  --global-footer-text-color: #e8e8e8;
+  --global-footer-bg-color: #191919;
+  --global-footer-text-color: #efeff1;
   --global-footer-link-color: #ffffff;
 
-  /* Divider */
-  --global-divider-color: rgba(0, 0, 0, 0.1);
+  /* Divider - Notion hairline border */
+  --global-divider-color: #efeff1;
 
   /* Distill */
-  --global-distill-app-color: #828282;
+  --global-distill-app-color: #5a5a5a;
 }
 
 /* ---- Dark Mode ---- */
 [data-theme="dark"] {
-  /* Primary colors — ICLR Blogposts turquoise accent */
-  --global-theme-color: #2698ba;
-  --global-hover-color: #53bad6;
-  --global-hover-text-color: #1c1c1d;
+  /* Soft purple accent */
+  --global-theme-color: #9f7aea;
+  --global-hover-color: #b794f4;
+  --global-hover-text-color: #191919;
 
-  /* Backgrounds */
-  --global-bg-color: #1c1c1d;
-  --global-code-bg-color: #2c3237;
-  --global-card-bg-color: #212529;
+  /* Backgrounds - Notion Dark canvas */
+  --global-bg-color: #191919;
+  --global-code-bg-color: #262626;
+  --global-card-bg-color: #202020;
 
   /* Text */
-  --global-text-color: #e8e8e8;
-  --global-text-color-light: #828282;
+  --global-text-color: #efeff1;
+  --global-text-color-light: #9b9b9b;
 
   /* Navbar */
-  --global-navbar-bg-color: rgba(28, 28, 29, 0.95);
-  --global-navbar-text-color: #e8e8e8;
+  --global-navbar-bg-color: rgba(25, 25, 25, 0.95);
+  --global-navbar-text-color: #efeff1;
 
   /* Footer */
-  --global-footer-bg-color: #e8e8e8;
-  --global-footer-text-color: #1c1c1d;
+  --global-footer-bg-color: #efeff1;
+  --global-footer-text-color: #191919;
   --global-footer-link-color: #000000;
 
   /* Divider */
-  --global-divider-color: #424246;
+  --global-divider-color: #2e2e2e;
 
   /* Distill */
-  --global-distill-app-color: #e8e8e8;
+  --global-distill-app-color: #efeff1;
 }

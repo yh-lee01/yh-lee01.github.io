@@ -1,0 +1,68 @@
+{
+  "basics": {
+    "name": "Yohan Lee",
+    "label": "Senior Undergraduate",
+    "email": "john1111369@g.skku.edu",
+    "url": "https://yh-lee01.github.io",
+    "summary": "Senior undergraduate at Sungkyunkwan University (Computer Science and Engineering) interested in the intersection of generative models and sequential decision-making, with a focus on AI safety.",
+    "location": {
+      "city": "Seoul",
+      "countryCode": "KR"
+    },
+    "profiles": [
+      {
+        "network": "GitHub",
+        "username": "yh-lee01",
+        "url": "https://github.com/yh-lee01"
+      }
+    ]
+  },
+  "education": [
+    {
+      "institution": "Sungkyunkwan University",
+      "area": "Computer Science and Engineering",
+      "studyType": "Senior Undergraduate",
+      "startDate": "2023",
+      "endDate": "Expected Aug. 2027"
+    }
+  ],
+  "work": [
+    {
+      "name": "Pixel Lab (Korea University)",
+      "position": "Research Assistant",
+      "startDate": "2025",
+      "summary": "Worked on multi-modal generation and Flow Matching frameworks."
+    },
+    {
+      "name": "AIoT Lab (Seoul National University)",
+      "position": "Research Assistant",
+      "startDate": "2025",
+      "summary": "Researched out-of-distribution robustness and ImageNet-ES."
+    },
+    {
+      "name": "V-Lab (Sungkyunkwan University)",
+      "position": "Research Assistant",
+      "startDate": "2024",
+      "summary": "Studied sequential decision making and 3D synthesis."
+    }
+  ],
+  "skills": [
+    {
+      "name": "Generative Modeling",
+      "keywords": [
+        "Flow Matching",
+        "Diffusion Models",
+        "Normalizing Flows",
+        "DDPM"
+      ]
+    },
+    {
+      "name": "Reinforcement Learning",
+      "keywords": ["Safe RL", "CMDP", "PPO", "TRPO", "SAC", "DDPG"]
+    },
+    {
+      "name": "Programming & Frameworks",
+      "keywords": ["Python", "PyTorch", "Jekyll", "HTML/CSS", "JavaScript"]
+    }
+  ]
+}

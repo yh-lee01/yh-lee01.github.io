@@ -55,8 +55,6 @@ It can be also shown that the optimal value function is the **unique fixed point
 
 Optimal value functions are unique, but optimal policies are not actually unique.
 
-
-
 ---
 
 **Reference**

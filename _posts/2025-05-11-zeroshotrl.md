@@ -4,7 +4,8 @@ title: "What is Zero shot RL?"
 date: 2025-05-11
 categories: [RL]
 description: Zero-shot RL trains agents without explicit reward signals to produce sub-optimal policies for arbitrary new rewards at test time, using successor representations and forward-backward methods.
-tags: [reinforcement-learning, zero-shot-rl, successor-features, transfer-learning]
+tags:
+  [reinforcement-learning, zero-shot-rl, successor-features, transfer-learning]
 giscus_comments: false
 related_posts: true
 toc:
@@ -38,8 +39,8 @@ M^\pi_z(s_0, a_0, s) &= \sum_{t\ge0} \gamma^t \Pr(s_{t+1} = s \mid s_0, a_0, \pi
 \end{equation}
 $$
 
-FB representation approximate successor measure in finite-dimensional space by using two parametric functions: forward mapping $F_{z}^T: S\times A\to \mathbb{R}^d$, 
-and backward mapping $B: \mathbb{R}^d\to S$, represented as 
+FB representation approximate successor measure in finite-dimensional space by using two parametric functions: forward mapping $F_{z}^T: S\times A\to \mathbb{R}^d$,
+and backward mapping $B: \mathbb{R}^d\to S$, represented as
 
 $$
 \begin{equation}
@@ -51,10 +52,10 @@ $$
 
 where $\rho$ is the data distribution, in offline setting.
 
-For any reward function $R$, 
+For any reward function $R$,
 we can estimate the latent vector of reward by $z_R =\mathbb{E}_\rho[R(s)B(s)]$, using small amount of samples of given data.
 
-Theoretically, the optimal Q-function and optimal policy of the reward parameterized by $z_R$ can be derived by 
+Theoretically, the optimal Q-function and optimal policy of the reward parameterized by $z_R$ can be derived by
 
 $$
 \begin{equation}
@@ -83,20 +84,20 @@ Also, introducing an additional conservative learning term into this framework e
 $$
 \begin{equation}
 \begin{split}
-    L_{\text{MC}} = 
+    L_{\text{MC}} =
 &\mathbb{E}_{\substack{s,s'\sim\rho\\ a \sim \mu(\cdot|s)}}
-\left[ F(s, a, z)^\top B(s') \right] 
+\left[ F(s, a, z)^\top B(s') \right]
 - \mathbb{E}_{\substack{(s,a),s'\sim\rho}}
 \left[ F(s, a, z)^\top B(s') \right] - H(\mu),
 \end{split}
 \end{equation}
 $$
 
-where $\mu$ is the distribution of policy at each state, 
+where $\mu$ is the distribution of policy at each state,
 and $H(\mu)$ is approximated by log-sum exponential of $Q_z$.
 
-
 ---
+
 **Reference**
 
 A. Touati, J. Rapin, and Y. Ollivier, “Does zero-shot reinforcement learning exist?,” arXiv preprint arXiv:2209.14935, 2022.

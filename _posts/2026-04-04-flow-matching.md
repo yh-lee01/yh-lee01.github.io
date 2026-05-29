@@ -11,7 +11,7 @@ toc:
   sidebar: left
 ---
 
-**Paper:** Lipman et al., *Flow Matching for Generative Modeling*, ICLR 2023. [[arXiv]](https://arxiv.org/abs/2210.02747)
+**Paper:** Lipman et al., _Flow Matching for Generative Modeling_, ICLR 2023. [[arXiv]](https://arxiv.org/abs/2210.02747)
 
 ---
 
@@ -100,15 +100,15 @@ Flow Matching has become the backbone of robot action generation (e.g., $\pi_0$,
 
 ## Summary
 
-| Property | Score Matching (DDPM) | Flow Matching |
-|---|---|---|
-| Training | Simulation-free | Simulation-free |
-| Inference | Many steps (DDIM ~50) | Fewer steps (OT paths ~10) |
-| Path | Curved (VP/VE SDE) | Straight (OT) |
-| Likelihood | Requires SDE | Easy via ODE |
+| Property   | Score Matching (DDPM) | Flow Matching              |
+| ---------- | --------------------- | -------------------------- |
+| Training   | Simulation-free       | Simulation-free            |
+| Inference  | Many steps (DDIM ~50) | Fewer steps (OT paths ~10) |
+| Path       | Curved (VP/VE SDE)    | Straight (OT)              |
+| Likelihood | Requires SDE          | Easy via ODE               |
 
 ---
 
 **Reference**
 
-Y. Lipman, R. T. Q. Chen, H. Ben-Hamu, M. Nickel, M. Le, *Flow Matching for Generative Modeling*, ICLR 2023.
+Y. Lipman, R. T. Q. Chen, H. Ben-Hamu, M. Nickel, M. Le, _Flow Matching for Generative Modeling_, ICLR 2023.

@@ -19,7 +19,7 @@ $$
 
 It can be also thought as policy improvement on parametric policy functions.
 
-**Likelihood Ratio policy gradient** is the foundation idea of policy gradient. 
+**Likelihood Ratio policy gradient** is the foundation idea of policy gradient.
 Consider the likelihood of each trajectory $\tau$ under policy parameter $\theta$ as $P(\tau;\theta)$.
 We want to maximize the following objective.
 
@@ -34,7 +34,7 @@ $$
 \nabla_{\theta}U(\theta) & = \nabla_{\theta}\sum_{\tau}P(\tau;\theta)R(\tau)  \\
  & =\sum_{\tau}\nabla_{\theta}P(\tau;\theta)R(\tau) \\
 & = \sum_{\tau}P(\tau;\theta) \frac{\nabla_{\theta}P(\tau;\theta)}{P(\tau;\theta)}R(\tau) \\
- & = \sum_{\tau}P(\tau;\theta) \nabla_{\theta}\log P(\tau;\theta)R(\tau) \\ 
+ & = \sum_{\tau}P(\tau;\theta) \nabla_{\theta}\log P(\tau;\theta)R(\tau) \\
  & =\mathbb{E}[\nabla_{\theta}\log P(\tau;\theta)R(\tau)]
 \end{aligned}
 $$
@@ -71,8 +71,6 @@ $$
 
 This vanilla policy gradient is known as REINFORCE algorithm.
 
-
-
 This version of gradient has high variance.
 We can reduce the variance in following ways.
 
@@ -82,8 +80,8 @@ $$
 \begin{aligned}
 \nabla_{\theta}U(\theta)
  & =\mathbb{E}\left[ \left(\sum_{t} \nabla_{\theta}\log \pi_{\theta}(a_{t}|s_{t})\sum_{t'}\gamma^{t'} r_{t'} \right) \right] \\
- & =\mathbb{E}\left[ \sum_{t} \nabla_{\theta}\log \pi_{\theta}(a_{t}|s_{t})\left(\sum_{t'=0}^{t-1}\gamma^{t'} r_{t'}+\gamma^t\sum_{t'=t}\gamma^{t'-t} r_{t'} \right) \right] \\ 
- & =\mathbb{E}\left[ \sum_{t} \nabla_{\theta}\log \pi_{\theta}(a_{t}|s_{t})\gamma^tG_{t} \right] \\ 
+ & =\mathbb{E}\left[ \sum_{t} \nabla_{\theta}\log \pi_{\theta}(a_{t}|s_{t})\left(\sum_{t'=0}^{t-1}\gamma^{t'} r_{t'}+\gamma^t\sum_{t'=t}\gamma^{t'-t} r_{t'} \right) \right] \\
+ & =\mathbb{E}\left[ \sum_{t} \nabla_{\theta}\log \pi_{\theta}(a_{t}|s_{t})\gamma^tG_{t} \right] \\
 \end{aligned}
 $$
 
@@ -139,7 +137,6 @@ $$
  & =\mathbb{E}\left[\sum_{t} \nabla_{\theta}\log \pi_{\theta}(a_{t}|s_{t})\gamma^t(\hat{Q}-V_{\phi}(s_{t})) \right]
 \end{aligned}
 $$
-
 
 ---
 
