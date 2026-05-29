@@ -6,10 +6,13 @@ module.exports = {
   safelist: {
     standard: [
       "collapse",
+      "collapsed",
       "collapsing",
       "show",
       "dropdown-menu",
       "dropdown-item",
+      "dropdown-divider",
+      "sr-only",
       "table",
       "table-dark",
       "table-hover",
@@ -48,6 +51,9 @@ module.exports = {
       /^col-/,
       /^pagination/,
       /^page-/,
+      /^icon-bar/,
+      /^dropdown/,
+      /^sr-/,
     ],
     greedy: [/modal/, /tooltip/, /popover/],
   },
