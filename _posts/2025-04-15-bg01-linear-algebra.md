@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "1. Linear Algebra Essentials"
-date: 2026-04-15
+date: 2025-04-15
 categories: [background]
 description: Linear algebra is the language of data — covering vectors, matrices, eigendecomposition, SVD, and positive definite matrices essential for machine learning.
 tags: [machine-learning, linear-algebra, mathematics]
@@ -26,6 +26,7 @@ The $\ell_2$ **norm** $\|\mathbf{x}\| = \sqrt{\mathbf{x}^\top \mathbf{x}}$ measu
 ## Matrices as Linear Maps
 
 A matrix $A \in \mathbb{R}^{m \times n}$ defines a linear transformation $f(\mathbf{x}) = A\mathbf{x}$. Key properties:
+
 - **Rank**: $\text{rank}(A)$ = dimension of the column space = number of linearly independent columns
 - **Determinant**: $\det(A) \neq 0 \Leftrightarrow A$ is invertible (for square matrices)
 - **Trace**: $\text{tr}(A) = \sum_i A_{ii}$, invariant under cyclic permutations: $\text{tr}(ABC) = \text{tr}(CAB)$
@@ -65,11 +66,13 @@ $$
 A symmetric matrix $A$ is **positive definite** ($A \succ 0$) if $\mathbf{x}^\top A \mathbf{x} > 0$ for all $\mathbf{x} \neq 0$, equivalently, all eigenvalues are positive.
 
 Positive definiteness ensures:
+
 - **Convexity** of $f(\mathbf{x}) = \mathbf{x}^\top A \mathbf{x}$ — critical for optimization
 - **Unique solutions** to $A\mathbf{x} = \mathbf{b}$
 - A valid **covariance matrix** in probability
 
 ---
+
 **Reference**
 
-G. Strang, *Introduction to Linear Algebra*, 6th ed. Wellesley-Cambridge Press, 2023.
+G. Strang, _Introduction to Linear Algebra_, 6th ed. Wellesley-Cambridge Press, 2023.

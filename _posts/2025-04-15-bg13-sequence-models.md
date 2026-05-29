@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "13. Sequence Models"
-date: 2026-04-15
+date: 2025-04-15
 categories: [background]
 description: Sequential data requires models that handle variable-length inputs and capture temporal dependencies, covering RNNs, LSTMs, GRUs, and the attention mechanism.
 tags: [machine-learning, deep-learning, rnn, lstm, attention, sequence-models]
@@ -71,6 +71,7 @@ where $e_{t,s} = \text{score}(\mathbf{h}_t^{\text{dec}}, \mathbf{h}_s^{\text{enc
 Attention was the key insight that led to the **Transformer** architecture (Post 14).
 
 ---
+
 **Reference**
 
-S. Hochreiter, J. Schmidhuber, "Long Short-Term Memory," *Neural Computation*, 1997.
+S. Hochreiter, J. Schmidhuber, "Long Short-Term Memory," _Neural Computation_, 1997.

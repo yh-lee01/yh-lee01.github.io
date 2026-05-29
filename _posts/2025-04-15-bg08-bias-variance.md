@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "8. Bias-Variance Tradeoff"
-date: 2026-04-15
+date: 2025-04-15
 categories: [background]
 description: The bias-variance decomposition explains the central challenge of generalization, covering overfitting, underfitting, regularization, and cross-validation.
 tags: [machine-learning, bias-variance, regularization, generalization]
@@ -27,21 +27,23 @@ $$
 
 ## Overfitting and Underfitting
 
-| Regime | Bias | Variance | Symptom |
-|---|---|---|---|
-| Underfitting | High | Low | Train error ↑, Test error ↑ |
-| Good fit | Moderate | Moderate | Both errors reasonable |
-| Overfitting | Low | High | Train error ↓, Test error ↑ |
+| Regime       | Bias     | Variance | Symptom                     |
+| ------------ | -------- | -------- | --------------------------- |
+| Underfitting | High     | Low      | Train error ↑, Test error ↑ |
+| Good fit     | Moderate | Moderate | Both errors reasonable      |
+| Overfitting  | Low      | High     | Train error ↓, Test error ↑ |
 
 ## Regularization
 
 Adding a penalty term to the loss to reduce variance:
 
 **L2 (Ridge)**: $\mathcal{L}_{\text{reg}} = \mathcal{L} + \lambda \|\mathbf{w}\|_2^2$
+
 - Shrinks all weights towards zero
 - Equivalent to Gaussian prior on $\mathbf{w}$
 
 **L1 (Lasso)**: $\mathcal{L}_{\text{reg}} = \mathcal{L} + \lambda \|\mathbf{w}\|_1$
+
 - Produces **sparse** solutions (some weights become exactly zero)
 - Equivalent to Laplace prior on $\mathbf{w}$
 - Useful for **feature selection**
@@ -61,6 +63,7 @@ $$
 Common choices: $k=5$ or $k=10$. **Leave-one-out** ($k=N$) has low bias but high variance and is computationally expensive.
 
 ---
+
 **Reference**
 
-T. Hastie, R. Tibshirani, J. Friedman, *The Elements of Statistical Learning*, 2nd ed. Springer, 2009, Ch. 7.
+T. Hastie, R. Tibshirani, J. Friedman, _The Elements of Statistical Learning_, 2nd ed. Springer, 2009, Ch. 7.

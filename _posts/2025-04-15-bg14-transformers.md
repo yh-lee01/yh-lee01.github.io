@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "14. Transformers & Self-Attention"
-date: 2026-04-15
+date: 2025-04-15
 categories: [background]
 description: The Transformer replaced recurrence with pure attention, enabling massive parallelism and scaling to billions of parameters through self-attention and positional encoding.
 tags: [machine-learning, deep-learning, transformers, attention, nlp]
@@ -67,10 +67,10 @@ where $\text{FFN}(\mathbf{x}) = \text{ReLU}(\mathbf{x}W_1 + \mathbf{b}_1)W_2 + \
 
 ## Encoder vs Decoder
 
-| Model | Attention Mask | Use Case |
-|---|---|---|
-| **Encoder** (BERT) | Bidirectional (see all tokens) | Classification, NLU |
-| **Decoder** (GPT) | Causal (see only past tokens) | Generation, LLMs |
+| Model                    | Attention Mask                  | Use Case             |
+| ------------------------ | ------------------------------- | -------------------- |
+| **Encoder** (BERT)       | Bidirectional (see all tokens)  | Classification, NLU  |
+| **Decoder** (GPT)        | Causal (see only past tokens)   | Generation, LLMs     |
 | **Encoder-Decoder** (T5) | Cross-attention between enc/dec | Translation, Seq2Seq |
 
 ## Scaling Laws
@@ -84,6 +84,7 @@ $$
 where $L$ is loss and $N$ is the number of parameters. Larger models are more sample-efficient — this observation drives the "scale up" paradigm of GPT-3/4.
 
 ---
+
 **Reference**
 
 A. Vaswani et al., "Attention Is All You Need," NeurIPS, 2017.

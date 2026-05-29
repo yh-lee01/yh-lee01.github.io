@@ -8,7 +8,7 @@ subtitle: >
 profile:
   align: right
   image: profile_pic.jpg
-  image_circular: false
+  image_circular: true
   more_info: >
     <p>john1111369@g.skku.edu</p>
 

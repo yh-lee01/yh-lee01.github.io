@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "15. Generative Models"
-date: 2026-04-15
+date: 2025-04-15
 categories: [background]
 status: "In Progress"
 description: A survey of major generative model paradigms — VAEs, GANs, normalizing flows, diffusion models, and flow matching — for learning data distributions.
@@ -97,6 +97,7 @@ where $u_t$ is the conditional target velocity (e.g., for an optimal transport p
 Flow matching offers **simulation-free training**, no need for noise schedules, and naturally connects to optimal transport theory.
 
 ---
+
 **Reference**
 
 Y. Lipman et al., "Flow Matching for Generative Modeling," ICLR, 2023.

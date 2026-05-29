@@ -5,7 +5,7 @@ permalink: /projects/
 description: Research projects and coursework.
 nav: true
 nav_order: 3
-display_categories: [research, coursework]
+display_categories: [coursework]
 horizontal: false
 ---
 

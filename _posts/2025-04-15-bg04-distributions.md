@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "4. Common Distributions"
-date: 2026-04-15
+date: 2025-04-15
 categories: [background]
 description: A catalog of the most frequently used distributions in ML, including Bernoulli, Gaussian, exponential family, and Gaussian mixture models.
 tags: [machine-learning, probability, distributions, statistics]
@@ -44,6 +44,7 @@ $$
 $$
 
 Why Gaussians are everywhere:
+
 - **CLT**: sums of many independent variables → Gaussian
 - **Maximum entropy**: among distributions with fixed mean and variance, Gaussian has the highest entropy
 - **Conjugate prior**: Gaussian likelihood × Gaussian prior = Gaussian posterior
@@ -73,6 +74,7 @@ $$
 GMMs are **universal approximators** of densities: with enough components, they can approximate any continuous distribution. They are trained via the **EM algorithm**.
 
 ---
+
 **Reference**
 
-K. Murphy, *Probabilistic Machine Learning: An Introduction*. MIT Press, 2022, Ch. 2–3.
+K. Murphy, _Probabilistic Machine Learning: An Introduction_. MIT Press, 2022, Ch. 2–3.

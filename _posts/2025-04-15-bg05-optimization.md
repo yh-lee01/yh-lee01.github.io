@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "5. Optimization Theory"
-date: 2026-04-15
+date: 2025-04-15
 categories: [background]
 description: Understanding the landscape of loss functions through convexity, gradient descent, SGD, momentum, Adam, and constrained optimization with KKT conditions.
 tags: [machine-learning, optimization, gradient-descent, mathematics]
@@ -72,6 +72,7 @@ $$
 $$
 
 The **KKT conditions** (necessary for optimality):
+
 1. Stationarity: $\nabla_\mathbf{x} \mathcal{L} = 0$
 2. Primal feasibility: $g_i(\mathbf{x}) \leq 0$
 3. Dual feasibility: $\lambda_i \geq 0$
@@ -80,6 +81,7 @@ The **KKT conditions** (necessary for optimality):
 This framework appears in SVM (dual formulation) and constrained RL (safe RL).
 
 ---
+
 **Reference**
 
-S. Boyd, L. Vandenberghe, *Convex Optimization*. Cambridge University Press, 2004.
+S. Boyd, L. Vandenberghe, _Convex Optimization_. Cambridge University Press, 2004.

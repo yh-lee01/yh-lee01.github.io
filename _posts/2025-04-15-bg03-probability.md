@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "3. Probability Fundamentals"
-date: 2026-04-15
+date: 2025-04-15
 categories: [background]
 description: Probability theory is the framework for reasoning under uncertainty, covering probability spaces, Bayes' rule, random variables, and the central limit theorem.
 tags: [machine-learning, probability, statistics, mathematics]
@@ -16,6 +16,7 @@ Probability theory is the framework for reasoning under uncertainty. Every ML mo
 ## Probability Space
 
 A probability space $(\Omega, \mathcal{F}, P)$ consists of:
+
 - **Sample space** $\Omega$: set of all possible outcomes
 - **Event algebra** $\mathcal{F}$: collection of measurable subsets of $\Omega$
 - **Probability measure** $P: \mathcal{F} \to [0, 1]$ satisfying $P(\Omega) = 1$ and countable additivity
@@ -38,12 +39,12 @@ $$
 P(\theta \mid D) = \frac{P(D \mid \theta) \, P(\theta)}{P(D)}
 $$
 
-| Term | Name | Role |
-|---|---|---|
-| $P(\theta \mid D)$ | Posterior | What we want to know |
+| Term               | Name       | Role                            |
+| ------------------ | ---------- | ------------------------------- |
+| $P(\theta \mid D)$ | Posterior  | What we want to know            |
 | $P(D \mid \theta)$ | Likelihood | How well $\theta$ explains data |
-| $P(\theta)$ | Prior | Our belief before seeing data |
-| $P(D)$ | Evidence | Normalizing constant |
+| $P(\theta)$        | Prior      | Our belief before seeing data   |
+| $P(D)$             | Evidence   | Normalizing constant            |
 
 Bayesian inference is "inverting" the generative process: given observed effects, infer the most likely causes.
 
@@ -77,6 +78,7 @@ The **covariance matrix** $\Sigma$ of a random vector $\mathbf{x}$: $\Sigma_{ij}
 These justify why **SGD works**: averaging over mini-batches gives unbiased gradient estimates that converge.
 
 ---
+
 **Reference**
 
-C. Bishop, *Pattern Recognition and Machine Learning*. Springer, 2006, Ch. 1–2.
+C. Bishop, _Pattern Recognition and Machine Learning_. Springer, 2006, Ch. 1–2.

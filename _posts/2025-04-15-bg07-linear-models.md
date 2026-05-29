@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "7. Linear Models"
-date: 2026-04-15
+date: 2025-04-15
 categories: [background]
 description: Linear models — including linear regression, logistic regression, and softmax regression — are the simplest parametric models and the building blocks of deep learning.
 tags: [machine-learning, linear-models, regression, classification]
@@ -58,12 +58,14 @@ The softmax output is a valid probability distribution (non-negative, sums to 1)
 ## Decision Boundaries
 
 Linear models partition the input space with **hyperplanes**:
+
 - Binary: $\mathbf{w}^\top \mathbf{x} + b = 0$ defines the boundary
 - Multi-class: pairwise boundaries between class regions
 
 The linearity limitation: cannot learn XOR or any non-linearly separable pattern without feature engineering. This motivates neural networks.
 
 ---
+
 **Reference**
 
-T. Hastie, R. Tibshirani, J. Friedman, *The Elements of Statistical Learning*, 2nd ed. Springer, 2009, Ch. 3–4.
+T. Hastie, R. Tibshirani, J. Friedman, _The Elements of Statistical Learning_, 2nd ed. Springer, 2009, Ch. 3–4.

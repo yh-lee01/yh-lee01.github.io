@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "11. Neural Networks & Backpropagation"
-date: 2026-04-15
+date: 2025-04-15
 categories: [background]
 description: Neural networks are compositions of simple functions that can approximate any continuous mapping, covering MLPs, activation functions, backpropagation, and initialization.
 tags: [machine-learning, neural-networks, deep-learning, backpropagation]
@@ -27,12 +27,12 @@ With at least one hidden layer and non-linear activation, MLPs are **universal f
 
 ## Activation Functions
 
-| Function | Formula | Properties |
-|---|---|---|
-| Sigmoid | $\sigma(z) = \frac{1}{1+e^{-z}}$ | Output in $(0,1)$; vanishing gradient |
-| Tanh | $\tanh(z) = \frac{e^z - e^{-z}}{e^z + e^{-z}}$ | Zero-centered; still vanishing gradient |
-| ReLU | $\max(0, z)$ | No vanishing gradient; dead neurons |
-| GELU | $z \cdot \Phi(z)$ | Smooth; used in Transformers |
+| Function | Formula                                        | Properties                              |
+| -------- | ---------------------------------------------- | --------------------------------------- |
+| Sigmoid  | $\sigma(z) = \frac{1}{1+e^{-z}}$               | Output in $(0,1)$; vanishing gradient   |
+| Tanh     | $\tanh(z) = \frac{e^z - e^{-z}}{e^z + e^{-z}}$ | Zero-centered; still vanishing gradient |
+| ReLU     | $\max(0, z)$                                   | No vanishing gradient; dead neurons     |
+| GELU     | $z \cdot \Phi(z)$                              | Smooth; used in Transformers            |
 
 **ReLU** dominates in practice due to computational simplicity and gradient flow.
 
@@ -69,6 +69,7 @@ $$
 Benefits: faster convergence, less sensitivity to initialization, mild regularization.
 
 ---
+
 **Reference**
 
-I. Goodfellow, Y. Bengio, A. Courville, *Deep Learning*. MIT Press, 2016, Ch. 6–8.
+I. Goodfellow, Y. Bengio, A. Courville, _Deep Learning_. MIT Press, 2016, Ch. 6–8.
