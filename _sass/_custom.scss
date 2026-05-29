@@ -647,13 +647,10 @@ html {
 }
 
 /* ---- BibTeX / Abstract Collapsible ---- */
-/* Theme uses .collapse and .hidden on these blocks. Override Tailwind's
-   .publications .hidden { display: block } that forces them visible. */
+/* NOTE: Critical overrides for .publications .hidden are in header.liquid
+   as an inline <style> tag, because PurgeCSS strips them from main.css. */
 .bibtex.collapse,
-.abstract.collapse,
-.publications .hidden,
-.publications .bibtex:not(.show),
-.publications .abstract:not(.show) {
+.abstract.collapse {
   display: none !important;
 }
 

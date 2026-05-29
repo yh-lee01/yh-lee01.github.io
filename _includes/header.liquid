@@ -1,4 +1,28 @@
 <header>
+  <!--
+    Inline overrides — PurgeCSS only strips _site/assets/css/*.css,
+    so these rules survive the build and override Tailwind's
+    .publications .hidden { display: block }.
+  -->
+  <style>
+    /* Fix: bibtex/abstract blocks forced visible by Tailwind */
+    .publications .hidden { display: none !important; }
+    .publications .hidden.show { display: block !important; }
+    .publications .bibtex:not(.show) { display: none !important; }
+    .publications .abstract:not(.show) { display: none !important; }
+    .bibtex.show, .abstract.show { display: block !important; }
+
+    /* Fix: search button — hide "ctrl k" text, show icon only */
+    #search-toggle .nav-link { font-size: 0 !important; }
+    #search-toggle .nav-link i { font-size: 1.1rem !important; }
+
+    /* Fix: CV timeline date/title overlap */
+    .cv .card .list-group-item .row > div:first-child {
+      min-width: 140px;
+      flex-shrink: 0;
+    }
+  </style>
+
   <!-- Nav Bar -->
   <nav id="navbar" class="navbar navbar-light navbar-expand-sm {% if site.navbar_fixed %}fixed-top{% else %}sticky-top{% endif %}" role="navigation">
     <div class="container">
@@ -107,12 +131,12 @@
             <!-- Search -->
             <li class="nav-item">
               <button id="search-toggle" title="Search" onclick="openSearchModal()">
-                <span class="nav-link">ctrl k <i class="ti ti-search"></i></span>
+                <span class="nav-link"><i class="ti ti-search"></i></span>
               </button>
             </li>
           {% endif %}
           {% if site.enable_darkmode %}
-            <!-- Toogle theme mode -->
+            <!-- Toggle theme mode -->
             <li class="toggle-container">
               <button id="light-toggle" title="Change theme">
                 <i class="ti ti-sun-moon" id="light-toggle-system"></i>
@@ -141,7 +165,7 @@
     var nav = document.getElementById('navbarNav');
     if (!nav) return;
 
-    // Prevent any theme JS from re-adding "collapse" class
+    // Prevent theme JS from re-adding "collapse" class
     new MutationObserver(function() {
       if (nav.classList.contains('collapse')) nav.classList.remove('collapse');
     }).observe(nav, { attributes: true, attributeFilter: ['class'] });
