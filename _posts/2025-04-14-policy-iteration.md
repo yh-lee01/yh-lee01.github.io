@@ -2,9 +2,13 @@
 layout: post
 title: "What is Policy Iteration?"
 date: 2025-04-14
-categories: RL
-permalink: /RL/policy-iteration/
-author: "Yohan Lee"
+categories: [RL]
+description: Policy iteration alternates between policy evaluation and policy improvement to compute the optimal policy, providing the foundation for actor-critic methods.
+tags: [reinforcement-learning, policy-iteration, dynamic-programming, actor-critic]
+giscus_comments: false
+related_posts: true
+toc:
+  sidebar: left
 ---
 
 Policy iteration a method used to compute the **optimal policy** that comes from the classical dynamic programming for reinforcement learning with a discrete MDP.

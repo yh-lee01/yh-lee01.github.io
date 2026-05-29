@@ -2,8 +2,13 @@
 layout: post
 title: "Can Zero-shot RL enable test time safety?"
 date: 2025-06-01 +00:00
-permalink: /post/zeroshotrlenablesafety/
-author: "Yohan Lee"
+categories: [paper_review]
+description: FB-safe extends Forward-Backward representations to enable zero-shot reinforcement learning agents to satisfy safety constraints at test time without additional training.
+tags: [reinforcement-learning, safe-rl, zero-shot-rl, offline-rl]
+giscus_comments: false
+related_posts: true
+toc:
+  sidebar: left
 ---
 
 To develop a truly generalized agent, it is essential to enable it to perform well on multiple unseen tasks without training a separate agent for each scenario. In standard reinforcement learning (RL), an agent trained on a single, fixed reward function typically lacks the ability to generalize beyond that task. Zero-shot RL addresses this challenge by training agents without access to explicit reward signals and aims to produce policies that can be conditioned on any given reward instantly at test time. This capability is particularly valuable in offline RL settings, where agents are pretrained on large-scale datasets that do not contain reward labels.
@@ -143,7 +148,7 @@ to balance reward maximization and cost minimization.
 
 <!-- ![Diagram of FB-safe](/images/Can%20Zero-shot%20RL%20ensure%20safety.png) -->
 <!-- <small>[Download the high-resolution PDF](/images/Can%20Zero-shot%20RL%20ensure%20safety.pdf)</small> -->
-<img src="/images/Can%20Zero-shot%20RL%20ensure%20safety.png"
+<img src="/assets/img/Can%20Zero-shot%20RL%20ensure%20safety.png"
      alt="Diagram of FB-safe"
      style="max-width:600px;width:100%;margin:0 auto;display:block;" />
 
@@ -154,7 +159,7 @@ I evaluate FB-safe on the DSRL benchmark (Liu et al., 2024), specifically the Bu
 
 The normalized reward and cost follow the DSRL conventions. Cost values below one are considered safe. Each method is run with three seeds for 20 episodes at cost thresholds $\epsilon \in \{10, 20, 40\}$ and I report the average across all experiments.
 
-<img src="/images/zsrlsafe1.png"
+<img src="/assets/img/zsrlsafe1.png"
      alt="Normalized Reward and Cost comparison"
      style="max-width:800px;width:100%;margin:0 auto;display:block;" />
 
@@ -169,7 +174,7 @@ FB-safe achieves a competitive trade-off between reward maximization and cost mi
 
 I further study the effect of the hyperparameter $\lambda$, which governs the trade-off between reward and safety. A small $\lambda$ fails to prevent risky behavior, while a larger $\lambda$ reduces cost at the expense of reward. Balancing this trade-off remains an important direction for future work.
 
-<img src="/images/zsrlsafe2.png"
+<img src="/assets/img/zsrlsafe2.png"
      alt="ormalized Reward and Cost comparison across lambda"
      style="max-width:400px;width:100%;margin:0 auto;display:block;" />
 

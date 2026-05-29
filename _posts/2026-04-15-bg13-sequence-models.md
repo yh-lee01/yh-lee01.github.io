@@ -2,9 +2,13 @@
 layout: post
 title: "13. Sequence Models"
 date: 2026-04-15
-categories: background
-permalink: /background/13-sequence-models/
-author: "Yohan Lee"
+categories: [background]
+description: Sequential data requires models that handle variable-length inputs and capture temporal dependencies, covering RNNs, LSTMs, GRUs, and the attention mechanism.
+tags: [machine-learning, deep-learning, rnn, lstm, attention, sequence-models]
+giscus_comments: false
+related_posts: true
+toc:
+  sidebar: left
 ---
 
 Sequential data (text, speech, time series) requires models that can handle variable-length inputs and capture temporal dependencies.

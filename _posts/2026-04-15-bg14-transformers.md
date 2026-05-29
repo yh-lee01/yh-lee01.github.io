@@ -2,9 +2,13 @@
 layout: post
 title: "14. Transformers & Self-Attention"
 date: 2026-04-15
-categories: background
-permalink: /background/14-transformers/
-author: "Yohan Lee"
+categories: [background]
+description: The Transformer replaced recurrence with pure attention, enabling massive parallelism and scaling to billions of parameters through self-attention and positional encoding.
+tags: [machine-learning, deep-learning, transformers, attention, nlp]
+giscus_comments: false
+related_posts: true
+toc:
+  sidebar: left
 ---
 
 The Transformer replaced recurrence with pure attention, enabling massive parallelism and scaling to billions of parameters.

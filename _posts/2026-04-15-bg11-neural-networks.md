@@ -2,9 +2,13 @@
 layout: post
 title: "11. Neural Networks & Backpropagation"
 date: 2026-04-15
-categories: background
-permalink: /background/11-neural-networks/
-author: "Yohan Lee"
+categories: [background]
+description: Neural networks are compositions of simple functions that can approximate any continuous mapping, covering MLPs, activation functions, backpropagation, and initialization.
+tags: [machine-learning, neural-networks, deep-learning, backpropagation]
+giscus_comments: false
+related_posts: true
+toc:
+  sidebar: left
 ---
 
 Neural networks are compositions of simple functions that can approximate any continuous mapping — making them the universal workhorse of modern ML.

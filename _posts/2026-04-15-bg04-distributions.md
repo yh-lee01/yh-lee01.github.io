@@ -2,9 +2,13 @@
 layout: post
 title: "4. Common Distributions"
 date: 2026-04-15
-categories: background
-permalink: /background/04-distributions/
-author: "Yohan Lee"
+categories: [background]
+description: A catalog of the most frequently used distributions in ML, including Bernoulli, Gaussian, exponential family, and Gaussian mixture models.
+tags: [machine-learning, probability, distributions, statistics]
+giscus_comments: false
+related_posts: true
+toc:
+  sidebar: left
 ---
 
 Knowing the right distribution family is half the modeling battle. Here we catalog the distributions that appear most frequently in ML.

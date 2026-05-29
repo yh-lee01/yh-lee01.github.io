@@ -2,9 +2,13 @@
 layout: post
 title: "What is Value Iteration?"
 date: 2025-04-13
-categories: RL
-permalink: /RL/value-iteration/
-author: "Yohan Lee"
+categories: [RL]
+description: Value iteration computes the optimal value function by repeatedly applying the Bellman optimality operator, providing a foundation for methods like DQN.
+tags: [reinforcement-learning, value-iteration, dynamic-programming]
+giscus_comments: false
+related_posts: true
+toc:
+  sidebar: left
 ---
 
 In classical dynamic programming (DP) for reinforcement learning with a discrete MDP, **value iteration** is a method used to compute the **optimal value function**.

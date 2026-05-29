@@ -2,10 +2,14 @@
 layout: post
 title: "15. Generative Models"
 date: 2026-04-15
-categories: background
+categories: [background]
 status: "In Progress"
-permalink: /background/15-generative-models/
-author: "Yohan Lee"
+description: A survey of major generative model paradigms — VAEs, GANs, normalizing flows, diffusion models, and flow matching — for learning data distributions.
+tags: [machine-learning, deep-learning, generative-models, vae, gan, diffusion]
+giscus_comments: false
+related_posts: true
+toc:
+  sidebar: left
 ---
 
 Generative models learn the data distribution $p(\mathbf{x})$, enabling sampling, density estimation, and representation learning. Here we survey the major paradigms.

@@ -2,9 +2,13 @@
 layout: post
 title: "What is Mutual Information?"
 date: 2025-03-17
-categories: infotheory
-permalink: /infotheory/mutual-information/
-author: "Yohan Lee"
+categories: [infotheory]
+description: Mutual information measures the amount of information one random variable contains about another.
+tags: [information-theory, mutual-information, data-processing-inequality]
+giscus_comments: false
+related_posts: true
+toc:
+  sidebar: left
 ---
 
 

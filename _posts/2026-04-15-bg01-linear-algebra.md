@@ -2,9 +2,13 @@
 layout: post
 title: "1. Linear Algebra Essentials"
 date: 2026-04-15
-categories: background
-permalink: /background/01-linear-algebra/
-author: "Yohan Lee"
+categories: [background]
+description: Linear algebra is the language of data — covering vectors, matrices, eigendecomposition, SVD, and positive definite matrices essential for machine learning.
+tags: [machine-learning, linear-algebra, mathematics]
+giscus_comments: false
+related_posts: true
+toc:
+  sidebar: left
 ---
 
 Linear algebra is the language of data. Every dataset is a matrix, every feature is a vector, and every model transformation is a linear map.

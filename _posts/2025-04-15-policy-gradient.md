@@ -2,9 +2,13 @@
 layout: post
 title: "What is Policy Gradient?"
 date: 2025-04-15
-categories: RL
-permalink: /RL/policy-gradient/
-author: "Yohan Lee"
+categories: [RL]
+description: Policy gradient methods optimize the policy directly by computing gradients of the objective function, forming the basis of REINFORCE and A2C/A3C algorithms.
+tags: [reinforcement-learning, policy-gradient, reinforce, a2c, gae]
+giscus_comments: false
+related_posts: true
+toc:
+  sidebar: left
 ---
 
 **Policy gradient** is a method of RL that optimize the policy directly, by computing the gradient of the objective function w.r.t. the policy function parameters $\theta$.

@@ -2,9 +2,13 @@
 layout: post
 title: "What is Offline RL?"
 date: 2025-04-24
-categories: RL
-permalink: /RL/offlinerl/
-author: "Yohan Lee"
+categories: [RL]
+description: Offline reinforcement learning aims to learn policies from a fixed dataset without environment interaction, bridging the gap between standard RL and data-driven machine learning.
+tags: [reinforcement-learning, offline-rl, batch-rl, distribution-shift]
+giscus_comments: false
+related_posts: true
+toc:
+  sidebar: left
 ---
 
 **Offline reinforcement learning**, also known as batch reinforcement learning is a method in between standard online RL and data-driven machine learning.

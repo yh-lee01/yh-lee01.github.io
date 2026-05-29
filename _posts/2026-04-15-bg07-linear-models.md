@@ -2,9 +2,13 @@
 layout: post
 title: "7. Linear Models"
 date: 2026-04-15
-categories: background
-permalink: /background/07-linear-models/
-author: "Yohan Lee"
+categories: [background]
+description: Linear models — including linear regression, logistic regression, and softmax regression — are the simplest parametric models and the building blocks of deep learning.
+tags: [machine-learning, linear-models, regression, classification]
+giscus_comments: false
+related_posts: true
+toc:
+  sidebar: left
 ---
 
 Linear models are the simplest parametric models, yet they remain the building blocks of deep learning through their role as the final layers of neural networks.
