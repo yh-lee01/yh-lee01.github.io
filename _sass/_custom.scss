@@ -57,7 +57,7 @@ samp {
 
 /* Desktop layout (navbar-expand-sm behaves at min-width: 576px) */
 @media (min-width: 576px) {
-  .navbar-collapse {
+  .navbar-collapse.collapse {
     display: flex !important;
     flex-grow: 1 !important;
     justify-content: flex-end !important;
@@ -87,9 +87,15 @@ samp {
 
 /* Mobile layout adaptation */
 @media (max-width: 575.98px) {
-  .navbar-collapse {
+  .navbar-collapse.collapse:not(.show) {
+    display: none !important;
+  }
+
+  .navbar-collapse.collapse.show {
+    display: flex !important;
     width: 100% !important;
   }
+
   .navbar-nav {
     display: flex !important;
     flex-direction: column !important;
@@ -584,4 +590,23 @@ select,
   ::selection {
     background-color: rgba(105, 65, 198, 0.2);
   }
+}
+
+/* ---- Fixed Navbar Positioning Fallbacks ---- */
+body.fixed-top-nav {
+  padding-top: 56px !important;
+}
+
+.fixed-top {
+  position: fixed !important;
+  top: 0 !important;
+  right: 0 !important;
+  left: 0 !important;
+  z-index: 1030 !important;
+}
+
+.sticky-top {
+  position: sticky !important;
+  top: 0 !important;
+  z-index: 1020 !important;
 }
