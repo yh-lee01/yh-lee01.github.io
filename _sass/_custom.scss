@@ -60,44 +60,46 @@ samp {
 }
 
 /*
- * CRITICAL: Use #navbarNav ID selector for high specificity.
- * The theme/Tailwind sets .collapse { display: none } which beats class-only
- * media queries. ID selectors win regardless of source order.
+ * Navbar collapse: the "collapse" class is intentionally removed from HTML
+ * to prevent theme/Bootstrap JS from injecting display:none at runtime.
+ * Visibility is controlled entirely here via #navbarNav.
  */
 
-/* Desktop: always show the navbar menu */
-@media (min-width: 576px) {
-  #navbarNav {
-    display: flex !important;
-    flex-grow: 1 !important;
-    justify-content: flex-end !important;
-    align-items: center !important;
-  }
-
-  .navbar-nav {
-    display: flex !important;
-    flex-direction: row !important;
-    justify-content: flex-end !important;
-    align-items: center !important;
-    margin-left: auto !important;
-    flex-wrap: nowrap !important;
-  }
-
-  .navbar-nav .nav-item,
-  .navbar-nav .toggle-container {
-    margin-left: 0 !important;
-  }
-
-  .navbar-nav > li,
-  .navbar-nav > div {
-    margin-left: 0.75rem !important;
-  }
+/* Desktop: always visible, inline row */
+#navbarNav {
+  display: flex !important;
+  flex-grow: 1 !important;
+  justify-content: flex-end !important;
+  align-items: center !important;
 }
 
-/* Mobile: hide/show via .show class */
+.navbar-nav {
+  display: flex !important;
+  flex-direction: row !important;
+  justify-content: flex-end !important;
+  align-items: center !important;
+  margin-left: auto !important;
+  flex-wrap: nowrap !important;
+  list-style: none !important;
+  padding-left: 0 !important;
+  margin-bottom: 0 !important;
+}
+
+.navbar-nav .nav-item,
+.navbar-nav .toggle-container {
+  margin-left: 0 !important;
+}
+
+.navbar-nav > li,
+.navbar-nav > div {
+  margin-left: 0.75rem !important;
+}
+
+/* Mobile: hidden by default, shown via .show */
 @media (max-width: 575.98px) {
   #navbarNav {
     display: none !important;
+    flex-basis: 100% !important;
   }
 
   #navbarNav.show {
@@ -109,15 +111,16 @@ samp {
   }
 
   .navbar-nav {
-    display: flex !important;
     flex-direction: column !important;
     align-items: stretch !important;
     width: 100% !important;
     margin-top: 0.5rem !important;
     gap: 0.25rem !important;
+    flex-wrap: wrap !important;
   }
 
   .navbar-nav > li {
+    margin-left: 0 !important;
     margin-bottom: 0 !important;
   }
 
@@ -130,10 +133,6 @@ samp {
 
   .navbar .container {
     flex-wrap: wrap !important;
-  }
-
-  #navbarNav {
-    flex-basis: 100% !important;
   }
 }
 
@@ -647,15 +646,21 @@ html {
   }
 }
 
-/* ---- BibTeX Collapsible Style ---- */
-/* Only hide bibtex/abstract collapse blocks, NOT the navbar */
+/* ---- BibTeX / Abstract Collapsible ---- */
+/* Theme uses .collapse and .hidden on these blocks. Override Tailwind's
+   .publications .hidden { display: block } that forces them visible. */
 .bibtex.collapse,
-.abstract.collapse {
+.abstract.collapse,
+.publications .hidden,
+.publications .bibtex:not(.show),
+.publications .abstract:not(.show) {
   display: none !important;
 }
 
 .bibtex.collapse.show,
-.abstract.collapse.show {
+.abstract.collapse.show,
+.bibtex.show,
+.abstract.show {
   display: block !important;
 }
 

@@ -29,6 +29,7 @@ module.exports = {
       "sticky-top",
       "row",
       "bullet",
+      "hidden",
     ],
     deep: [
       /^navbar/,
