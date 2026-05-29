@@ -58,6 +58,8 @@ jobs:
     steps:
       - name: Checkout 🛎️
         uses: actions/checkout@v4
+        env:
+          FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
       - name: Setup Ruby 💎
         uses: ruby/setup-ruby@v1
         with:
@@ -67,14 +69,13 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: "3.13"
-          cache: "pip"
       - name: Setup Node 🧰
         uses: actions/setup-node@v4
         with:
           node-version: "20"
           cache: "npm"
       - name: Install JS deps 📦
-        run: npm ci
+        run: npm install
       - name: Update _config.yml ⚙️
         uses: fjogeleit/yaml-update-action@main
         with:
