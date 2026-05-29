@@ -1,68 +1,28 @@
 /* ==========================================================================
    Custom Theme — Yohan Lee Academic Site
-   Overrides al_folio_core gem defaults via CSS custom properties.
+   Clean academic style inspired by ICLR Blogposts.
    ========================================================================== */
 
-/* ---- Light Mode ---- */
 :root {
-  /* Notion Purple primary accent */
-  --global-theme-color: #6941c6;
-  --global-hover-color: #5329b3;
+  --global-theme-color: #2962ff;
+  --global-hover-color: #0039cb;
   --global-hover-text-color: #ffffff;
 
-  /* Backgrounds */
   --global-bg-color: #ffffff;
-  --global-code-bg-color: #f9f9fb;
+  --global-code-bg-color: #f5f5f5;
   --global-card-bg-color: #ffffff;
 
-  /* Text - Notion warm charcoal ink */
-  --global-text-color: #191919;
-  --global-text-color-light: #5a5a5a;
+  --global-text-color: #212121;
+  --global-text-color-light: #616161;
 
-  /* Navbar */
-  --global-navbar-bg-color: rgba(255, 255, 255, 0.95);
-  --global-navbar-text-color: #191919;
+  --global-navbar-bg-color: #ffffff;
+  --global-navbar-text-color: #212121;
 
-  /* Footer */
-  --global-footer-bg-color: #191919;
-  --global-footer-text-color: #efeff1;
-  --global-footer-link-color: #ffffff;
+  --global-footer-bg-color: #fafafa;
+  --global-footer-text-color: #616161;
+  --global-footer-link-color: #212121;
 
-  /* Divider - Notion hairline border */
-  --global-divider-color: #efeff1;
+  --global-divider-color: #e0e0e0;
 
-  /* Distill */
-  --global-distill-app-color: #5a5a5a;
-}
-
-/* ---- Dark Mode ---- */
-[data-theme="dark"] {
-  /* Soft purple accent */
-  --global-theme-color: #9f7aea;
-  --global-hover-color: #b794f4;
-  --global-hover-text-color: #191919;
-
-  /* Backgrounds - Notion Dark canvas */
-  --global-bg-color: #191919;
-  --global-code-bg-color: #262626;
-  --global-card-bg-color: #202020;
-
-  /* Text */
-  --global-text-color: #efeff1;
-  --global-text-color-light: #9b9b9b;
-
-  /* Navbar */
-  --global-navbar-bg-color: rgba(25, 25, 25, 0.95);
-  --global-navbar-text-color: #efeff1;
-
-  /* Footer */
-  --global-footer-bg-color: #efeff1;
-  --global-footer-text-color: #191919;
-  --global-footer-link-color: #000000;
-
-  /* Divider */
-  --global-divider-color: #2e2e2e;
-
-  /* Distill */
-  --global-distill-app-color: #efeff1;
+  --global-distill-app-color: #616161;
 }
