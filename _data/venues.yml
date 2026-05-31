@@ -1,9 +1,6 @@
-"AJP":
-  url: https://aapt.scitation.org/journal/ajp
-  color: "#00369f"
+"Interspeech":
+  url: https://www.interspeech2026.org/
+  color: "#1a7a99"
 
-"PhysRev":
-  url: https://journals.aps.org/
-
-"Vision":
-  color: "#009f36"
+"Under review":
+  color: "#828282"
