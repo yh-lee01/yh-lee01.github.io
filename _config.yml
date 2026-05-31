@@ -26,6 +26,10 @@ back_to_top: true
 # Theme
 # -----------------------------------------------------------------------------
 
+# code highlighter theme (matches ICLR blog posts design)
+highlight_theme_light: github   # https://github.com/jwarby/jekyll-pygments-themes
+highlight_theme_dark: native    # https://github.com/jwarby/jekyll-pygments-themes
+
 repo_theme_light: default
 repo_theme_dark: dark
 repo_trophies:
