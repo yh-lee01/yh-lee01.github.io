@@ -1,10 +1,10 @@
 {
   "basics": {
     "name": "Yohan Lee",
-    "label": "Senior Undergraduate",
+    "label": "Undergraduate Researcher",
     "email": "john1111369@g.skku.edu",
     "url": "https://yh-lee01.github.io",
-    "summary": "Senior undergraduate at Sungkyunkwan University (Computer Science and Engineering) interested in the intersection of generative models and sequential decision-making, with a focus on AI safety.",
+    "summary": "I study the intersection of generative models and sequential decision-making, with a focus on safety. My current work centers on Flow Matching (Interspeech 2026), with growing interest in the data-centric foundations of embodied agents.",
     "location": {
       "city": "Seoul",
       "countryCode": "KR"
@@ -14,55 +14,130 @@
         "network": "GitHub",
         "username": "yh-lee01",
         "url": "https://github.com/yh-lee01"
+      },
+      {
+        "network": "LinkedIn",
+        "username": "yh-lee01",
+        "url": "https://linkedin.com/in/yh-lee01"
       }
     ]
   },
   "education": [
     {
       "institution": "Sungkyunkwan University",
-      "area": "Computer Science and Engineering",
-      "studyType": "B.S. in Computer Science",
-      "startDate": "2021-03",
+      "studyType": "B.S. in Computer Science and Engineering",
+      "area": "GPA: 3.78 / 4.5",
+      "startDate": "2023-02",
       "endDate": "2027-08"
+    },
+    {
+      "institution": "Myongji University",
+      "studyType": "B.S. in Computer Engineering",
+      "area": "Transferred to SKKU · GPA: 4.06 / 4.5",
+      "startDate": "2021-02",
+      "endDate": "2022-12"
+    }
+  ],
+  "publications": [
+    {
+      "name": "Generate and Calibrate: Spectral Contrastive Flow Matching for Audio-Visual Sound Separation",
+      "publisher": "Submitted to Interspeech 2026 (under review)",
+      "releaseDate": "2026",
+      "summary": "Yohan Lee*, Sujung Oh*, Gaeun Ko, Sangmin Lee†  (*equal contribution, †corresponding author)"
     }
   ],
   "work": [
     {
-      "name": "Pixel Lab (Korea University)",
-      "position": "Research Assistant",
-      "startDate": "2025",
-      "summary": "Worked on multi-modal generation and Flow Matching frameworks."
+      "name": "Pixel Lab, Korea University",
+      "position": "Undergraduate Researcher",
+      "summary": "Advisor: Prof. Sangmin Lee",
+      "startDate": "2025-02",
+      "highlights": [
+        "Spectral Contrastive Flow Matching (SCFM): proposed contrastive objectives extending Flow Matching-based generative frameworks, improving spectral discrimination across concurrent sound sources.",
+        "Energy-Guided Calibration (EGC): designed a calibration technique addressing energy imbalance between separated sources, enhancing perceptual quality of isolated audio streams.",
+        "Co-first-authored a paper submitted to Interspeech 2026 (under review)."
+      ]
     },
     {
-      "name": "AIoT Lab (Seoul National University)",
-      "position": "Research Assistant",
-      "startDate": "2025",
-      "summary": "Researched out-of-distribution robustness and ImageNet-ES."
+      "name": "V-Lab, Sungkyunkwan University",
+      "position": "Undergraduate Research Program",
+      "summary": "Advisor: Prof. Eunbyung Park",
+      "startDate": "2024-07",
+      "endDate": "2024-08",
+      "highlights": [
+        "DDPM-based 3D Synthesis: developed a generative pipeline combining score-based diffusion with neural rendering for automated architectural model synthesis and texturing.",
+        "Conducted empirical analysis on noise schedules and loss function design to improve visual fidelity of generated 3D assets."
+      ]
     },
     {
-      "name": "V-Lab (Sungkyunkwan University)",
-      "position": "Research Assistant",
-      "startDate": "2024",
-      "summary": "Studied sequential decision making and 3D synthesis."
+      "name": "AIoT Lab, Seoul National University",
+      "position": "Undergraduate Researcher",
+      "summary": "Advisor: Prof. Hyung-Sin Kim",
+      "startDate": "2023-12",
+      "endDate": "2024-02",
+      "highlights": [
+        "OOD & Robustness Benchmark: contributed to robust dataset evaluation pipelines for visual perception covariate shifts (cf. ImageNet-ES, CVPR 2024).",
+        "On-Device AI: explored model compression techniques and edge deployment on Google Coral Board, supported by the Google ExploreCSR program."
+      ]
+    }
+  ],
+  "projects": [
+    {
+      "name": "Sign Language Interpreter in Emergency Situations",
+      "summary": "Python, Flutter, MediaPipe",
+      "startDate": "2023-08",
+      "highlights": [
+        "Built a real-time emergency medical communication system with a custom 70-word sign language dataset, LSTM/GRU classifiers on MediaPipe keypoints, and full-stack tablet deployment.",
+        "Awarded Grand Prize at the Ambient AI Competition, SNU GSDS."
+      ]
+    }
+  ],
+  "awards": [
+    {
+      "title": "Grand Prize, Ambient AI Competition",
+      "awarder": "SNU GSDS",
+      "date": "2023-08"
+    },
+    {
+      "title": "Academic Excellence Scholarship",
+      "awarder": "Myongji University",
+      "summary": "Awarded in 2021 and 2022",
+      "date": "2022"
     }
   ],
   "skills": [
     {
-      "name": "Generative Modeling",
+      "name": "ML / DL",
       "keywords": [
+        "PyTorch",
+        "JAX/Flax",
         "Flow Matching",
         "Diffusion Models",
-        "Normalizing Flows",
-        "DDPM"
+        "Reinforcement Learning (SAC, Policy Gradient)",
+        "OOD Detection"
       ]
     },
     {
-      "name": "Reinforcement Learning",
-      "keywords": ["Safe RL", "CMDP", "PPO", "TRPO", "SAC", "DDPG"]
+      "name": "Programming & Tools",
+      "keywords": [
+        "Python",
+        "C/C++",
+        "Git",
+        "Linux",
+        "Docker",
+        "Weights & Biases",
+        "LaTeX"
+      ]
+    }
+  ],
+  "languages": [
+    {
+      "language": "Korean",
+      "fluency": "Native"
     },
     {
-      "name": "Programming & Frameworks",
-      "keywords": ["Python", "PyTorch", "Jekyll", "HTML/CSS", "JavaScript"]
+      "language": "English",
+      "fluency": "Upper-Intermediate"
     }
   ]
 }
