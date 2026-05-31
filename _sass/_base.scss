@@ -194,11 +194,15 @@ ul.task-list input[type="checkbox"] {
 
 .profile {
   width: 100%;
+  text-align: center;
 
   .more-info {
-    margin-bottom: 5px;
-    margin-top: 5px;
-    font-family: monospace;
+    margin-bottom: 0.5rem;
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--global-divider-color);
+    font-size: 0.8rem;
+    color: var(--global-text-color-light);
 
     p {
       display: inline-block;
@@ -441,6 +445,7 @@ ul.task-list input[type="checkbox"] {
 
   .contact-note {
     font-size: 0.8rem;
+    color: var(--global-text-color-light);
     margin-top: 0.25rem;
   }
 }
