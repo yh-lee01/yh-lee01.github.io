@@ -1,14 +1,30 @@
 ---
-layout: post
-title: "13. Sequence Models"
+layout: distill
+title: 13. Sequence Models
 date: 2025-04-15
-categories: [background]
+categories:
+- background
+tags:
+- machine-learning
+- deep-learning
+- rnn
+- lstm
+- attention
+- sequence-models
 description: Sequential data requires models that handle variable-length inputs and capture temporal dependencies, covering RNNs, LSTMs, GRUs, and the attention mechanism.
-tags: [machine-learning, deep-learning, rnn, lstm, attention, sequence-models]
 giscus_comments: false
 related_posts: true
+htmlwidgets: true
+authors:
+- name: Yohan Lee
+  url: https://yh-lee01.github.io
+  affiliations:
+    name: Sungkyunkwan University
 toc:
-  sidebar: left
+- name: Recurrent Neural Networks (RNNs)
+- name: LSTM (Long Short-Term Memory)
+- name: GRU (Gated Recurrent Unit)
+- name: Attention Mechanism
 ---
 
 Sequential data (text, speech, time series) requires models that can handle variable-length inputs and capture temporal dependencies.

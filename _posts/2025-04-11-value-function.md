@@ -1,14 +1,22 @@
 ---
-layout: post
-title: "What is a value function?"
+layout: distill
+title: What is a value function?
 date: 2025-04-11
-categories: [RL]
+categories:
+- RL
+tags:
+- reinforcement-learning
+- value-function
+- q-function
 description: Value functions map states (or state-action pairs) to expected returns under a given policy, forming the foundation for the Bellman equation.
-tags: [reinforcement-learning, value-function, q-function]
 giscus_comments: false
 related_posts: true
-toc:
-  sidebar: left
+htmlwidgets: true
+authors:
+- name: Yohan Lee
+  url: https://yh-lee01.github.io
+  affiliations:
+    name: Sungkyunkwan University
 ---
 
 In RL, we try to maximize the long-term collected discounted rewards, or return.

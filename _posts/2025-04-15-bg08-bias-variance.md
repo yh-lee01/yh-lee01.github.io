@@ -1,14 +1,28 @@
 ---
-layout: post
-title: "8. Bias-Variance Tradeoff"
+layout: distill
+title: 8. Bias-Variance Tradeoff
 date: 2025-04-15
-categories: [background]
+categories:
+- background
+tags:
+- machine-learning
+- bias-variance
+- regularization
+- generalization
 description: The bias-variance decomposition explains the central challenge of generalization, covering overfitting, underfitting, regularization, and cross-validation.
-tags: [machine-learning, bias-variance, regularization, generalization]
 giscus_comments: false
 related_posts: true
+htmlwidgets: true
+authors:
+- name: Yohan Lee
+  url: https://yh-lee01.github.io
+  affiliations:
+    name: Sungkyunkwan University
 toc:
-  sidebar: left
+- name: The Decomposition
+- name: Overfitting and Underfitting
+- name: Regularization
+- name: Cross-Validation
 ---
 
 Generalization — performing well on unseen data — is the central challenge of ML. The bias-variance decomposition explains why.

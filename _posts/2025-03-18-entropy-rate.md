@@ -1,14 +1,23 @@
 ---
-layout: post
-title: "What is Entropy Rate?"
+layout: distill
+title: What is Entropy Rate?
 date: 2025-03-18
-categories: [infotheory]
+categories:
+- infotheory
+tags:
+- information-theory
+- entropy-rate
+- markov-process
+- thermodynamics
 description: Entropy rate extends the concept of entropy to random processes, measuring the per-symbol uncertainty in a sequence of random variables.
-tags: [information-theory, entropy-rate, markov-process, thermodynamics]
 giscus_comments: false
 related_posts: true
-toc:
-  sidebar: left
+htmlwidgets: true
+authors:
+- name: Yohan Lee
+  url: https://yh-lee01.github.io
+  affiliations:
+    name: Sungkyunkwan University
 ---
 
 **Entropy rate** is defined in a random process, a sequence or set of random variables.

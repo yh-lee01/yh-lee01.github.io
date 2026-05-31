@@ -1,14 +1,22 @@
 ---
-layout: post
-title: "What is Bellman equation?"
+layout: distill
+title: What is Bellman equation?
 date: 2025-04-12
-categories: [RL]
+categories:
+- RL
+tags:
+- reinforcement-learning
+- bellman-equation
+- dynamic-programming
 description: The Bellman equation defines the value function as a fixed point of the Bellman operator, and extends to the Bellman optimality equation for optimal policies.
-tags: [reinforcement-learning, bellman-equation, dynamic-programming]
 giscus_comments: false
 related_posts: true
-toc:
-  sidebar: left
+htmlwidgets: true
+authors:
+- name: Yohan Lee
+  url: https://yh-lee01.github.io
+  affiliations:
+    name: Sungkyunkwan University
 ---
 
 The following equation is the 1-step transition property of value function.

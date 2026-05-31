@@ -1,14 +1,31 @@
 ---
-layout: post
-title: "Flow Matching for Generative Modeling"
+layout: distill
+title: Flow Matching for Generative Modeling
 date: 2026-04-04
-categories: [paper_review]
+categories:
+- paper_review
+tags:
+- flow-matching
+- generative-models
+- normalizing-flows
+- diffusion-models
 description: Flow Matching is a simulation-free framework for training Continuous Normalizing Flows that directly regresses a vector field transporting samples from a prior to the data distribution.
-tags: [flow-matching, generative-models, normalizing-flows, diffusion-models]
 giscus_comments: false
 related_posts: true
+htmlwidgets: true
+authors:
+- name: Yohan Lee
+  url: https://yh-lee01.github.io
+  affiliations:
+    name: Sungkyunkwan University
 toc:
-  sidebar: left
+- name: Overview
+- name: 'Background: Continuous Normalizing Flows'
+- name: Conditional Flow Matching
+- name: Gaussian Conditional Paths
+- name: Connection to Diffusion Models
+- name: Why It Matters for Robotics
+- name: Summary
 ---
 
 **Paper:** Lipman et al., _Flow Matching for Generative Modeling_, ICLR 2023. [[arXiv]](https://arxiv.org/abs/2210.02747)

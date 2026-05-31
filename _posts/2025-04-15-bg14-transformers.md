@@ -1,14 +1,31 @@
 ---
-layout: post
-title: "14. Transformers & Self-Attention"
+layout: distill
+title: 14. Transformers & Self-Attention
 date: 2025-04-15
-categories: [background]
+categories:
+- background
+tags:
+- machine-learning
+- deep-learning
+- transformers
+- attention
+- nlp
 description: The Transformer replaced recurrence with pure attention, enabling massive parallelism and scaling to billions of parameters through self-attention and positional encoding.
-tags: [machine-learning, deep-learning, transformers, attention, nlp]
 giscus_comments: false
 related_posts: true
+htmlwidgets: true
+authors:
+- name: Yohan Lee
+  url: https://yh-lee01.github.io
+  affiliations:
+    name: Sungkyunkwan University
 toc:
-  sidebar: left
+- name: Self-Attention
+- name: Multi-Head Attention
+- name: Positional Encoding
+- name: Transformer Block
+- name: Encoder vs Decoder
+- name: Scaling Laws
 ---
 
 The Transformer replaced recurrence with pure attention, enabling massive parallelism and scaling to billions of parameters.

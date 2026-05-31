@@ -1,14 +1,29 @@
 ---
-layout: post
-title: "11. Neural Networks & Backpropagation"
+layout: distill
+title: 11. Neural Networks & Backpropagation
 date: 2025-04-15
-categories: [background]
+categories:
+- background
+tags:
+- machine-learning
+- neural-networks
+- deep-learning
+- backpropagation
 description: Neural networks are compositions of simple functions that can approximate any continuous mapping, covering MLPs, activation functions, backpropagation, and initialization.
-tags: [machine-learning, neural-networks, deep-learning, backpropagation]
 giscus_comments: false
 related_posts: true
+htmlwidgets: true
+authors:
+- name: Yohan Lee
+  url: https://yh-lee01.github.io
+  affiliations:
+    name: Sungkyunkwan University
 toc:
-  sidebar: left
+- name: From Perceptron to MLP
+- name: Activation Functions
+- name: Backpropagation
+- name: Weight Initialization
+- name: Batch Normalization
 ---
 
 Neural networks are compositions of simple functions that can approximate any continuous mapping — making them the universal workhorse of modern ML.

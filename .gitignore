@@ -16,3 +16,7 @@ node_modules/
 output/playwright/
 test-results/
 vendor
+
+# Local reference copy of ICLR Blogposts 2026 source (do not commit / publish)
+2026-main.zip
+2026-main/

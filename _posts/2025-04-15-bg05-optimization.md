@@ -1,14 +1,29 @@
 ---
-layout: post
-title: "5. Optimization Theory"
+layout: distill
+title: 5. Optimization Theory
 date: 2025-04-15
-categories: [background]
+categories:
+- background
+tags:
+- machine-learning
+- optimization
+- gradient-descent
+- mathematics
 description: Understanding the landscape of loss functions through convexity, gradient descent, SGD, momentum, Adam, and constrained optimization with KKT conditions.
-tags: [machine-learning, optimization, gradient-descent, mathematics]
 giscus_comments: false
 related_posts: true
+htmlwidgets: true
+authors:
+- name: Yohan Lee
+  url: https://yh-lee01.github.io
+  affiliations:
+    name: Sungkyunkwan University
 toc:
-  sidebar: left
+- name: Convexity
+- name: Gradient Descent
+- name: Stochastic Gradient Descent (SGD)
+- name: Momentum and Adam
+- name: Constrained Optimization
 ---
 
 Training a model = solving an optimization problem. Understanding the landscape of loss functions is essential for choosing the right algorithm.

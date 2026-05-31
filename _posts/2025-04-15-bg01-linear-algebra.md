@@ -1,14 +1,28 @@
 ---
-layout: post
-title: "1. Linear Algebra Essentials"
+layout: distill
+title: 1. Linear Algebra Essentials
 date: 2025-04-15
-categories: [background]
+categories:
+- background
+tags:
+- machine-learning
+- linear-algebra
+- mathematics
 description: Linear algebra is the language of data — covering vectors, matrices, eigendecomposition, SVD, and positive definite matrices essential for machine learning.
-tags: [machine-learning, linear-algebra, mathematics]
 giscus_comments: false
 related_posts: true
+htmlwidgets: true
+authors:
+- name: Yohan Lee
+  url: https://yh-lee01.github.io
+  affiliations:
+    name: Sungkyunkwan University
 toc:
-  sidebar: left
+- name: Vectors and Inner Products
+- name: Matrices as Linear Maps
+- name: Eigendecomposition
+- name: Singular Value Decomposition (SVD)
+- name: Positive Definite Matrices
 ---
 
 Linear algebra is the language of data. Every dataset is a matrix, every feature is a vector, and every model transformation is a linear map.

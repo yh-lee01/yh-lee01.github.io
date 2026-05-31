@@ -1,15 +1,23 @@
 ---
-layout: post
-title: "What is Zero shot RL?"
+layout: distill
+title: What is Zero shot RL?
 date: 2025-05-11
-categories: [RL]
-description: Zero-shot RL trains agents without explicit reward signals to produce sub-optimal policies for arbitrary new rewards at test time, using successor representations and forward-backward methods.
+categories:
+- RL
 tags:
-  [reinforcement-learning, zero-shot-rl, successor-features, transfer-learning]
+- reinforcement-learning
+- zero-shot-rl
+- successor-features
+- transfer-learning
+description: Zero-shot RL trains agents without explicit reward signals to produce sub-optimal policies for arbitrary new rewards at test time, using successor representations and forward-backward methods.
 giscus_comments: false
 related_posts: true
-toc:
-  sidebar: left
+htmlwidgets: true
+authors:
+- name: Yohan Lee
+  url: https://yh-lee01.github.io
+  affiliations:
+    name: Sungkyunkwan University
 ---
 
 To develop a truly generalized reinforcement learning agent, it must be capable of generating useful policies for arbitrary rewards without training specified agent for each tasks.

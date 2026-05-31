@@ -1,14 +1,29 @@
 ---
-layout: post
-title: "Can Zero-shot RL enable test time safety?"
+layout: distill
+title: Can Zero-shot RL enable test time safety?
 date: 2025-06-01 +00:00
-categories: [paper_review]
+categories:
+- paper_review
+tags:
+- reinforcement-learning
+- safe-rl
+- zero-shot-rl
+- offline-rl
 description: FB-safe extends Forward-Backward representations to enable zero-shot reinforcement learning agents to satisfy safety constraints at test time without additional training.
-tags: [reinforcement-learning, safe-rl, zero-shot-rl, offline-rl]
 giscus_comments: false
 related_posts: true
+htmlwidgets: true
+authors:
+- name: Yohan Lee
+  url: https://yh-lee01.github.io
+  affiliations:
+    name: Sungkyunkwan University
 toc:
-  sidebar: left
+- name: Constrained Markov Decision Process (CMDP)
+- name: FB representation
+- name: Method
+- name: Experiments
+- name: Conclusion
 ---
 
 To develop a truly generalized agent, it is essential to enable it to perform well on multiple unseen tasks without training a separate agent for each scenario. In standard reinforcement learning (RL), an agent trained on a single, fixed reward function typically lacks the ability to generalize beyond that task. Zero-shot RL addresses this challenge by training agents without access to explicit reward signals and aims to produce policies that can be conditioned on any given reward instantly at test time. This capability is particularly valuable in offline RL settings, where agents are pretrained on large-scale datasets that do not contain reward labels.

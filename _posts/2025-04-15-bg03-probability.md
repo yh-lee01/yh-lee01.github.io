@@ -1,14 +1,30 @@
 ---
-layout: post
-title: "3. Probability Fundamentals"
+layout: distill
+title: 3. Probability Fundamentals
 date: 2025-04-15
-categories: [background]
+categories:
+- background
+tags:
+- machine-learning
+- probability
+- statistics
+- mathematics
 description: Probability theory is the framework for reasoning under uncertainty, covering probability spaces, Bayes' rule, random variables, and the central limit theorem.
-tags: [machine-learning, probability, statistics, mathematics]
 giscus_comments: false
 related_posts: true
+htmlwidgets: true
+authors:
+- name: Yohan Lee
+  url: https://yh-lee01.github.io
+  affiliations:
+    name: Sungkyunkwan University
 toc:
-  sidebar: left
+- name: Probability Space
+- name: Conditional Probability and Independence
+- name: Bayes' Rule
+- name: Random Variables and Expectation
+- name: Variance and Covariance
+- name: Law of Large Numbers & Central Limit Theorem
 ---
 
 Probability theory is the framework for reasoning under uncertainty. Every ML model is, at its core, a probabilistic statement about data.
