@@ -114,7 +114,9 @@ a:hover { color: var(--global-hover-color); text-decoration: underline; text-und
   backdrop-filter: saturate(150%) blur(8px);
   -webkit-backdrop-filter: saturate(150%) blur(8px);
 }
-.navbar .navbar-brand.wordmark { font-family: var(--font-sans); font-size: 1.3rem; font-weight: 600; color: var(--global-text-color); }
+/* 워드마크 = hero 이름과 동일: Yohan(700) + Lee(400) */
+.navbar .navbar-brand.wordmark { font-family: var(--font-sans); font-size: 1.3rem; font-weight: 400; color: var(--global-text-color); }
+.navbar .navbar-brand.wordmark .font-weight-bold { font-weight: 700; }
 .navbar.navbar-light .navbar-nav .nav-item .nav-link {
   padding-left: 0.75rem; padding-right: 0.75rem;
   font-size: 1rem; font-weight: 500; position: relative;
@@ -131,6 +133,9 @@ a:hover { color: var(--global-hover-color); text-decoration: underline; text-und
    4. HOME (about) — 사진/연락처/섹션헤딩/latest posts
    ===================================================================== */
 .about .post-title, .post-header .post-title { font-weight: 700; margin-bottom: 1.25rem; }
+/* A-1: hero 이름은 Yohan(700) + Lee(400) — 워드마크와 통일 (특이도 ↑) */
+.post-header .post-title.hero-name { font-weight: 400; }
+.post-header .post-title.hero-name .font-weight-bold { font-weight: 700; }
 
 /* 프로필 컬럼: 구분선 전부 제거(요청) */
 .profile { text-align: center; }
@@ -248,7 +253,7 @@ html[data-theme="dark"] .profile img { outline: none; }
    ===================================================================== */
 .header-bar { text-align: left; margin: 0.5rem 0 1.5rem; padding-bottom: 1.1rem; border-bottom: 1px solid var(--global-divider-color); }
 .post-list { margin-top: 1.5rem; }   /* 헤더↔첫 포스트 간격 축소(이미지4-9) */
-.header-bar h1 { color: var(--global-text-color); font-family: var(--font-sans); font-weight: 700; font-size: var(--fs-h1); margin: 0 0 0.4rem; }
+.header-bar h1 { color: var(--global-text-color); font-family: var(--font-sans); font-weight: 700; font-size: var(--fs-h1); margin: 0 0 0.4rem; text-transform: lowercase; }   /* A-2: "Blog" → "blog" */
 .header-bar h2 {
   color: var(--global-text-color-light);
   font-family: var(--font-sans);
@@ -335,13 +340,15 @@ html[data-theme="dark"] .profile img { outline: none; }
 nav[data-toggle="toc"] .nav-link { font-family: var(--font-sans); color: var(--global-text-color-light); border-left: 2px solid transparent; padding: 0.2rem 0.75rem; }
 nav[data-toggle="toc"] .nav-link.active { color: var(--global-theme-color); border-left-color: var(--global-theme-color); font-weight: 600; }
 
-.cv .card {
+/* A-6: 프로젝트 카드 = CV 카드 동일 토큰 (border/radius/shadow 일체감) */
+.cv .card, .projects .card {
   background: var(--global-card-bg-color);
   border: 1px solid var(--global-divider-color);
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-sm) !important;
-  padding: 1.5rem; margin-top: 1rem;
 }
+.cv .card { padding: 1.5rem; margin-top: 1rem; }
+.projects .card { overflow: hidden; }   /* 썸네일 모서리 radius 맞춤 */
 .cv .card .card-title { font-family: var(--font-sans); font-weight: 700; text-transform: lowercase; margin-bottom: 1rem; padding-bottom: 0.4rem; border-bottom: 1px solid var(--global-divider-color); }
 .cv .card h6.title a { color: var(--global-text-color); }
 .cv .card h6.title a:hover { color: var(--global-theme-color); }
