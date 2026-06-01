@@ -102,6 +102,11 @@ pagination:
 <div class="row">
           <div class="col-sm-9">
 {% endif %}
+      {% if categories != "" %}
+        {% for category in post.categories %}
+          <span class="cat">{{ category }}</span>
+        {% endfor %}
+      {% endif %}
         <h3>
         {% if post.redirect == blank %}
           <a class="post-title" href="{{ post.url | relative_url }}">{{ post.title }}</a>
@@ -135,17 +140,12 @@ pagination:
               {% endunless %}
               {% endfor %}
           {% endif %}
-
-          {% if categories != "" %}
-            {% for category in post.categories %}
-            <a href="{{ category | slugify | prepend: '/blog/category/' | relative_url }}">
-              <i class="fa-solid fa-tag fa-sm"></i> {{ category }}</a>
-              {% unless forloop.last %}
-                &nbsp;
-              {% endunless %}
-              {% endfor %}
-          {% endif %}
     </p>
+      {% if post.redirect == blank %}
+        <a class="read-link" href="{{ post.url | relative_url }}">Read &rarr;</a>
+      {% else %}
+        <a class="read-link" href="{{ post.redirect | default: post.url | relative_url }}">Read &rarr;</a>
+      {% endif %}
 
 {% if post.thumbnail %}
 
