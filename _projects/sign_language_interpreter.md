@@ -9,7 +9,7 @@ category: coursework
 
 Built a real-time emergency sign language interpreter using **LSTM/GRU** classifiers on **MediaPipe** keypoints, trained on a custom 70-word dataset and deployed as a full-stack tablet application.
 
-**Award**: Grand Prize, SNU GSDS Ambient AI Competition (Aug. 2023)
+<span class="award-badge">Award</span> Grand Prize, SNU GSDS Ambient AI Competition (Aug. 2023)
 
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">

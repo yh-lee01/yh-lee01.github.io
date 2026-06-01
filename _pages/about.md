@@ -28,7 +28,7 @@ latest_posts:
 
 I am a senior undergraduate at [Sungkyunkwan University](https://www.skku.edu) (Computer Science and Engineering, expected Aug. 2027), interested in the intersection of generative models and sequential decision-making, with a focus on AI safety. I have research experience at [Pixel Lab](https://sites.google.com/view/pixel-lab-ai/home) (Korea University), [AIoT Lab](https://aiot.snu.ac.kr/home) (Seoul National University), and [V-Lab](https://v-laboratory.github.io/#/) (Sungkyunkwan University). I am seeking graduate research opportunities for **Fall 2027**.
 
-## Research Interests
+## research interests
 
 I study the **intersection of generative models and sequential decision-making**, with a focus on **safety**. I view generative models as mathematical tools where capability and safety are shaped by the same underlying mathematics.
 
