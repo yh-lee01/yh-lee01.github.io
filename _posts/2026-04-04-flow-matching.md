@@ -3,7 +3,7 @@ layout: distill
 title: Flow Matching for Generative Modeling
 date: 2026-04-04
 categories:
-- paper_review
+- paper-review
 tags:
 - flow-matching
 - generative-models

@@ -4,8 +4,10 @@ title: Sign Language Interpreter in Emergency Situations
 description: Real-time emergency sign language interpreter using LSTM/GRU on MediaPipe keypoints (Grand Prize, SNU GSDS Ambient AI Competition)
 img: assets/img/sign.png
 importance: 1
-category: coursework
+category: selected
 ---
+
+<p class="project-meta">2023 · Python · Flutter · MediaPipe · LSTM/GRU</p>
 
 Built a real-time emergency sign language interpreter using **LSTM/GRU** classifiers on **MediaPipe** keypoints, trained on a custom 70-word dataset and deployed as a full-stack tablet application.
 

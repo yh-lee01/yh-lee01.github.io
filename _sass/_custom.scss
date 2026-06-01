@@ -1,14 +1,12 @@
 /* =====================================================================
-   _custom.scss — "Refined editorial academic" + v2 LaTeX 타이포 통일
-   v1 색 토큰·간격·컴포넌트 구조 유지 / v2가 타이포(폰트·스케일)·디테일 OVERRIDE.
-   글꼴: 세리프(Computer Modern) 하나로 통일, monospace는 코드 블록에만.
+   _custom.scss — v3: IBM Plex Sans/Mono (superfamily) + 페이지별 수정
+   색 토큰·간격·구조는 v1 유지. 폰트는 sans 본문 + mono(코드·메타·날짜·태그).
    ===================================================================== */
 
 /* =====================================================================
-   1. DESIGN TOKENS (색은 v1 유지)
+   1. TOKENS
    ===================================================================== */
 :root {
-  /* LIGHT */
   --global-bg-color: #ffffff;
   --global-text-color: #15181c;
   --global-text-color-light: #6b7280;
@@ -26,19 +24,18 @@
   --radius-md: 10px;
   --radius-lg: 14px;
 
-  /* v2 타이포: 세리프 하나(LaTeX) + 코드용 mono */
-  --font-serif: "Computer Modern Serif", "Latin Modern Roman", Georgia, "Times New Roman", serif;
-  --font-mono: "Computer Modern Typewriter", ui-monospace, SFMono-Regular, monospace;
+  /* v3 폰트: IBM Plex superfamily */
+  --font-sans: "IBM Plex Sans", -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, "JetBrains Mono", monospace;
 
-  /* v2 스케일: v1보다 작게, "안 시끄럽게" */
   --fs-base: 1.0625rem;
   --lh-base: 1.65;
-  --fs-sm: 0.9rem;
+  --fs-sm: 0.875rem;
   --fs-h3: 1.25rem;
   --fs-h2: 1.5rem;
   --fs-h1: clamp(2rem, 4vw, 2.5rem);
   --measure: 68ch;
-  --container: 760px;
+  --container: 820px;   /* hero 균형 위해 v1 760 → 약간 넓게 */
 }
 
 html[data-theme="dark"] {
@@ -55,85 +52,57 @@ html[data-theme="dark"] {
 }
 
 /* =====================================================================
-   2. GLOBAL — 세리프 통일, 본문 폭, 링크(단순), 포커스, 모션
+   2. GLOBAL — sans 본문 + mono 메타, 좌측 정렬, 단순 링크
    ===================================================================== */
 body {
-  font-family: var(--font-serif);
+  font-family: var(--font-sans);
   font-size: var(--fs-base);
   line-height: var(--lh-base);
   color: var(--global-text-color);
   background-color: var(--global-bg-color);
-  font-feature-settings: "onum" 1, "kern" 1, "liga" 1;
+  text-align: left;                 /* justify 금지 (이미지1-3) */
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
-
-/* 거의 모든 것 = 세리프 하나 */
 body, h1, h2, h3, h4, h5, h6,
-.wordmark, nav, header, a, .navbar, .btn,
-p, li, td, th, span, input, button, label,
-.post-title, .card-title, .post-meta, .post-description, .desc,
-.post-tags a, .tag, .badge, .cv-date, .cv-download, .btn-meta,
-.publications .title, .author, .periodical, .news-title, blockquote {
-  font-family: var(--font-serif);
+.wordmark, nav, .navbar, .btn, p, li, td, th, span, input, button, label,
+.post-title, .card-title, .post-description, .desc, .news-title,
+.publications .title, .author, .periodical, .cv-download {
+  font-family: var(--font-sans);
 }
-
-/* monospace는 '진짜 코드'에만 */
+/* mono = 코드 + '코드 같은' 메타데이터 */
 pre, code, kbd, tt, samp, .highlight, .kbd,
-#search-toggle .nav-link {
+.post-meta, .post-date, .read-time, time,
+.post-tags a, .tag, .cv-date, .date-column .badge, .cv .badge,
+.project-meta, #search-toggle .nav-link {
   font-family: var(--font-mono);
 }
 
 strong, b { font-weight: 700; }
-
-h1, h2, h3, h4 {
-  font-weight: 700;
-  letter-spacing: normal;
-  line-height: 1.2;
-  color: var(--global-text-color);
-}
+h1, h2, h3, h4 { font-weight: 700; letter-spacing: -0.01em; line-height: 1.2; color: var(--global-text-color); }
 h1 { font-size: var(--fs-h1); }
 h2 { font-size: var(--fs-h2); }
 h3 { font-size: var(--fs-h3); }
 p { margin-bottom: 1rem; }
 
-/* 본문 폭 / 줄길이 (CV 사이드바·distill 레이아웃은 한정) */
+/* 본문 폭 / 줄길이 */
 .header-bar, .post-list { max-width: var(--container); margin-left: auto; margin-right: auto; }
 .post > article p, .post > article li,
 .post-content p, .post-content li { max-width: var(--measure); }
 
-/* 링크: 애니메이션 제거, 단순 hover 밑줄 */
-a {
-  color: var(--global-theme-color);
-  text-decoration: none;
-  background: none;
-}
-a:hover {
-  color: var(--global-hover-color);
-  text-decoration: underline;
-  text-underline-offset: 2px;
-  text-decoration-thickness: 1px;
-}
-/* 버튼/칩/네비/아이콘은 밑줄 없음 */
-.btn, .nav-link, .navbar-brand, .post-tags a, .tag, .btn-meta, .cv-download,
+/* 링크: 단순 hover 밑줄 */
+a { color: var(--global-theme-color); text-decoration: none; background: none; }
+a:hover { color: var(--global-hover-color); text-decoration: underline; text-underline-offset: 2px; text-decoration-thickness: 1px; }
+.btn, .nav-link, .navbar-brand, .post-tags a, .tag, .cv-download,
 .social a, .contact-icons a, .news-title, .post-title, .page-link, .badge {
   text-decoration: none !important;
 }
 
-/* 포커스 (a11y) */
-:focus-visible {
-  outline: 2px solid var(--global-theme-color);
-  outline-offset: 3px;
-  border-radius: 4px;
-}
+:focus-visible { outline: 2px solid var(--global-theme-color); outline-offset: 3px; border-radius: 4px; }
 :focus:not(:focus-visible) { outline: none; }
 
-/* 모션 정책 */
 @media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
-    animation-duration: 0.01ms !important;
-    transition-duration: 0.01ms !important;
-  }
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
 }
 
 /* =====================================================================
@@ -144,53 +113,38 @@ a:hover {
   background: color-mix(in srgb, var(--global-bg-color) 85%, transparent);
   backdrop-filter: saturate(150%) blur(8px);
   -webkit-backdrop-filter: saturate(150%) blur(8px);
-  transition: background 0.2s ease;
 }
-.navbar .navbar-brand.wordmark {
-  font-family: var(--font-serif);
-  font-size: 1.3rem;
-  color: var(--global-text-color);
-}
+.navbar .navbar-brand.wordmark { font-family: var(--font-sans); font-size: 1.3rem; font-weight: 600; color: var(--global-text-color); }
 .navbar.navbar-light .navbar-nav .nav-item .nav-link {
-  padding-left: 0.75rem;
-  padding-right: 0.75rem;
-  font-size: 1rem;
-  font-weight: 500;
-  position: relative;
+  padding-left: 0.75rem; padding-right: 0.75rem;
+  font-size: 1rem; font-weight: 500; position: relative;
   color: var(--global-text-color);
 }
 .navbar.navbar-light .navbar-nav .nav-item .nav-link:hover { color: var(--global-theme-color); }
-.navbar.navbar-light .navbar-nav .nav-item.active > .nav-link {
-  color: var(--global-theme-color);
-  font-weight: 700;
-}
+.navbar.navbar-light .navbar-nav .nav-item.active > .nav-link { color: var(--global-theme-color); font-weight: 600; }
 .navbar.navbar-light .navbar-nav .nav-item.active > .nav-link::after {
-  content: "";
-  position: absolute;
-  left: 0.75rem;
-  right: 0.75rem;
-  bottom: -2px;
-  height: 2px;
-  background: var(--global-theme-color);
+  content: ""; position: absolute; left: 0.75rem; right: 0.75rem; bottom: -2px; height: 2px; background: var(--global-theme-color);
 }
-/* ctrl k — 작고 옅은 코드 힌트 */
-#search-toggle .nav-link {
-  font-family: var(--font-mono);
+#search-toggle .nav-link { font-family: var(--font-mono); font-size: var(--fs-sm); color: var(--global-text-color-light); }
+
+/* =====================================================================
+   4. HOME (about) — 사진/연락처/섹션헤딩/latest posts
+   ===================================================================== */
+.about .post-title, .post-header .post-title { font-weight: 700; margin-bottom: 1.25rem; }
+
+/* 프로필 컬럼: 구분선 전부 제거(요청) */
+.profile { text-align: center; }
+.profile .more-info {
+  border-top: none !important;        /* _base.scss 의 border-top 제거 (선 2개 중 하나) */
+  padding-top: 0 !important;
+  margin-top: 0.75rem;
   font-size: var(--fs-sm);
   color: var(--global-text-color-light);
 }
-
-/* =====================================================================
-   4. HOME (about)
-   ===================================================================== */
-.about .post-title, .post-header .post-title {
-  font-weight: 700;
-  margin-bottom: 1.25rem;
-}
-
-.profile { text-align: center; }
+.profile .more-info p { margin: 0; }
+.profile hr, .profile .profile-sep { display: none !important; }   /* 남은 hr 제거 */
 .profile img {
-  width: clamp(160px, 18vw, 220px);
+  width: clamp(170px, 18vw, 210px);
   aspect-ratio: 1;
   border-radius: 50%;
   object-fit: cover;
@@ -200,40 +154,15 @@ a:hover {
   outline-offset: -4px;
 }
 html[data-theme="dark"] .profile img { outline: none; }
+.profile .social { margin-top: 1rem; text-align: center; }
+.profile .social .contact-icons { font-size: 1.25rem; display: flex; justify-content: center; gap: 1rem; }
+.profile .social .contact-icons a { color: var(--global-text-color-light); transition: color 0.15s ease, transform 0.15s ease; }
+.profile .social .contact-icons a:hover { color: var(--global-theme-color); transform: translateY(-2px); }
+.profile .contact-note { margin-top: 0.6rem; font-size: var(--fs-sm); color: var(--global-text-color-light); }
 
-.profile .social { margin-top: 1.1rem; text-align: center; }
-.profile .social .contact-icons {
-  font-size: 1.25rem;
-  display: flex;
-  justify-content: center;
-  gap: 1rem;
-}
-.profile .social .contact-icons a {
-  color: var(--global-text-color-light);
-  transition: color 0.15s ease, transform 0.15s ease;
-}
-.profile .social .contact-icons a:hover {
-  color: var(--global-theme-color);
-  transform: translateY(-2px);
-}
-.profile .profile-sep {
-  border: 0;
-  border-top: 1px solid var(--global-divider-color);
-  margin: 1.1rem auto;
-  width: 100%;
-}
-.profile .more-info {
-  font-size: var(--fs-sm);
-  color: var(--global-text-color-light);
-  word-break: break-word;
-}
-.profile .more-info a, .profile .contact-note a { color: var(--global-text-color-light); }
-.profile .more-info a:hover { color: var(--global-theme-color); }
-.profile .contact-note { margin-top: 0.5rem; font-size: var(--fs-sm); color: var(--global-text-color-light); }
-
-/* 섹션 헤딩 통일 (lowercase, \section 정도) */
+/* 섹션 헤딩 통일 (lowercase) */
 .post > article h2, .about h2 {
-  font-family: var(--font-serif);
+  font-family: var(--font-sans);
   font-size: var(--fs-h2);
   font-weight: 700;
   text-transform: lowercase;
@@ -243,15 +172,17 @@ html[data-theme="dark"] .profile img { outline: none; }
 }
 .post > article h2 a, .about h2 a { color: inherit; }
 
-/* latest posts 테이블: 날짜 = 세리프(작게·옅게), 제목 = 링크 */
+/* latest posts / news 표: 날짜(mono, 좁은 고정폭) ↔ 제목 (가로 공백 축소) */
 .news table { width: 100%; }
 .news table th {
-  font-family: var(--font-serif);
+  font-family: var(--font-mono);
   font-size: var(--fs-sm);
   font-weight: 400;
+  width: 1%;
+  white-space: nowrap;
+  padding-right: 1.5rem;
   color: var(--global-text-color-light);
   vertical-align: baseline;
-  white-space: nowrap;
 }
 .news table td { border-bottom: 1px solid var(--global-divider-color); }
 .news table tr:last-child td { border-bottom: none; }
@@ -259,34 +190,26 @@ html[data-theme="dark"] .profile img { outline: none; }
 .news table tr:hover .news-title { color: var(--global-theme-color); }
 
 /* =====================================================================
-   5. PUBLICATIONS
+   5. PUBLICATIONS — 썸네일 크게, 제목 compact, 저자 줄, 필터
    ===================================================================== */
 #bibsearch {
   border: 1px solid var(--global-divider-color);
   border-radius: var(--radius-md);
-  padding: 0.7rem 1rem;
+  padding: 0.65rem 1rem;
   font-size: var(--fs-base);
-  font-family: var(--font-serif);
+  font-family: var(--font-sans);
   max-width: var(--container);
   background: var(--global-bg-color);
   color: var(--global-text-color);
 }
-#bibsearch:focus {
-  border-color: var(--global-theme-color);
-  box-shadow: 0 0 0 3px var(--accent-subtle-bg);
-  outline: none;
-}
+#bibsearch::placeholder { color: var(--global-text-color-light); }
+#bibsearch:focus { border-color: var(--global-theme-color); box-shadow: 0 0 0 3px var(--accent-subtle-bg); outline: none; }
 
-/* 연도 워터마크 = 회색(절제) */
-.publications h2.bibliography {
-  color: var(--global-divider-color);
-  font-family: var(--font-serif);
-}
+.publications h2.bibliography { color: var(--global-divider-color); font-family: var(--font-sans); }
 
-/* 논문 제목 compact (거대 wrap 방지) */
-.publications .title, .selected-papers .title,
-.publications ol.bibliography li .title {
-  font-family: var(--font-serif);
+.publications ol.bibliography li .title,
+.selected-papers .title {
+  font-family: var(--font-sans);
   font-size: var(--fs-h3);
   line-height: 1.3;
   font-weight: 700;
@@ -295,17 +218,17 @@ html[data-theme="dark"] .profile img { outline: none; }
 .publications ol.bibliography li .author a { color: var(--global-text-color); }
 .publications ol.bibliography li .periodical { font-style: italic; color: var(--global-text-color-light); }
 .publications ol.bibliography li .preview {
+  width: 100%;
+  max-width: 110px;
   border-radius: var(--radius-md);
   border: 1px solid var(--global-divider-color);
 }
 
-/* ABS / BIB / DOI → 옅은 메타 버튼 (세리프) */
-.publications a.abstract.btn,
-.publications a.bibtex.btn,
-.publications .links a.btn {
-  font-family: var(--font-serif);
+/* ABS/BIB/DOI 메타 버튼 (mono) */
+.publications a.abstract.btn, .publications a.bibtex.btn, .publications .links a.btn {
+  font-family: var(--font-mono);
   font-size: var(--fs-sm);
-  padding: 0.3rem 0.8rem;
+  padding: 0.3rem 0.75rem;
   border: 1px solid var(--global-divider-color);
   border-radius: var(--radius-sm);
   color: var(--global-text-color-light);
@@ -313,76 +236,41 @@ html[data-theme="dark"] .profile img { outline: none; }
   box-shadow: none !important;
   transition: all 0.15s ease;
 }
-.publications a.abstract.btn:hover,
-.publications a.bibtex.btn:hover,
-.publications .links a.btn:hover {
-  border-color: var(--global-theme-color);
-  color: var(--global-theme-color);
-  background: var(--accent-subtle-bg);
+.publications a.abstract.btn:hover, .publications a.bibtex.btn:hover, .publications .links a.btn:hover {
+  border-color: var(--global-theme-color); color: var(--global-theme-color); background: var(--accent-subtle-bg);
 }
 
 /* =====================================================================
-   6. BLOG — masthead + 글 목록 + 태그 pill (전부 세리프)
+   6. BLOG — masthead + 목록 + 태그 pill(mono, 가운뎃점 없음)
    ===================================================================== */
-.header-bar {
-  text-align: left;
-  margin: 0.5rem 0 2.75rem;
-  padding-bottom: 1.25rem;
-  border-bottom: 1px solid var(--global-divider-color);
-}
-.header-bar h1 {
-  color: var(--global-text-color);
-  font-family: var(--font-serif);
-  font-weight: 700;
-  font-size: var(--fs-h1);
-  margin: 0 0 0.4rem;
-}
+.header-bar { text-align: left; margin: 0.5rem 0 2.75rem; padding-bottom: 1.25rem; border-bottom: 1px solid var(--global-divider-color); }
+.header-bar h1 { color: var(--global-text-color); font-family: var(--font-sans); font-weight: 700; font-size: var(--fs-h1); margin: 0 0 0.4rem; }
 .header-bar h2 {
   color: var(--global-text-color-light);
-  font-family: var(--font-serif);
-  font-weight: 400;
-  font-size: 1.1rem;
-  border: 0;
-  padding: 0;
-  margin: 0;
-  text-transform: none;
-  max-width: 46ch;
+  font-family: var(--font-sans);
+  font-weight: 400; font-size: 1.1rem;
+  border: 0; padding: 0; margin: 0; text-transform: none;
+  max-width: 52ch;
 }
 
 .post-list { list-style: none; margin: 0 auto; padding: 0; }
-.post-list li {
-  padding: 1.6rem 0;
-  border-bottom: 1px solid var(--global-divider-color);
-  transition: padding-left 0.18s ease;
-}
+.post-list li { padding: 1.6rem 0; border-bottom: 1px solid var(--global-divider-color); transition: padding-left 0.18s ease; }
 .post-list li:first-child { padding-top: 0.5rem; }
 .post-list li:hover { padding-left: 0.5rem; }
 .post-list li h3 { margin: 0 0 0.4rem; }
-.post-list li .post-title {
-  font-family: var(--font-serif);
-  font-weight: 700;
-  font-size: var(--fs-h3);
-  color: var(--global-text-color);
-}
+.post-list li .post-title { font-family: var(--font-sans); font-weight: 700; font-size: var(--fs-h3); color: var(--global-text-color); }
 .post-list li:hover .post-title { color: var(--global-theme-color); }
 .post-list li > p { color: var(--global-text-color-light); margin: 0 0 0.6rem; line-height: 1.55; max-width: var(--measure); }
-.post-list li .post-meta {
-  font-family: var(--font-serif);
-  color: var(--global-text-color-light);
-  font-size: var(--fs-sm);
-  margin-bottom: 0.5rem;
-}
+.post-list li .post-meta { font-family: var(--font-mono); color: var(--global-text-color-light); font-size: var(--fs-sm); margin-bottom: 0.5rem; }
 
-/* 태그 pill (세리프) — 아이콘 제거 */
+/* 태그 pill (mono) — 아이콘 숨김, gap 균등 */
+.post-tags { display: flex; flex-wrap: wrap; align-items: center; gap: 0.4rem; }
 .post-tags i, .post-list li .post-tags i { display: none; }
 .post-tags a, .post-list li .post-tags a, .tag {
-  display: inline-flex;
-  align-items: center;
-  font-family: var(--font-serif);
-  font-size: var(--fs-sm);
-  line-height: 1;
-  padding: 0.3rem 0.7rem;
-  margin: 0 0.3rem 0.35rem 0;
+  display: inline-flex; align-items: center;
+  font-family: var(--font-mono);
+  font-size: var(--fs-sm); line-height: 1;
+  padding: 0.3rem 0.7rem; margin: 0;
   border-radius: 999px;
   border: 1px solid var(--global-divider-color);
   color: var(--global-text-color-light);
@@ -390,100 +278,99 @@ html[data-theme="dark"] .profile img { outline: none; }
   transition: all 0.15s ease;
 }
 .post-tags a:hover, .post-list li .post-tags a:hover, .tag:hover {
-  border-color: var(--global-theme-color);
-  color: var(--global-theme-color);
-  background: var(--accent-subtle-bg);
+  border-color: var(--global-theme-color); color: var(--global-theme-color); background: var(--accent-subtle-bg);
 }
 
 /* =====================================================================
-   7. CV — download(세리프, solid green 단일 CTA), sidebar, 카드, 배지
+   7. CV — ★날짜배지 겹침 수정(grid) + download + sidebar + 카드 + 옅은 배지
    ===================================================================== */
 .cv-header { display: flex; flex-wrap: wrap; align-items: center; gap: 1rem; justify-content: space-between; }
 .cv-download {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-family: var(--font-serif);
-  font-size: var(--fs-base);
-  font-weight: 700;
-  padding: 0.5rem 1rem;
-  border-radius: var(--radius-sm);
-  background: var(--global-theme-color);
-  color: #fff !important;
-  box-shadow: none !important;
-  transition: background 0.15s ease;
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  font-family: var(--font-sans); font-size: var(--fs-base); font-weight: 600;
+  padding: 0.5rem 1rem; border-radius: var(--radius-sm);
+  background: var(--global-theme-color); color: #fff !important;
+  box-shadow: none !important; transition: background 0.15s ease;
 }
 .cv-download:hover { background: var(--global-hover-color); color: #fff !important; }
 
+/* ★ entry(=resume include의 .row)를 2-column grid로: 날짜 | 내용, 겹침 해소 */
+.cv .card .row {
+  display: grid;
+  grid-template-columns: 8.5rem 1fr;
+  gap: 1.25rem;
+  align-items: start;
+  margin: 0;
+}
+.cv .card .row > [class*="col-"] { max-width: none; flex: none; width: auto; padding-left: 0; padding-right: 0; }
+.cv .date-column { width: auto; max-width: none; text-align: left; }
+.cv .date-column .table-cv, .cv .date-column tbody, .cv .date-column tr, .cv .date-column td { display: block; width: auto; }
+@media (max-width: 767px) {
+  .cv .card .row { grid-template-columns: 1fr; gap: 0.4rem; }
+}
+
+/* 날짜 배지 — 옅은 초록, mono, 한 줄 */
+.date-column .badge, .cv .badge, .cv-date {
+  display: inline-block;
+  font-family: var(--font-mono) !important;
+  font-size: var(--fs-sm);
+  font-weight: 500;
+  text-transform: none;
+  background: var(--accent-subtle-bg) !important;
+  color: var(--accent-subtle-text) !important;
+  border-radius: var(--radius-sm);
+  padding: 0.2rem 0.5rem;
+  white-space: nowrap;
+  letter-spacing: normal;
+  min-width: 0 !important;
+}
+
 #toc-sidebar { position: sticky; top: 5rem; }
-nav[data-toggle="toc"] .nav-link {
-  font-family: var(--font-serif);
-  color: var(--global-text-color-light);
-  border-left: 2px solid transparent;
-  padding: 0.2rem 0.75rem;
-}
-nav[data-toggle="toc"] .nav-link.active {
-  color: var(--global-theme-color);
-  border-left-color: var(--global-theme-color);
-  font-weight: 700;
-}
+nav[data-toggle="toc"] .nav-link { font-family: var(--font-sans); color: var(--global-text-color-light); border-left: 2px solid transparent; padding: 0.2rem 0.75rem; }
+nav[data-toggle="toc"] .nav-link.active { color: var(--global-theme-color); border-left-color: var(--global-theme-color); font-weight: 600; }
 
 .cv .card {
   background: var(--global-card-bg-color);
   border: 1px solid var(--global-divider-color);
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-sm) !important;
-  padding: 1.5rem;
-  margin-top: 1rem;
+  padding: 1.5rem; margin-top: 1rem;
 }
-.cv .card .card-title {
-  font-family: var(--font-serif);
-  font-weight: 700;
-  text-transform: lowercase;
-  margin-bottom: 1rem;
-  padding-bottom: 0.4rem;
-  border-bottom: 1px solid var(--global-divider-color);
-}
+.cv .card .card-title { font-family: var(--font-sans); font-weight: 700; text-transform: lowercase; margin-bottom: 1rem; padding-bottom: 0.4rem; border-bottom: 1px solid var(--global-divider-color); }
 .cv .card h6.title a { color: var(--global-text-color); }
 .cv .card h6.title a:hover { color: var(--global-theme-color); }
 .cv .card-text .list-group-item { border: none; padding-left: 0; background: transparent; }
-
-/* 날짜 배지 — 옅은 초록, 세리프, 한 줄 (C-1) */
-.date-column .badge,
-.cv .badge,
-.cv-date {
-  font-family: var(--font-serif) !important;
-  font-size: var(--fs-sm);
-  font-weight: 600;
-  text-transform: none;
-  background: var(--accent-subtle-bg) !important;
-  color: var(--accent-subtle-text) !important;
-  border-radius: var(--radius-sm);
-  padding: 0.15rem 0.55rem;
-  white-space: nowrap;
-  letter-spacing: normal;
-}
-
+.cv .card ul.items { padding-left: 1.2rem; }
+.cv .card ul.items li { margin: 0.35rem 0; }
 td.list-group-category { color: var(--global-text-color); font-weight: 700; }
 
 /* =====================================================================
-   8. PROJECTS
+   8. PROJECTS — 카드 제목 compact(sans), 메타, 이미지 프레임
    ===================================================================== */
-.badge.badge-award, .award-badge {
-  display: inline-block;
-  font-family: var(--font-serif);
-  background: var(--accent-subtle-bg);
-  color: var(--accent-subtle-text);
-  padding: 0.15rem 0.5rem;
-  border-radius: var(--radius-sm);
-  font-size: var(--fs-sm);
-  font-weight: 600;
+.projects .card-title, .projects h2.card-title {
+  font-family: var(--font-sans);
+  font-size: var(--fs-h3);
+  line-height: 1.25;
+  font-weight: 700;
+  text-transform: none;
 }
-.projects .grid-item, .project img, .projects figure img, .post img.rounded { border-radius: var(--radius-md); }
-.projects figure img, .post-content img { border: 1px solid var(--global-divider-color); border-radius: var(--radius-md); }
+.project-meta {
+  font-family: var(--font-mono);
+  font-size: var(--fs-sm);
+  color: var(--global-text-color-light);
+  margin-bottom: 1.25rem;
+}
+.badge.badge-award, .award-badge {
+  display: inline-block; font-family: var(--font-mono);
+  background: var(--accent-subtle-bg); color: var(--accent-subtle-text);
+  padding: 0.15rem 0.5rem; border-radius: var(--radius-sm);
+  font-size: var(--fs-sm); font-weight: 600;
+}
+.projects .grid-item { max-width: 540px; }
+.project img, .projects figure img, .post-content img { border: 1px solid var(--global-divider-color); border-radius: var(--radius-md); }
 figcaption, .caption { color: var(--global-text-color-light); font-size: var(--fs-sm); }
 .projects h2.category {
-  font-family: var(--font-serif);
+  font-family: var(--font-sans);
   text-transform: lowercase;
   color: var(--global-text-color-light);
   border-bottom: 1px solid var(--global-divider-color);
@@ -491,14 +378,11 @@ figcaption, .caption { color: var(--global-text-color-light); font-size: var(--f
 }
 
 /* =====================================================================
-   9. FOOTER + RESPONSIVE
+   9. RESPONSIVE
    ===================================================================== */
-.social .contact-icons a { transition: color 0.15s ease, transform 0.15s ease; }
-
 @media (max-width: 767px) {
   .profile { float: none !important; width: 100%; margin: 0 auto 1.5rem; }
-  .profile img { width: 140px; margin: 0 auto; }
+  .profile img { width: 150px; margin: 0 auto; }
   .post > article h2, .about h2 { margin-top: 2.5rem; }
   .cv .card { padding: 1.25rem; }
-  .cv-header { gap: 0.75rem; }
 }
