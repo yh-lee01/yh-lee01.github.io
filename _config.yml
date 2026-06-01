@@ -73,8 +73,8 @@ bing_site_verification:
 # Blog
 # -----------------------------------------------------------------------------
 
-blog_name: Blog
-blog_description: Notes on reinforcement learning, generative models, and AI safety
+blog_name: blog
+blog_description: The more AI advances, the more we must read, think, and build intuition.
 permalink: /blog/:year/:title/
 lsi: false
 
