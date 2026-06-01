@@ -1,240 +1,254 @@
-# yh-lee01.github.io 리디자인 — DISLab 레퍼런스 · **CSS만** (Liquid 금지)
+# yh-lee01.github.io 통합 리디자인 가이드 (최종)
 
-> ## ⚠️ 가장 중요한 원칙 (지난번 롤백 방지)
-> - **Liquid 파일(`_layouts/*.liquid`, `_includes/**/*.liquid`) 절대 수정 금지.** 마크업은 그대로 두고 **기존 클래스에 CSS만 덮어쓴다.**
-> - **CSS 넣는 위치:** `assets/css/main.scss` **맨 아래** (모든 `@import` 아래에 추가). 이 파일은 SCSS라 안전 — Liquid 로직 아님. (또는 `_sass/_custom.scss` 새로 만들고 `main.scss`에 `@import "custom";` 한 줄 — 이것도 CSS 파일이라 안전.)
-> - **셀렉터는 al-folio 기본 기준 예시.** 실제와 다를 수 있으니 아래 지시문을 에이전트에 그대로 전달.
->
-> ### 📋 에이전트에게 그대로 줄 지시문
-> ```
-> 아래 스타일을 적용해줘. 단:
-> 1. Liquid 템플릿(.liquid)은 절대 수정하지 마. 마크업/구조 변경 금지.
-> 2. SCSS만 추가/수정. assets/css/main.scss 맨 아래에 붙여줘.
-> 3. 내가 준 셀렉터가 실제 렌더된 DOM과 다르면, F12로 실제 클래스명 확인해서 매핑만 바꿔줘 (스타일 의도는 유지).
-> 4. 적용 안 먹으면 specificity 문제니 셀렉터 앞에 body 붙이거나 최소한으로 !important 사용.
-> ```
->
-> **레퍼런스 = DISLab (disl-lab.github.io):** 박스 없음(airy), 섹션 제목 앞 **세로 accent bar**, teal 톤, Teaching은 **ring 마커 타임라인**. 이 4개가 핵심 느낌.
+> **적용 위치:** `assets/css/main.scss` **맨 아래에 CSS 추가**. (§7 히어로 이름만 출력 HTML 1줄 필요 — 아래 설명)
+> **Liquid 주의:** if/for/include 같은 **로직은 수정 X**. 셀렉터는 al-folio 기본 예시 → 안 맞으면 F12로 실제 클래스 확인해 매핑.
+> **다크모드:** 전부 `--global-*`/변수 기반 → 라이트·다크 자동 대응.
 
 ---
 
-## 0. 공통 톤 (전 페이지 베이스)
+## ✅ 요구사항 체크 (네가 말한 거 전부 담김)
+
+| 요구 | 어디 |
+|---|---|
+| 헤더가 스크롤 따라오며 **반투명(frosted)**, 하드 가로줄 X | **§1** |
+| **통일감** — blog·publications·projects 같은 카드 | **§2–5** |
+| blog 카드 **유지 + compact** (리스트로 바꾼 거 되돌림) | **§3** |
+| publications·projects도 **같은 카드로 통일** | **§4, §5** |
+| CV **깔끔한 타임라인 복구** (subtle pill + ring + stack) | **§6** |
+| 히어로 **"Yohan" 굵게 / "Lee" 가늘게** 차별 복구 | **§7 (신규)** |
+| 다크모드 정상 | 전 항목 |
+| Liquid 로직 미수정 | 전 항목 (§7만 출력 1줄) |
+| + 추가 다듬기 | **§9** |
+
+---
+
+## 0. 공통 토큰
 
 ```scss
-/* === DISLab tone: 공통 토큰 === */
 :root {
-  --accent-subtle-bg: #e7f5ee;     /* 연초록 */
-  --accent-subtle-text: #15553d;   /* 진초록 글자 */
+  --card-radius: 14px;
+  --accent-subtle-bg: #e7f5ee;
+  --accent-subtle-text: #15553d;
 }
 html[data-theme="dark"] {
   --accent-subtle-bg: rgba(92,214,164,.14);
   --accent-subtle-text: #5cd6a4;
 }
 ```
-- **색:** 네 초록(`--global-theme-color`) 유지. DISLab의 청록(teal)으로 통일하고 싶으면 그 변수 하나만 `#11a37f` 같은 값으로 바꾸면 사이트 전체가 따라감.
-- **섹션 제목 = accent bar 스타일** (밑줄/박스 X):
-```scss
-.card-title, .section-title,
-h2.heading, h3.heading {            /* 실제 섹션 제목 클래스로 매핑 */
-  position: relative; padding-left: .85rem;
-  font-weight: 600; border-bottom: none !important;
-  margin: 0 0 1.5rem;
-}
-.card-title::before, .section-title::before,
-h2.heading::before, h3.heading::before {
-  content: ''; position: absolute; left: 0; top: .18em; bottom: .18em;
-  width: 4px; border-radius: 2px; background: var(--global-theme-color);
-}
-```
 
 ---
 
-## 1. ★ 헤더 겹침 수정 (스크롤 시 글자 비침)
-
-원인: sticky 헤더 배경이 반투명. → 불투명 처리.
+## ⚠️ §1 전에: 지난번 헤더 CSS 삭제
+이 두 줄이 "분리된 가로줄" 범인 → **찾아서 삭제.**
 ```scss
 nav.navbar.fixed-top, #navbar {
-  background-color: var(--global-bg-color) !important;
-  -webkit-backdrop-filter: none !important;
-          backdrop-filter: none !important;
-  border-bottom: 1px solid var(--global-divider-color);
+  background-color: var(--global-bg-color) !important;   /* 삭제 */
+  border-bottom: 1px solid var(--global-divider-color);  /* 삭제 (이게 분리줄) */
 }
+```
+
+## §1. 헤더 — 스크롤 따라오며 frosted
+
+```scss
+#navbar, nav.navbar.fixed-top {
+  background-color: color-mix(in srgb, var(--global-bg-color) 75%, transparent) !important;
+  -webkit-backdrop-filter: saturate(160%) blur(12px) !important;
+          backdrop-filter: saturate(160%) blur(12px) !important;
+  border-bottom: none !important;
+  box-shadow: none !important;
+}
+```
+- sticky는 al-folio 기본(이미 따라옴). 위 CSS가 스크롤 시 뒤 내용을 **블러로 뭉개서** 또렷한 겹침 없이 반투명하게 만듦 = 네가 원한 그 동작.
+- 또렷이 비치면 `75%`→`85%`. 거슬리는 줄 남으면 F12로 그 요소 `border`/`box-shadow` 제거.
+
+---
+
+## §2. ★ 통일감 핵심 — 카드 1종 (blog·publications·projects 공통)
+
+```scss
+.post-card,
+.projects .grid .card, .projects .card,
+.publications ol.bibliography > li {
+  background: var(--global-card-bg-color) !important;
+  border: 1px solid var(--global-divider-color) !important;
+  border-radius: var(--card-radius) !important;
+  box-shadow: none !important;
+  transition: border-color .15s ease, transform .15s ease;
+}
+.post-card:hover,
+.projects .card:hover,
+.publications ol.bibliography > li:hover {
+  border-color: var(--global-theme-color) !important;
+  transform: translateY(-2px);
+}
+/* 공통 태그/칩 */
+.post-card .tag, .publications .badge, .projects .badge {
+  font-family: var(--font-mono); font-size: .7rem;
+  padding: .14rem .55rem; border-radius: 999px;
+  border: 1px solid var(--global-divider-color);
+  color: var(--global-text-color-light);
+}
+```
+
+## §3. Blog — 카드 유지 + compact
+
+```scss
+.post-card { padding: 1.1rem 1.3rem !important; }
+.post-card .cat { font-size: .7rem; }                  /* paper review 칩 */
+.post-card h2, .post-card .post-card-title { font-size: 1.15rem !important; margin: .45rem 0 .35rem; }
+.post-card .excerpt {
+  font-size: .92rem; margin: 0 0 .6rem;
+  display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+}
+.post-card .meta { font-size: .75rem; margin-bottom: .55rem; }
+.post-card .post-tags { gap: .4rem; margin-bottom: .6rem; }
+.post-card .read { font-size: .9rem; }
+.post-list { display: flex; flex-direction: column; gap: .9rem; }
+```
+
+## §4. Publications — 같은 카드
+
+```scss
+.publications ol.bibliography { list-style: none; padding: 0; }
+.publications ol.bibliography > li { padding: 1.1rem 1.3rem !important; margin-bottom: .9rem !important; }
+.publications .title { font-size: 1.1rem; font-weight: 600; }
+.publications .author { font-size: .9rem; color: var(--global-text-color-light); }
+.publications .periodical { font-size: .85rem; font-style: italic; color: var(--global-text-color-light); }
+.publications .links a, .publications a.abstract, .publications a.bibtex, .publications .btn {
+  font-family: var(--font-mono) !important; font-size: .7rem !important;
+  padding: .14rem .55rem !important; border-radius: 999px !important;
+}
+input.filter, .publications input[type="text"], #bib-filter {
+  padding: .55rem 1rem; border-radius: 10px; font-size: .92rem; border: 1px solid var(--global-divider-color);
+}
+input.filter:focus { border-color: var(--global-theme-color); box-shadow: 0 0 0 3px var(--accent-subtle-bg); outline: none; }
+```
+
+## §5. Projects — 같은 카드
+
+```scss
+.projects .card-body { padding: 1.1rem 1.3rem; }
+.projects .card-title { font-size: 1.1rem !important; font-weight: 600; line-height: 1.25; margin: .2rem 0 .5rem; }
+.projects .card-text { font-size: .92rem; color: var(--global-text-color-light); }
+.projects .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px,1fr)); gap: 1.5rem; }
 ```
 
 ---
 
-## 2. ★★ CV → Teaching 타임라인 (CSS only) — 이번 핵심
+## §6. ★ CV — 깔끔한 타임라인 복구
 
-목표(Teaching 레퍼런스): **박스 제거 → 세로 레일 + 속 빈 ring 마커 + small-caps 날짜 라벨.** 진초록 솔리드 배지 폐기.
-
-**(A) 박스 제거 + accent bar 제목**
+**(A) 2단 → 단일 컬럼 stack** (날짜가 옆에 끼어 답답한 거 해결)
 ```scss
-/* CV 페이지에만: cv 콘텐츠 wrapper에 클래스가 없으면, 사이트 전체에 적용해도
-   DISLab처럼 projects 카드까지 airy해져서 OK. 분리하려면 에이전트가 cv wrapper 확인. */
-.cv .card, .resume .card {
-  border: none !important; box-shadow: none !important;
-  background: transparent !important; padding: 0 !important;
-  margin: 0 0 2.75rem !important;
+.cv .row, .resume .row {
+  display: block !important; position: relative;
+  padding: 0 0 1.8rem 2rem !important; margin: 0 !important;
+}
+.cv .row > [class*="col"] { width: 100% !important; max-width: 100% !important; flex: none !important; padding-left: 0 !important; }
+```
+**(B) ★ 날짜 배지: 초록 블록 → subtle pill**
+> 지난번 안 먹은 이유 = 셀렉터 불일치. **에이전트한테: `_includes/resume/work.liquid`·`education.liquid` 열어서(읽기만) 날짜 감싼 태그/클래스 확인 후 그 셀렉터에 적용.** CV 깔끔함의 핵심 한 줄.
+```scss
+.cv .badge, .cv .date, .cv time,
+.cv .row [class*="col"]:first-child span, .resume .badge {
+  display: inline-block !important;
+  background: var(--accent-subtle-bg) !important; color: var(--accent-subtle-text) !important;
+  font-family: var(--font-mono) !important; font-weight: 500 !important;
+  font-size: .72rem !important; letter-spacing: 0 !important; text-transform: none !important;
+  padding: .15rem .5rem !important; border-radius: 6px !important; margin: 0 0 .4rem 0 !important;
 }
 ```
-
-**(B) 각 항목 → 타임라인 아이템**
-> ⚠️ **여기만 구조 확인 필요.** al-folio jsonresume는 보통 항목 하나가 `.row`(Bootstrap)야. 만약 `<li>`면 셀렉터의 `.row`를 `li`로 바꾸면 됨. 핵심 원리는 4줄: ① 항목에 `position:relative`+왼쪽 패딩 ② `::before`로 세로 레일 ③ `::after`로 ring ④ 날짜 라벨화.
+**(C) 레일 + ring 마커**
 ```scss
-.cv .card .row, .resume .card .row {     /* ← 항목이 li면 .row를 li로 */
-  position: relative; margin: 0; padding: 0 0 1.8rem 2rem;
+.cv .row::before { content:''; position:absolute; left:5px; top:.5rem; bottom:0; width:2px; background: var(--global-divider-color); }
+.cv .row:last-child::before { bottom:auto; height:.6rem; }
+.cv .row::after {
+  content:''; position:absolute; left:0; top:.45rem; width:12px; height:12px;
+  box-sizing:border-box; border-radius:50%; border:2.5px solid var(--global-theme-color); background: var(--global-bg-color);
 }
-.cv .card .row:last-child { padding-bottom: 0; }
-
-/* 세로 레일 */
-.cv .card .row::before {
-  content: ''; position: absolute; left: 6px; top: .5rem; bottom: 0;
-  width: 2px; background: var(--global-divider-color);
-}
-.cv .card .row:last-child::before { bottom: auto; height: .55rem; }
-
-/* 속 빈 ring 마커 (Teaching 스타일) */
-.cv .card .row::after {
-  content: ''; position: absolute; left: 0; top: .35rem;
-  width: 13px; height: 13px; box-sizing: border-box; border-radius: 50%;
-  border: 2.5px solid var(--global-theme-color);
-  background: var(--global-bg-color);
-}
-```
-
-**(C) 날짜 배지 → small-caps 라벨** (Teaching의 "2026 SPRING" 느낌. 솔리드 초록 제거)
-```scss
-.cv .badge, .resume .badge, .cv .row span.badge {
-  background: transparent !important; color: var(--global-theme-color) !important;
-  padding: 0 !important; border-radius: 0;
-  font-family: var(--font-mono); font-weight: 600;
-  font-size: .72rem; letter-spacing: .04em; text-transform: uppercase;
-}
-.cv .row .title, .cv .row strong { font-weight: 600; }
+.cv .row .title, .cv .row strong { font-weight:600; }
 .cv .row .font-italic { color: var(--global-text-color-light); }
 ```
-- **basics**(상단 Name/Email/Url/Summary): 박스만 빠지면 깔끔. 그대로 둬도 됨.
-- **skills / languages**: 나열형이면 subtle 칩으로 (스캔성):
-```scss
-.cv .skills li, .cv .languages li {
-  display: inline-block; margin: 0 .4rem .4rem 0;
-  background: var(--accent-subtle-bg); color: var(--accent-subtle-text);
-  font-family: var(--font-mono); font-size: .8rem;
-  padding: .2rem .6rem; border-radius: 6px;
-}
-```
-- **Download CV 버튼**: 유일한 진초록 솔리드로 유지(날짜가 라벨화되면서 강한 초록은 링크·active nav·이 버튼만 남음 → 톤 정리됨).
+- Download CV 버튼만 진초록 솔리드 유지. skills/languages는 §2 칩 스타일 재사용.
 
 ---
 
-## 3. Blog → compact (CSS only)
+## §7. ★ 히어로 이름 — "Yohan" 굵게 / "Lee" 가늘게 (신규)
 
-지난번 준 featured 카드가 너무 컸음 → 큰 카드/큰 타이틀 버리고 **tight 리스트**로.
+순수 CSS로는 한 덩어리 텍스트를 못 나눔 → **last name만 span으로 감싸는 출력 1줄** 필요(Liquid 로직 아님, 안전).
+
+**1) 마크업 (둘 중 해당되는 쪽):**
+- 히어로가 `{{ page.title }}`로 나오면 → `_pages/about.md`는 그대로 두고, 히어로 출력부에서 이름을 직접:
+  `<span class="fw-bold">Yohan</span> <span class="lighter">Lee</span>`
+- 히어로가 이미 `site.first_name`+`site.last_name`로 나오면 → last name 출력만 `<span class="lighter">{{ site.last_name }}</span>`로.
+> 브라우저 탭 제목(`<title>`)에는 span 넣지 말 것(거기엔 평문 "Yohan Lee" 유지). 즉 `page.title`은 건드리지 말고 **히어로 표시 부분만**.
+
+**2) CSS:**
 ```scss
-.post-list .post, article.post, .post {        /* 실제 포스트 컨테이너로 매핑 */
-  padding: 1.1rem 0;
-  border-bottom: 1px solid var(--global-divider-color);
+.post-title .lighter, h1 .lighter { font-weight: 300 !important; }
+.post-title .fw-bold, h1 .fw-bold { font-weight: 700 !important; }
+```
+→ nav 워드마크(Yohan 굵게 / Lee 일반)와 톤 통일.
+부담되면 이 항목만 스킵 가능(나머지엔 영향 없음).
+
+---
+
+## §8. Home — latest posts 간격
+
+```scss
+.news .post, #news .post {
+  display: grid; grid-template-columns: 130px 1fr; gap: 1.25rem; align-items: baseline;
 }
-a.post-title, .post-title, .post-title a {
-  font-size: 1.25rem !important;                /* 큰 제목 한 단계 ↓ */
-  font-weight: 600;
-}
-.post-description, .post .excerpt {
-  font-size: .95rem; color: var(--global-text-color-light);
-  margin: .35rem 0 .55rem;
-  display: -webkit-box; -webkit-line-clamp: 2;  /* 2줄로 자르기 → compact */
-  -webkit-box-orient: vertical; overflow: hidden;
-}
-.post-meta { font-size: .8rem; font-family: var(--font-mono); }
-.post-tags, .tags { display: flex; flex-wrap: wrap; gap: .4rem; margin-top: .5rem; }
-.post-tags .tag, .tag {
-  font-family: var(--font-mono); font-size: .72rem;
-  padding: .15rem .55rem; border-radius: 999px;
-}
+.news .post .date { font-family: var(--font-mono); color: var(--global-text-color-light); }
 ```
 
 ---
 
-## 4. Publications → DISLab 스타일 (CSS only)
-
-DISLab처럼: 항목 간 여백 + 컴팩트 버튼 + 작은 필터.
-```scss
-.publications ol.bibliography > li {
-  padding: 1.3rem 0; border-bottom: 1px solid var(--global-divider-color);
-}
-.publications .title { font-weight: 600; }
-.publications .author { color: var(--global-text-color-light); font-size: .95rem; }
-.publications .periodical, .publications .venue {
-  font-style: italic; color: var(--global-text-color-light); font-size: .9rem;
-}
-/* ABS / BIB 버튼 컴팩트 */
-.publications a.abstract, .publications a.bibtex,
-.publications .btn, .publications .links a {
-  font-size: .72rem !important; padding: .12rem .5rem !important;
-  font-family: var(--font-mono);
-}
-/* 필터 박스 작게 + focus 링 */
-input.filter, .publications input[type="text"], #bib-filter, #searchbar {
-  padding: .55rem 1rem; border-radius: 8px; font-size: .95rem;
-  border: 1px solid var(--global-divider-color);
-}
-input.filter:focus { border-color: var(--global-theme-color);
-  box-shadow: 0 0 0 3px var(--accent-subtle-bg); outline: none; }
-```
-
----
-
-## 5. Projects → DISLab 스타일 (CSS only)
-
-카드 정리 + 이미지↔제목 간격 + grid.
-```scss
-.projects .card, .grid-item .card {
-  border: 1px solid var(--global-divider-color) !important;
-  box-shadow: none !important; border-radius: 12px;
-}
-.projects .card:hover { border-color: var(--global-theme-color) !important;
-  transform: translateY(-2px); transition: .15s; }
-.projects .card-body { padding: 1rem 1.25rem; }
-.projects .card-title { font-size: 1.15rem; line-height: 1.25; margin: .2rem 0 .5rem; }
-.projects .card-text { color: var(--global-text-color-light); font-size: .95rem; }
-/* 여러 개일 때 grid */
-.projects .grid, .grid {
-  display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.5rem;
-}
-```
-
----
-
-## 6. Home → refine (CSS only)
+## §9. ✨ 추가 다듬기 (퀄리티 더 끌어올리기)
 
 ```scss
-/* 연락처 블록: 겹치던 구분선 제거 + 가운데 정렬 */
-.profile hr { display: none !important; }
-.profile { text-align: center; }
-.profile .social { display: flex; justify-content: center; gap: 1rem; margin: .5rem 0; }
-.profile .social a { color: var(--global-text-color-light); }
-.profile .social a:hover { color: var(--global-theme-color); }
+/* 1) 부드러운 스크롤 (CV 사이드바 앵커 이동 자연스럽게) */
+html { scroll-behavior: smooth; }
 
-/* about 본문 ↔ 섹션 간격 */
-.about .post .row + h2, #about h2 { margin-top: 3rem; }
+/* 2) 텍스트 드래그 선택색 = 브랜드 (디테일 한 끗) */
+::selection { background: var(--accent-subtle-bg); color: var(--accent-subtle-text); }
+
+/* 3) 본문 링크 hover = 밑줄 (초록 유지) — 일관된 인터랙션 */
+.post a, p a, .cv a { text-decoration: none; border-bottom: 1px solid transparent; transition: border-color .15s; }
+.post a:hover, p a:hover, .cv a:hover { border-bottom-color: currentColor; }
+
+/* 4) 키보드 포커스 링 (접근성 + 깔끔) */
+a:focus-visible, button:focus-visible, input:focus-visible {
+  outline: 2px solid var(--global-theme-color); outline-offset: 2px; border-radius: 4px;
+}
+
+/* 5) 섹션 제목 리듬 통일 (accent bar 헤딩 간격 일정하게) */
+.card-title, h2.heading { margin-top: 3rem; }
+
+/* 6) 푸터 차분하게 (DISLab처럼) */
+footer, .footer { color: var(--global-text-color-light); font-size: .85rem; }
+footer a { color: var(--global-text-color-light); }
+
+/* 7) 이미지/썸네일 라운드 통일 */
+.publications .preview img, .projects .card-img-top { border-radius: 10px; }
+
+/* 8) CV 사이드바(TOC) active 강조 통일 */
+.cv-sidebar a.active, #cv-toc a.active { color: var(--global-theme-color); font-weight: 600; }
 ```
-- hero 이름 "Lee" 가볍게 하는 건 제목에 `<span>`이 필요해서 **마크업 1줄**이 들어감. 굳이 안전하게 가려면 **건너뛰어도 무방**(우선순위 낮음). 하려면 `_pages/about.md` frontmatter의 `title`만 손대기(Liquid 로직 아님).
+- (에셋, 코드 아님) 프로필 사진에 뒤 사람 보이면 단독 정사각 재크롭하면 첫인상 확 깔끔해짐.
 
 ---
 
 ## 적용 순서 & 검증
+1. **지난 헤더 CSS 삭제 → §1** (반투명·줄 제거)
+2. **§6 CV** (타임라인 복구)
+3. **§2 → §3·4·5** (카드 통일)
+4. **§7 히어로 이름** (span 1줄 + CSS)
+5. **§8, §9** (간격·polish)
 
-1. **0 공통 + 1 헤더** (베이스 + 겹침)
-2. **2 CV 타임라인** ← 이번 메인. (B)만 구조 확인하며 적용
-3. **3 Blog compact**
-4. **4 Publications → 5 Projects → 6 Home**
-
-### 검증 체크 (DISLab 느낌 됐나)
-- [ ] 스크롤해도 헤더 뒤 글자 안 비침
-- [ ] CV: 박스 사라지고 **세로 레일 + 속 빈 ring 마커**, 날짜는 teal small-caps
-- [ ] 진한 초록 = 링크 · active nav · Download 버튼에만
-- [ ] 섹션 제목 앞에 **세로 accent bar**
-- [ ] Blog 제목/여백 작아지고 tight한 리스트
-- [ ] 전체적으로 박스보다 **여백으로 구분**되는 airy한 느낌
-
-> 안 먹는 스타일 있으면: F12 → 해당 요소 실제 클래스 확인 → 그 셀렉터로 교체. Liquid는 끝까지 건드리지 말 것.
+### 최종 체크
+- [ ] 스크롤 시 헤더 따라오며 frosted, 하드 가로줄 없음
+- [ ] blog·publications·projects가 **똑같은 카드**(테두리/radius/hover/태그)
+- [ ] CV 날짜 = 연초록 pill, stack 배치, ring 깔끔
+- [ ] 히어로 "Yohan" 굵게 / "Lee" 가늘게 (nav와 일치)
+- [ ] 진초록 = 링크·active nav·Download·hover 테두리에만
+- [ ] 라이트/다크 둘 다 정상

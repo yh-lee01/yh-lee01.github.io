@@ -1,7 +1,7 @@
 /* =====================================================================
-   _custom.scss — DISLab 레퍼런스 (CSS ONLY, Liquid 미수정)
-   airy(박스 최소) · 섹션 제목 앞 세로 accent bar · CV ring 타임라인 · 헤더 불투명.
-   폰트(IBM Plex)·색 토큰 유지. 원본 al-folio 마크업 클래스에 CSS만 덮어씀.
+   _custom.scss — 통합 리디자인 (CSS ONLY, Liquid 로직 미수정)
+   frosted 헤더 · blog/publications/projects 동일 카드 · CV ring 타임라인
+   · hero Yohan(700)/Lee(300). 폰트(IBM Plex)·색 토큰 유지, 다크모드 자동.
    ===================================================================== */
 
 /* =====================================================================
@@ -21,6 +21,7 @@
 
   --shadow-sm: 0 1px 2px rgba(16, 24, 40, 0.04), 0 1px 3px rgba(16, 24, 40, 0.08);
   --shadow-md: 0 4px 14px rgba(16, 24, 40, 0.08);
+  --card-radius: 14px;
   --radius-sm: 6px;
   --radius-md: 10px;
   --radius-lg: 14px;
@@ -77,33 +78,37 @@ h2 { font-size: var(--fs-h2); }
 h3 { font-size: var(--fs-h3); }
 p { margin-bottom: 1rem; }
 
-a { color: var(--global-theme-color); text-decoration: none; background: none; }
-a:hover { color: var(--global-hover-color); text-decoration: underline; text-underline-offset: 2px; text-decoration-thickness: 1px; }
+.post > article p, .post > article li, .post-content p, .post-content li { max-width: var(--measure); }
+
+a { color: var(--global-theme-color); text-decoration: none; }
+a:hover { color: var(--global-hover-color); }
 .btn, .nav-link, .navbar-brand, .post-tags a, .tag, .cv-download, .social a, .contact-icons a,
 .post-title, .news-title, .page-link, .badge, .read { text-decoration: none !important; }
 
-:focus-visible { outline: 2px solid var(--global-theme-color); outline-offset: 3px; border-radius: 4px; }
+/* §9-3. 본문 링크 hover = 밑줄(초록 유지) */
+.post a, p a, .cv a, .publications a.title-link { border-bottom: 1px solid transparent; transition: border-color 0.15s ease, color 0.15s ease; }
+.post a:hover, p a:hover, .cv a:hover { border-bottom-color: currentColor; }
+
+/* §9-4. 포커스 링 */
+a:focus-visible, button:focus-visible, input:focus-visible,
+:focus-visible { outline: 2px solid var(--global-theme-color); outline-offset: 2px; border-radius: 4px; }
 :focus:not(:focus-visible) { outline: none; }
+
+/* §9-1·2. 부드러운 스크롤 + 선택색 */
+html { scroll-behavior: smooth; }
+::selection { background: var(--accent-subtle-bg); color: var(--accent-subtle-text); }
+
 @media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
   *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
 }
 
-/* 본문 줄길이 */
-.post > article p, .post > article li, .post-content p, .post-content li { max-width: var(--measure); }
-
-/* =====================================================================
-   2. 섹션 제목 = 세로 accent bar (DISLab 시그니처, 밑줄/박스 X)
-   ===================================================================== */
+/* 섹션 제목 = 세로 accent bar (밑줄/박스 X) */
 .cv .card .card-title,
 .post > article > h2 {
-  position: relative;
-  padding-left: 0.85rem;
-  font-family: var(--font-sans);
-  font-weight: 700;
-  font-size: var(--fs-h2);
-  text-transform: lowercase;
-  border-bottom: none !important;
-  margin: 4rem 0 1.5rem;
+  position: relative; padding-left: 0.85rem;
+  font-family: var(--font-sans); font-weight: 700; font-size: var(--fs-h2);
+  text-transform: lowercase; border-bottom: none !important; margin: 3rem 0 1.5rem;
 }
 .cv .card .card-title::before,
 .post > article > h2::before {
@@ -114,14 +119,15 @@ a:hover { color: var(--global-hover-color); text-decoration: underline; text-und
 .post > article > h2 a { color: inherit; }
 
 /* =====================================================================
-   3. ★ HEADER 불투명 (스크롤 시 글자 비침 제거)
+   §1. HEADER — 스크롤 따라오며 frosted (가로줄/그림자 제거)
    ===================================================================== */
-nav.navbar.fixed-top, #navbar {
+#navbar, nav.navbar.fixed-top {
   position: sticky; top: 0; z-index: 1000;
-  background-color: var(--global-bg-color) !important;
-  -webkit-backdrop-filter: none !important;
-  backdrop-filter: none !important;
-  border-bottom: 1px solid var(--global-divider-color);
+  background-color: color-mix(in srgb, var(--global-bg-color) 80%, transparent) !important;
+  -webkit-backdrop-filter: saturate(160%) blur(12px) !important;
+  backdrop-filter: saturate(160%) blur(12px) !important;
+  border-bottom: none !important;
+  box-shadow: none !important;
 }
 .navbar .navbar-brand.wordmark { font-family: var(--font-sans); font-size: 1.3rem; font-weight: 400; color: var(--global-text-color); }
 .navbar .navbar-brand.wordmark .font-weight-bold { font-weight: 700; }
@@ -137,119 +143,100 @@ nav.navbar.fixed-top, #navbar {
 #search-toggle .nav-link { font-family: var(--font-mono); font-size: var(--fs-sm); color: var(--global-text-color-light); }
 
 /* =====================================================================
-   4. HOME — hero 이름(Yohan 700 / Lee 400), 연락처 중앙·구분선 제거
+   §2. 통일 카드 — blog · publications · projects 동일 스타일
    ===================================================================== */
-.post-header .post-title { font-weight: 700; margin-bottom: 1.25rem; }
-.hero-name { font-weight: 400; }
-.hero-name .font-weight-bold { font-weight: 700; }
-
-.profile { text-align: center; }
-.profile hr, .profile .profile-sep { display: none !important; }
-.profile .more-info { border-top: none !important; padding-top: 0 !important; margin-top: 0.6rem; font-size: var(--fs-sm); color: var(--global-text-color-light); }
-.profile .more-info p { margin: 0.1rem 0; }
-.profile img {
-  width: clamp(170px, 18vw, 210px); aspect-ratio: 1; border-radius: 50%;
-  object-fit: cover; object-position: center 25%;
-  box-shadow: var(--shadow-md); outline: 4px solid #fff; outline-offset: -4px;
+.post-list li,
+.projects .grid .card, .projects .card,
+.publications ol.bibliography > li {
+  background: var(--global-card-bg-color) !important;
+  border: 1px solid var(--global-divider-color) !important;
+  border-radius: var(--card-radius) !important;
+  box-shadow: none !important;
+  transition: border-color 0.15s ease, transform 0.15s ease;
 }
-html[data-theme="dark"] .profile img { outline: none; }
-.profile .social, .profile .contact-icons { display: flex; justify-content: center; gap: 1rem; margin: 0.6rem 0 0; font-size: 1.25rem; }
-.profile .social a, .profile .contact-icons a { color: var(--global-text-color-light); transition: color 0.15s ease, transform 0.15s ease; }
-.profile .social a:hover, .profile .contact-icons a:hover { color: var(--global-theme-color); transform: translateY(-2px); }
-.profile .contact-note { margin-top: 0.6rem; font-size: var(--fs-sm); color: var(--global-text-color-light); }
-
-/* latest posts / news 표: 날짜(mono) ↔ 제목 간격 축소 */
-.news table { width: 100%; }
-.news table th {
-  font-family: var(--font-mono); font-size: var(--fs-sm); font-weight: 400; width: 1%;
-  white-space: nowrap; padding-right: 1.5rem; color: var(--global-text-color-light); vertical-align: baseline;
+.post-list li:hover,
+.projects .card:hover,
+.publications ol.bibliography > li:hover {
+  border-color: var(--global-theme-color) !important;
+  transform: translateY(-2px);
 }
-.news table td { border-bottom: 1px solid var(--global-divider-color); }
-.news table tr:last-child td { border-bottom: none; }
-.news .news-title { font-weight: 500; color: var(--global-text-color); }
-.news table tr:hover .news-title { color: var(--global-theme-color); }
+/* 공통 태그/칩 */
+.post-tags a, .tag, .publications .badge, .projects .badge {
+  display: inline-flex; align-items: center;
+  font-family: var(--font-mono); font-size: 0.7rem; line-height: 1;
+  padding: 0.16rem 0.6rem; border-radius: 999px;
+  border: 1px solid var(--global-divider-color); color: var(--global-text-color-light);
+  background: transparent; transition: all 0.15s ease;
+}
+.post-tags a:hover, .tag:hover { border-color: var(--global-theme-color); color: var(--global-theme-color); background: var(--accent-subtle-bg); }
+.post-tags i { display: none; }
 
 /* =====================================================================
-   5. BLOG — compact tight 리스트 (큰 카드 폐기)
+   §3. BLOG — 카드 유지 + compact (원본 ul.post-list>li 에 매핑)
    ===================================================================== */
 .header-bar { text-align: left; margin: 0.5rem 0 1.25rem; padding-bottom: 1rem; border-bottom: 1px solid var(--global-divider-color); }
 .header-bar h1 { color: var(--global-text-color); font-weight: 700; font-size: var(--fs-h1); margin: 0 0 0.35rem; text-transform: lowercase; }
 .header-bar h2 { color: var(--global-text-color-light); font-weight: 400; font-size: 1.1rem; border: 0; padding: 0; margin: 0; text-transform: none; max-width: 52ch; }
 
-.post-list { list-style: none; margin: 1.5rem auto 0; padding: 0; max-width: var(--container); }
-.post-list li { padding: 1.1rem 0; border-bottom: 1px solid var(--global-divider-color); }
-.post-list li h3 { margin: 0 0 0.2rem; }
-.post-list li .post-title { font-size: 1.25rem !important; font-weight: 600; color: var(--global-text-color); }
+.post-list { display: flex; flex-direction: column; gap: 0.9rem; list-style: none; margin: 1.5rem auto 0; padding: 0; max-width: var(--container); }
+.post-list li { padding: 1.1rem 1.3rem !important; }
+.post-list li h3 { margin: 0.1rem 0 0.35rem; }
+.post-list li .post-title { font-size: 1.15rem !important; font-weight: 600; color: var(--global-text-color); }
 .post-list li .post-title:hover { color: var(--global-theme-color); }
 .post-list li > p {
-  font-size: 0.95rem; color: var(--global-text-color-light); margin: 0.35rem 0 0.55rem; line-height: 1.55; max-width: var(--measure);
+  font-size: 0.92rem; color: var(--global-text-color-light); margin: 0 0 0.6rem; line-height: 1.55; max-width: var(--measure);
   display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
 }
-.post-list li .post-meta { font-family: var(--font-mono); font-size: 0.8rem; color: var(--global-text-color-light); margin-bottom: 0.4rem; }
-
-/* 태그 pill (아이콘 숨김, gap 균등) */
-.post-tags { display: flex; flex-wrap: wrap; align-items: center; gap: 0.45rem; }
-.post-tags i { display: none; }
-.post-tags a, .tag {
-  display: inline-flex; align-items: center; font-family: var(--font-mono); font-size: 0.72rem; line-height: 1;
-  padding: 0.18rem 0.6rem; margin: 0; border-radius: 999px;
-  border: 1px solid var(--global-divider-color); color: var(--global-text-color-light); background: transparent;
-  transition: all 0.15s ease;
-}
-.post-tags a:hover, .tag:hover { border-color: var(--global-theme-color); color: var(--global-theme-color); background: var(--accent-subtle-bg); }
+.post-list li .post-meta { font-family: var(--font-mono); font-size: 0.75rem; color: var(--global-text-color-light); margin-bottom: 0.55rem; }
+.post-list li .post-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 0; }
 
 /* =====================================================================
-   6. PUBLICATIONS — DISLab: 여백 구분 + compact 버튼 + 작은 필터
+   §4. PUBLICATIONS — 같은 카드
    ===================================================================== */
-#bibsearch, input.filter, .publications input[type="text"] {
-  padding: 0.55rem 1rem; border-radius: 8px; font-size: 0.95rem; font-family: var(--font-sans);
+.publications ol.bibliography { list-style: none; padding: 0; }
+.publications ol.bibliography > li { padding: 1.1rem 1.3rem !important; margin-bottom: 0.9rem !important; }
+.publications h2.bibliography { color: var(--global-divider-color); font-family: var(--font-sans); border: none; }
+.publications .title { font-size: 1.1rem; font-weight: 600; line-height: 1.3; }
+.publications .author { font-size: 0.9rem; color: var(--global-text-color-light); }
+.publications .author a { color: var(--global-text-color); }
+.publications .periodical { font-size: 0.85rem; font-style: italic; color: var(--global-text-color-light); }
+.publications ol.bibliography li .preview { max-width: 110px; border-radius: 10px; border: 1px solid var(--global-divider-color); }
+.publications .links a, .publications a.abstract, .publications a.bibtex, .publications .btn {
+  font-family: var(--font-mono) !important; font-size: 0.7rem !important;
+  padding: 0.14rem 0.55rem !important; border-radius: 999px !important;
+  border: 1px solid var(--global-divider-color) !important; color: var(--global-text-color-light) !important;
+  background: transparent !important; box-shadow: none !important;
+}
+.publications .links a:hover, .publications a.abstract:hover, .publications a.bibtex:hover {
+  border-color: var(--global-theme-color) !important; color: var(--global-theme-color) !important; background: var(--accent-subtle-bg) !important;
+}
+#bibsearch, input.filter, .publications input[type="text"], #bib-filter {
+  padding: 0.55rem 1rem; border-radius: 10px; font-size: 0.95rem; font-family: var(--font-sans);
   border: 1px solid var(--global-divider-color); max-width: var(--container); margin-bottom: 1.5rem;
   background: var(--global-bg-color); color: var(--global-text-color);
 }
 #bibsearch::placeholder { color: var(--global-text-color-light); }
 #bibsearch:focus, input.filter:focus { border-color: var(--global-theme-color); box-shadow: 0 0 0 3px var(--accent-subtle-bg); outline: none; }
 
-.publications h2.bibliography { color: var(--global-divider-color); font-family: var(--font-sans); }
-.publications ol.bibliography > li { padding: 1.3rem 0; border-bottom: 1px solid var(--global-divider-color); }
-.publications .title { font-weight: 600; font-size: var(--fs-h3); line-height: 1.3; }
-.publications .author { color: var(--global-text-color-light); font-size: 0.95rem; }
-.publications .author a { color: var(--global-text-color); }
-.publications .periodical, .publications .venue { font-style: italic; color: var(--global-text-color-light); font-size: 0.9rem; }
-.publications ol.bibliography li .preview { max-width: 110px; border-radius: var(--radius-md); border: 1px solid var(--global-divider-color); }
-.publications a.abstract.btn, .publications a.bibtex.btn, .publications .btn, .publications .links a {
-  font-size: 0.72rem !important; padding: 0.12rem 0.5rem !important; font-family: var(--font-mono);
-  border: 1px solid var(--global-divider-color); border-radius: var(--radius-sm);
-  color: var(--global-text-color-light); background: transparent; box-shadow: none !important; transition: all 0.15s ease;
-}
-.publications a.abstract.btn:hover, .publications a.bibtex.btn:hover, .publications .links a:hover {
-  border-color: var(--global-theme-color); color: var(--global-theme-color); background: var(--accent-subtle-bg);
-}
-
 /* =====================================================================
-   7. PROJECTS — DISLab: 카드 정리(테두리만) + 간격 + grid
+   §5. PROJECTS — 같은 카드
    ===================================================================== */
-.projects .card, .grid-item .card {
-  border: 1px solid var(--global-divider-color) !important;
-  box-shadow: none !important; border-radius: 12px; background: var(--global-card-bg-color);
-  overflow: hidden; transition: border-color 0.15s ease, transform 0.15s ease;
-}
-.projects .card:hover { border-color: var(--global-theme-color) !important; transform: translateY(-2px); }
-.projects .card-body { padding: 1rem 1.25rem; }
-.projects .card-title { font-family: var(--font-sans); font-size: 1.15rem; line-height: 1.25; font-weight: 700; margin: 0.2rem 0 0.5rem; text-transform: none; }
-.projects .card-text { color: var(--global-text-color-light); font-size: 0.95rem; }
+.projects .card { overflow: hidden; }
+.projects .card-body { padding: 1.1rem 1.3rem; }
+.projects .card-title { font-family: var(--font-sans); font-size: 1.1rem !important; font-weight: 600; line-height: 1.25; margin: 0.2rem 0 0.5rem; text-transform: none; }
+.projects .card-text { font-size: 0.92rem; color: var(--global-text-color-light); }
+.projects .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.5rem; }
 .projects h2.category { font-family: var(--font-sans); text-transform: lowercase; color: var(--global-text-color-light); border-bottom: 1px solid var(--global-divider-color); padding-bottom: 0.3rem; }
 .project-meta { font-family: var(--font-mono); font-size: var(--fs-sm); color: var(--global-text-color-light); margin: 0 0 1.25rem; }
-.award-badge {
-  display: inline-block; font-family: var(--font-mono); background: var(--accent-subtle-bg); color: var(--accent-subtle-text);
-  padding: 0.15rem 0.5rem; border-radius: var(--radius-sm); font-size: var(--fs-sm); font-weight: 600;
-}
+.award-badge { display: inline-block; font-family: var(--font-mono); background: var(--accent-subtle-bg); color: var(--accent-subtle-text); padding: 0.15rem 0.5rem; border-radius: var(--radius-sm); font-size: var(--fs-sm); font-weight: 600; }
 .project img, .projects figure img, .post-content img { border: 1px solid var(--global-divider-color); border-radius: var(--radius-md); }
 .project figure figcaption, figcaption, .caption { color: var(--global-text-color-light); font-size: var(--fs-sm); margin-top: 0.5rem; text-align: center; }
 .post > article ul, .post-content ul { padding-left: 1.2rem; }
 .post > article ul li, .post-content ul li { margin: 0.35rem 0; }
+.publications .preview img, .projects .card-img-top { border-radius: 10px; }
 
 /* =====================================================================
-   8. ★★ CV — Teaching 타임라인 (박스 제거 → 레일 + 속빈 ring + 날짜 라벨)
+   §6. ★ CV — 타임라인 복구 (단일 stack + subtle pill 날짜 + 레일/ring)
    ===================================================================== */
 .cv-header { display: flex; flex-wrap: wrap; align-items: center; gap: 1rem; justify-content: space-between; }
 .cv-download {
@@ -259,65 +246,100 @@ html[data-theme="dark"] .profile img { outline: none; }
 }
 .cv-download:hover { background: var(--global-hover-color); color: #fff !important; }
 
-/* (A) 박스 제거 */
-.cv .card, .resume .card {
-  border: none !important; box-shadow: none !important; background: transparent !important;
-  padding: 0 !important; margin: 0 0 2.75rem !important;
-}
-
-/* (B) 각 항목(.row) → 타임라인 아이템: 레일 + 속빈 ring */
-.cv .card .row, .resume .card .row {
-  position: relative; margin: 0; padding: 0 0 1.8rem 2rem;
-}
-.cv .card ul.list-group > li.list-group-item:last-child .row { padding-bottom: 0; }
-.cv .card .row::before {
-  content: ""; position: absolute; left: 6px; top: 0.5rem; bottom: 0; width: 2px; background: var(--global-divider-color);
-}
-.cv .card ul.list-group > li.list-group-item:last-child .row::before { bottom: auto; height: 0.55rem; }
-.cv .card .row::after {
-  content: ""; position: absolute; left: 0; top: 0.35rem; width: 13px; height: 13px;
-  box-sizing: border-box; border-radius: 50%; border: 2.5px solid var(--global-theme-color); background: var(--global-bg-color);
-}
-/* 항목 li/ul 기본 박스 제거 */
+/* 카드 박스 제거 (airy) */
+.cv .card, .resume .card { border: none !important; box-shadow: none !important; background: transparent !important; padding: 0 !important; margin: 0 0 2.75rem !important; }
 .cv .card ul.list-group, .cv .card ul.card-text { padding-left: 0; margin: 0; list-style: none; }
 .cv .card li.list-group-item { border: none !important; background: transparent; padding: 0; }
-/* 항목 내부 컬럼: 날짜는 좁게, 내용은 넓게 (Bootstrap 잔여 패딩 정리) */
-.cv .card .row > [class*="col-"] { padding-left: 0; }
-.cv .card .date-column { text-align: left; }
-.cv .card h6.title { font-size: var(--fs-h3); font-weight: 700; margin: 0.1rem 0 0; }
+
+/* (A) 항목 = 단일 컬럼 stack + 타임라인 패딩 */
+.cv .card .row, .resume .card .row {
+  display: block !important; position: relative;
+  padding: 0 0 1.8rem 2rem !important; margin: 0 !important;
+}
+.cv .card .row > [class*="col"] { width: 100% !important; max-width: 100% !important; flex: none !important; padding-left: 0 !important; padding-right: 0 !important; margin: 0 !important; }
+.cv .card ul.list-group > li.list-group-item:last-child .row { padding-bottom: 0 !important; }
+
+/* (C) 레일 + 속 빈 ring */
+.cv .card .row::before { content: ""; position: absolute; left: 5px; top: 0.5rem; bottom: 0; width: 2px; background: var(--global-divider-color); }
+.cv .card ul.list-group > li.list-group-item:last-child .row::before { bottom: auto; height: 0.6rem; }
+.cv .card .row::after {
+  content: ""; position: absolute; left: 0; top: 0.45rem; width: 12px; height: 12px;
+  box-sizing: border-box; border-radius: 50%; border: 2.5px solid var(--global-theme-color); background: var(--global-bg-color);
+}
+.cv .card .row .title, .cv .card h6.title { font-weight: 600; font-size: var(--fs-h3); margin: 0.1rem 0 0; }
 .cv .card h6.title a { color: var(--global-text-color); }
 .cv .card h6.title a:hover { color: var(--global-theme-color); }
+.cv .card .font-italic, .cv .card h6[style*="italic"] { color: var(--global-text-color-light); }
 .cv .card ul.items { padding-left: 1.1rem; margin: 0.45rem 0 0; }
 .cv .card ul.items li { margin: 0.3rem 0; line-height: 1.6; }
+.cv .card .date-column { text-align: left; }
 
-/* (C) 날짜 배지 → teal small-caps 라벨 (솔리드 초록 폐기) */
-.cv .badge, .resume .badge, .cv .row span.badge, .date-column .badge {
-  background: transparent !important; color: var(--global-theme-color) !important;
-  padding: 0 !important; border-radius: 0; min-width: 0 !important;
-  font-family: var(--font-mono); font-weight: 600; font-size: 0.72rem;
-  letter-spacing: 0.04em; text-transform: uppercase; white-space: nowrap;
+/* (B) 날짜 배지 → subtle 연초록 pill (솔리드 진초록 폐기), stack 위쪽 */
+.cv .badge, .resume .badge, .date-column .badge,
+.cv .card .row [class*="col"]:first-child span.badge {
+  display: inline-block !important;
+  background: var(--accent-subtle-bg) !important; color: var(--accent-subtle-text) !important;
+  font-family: var(--font-mono) !important; font-weight: 500 !important;
+  font-size: 0.72rem !important; letter-spacing: 0 !important; text-transform: none !important;
+  padding: 0.15rem 0.5rem !important; border-radius: 6px !important; margin: 0 0 0.4rem 0 !important;
+  min-width: 0 !important; white-space: nowrap;
 }
 
-/* basics 테이블 라벨 */
+/* basics 라벨 + skills/languages subtle 칩 */
 td.list-group-category { color: var(--global-text-color); font-weight: 700; }
-
-/* skills / languages → subtle 칩 느낌 (table 마크업이라 셀 단위로) */
 .cv .list-group-name b {
   display: inline-block; font-weight: 500; font-family: var(--font-mono); font-size: 0.8rem;
-  background: var(--accent-subtle-bg); color: var(--accent-subtle-text); padding: 0.15rem 0.55rem; border-radius: var(--radius-sm);
+  background: var(--accent-subtle-bg); color: var(--accent-subtle-text); padding: 0.15rem 0.55rem; border-radius: 6px;
 }
 
-/* 사이드바 sticky + scroll-spy */
+/* 사이드바 sticky + scroll-spy + §9-8 active */
 #toc-sidebar { position: sticky; top: 5rem; }
-nav[data-toggle="toc"] .nav-link { font-family: var(--font-sans); color: var(--global-text-color-light); border-left: 2px solid transparent; padding: 0.2rem 0.75rem; }
-nav[data-toggle="toc"] .nav-link.active { color: var(--global-theme-color); border-left-color: var(--global-theme-color); font-weight: 600; }
+nav[data-toggle="toc"] .nav-link, .cv-sidebar a, #cv-toc a { font-family: var(--font-sans); color: var(--global-text-color-light); border-left: 2px solid transparent; padding: 0.2rem 0.75rem; }
+nav[data-toggle="toc"] .nav-link.active, .cv-sidebar a.active, #cv-toc a.active { color: var(--global-theme-color); border-left-color: var(--global-theme-color); font-weight: 600; }
 
 /* =====================================================================
-   9. RESPONSIVE
+   §7. HERO 이름 — Yohan(700) / Lee(300)  (committed span에 CSS만)
    ===================================================================== */
+.post-header .post-title { font-weight: 700; margin-bottom: 1.25rem; }
+.hero-name { font-weight: 300; }
+.hero-name .font-weight-bold, .post-title .fw-bold, h1 .fw-bold { font-weight: 700 !important; }
+.post-title .lighter, h1 .lighter { font-weight: 300 !important; }
+
+/* =====================================================================
+   §8. HOME — 프로필 중앙·구분선 제거, latest posts 날짜 간격
+   ===================================================================== */
+.profile { text-align: center; }
+.profile hr, .profile .profile-sep { display: none !important; }
+.profile .more-info { border-top: none !important; padding-top: 0 !important; margin-top: 0.6rem; font-size: var(--fs-sm); color: var(--global-text-color-light); }
+.profile .more-info p { margin: 0.1rem 0; }
+.profile img {
+  width: clamp(170px, 18vw, 210px); aspect-ratio: 1; border-radius: 50%;
+  object-fit: cover; object-position: center 25%; box-shadow: var(--shadow-md); outline: 4px solid #fff; outline-offset: -4px;
+}
+html[data-theme="dark"] .profile img { outline: none; }
+.profile .social, .profile .contact-icons { display: flex; justify-content: center; gap: 1rem; margin: 0.6rem 0 0; font-size: 1.25rem; }
+.profile .social a, .profile .contact-icons a { color: var(--global-text-color-light); transition: color 0.15s ease, transform 0.15s ease; }
+.profile .social a:hover, .profile .contact-icons a:hover { color: var(--global-theme-color); transform: translateY(-2px); }
+.profile .contact-note { margin-top: 0.6rem; font-size: var(--fs-sm); color: var(--global-text-color-light); }
+
+/* latest posts / news 표: 날짜(mono) ↔ 제목 간격 축소 */
+.news table { width: 100%; }
+.news table th { font-family: var(--font-mono); font-size: var(--fs-sm); font-weight: 400; width: 1%; white-space: nowrap; padding-right: 1.5rem; color: var(--global-text-color-light); vertical-align: baseline; }
+.news table td { border-bottom: 1px solid var(--global-divider-color); }
+.news table tr:last-child td { border-bottom: none; }
+.news .news-title { font-weight: 500; color: var(--global-text-color); }
+.news table tr:hover .news-title { color: var(--global-theme-color); }
+
+/* =====================================================================
+   §9. 푸터 + 반응형
+   ===================================================================== */
+footer, .footer { color: var(--global-text-color-light); font-size: 0.85rem; }
+footer a, .footer a { color: var(--global-text-color-light); }
+footer a:hover, .footer a:hover { color: var(--global-theme-color); }
+
 @media (max-width: 767px) {
   .profile { float: none !important; width: 100%; margin: 0 auto 1.5rem; }
   .profile img { width: 150px; margin: 0 auto; }
   .post > article > h2 { margin-top: 2.5rem; }
-  .cv .card .row { padding-left: 1.6rem; }
+  .cv .card .row { padding-left: 1.6rem !important; }
 }
