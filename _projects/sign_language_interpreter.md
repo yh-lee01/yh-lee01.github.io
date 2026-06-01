@@ -22,7 +22,7 @@ Built a real-time emergency sign language interpreter using **LSTM/GRU** classif
 ## Key Features
 
 - **Real-time inference** on tablet devices
-- Custom dataset of 70 emergency-related sign language words
-- MediaPipe-based hand/body keypoint extraction
-- LSTM/GRU sequential classification pipeline
-- Full-stack tablet application deployment
+- **Custom dataset** of 70 emergency-related sign language words
+- **MediaPipe-based** hand/body keypoint extraction
+- **LSTM/GRU** sequential classification pipeline
+- **Full-stack deployment** as a tablet application

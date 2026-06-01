@@ -167,9 +167,11 @@ html[data-theme="dark"] .profile img { outline: none; }
   font-weight: 700;
   text-transform: lowercase;
   margin-top: 4rem;
+  margin-bottom: 1.25rem;            /* 공통 0: 헤딩↔본문 간격 통일 */
   padding-bottom: 0.5rem;
   border-bottom: 1px solid var(--global-divider-color);
 }
+.post > article h2:first-of-type { margin-top: 2.5rem; }
 .post > article h2 a, .about h2 a { color: inherit; }
 
 /* latest posts / news 표: 날짜(mono, 좁은 고정폭) ↔ 제목 (가로 공백 축소) */
@@ -195,7 +197,8 @@ html[data-theme="dark"] .profile img { outline: none; }
 #bibsearch {
   border: 1px solid var(--global-divider-color);
   border-radius: var(--radius-md);
-  padding: 0.65rem 1rem;
+  padding: 0.6rem 1rem;
+  margin-bottom: 1.5rem;            /* 필터↔"2026" 공백 축소(이미지5-13) */
   font-size: var(--fs-base);
   font-family: var(--font-sans);
   max-width: var(--container);
@@ -243,7 +246,8 @@ html[data-theme="dark"] .profile img { outline: none; }
 /* =====================================================================
    6. BLOG — masthead + 목록 + 태그 pill(mono, 가운뎃점 없음)
    ===================================================================== */
-.header-bar { text-align: left; margin: 0.5rem 0 2.75rem; padding-bottom: 1.25rem; border-bottom: 1px solid var(--global-divider-color); }
+.header-bar { text-align: left; margin: 0.5rem 0 1.5rem; padding-bottom: 1.1rem; border-bottom: 1px solid var(--global-divider-color); }
+.post-list { margin-top: 1.5rem; }   /* 헤더↔첫 포스트 간격 축소(이미지4-9) */
 .header-bar h1 { color: var(--global-text-color); font-family: var(--font-sans); font-weight: 700; font-size: var(--fs-h1); margin: 0 0 0.4rem; }
 .header-bar h2 {
   color: var(--global-text-color-light);
@@ -263,14 +267,14 @@ html[data-theme="dark"] .profile img { outline: none; }
 .post-list li > p { color: var(--global-text-color-light); margin: 0 0 0.6rem; line-height: 1.55; max-width: var(--measure); }
 .post-list li .post-meta { font-family: var(--font-mono); color: var(--global-text-color-light); font-size: var(--fs-sm); margin-bottom: 0.5rem; }
 
-/* 태그 pill (mono) — 아이콘 숨김, gap 균등 */
-.post-tags { display: flex; flex-wrap: wrap; align-items: center; gap: 0.4rem; }
+/* 태그 pill (mono) — 아이콘 숨김, gap 균등, 살짝 작게 */
+.post-tags { display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem; }
 .post-tags i, .post-list li .post-tags i { display: none; }
 .post-tags a, .post-list li .post-tags a, .tag {
   display: inline-flex; align-items: center;
   font-family: var(--font-mono);
   font-size: var(--fs-sm); line-height: 1;
-  padding: 0.3rem 0.7rem; margin: 0;
+  padding: 0.28rem 0.65rem; margin: 0;
   border-radius: 999px;
   border: 1px solid var(--global-divider-color);
   color: var(--global-text-color-light);
@@ -294,10 +298,10 @@ html[data-theme="dark"] .profile img { outline: none; }
 }
 .cv-download:hover { background: var(--global-hover-color); color: #fff !important; }
 
-/* ★ entry(=resume include의 .row)를 2-column grid로: 날짜 | 내용, 겹침 해소 */
+/* ★ entry(=resume include의 .row)를 2-column grid로: 날짜(고정폭) | 내용, 겹침·정렬 해소 */
 .cv .card .row {
   display: grid;
-  grid-template-columns: 8.5rem 1fr;
+  grid-template-columns: 140px 1fr;
   gap: 1.25rem;
   align-items: start;
   margin: 0;
@@ -307,11 +311,14 @@ html[data-theme="dark"] .profile img { outline: none; }
 .cv .date-column .table-cv, .cv .date-column tbody, .cv .date-column tr, .cv .date-column td { display: block; width: auto; }
 @media (max-width: 767px) {
   .cv .card .row { grid-template-columns: 1fr; gap: 0.4rem; }
+  .date-column .badge, .cv .badge { justify-self: start; margin-bottom: 0.5rem; }
 }
 
-/* 날짜 배지 — 옅은 초록, mono, 한 줄 */
+/* 날짜 배지 — 옅은 초록, mono, 고정폭 좌측 정렬, 한 줄 */
 .date-column .badge, .cv .badge, .cv-date {
   display: inline-block;
+  min-width: 120px;
+  text-align: center;
   font-family: var(--font-mono) !important;
   font-size: var(--fs-sm);
   font-weight: 500;
@@ -319,10 +326,9 @@ html[data-theme="dark"] .profile img { outline: none; }
   background: var(--accent-subtle-bg) !important;
   color: var(--accent-subtle-text) !important;
   border-radius: var(--radius-sm);
-  padding: 0.2rem 0.5rem;
+  padding: 0.2rem 0.55rem;
   white-space: nowrap;
   letter-spacing: normal;
-  min-width: 0 !important;
 }
 
 #toc-sidebar { position: sticky; top: 5rem; }
@@ -347,18 +353,22 @@ td.list-group-category { color: var(--global-text-color); font-weight: 700; }
 /* =====================================================================
    8. PROJECTS — 카드 제목 compact(sans), 메타, 이미지 프레임
    ===================================================================== */
+/* 카드 내부 빈 공간 축소(이미지6-16) */
+.projects .card-body, .projects .grid-item .card-body { padding: 1rem 1.25rem; }
 .projects .card-title, .projects h2.card-title {
   font-family: var(--font-sans);
   font-size: var(--fs-h3);
   line-height: 1.25;
   font-weight: 700;
   text-transform: none;
+  margin: 0.25rem 0 0.5rem;
 }
+.projects .card-text { margin-bottom: 0; }
 .project-meta {
   font-family: var(--font-mono);
   font-size: var(--fs-sm);
   color: var(--global-text-color-light);
-  margin-bottom: 1.25rem;
+  margin: 0 0 1.25rem;
 }
 .badge.badge-award, .award-badge {
   display: inline-block; font-family: var(--font-mono);
@@ -368,7 +378,15 @@ td.list-group-category { color: var(--global-text-color); font-weight: 700; }
 }
 .projects .grid-item { max-width: 540px; }
 .project img, .projects figure img, .post-content img { border: 1px solid var(--global-divider-color); border-radius: var(--radius-md); }
-figcaption, .caption { color: var(--global-text-color-light); font-size: var(--fs-sm); }
+figcaption, .caption, .project figure figcaption {
+  color: var(--global-text-color-light);
+  font-size: var(--fs-sm);
+  margin-top: 0.5rem;
+  text-align: center;
+}
+/* 프로젝트 상세 본문 불릿 정렬 일관(이미지7·8-22) */
+.post > article ul, .post-content ul { padding-left: 1.2rem; }
+.post > article ul li, .post-content ul li { margin: 0.35rem 0; }
 .projects h2.category {
   font-family: var(--font-sans);
   text-transform: lowercase;
