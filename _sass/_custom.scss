@@ -247,9 +247,13 @@ html[data-theme="dark"] .profile img { outline: none; }
 .post-list li .read-link:hover { color: var(--global-hover-color); text-decoration: none; }
 
 /* =====================================================================
-   7. PUBLICATIONS — 풀와이드 슬림 카드
+   7. PUBLICATIONS — 풀와이드 슬림 카드 (제목 한 줄)
    ===================================================================== */
-.publications ol.bibliography { list-style: none; padding: 0; }
+/* 페이지 컨테이너 자체를 넓혀서 제목이 한 줄에 들어가도록 */
+.publications { max-width: 100% !important; width: 100% !important; }
+.publications ol.bibliography { list-style: none; padding: 0; max-width: 100%; }
+/* 부모 컨테이너도 넓힘 */
+.post:has(.publications) { max-width: 1100px; margin: 0 auto; }
 .publications ol.bibliography > li { padding: 0.7rem 1rem !important; margin-bottom: 0.5rem !important; }
 /* "2026" 연도 헤딩: 좌측 정렬 + 봉 묶음 구분선 + 무거운 폰트 */
 .publications h2.bibliography {
