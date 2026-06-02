@@ -11,9 +11,15 @@ layout: default
 <div class="post">
   {% if page.title and page.no_title != true %}
     <header class="post-header">
-      <h1 class="post-title">{{ page.title }}</h1>
+      <div class="page-head">
+        <h1 class="post-title">{{ page.title }}</h1>
+        {% if page.page_count %}
+          <span class="blog-count">{{ page.page_count }}</span>
+        {% endif %}
+      </div>
       {% if page.description %}
         <p class="post-description">{{ page.description }}</p>
+        <hr>
       {% endif %}
     </header>
   {% endif %}

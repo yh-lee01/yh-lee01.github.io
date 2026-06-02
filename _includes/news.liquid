@@ -16,8 +16,27 @@
         {% endif %}
         {% for item in news limit: news_limit %}
           <tr>
-            <th scope="row" style="width: 20%">{{ item.date | date: '%b %d, %Y' }}</th>
+            <th scope="row" style="width: 20%">{{ item.date | date: '%b %Y' }}</th>
             <td>
+              {% if item.type %}
+                <span class="news-chip news-chip--{{ item.type }}">
+                  {% case item.type %}
+                    {% when 'paper' %}
+                      <i class="fa-solid fa-file-lines"></i>
+                    {% when 'post' %}
+                      <i class="fa-solid fa-pen-nib"></i>
+                    {% when 'joined' %}
+                      <i class="fa-solid fa-building-columns"></i>
+                    {% when 'award' %}
+                      <i class="fa-solid fa-award"></i>
+                    {% when 'update' %}
+                      <i class="fa-solid fa-circle-info"></i>
+                    {% else %}
+                      <i class="fa-solid fa-circle-info"></i>
+                  {% endcase %}
+                  {{ item.type }}
+                </span>
+              {% endif %}
               {% if item.inline %}
                 {{ item.content | remove: '<p>' | remove: '</p>' | emojify }}
               {% else %}

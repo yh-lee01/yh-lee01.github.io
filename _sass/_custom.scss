@@ -155,9 +155,12 @@ a:hover { color: var(--global-hover-color); text-decoration: underline; text-und
   object-fit: cover; object-position: center 25%;
   box-shadow: var(--shadow-md); outline: 4px solid #fff; outline-offset: -4px;
 }
+/* figure 래퍼 여백 제거 → 소셜 아이콘 클릭 보장 */
+.profile > figure { margin: 0 !important; }
+.profile figure picture { display: block; }
 html[data-theme="dark"] .profile img { outline: none; }
-/* 소셜 아이콘: 가운데 정렬 flex */
-.profile .social { margin-top: 1rem; text-align: center; }
+/* 소셜 아이콘: 가운데 정렬 flex + z-index 클릭 보장 */
+.profile .social { margin-top: 1rem; text-align: center; position: relative; z-index: 2; }
 .profile .social .contact-icons,
 .profile .social-icons {
   font-size: 1.25rem; display: flex; justify-content: center; gap: 1.1rem; margin: 0 0 0.85rem;
@@ -165,9 +168,13 @@ html[data-theme="dark"] .profile img { outline: none; }
 .profile .social .contact-icons a,
 .profile .social-icons a {
   color: var(--global-text-color-light); transition: color 0.15s ease, transform 0.15s ease;
+  display: inline-flex; align-items: center; justify-content: center;
 }
 .profile .social .contact-icons a:hover,
 .profile .social-icons a:hover { color: var(--global-theme-color); transform: translateY(-2px); }
+/* 아이콘 크기 통일 (envelope·github·linkedin·rss 동일 너비) */
+.profile .contact-icons a i,
+.profile .social-icons a i { width: 1.25em; text-align: center; }
 /* 이메일 링크 */
 .profile .email a, .profile a[href^="mailto"] { color: var(--global-theme-color); font-size: 0.9rem; }
 .profile .contact-note { margin-top: 0.6rem; font-size: var(--fs-sm); color: var(--global-text-color-light); }
@@ -187,24 +194,67 @@ html[data-theme="dark"] .profile img { outline: none; }
 .post > article h2:first-of-type { margin-top: 2.5rem; }
 .post > article h2 a, .about h2 a { color: inherit; }
 
-/* latest posts → 미니 카드 (table 2열 해제: 날짜 위 / 제목 아래 + hover) */
-.news .table-responsive { max-height: none !important; }
-.news table, .news tbody, .news tr, .news th, .news td { display: block; width: auto !important; }
+/* ★ news feed — compact dated rows with type chips (distinct from blog cards) */
+.news .table-responsive { max-height: none !important; overflow: visible !important; }
+.news table { border-collapse: separate; border-spacing: 0; }
+.news table, .news tbody { display: block; width: 100%; }
+
+/* 각 행: 날짜 | 칩 | 내용 — 수평 레이아웃 */
 .news table tr {
+  display: flex; align-items: center; gap: 0.9rem;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid var(--global-divider-color);
+  background: transparent; border-radius: 0;
+  transition: background 0.12s ease;
+}
+.news table tr:last-child { border-bottom: none; }
+.news table tr:hover { background: color-mix(in srgb, var(--global-theme-color) 4%, transparent); }
+
+/* 날짜 열 — 고정폭, mono, 뮤트 */
+.news table th {
+  flex: none; width: 78px;
+  font-family: var(--font-mono); font-size: 0.75rem; font-weight: 400;
+  color: var(--global-text-color-light); padding: 0 !important;
+  white-space: nowrap; text-align: left;
+}
+
+/* 내용 열 */
+.news table td {
+  flex: 1; min-width: 0; padding: 0 !important; border: none !important;
+  font-size: 0.92rem; line-height: 1.5; color: var(--global-text-color);
+}
+.news .news-title { font-size: 0.92rem; font-weight: 600; color: var(--global-text-color); }
+.news table tr:hover .news-title { color: var(--global-theme-color); }
+
+/* ── 타입 칩 (frontmatter type → 아이콘 + 라벨) ── */
+.news-chip {
+  display: inline-flex; align-items: center; gap: 0.3rem;
+  font-family: var(--font-mono); font-size: 0.68rem; font-weight: 500;
+  line-height: 1; padding: 0.18rem 0.55rem; border-radius: 999px;
+  white-space: nowrap; vertical-align: middle; margin-right: 0.45rem;
+  /* 기본: 뉴트럴 */
+  background: var(--global-code-bg-color);
+  color: var(--global-text-color-light);
+  border: 1px solid var(--global-divider-color);
+}
+.news-chip i { font-size: 0.62rem; }
+
+/* 타입별 색상 — paper/award = 그린 액센트, 나머지 = 뉴트럴 */
+.news-chip--paper, .news-chip--award {
+  background: var(--accent-subtle-bg);
+  color: var(--accent-subtle-text);
+  border-color: color-mix(in srgb, var(--global-theme-color) 25%, transparent);
+}
+/* post/joined/update — 기본 뉴트럴 유지 */
+
+/* ★ news 카드 래퍼 (홈 페이지에서 news 섹션을 카드로 감싸기) */
+.news-card {
   background: var(--global-card-bg-color);
   border: 1px solid var(--global-divider-color);
-  border-radius: 14px; padding: 0.85rem 1.2rem; margin-bottom: 0.7rem;
-  transition: border-color 0.15s ease, transform 0.15s ease;
+  border-radius: var(--radius-lg);
+  padding: 1.25rem 1.5rem;
 }
-.news table tr:hover { border-color: var(--global-theme-color); transform: translateY(-2px); }
-.news table th {
-  font-family: var(--font-mono); font-size: 0.72rem; font-weight: 400;
-  color: var(--global-text-color-light); padding: 0 !important; margin-bottom: 0.35rem;
-  white-space: normal; text-align: left;
-}
-.news table td { padding: 0 !important; border: none !important; }
-.news .news-title { font-size: 1rem; font-weight: 600; color: var(--global-text-color); }
-.news table tr:hover .news-title { color: var(--global-theme-color); }
+.news-card > h2 { margin-top: 0 !important; margin-bottom: 1rem; }
 
 /* =====================================================================
    5. ★ 통일 카드 — blog · publications · projects 동일 스타일
@@ -238,11 +288,14 @@ html[data-theme="dark"] .profile img { outline: none; }
 /* =====================================================================
    6. BLOG — 헤더(accent rule + 글 수) + 슬림 카드(요약/푸터선 없음)
    ===================================================================== */
-/* 헤더: 제목 좌 / 글 수 우 */
-.blog-head { display: flex; justify-content: space-between; align-items: baseline; }
-.blog-head .post-title { color: var(--global-text-color); font-weight: 700; font-size: var(--fs-h1); margin: 0; text-transform: lowercase; letter-spacing: -0.01em; }
+/* 헤더: 제목 좌 / 글 수 우 — blog(.blog-head) + publications·projects(.page-head) 공통 */
+.blog-head, .page-head { display: flex; justify-content: space-between; align-items: baseline; }
+.blog-head .post-title, .page-head .post-title { color: var(--global-text-color); font-weight: 700; font-size: var(--fs-h1); margin: 0; text-transform: lowercase; letter-spacing: -0.01em; }
 .blog-count { font-family: var(--font-mono); font-size: 0.75rem; color: var(--global-text-color-light); white-space: nowrap; }
-.post-description { font-family: var(--font-mono); font-style: italic; font-size: 0.95rem; color: var(--global-text-color-light); margin: 0.35rem 0 0; max-width: var(--measure); }
+.post-description { font-family: var(--font-mono); font-style: italic; font-size: 0.95rem; color: var(--global-text-color-light); margin: 0.35rem 0 0; }
+/* page.liquid 헤더(publications·projects)는 full-width — blog의 820px 제한 해제 */
+.post-header .post-description,
+.post-header .post-description + hr { max-width: none; }
 /* 액센트 구분선 — 기존 hr만 CSS로(마크업 변경 없음) */
 .post-description + hr {
   border: none; height: 1px; background: var(--global-divider-color);
@@ -289,7 +342,7 @@ html[data-theme="dark"] .profile img { outline: none; }
 .publications h2.bibliography::before { display: none; }
 
 /* 썸네일 좌 + 내용 우 */
-.publications .row { display: flex !important; gap: 16px; align-items: flex-start; margin: 0; }
+.publications .row { display: flex !important; gap: 16px; align-items: flex-start; margin: 0; flex-wrap: nowrap; }
 .publications .abbr, .publications .col-sm-2 {
   flex: none !important; width: 92px !important; max-width: 92px !important; padding: 0 !important;
 }
@@ -297,7 +350,8 @@ html[data-theme="dark"] .profile img { outline: none; }
   width: 92px !important; height: 64px !important; object-fit: cover; border-radius: 8px; border: 1px solid var(--global-divider-color);
 }
 .publications .col-sm-8, .publications .col-sm-10 {
-  flex: 1; min-width: 0; padding: 0 !important; display: flex; flex-direction: column;
+  flex: 1 !important; min-width: 0; padding: 0 !important; display: flex; flex-direction: column;
+  max-width: none !important; width: auto !important;
 }
 
 /* 순서: 상태칩 → 제목 → 저자 → 버튼 */
@@ -348,9 +402,11 @@ html[data-theme="dark"] .profile img { outline: none; }
 }
 .projects .card:hover { border-color: var(--global-theme-color) !important; transform: translateY(-2px); }
 
-/* ★ 이미지-제목 빈틈 제거: 이미지 flush, figure 여백 제거 */
-.projects .card-img-top, .projects .card img, .projects .card figure { width: 100%; margin: 0 !important; display: block; border: none !important; border-radius: 0 !important; }
-.projects .card figure { line-height: 0; }
+/* ★ 이미지-제목 빈틈 제거: figure/picture flush, 여백 전부 제거 */
+.projects .card-img-top, .projects .card img { width: 100%; margin: 0 !important; display: block; border: none !important; border-radius: 0 !important; }
+.projects .card figure { width: 100%; margin: 0 !important; padding: 0; line-height: 0; }
+.projects .card figure picture { display: block; line-height: 0; }
+.projects .card figure picture img { width: 100%; height: auto; display: block; }
 .projects .card-body { padding: 1rem 1.25rem !important; }
 
 /* 제목: 좌측 초록 바 제거(칩으로 대체) */
@@ -438,4 +494,7 @@ footer a:hover, .footer a:hover { color: var(--global-theme-color); }
   .profile img { max-width: 55%; }
   .post > article h2, .about h2 { margin-top: 2.5rem; }
   .cv-pdf-embed iframe, .cv-pdf-embed object, .cv-pdf-embed embed { height: 60vh; min-height: 400px; }
+  /* news feed mobile: 날짜 위 / 칩+내용 아래 */
+  .news table tr { flex-wrap: wrap; gap: 0.25rem; padding: 0.6rem 0; }
+  .news table th { width: auto; }
 }
