@@ -23,10 +23,12 @@ pagination:
 
 {% if blog_name_size > 0 or blog_description_size > 0 %}
 
-  <div class="header-bar">
-    <h1>{{ site.blog_name }}</h1>
-    <h2>{{ site.blog_description }}</h2>
+  <div class="blog-head">
+    <h1 class="post-title">{{ site.blog_name }}</h1>
+    <span class="blog-count">{{ site.posts | size }} posts</span>
   </div>
+  <p class="post-description">{{ site.blog_description }}</p>
+  <hr>
   {% endif %}
 
 
@@ -95,67 +97,27 @@ pagination:
     {% assign tags = post.tags | join: "" %}
     {% assign categories = post.categories | join: "" %}
 
-    <li>
+    {% if post.redirect == blank %}
+      {% assign post_url = post.url | relative_url %}
+    {% elsif post.redirect contains '://' %}
+      {% assign post_url = post.redirect %}
+    {% else %}
+      {% assign post_url = post.redirect | relative_url %}
+    {% endif %}
 
-{% if post.thumbnail %}
-
-<div class="row">
-          <div class="col-sm-9">
-{% endif %}
-      {% if categories != "" %}
-        {% for category in post.categories %}
-          <span class="cat">{{ category }}</span>
-        {% endfor %}
-      {% endif %}
-        <h3>
-        {% if post.redirect == blank %}
-          <a class="post-title" href="{{ post.url | relative_url }}">{{ post.title }}</a>
-        {% elsif post.redirect contains '://' %}
-          <a class="post-title" href="{{ post.redirect }}" target="_blank">{{ post.title }}</a>
-          <svg width="2rem" height="2rem" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
-            <path d="M17 13.5v6H5v-12h6m3-3h6v6m0-6-9 9" class="icon_svg-stroke" stroke="#999" stroke-width="1.5" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round"></path>
-          </svg>
-        {% else %}
-          <a class="post-title" href="{{ post.redirect | relative_url }}">{{ post.title }}</a>
-        {% endif %}
-      </h3>
-      <p>{{ post.description }}</p>
-      <p class="post-meta">
-        {{ read_time }} min read &nbsp; &middot; &nbsp;
-        {{ post.date | date: '%B %d, %Y' }}
-        {% if post.external_source %}
-        &nbsp; &middot; &nbsp; {{ post.external_source }}
-        {% endif %}
-      </p>
-      <p class="post-tags">
-        <a href="{{ year | prepend: '/blog/' | relative_url }}">
-          <i class="fa-solid fa-calendar fa-sm"></i> {{ year }} </a>
-
-          {% if tags != "" %}
-            {% for tag in post.tags %}
-            <a href="{{ tag | slugify | prepend: '/blog/tag/' | relative_url }}">
-              <i class="fa-solid fa-hashtag fa-sm"></i> {{ tag }}</a>
-              {% unless forloop.last %}
-                &nbsp;
-              {% endunless %}
-              {% endfor %}
-          {% endif %}
-    </p>
-      {% if post.redirect == blank %}
-        <a class="read-link" href="{{ post.url | relative_url }}">Read &rarr;</a>
-      {% else %}
-        <a class="read-link" href="{{ post.redirect | default: post.url | relative_url }}">Read &rarr;</a>
-      {% endif %}
-
-{% if post.thumbnail %}
-
-</div>
-
-  <div class="col-sm-3">
-    <img class="card-img" src="{{ post.thumbnail | relative_url }}" style="object-fit: cover; height: 90%" alt="image">
-  </div>
-</div>
-{% endif %}
+    <li class="post-card">
+      <div class="pc-head">
+        {% if categories != "" %}<span class="cat">{{ post.categories.first }}</span>{% endif %}
+        <span class="pc-meta">{{ read_time }} min read &middot; {{ post.date | date: "%b %d, %Y" }}{% if post.external_source %} &middot; {{ post.external_source }}{% endif %}</span>
+      </div>
+      <h3 class="post-card-title"><a class="post-title" href="{{ post_url }}">{{ post.title }}</a></h3>
+      <div class="pc-foot">
+        <div class="post-tags">
+          {% for tag in post.tags limit: 3 %}<a class="tag" href="{{ tag | slugify | prepend: '/blog/tag/' | relative_url }}">{{ tag }}</a>{% endfor %}
+          {% if post.tags.size > 3 %}<span class="pc-more">+{{ post.tags.size | minus: 3 }}</span>{% endif %}
+        </div>
+        <a class="pc-read" href="{{ post_url }}">Read <span class="arw">&rarr;</span></a>
+      </div>
     </li>
 
     {% endfor %}

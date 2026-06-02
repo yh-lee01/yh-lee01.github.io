@@ -5,6 +5,8 @@ description: Real-time emergency sign language interpreter using LSTM/GRU on Med
 img: assets/img/sign.png
 importance: 1
 category: selected
+chip: Grand Prize · 2023
+tech: [python, flutter, mediapipe]
 ---
 
 <p class="project-meta">2023 · Python · Flutter · MediaPipe · LSTM/GRU</p>

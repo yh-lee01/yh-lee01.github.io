@@ -12,8 +12,10 @@
         %}
       {% endif %}
       <div class="card-body">
+        {% if project.chip %}<span class="pj-chip">{{ project.chip }}</span>{% endif %}
         <h2 class="card-title">{{ project.title }}</h2>
         <p class="card-text">{{ project.description }}</p>
+        {% if project.tech %}<div class="pj-tags">{% for t in project.tech %}<span class="tag">{{ t }}</span>{% endfor %}</div>{% endif %}
         <div class="row ml-1 mr-1 p-0">
           {% if project.github %}
             <div class="github-icon">
