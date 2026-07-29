@@ -10,7 +10,7 @@ profile:
   image: profile_pic.jpg
   image_circular: true
   more_info: >
-    <p>john1111369@g.skku.edu</p>
+    <p>john1111369@gmail.com</p>
 
 selected_papers: true
 social: true
@@ -26,12 +26,10 @@ latest_posts:
   limit: 5
 ---
 
-I am a senior undergraduate at [Sungkyunkwan University](https://www.skku.edu) (Computer Science and Engineering, expected Aug. 2027), interested in the intersection of generative models and sequential decision-making, with a focus on AI safety. I have research experience at [Pixel Lab](https://sites.google.com/view/pixel-lab-ai/home) (Korea University), [AIoT Lab](https://aiot.snu.ac.kr/home) (Seoul National University), and [V-Lab](https://v-laboratory.github.io/#/) (Sungkyunkwan University). I am seeking graduate research opportunities for **Fall 2027**.
+I am a senior undergraduate at [Sungkyunkwan University](https://www.skku.edu) (Computer Science and Engineering, expected Aug. 2027). I have research experience at [Pixel Lab](https://sites.google.com/view/pixel-lab-ai/home) (Korea University), [AIoT Lab](https://aiot.snu.ac.kr/home) (Seoul National University), and [V-Lab](https://v-laboratory.github.io/#/) (Sungkyunkwan University). I am seeking graduate research opportunities for **Fall 2027**.
 
 ## research interests
 
-I study the **intersection of generative models and sequential decision-making**, with a focus on **safety**. I view generative models as mathematical tools where capability and safety are shaped by the same underlying mathematics.
+My research is driven by a fundamental concern: as AI systems grow increasingly powerful, the risks of concentrated control and deliberate misuse demand proactive, principled countermeasures. I focus on two interrelated challenges — (1) preventing the monopolization of AI by individuals or corporations, and (2) developing preemptive methodologies to defend against the malicious exploitation of AI.
 
-My recent work spans multi-modal generation (Flow Matching), 3D synthesis (DDPM), and out-of-distribution robustness (ImageNet-ES). As generative models and RL algorithms expand from merely generating content to making sequential decisions in the physical world, **safety must be a foundational consideration in every step**.
-
-Ultimately, my research goal is to build capable AI systems that remain safe, robust, and aligned with human intentions.
+Ultimately, my goal is to establish robust frameworks that anticipate and mitigate the latent dangers of advanced AI before they materialize, ensuring that transformative AI technologies serve the broad public good rather than becoming instruments of harm.

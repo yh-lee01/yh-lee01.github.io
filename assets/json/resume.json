@@ -2,9 +2,10 @@
   "basics": {
     "name": "Yohan Lee",
     "label": "Undergraduate Researcher",
-    "email": "john1111369@g.skku.edu",
+    "email": "john1111369@gmail.com",
+    "phone": "+82-10-2438-7192",
     "url": "https://yh-lee01.github.io",
-    "summary": "I study the intersection of generative models and sequential decision-making, with a focus on safety. My current work centers on Flow Matching (Interspeech 2026), with growing interest in the data-centric foundations of embodied agents.",
+    "summary": "My research is driven by a fundamental concern: as AI systems grow increasingly powerful, the risks of concentrated control and deliberate misuse demand proactive, principled countermeasures. I focus on two interrelated challenges — (1) preventing the monopolization of AI by individuals or corporations, and (2) developing preemptive methodologies to defend against the malicious exploitation of AI. Ultimately, my goal is to establish robust frameworks that anticipate and mitigate the latent dangers of advanced AI before they materialize, ensuring that transformative AI technologies serve the broad public good rather than becoming instruments of harm.",
     "location": {
       "city": "Seoul",
       "countryCode": "KR"
@@ -26,14 +27,12 @@
     {
       "institution": "Sungkyunkwan University",
       "studyType": "B.S. in Computer Science and Engineering",
-      "area": "GPA: 3.78 / 4.5",
       "startDate": "2023-02",
       "endDate": "2027-08"
     },
     {
       "institution": "Myongji University",
-      "studyType": "B.S. in Computer Engineering",
-      "area": "Transferred to SKKU · GPA: 4.06 / 4.5",
+      "studyType": "B.S. in Computer Engineering (transferred to SKKU)",
       "startDate": "2021-02",
       "endDate": "2022-12"
     }
@@ -41,61 +40,55 @@
   "publications": [
     {
       "name": "Generate and Calibrate: Spectral Contrastive Flow Matching for Audio-Visual Sound Separation",
-      "publisher": "Submitted to Interspeech 2026 (under review)",
+      "publisher": "Under review",
       "releaseDate": "2026",
       "summary": "Yohan Lee*, Sujung Oh*, Gaeun Ko, Sangmin Lee†  (*equal contribution, †corresponding author)"
     }
   ],
   "work": [
     {
-      "name": "Pixel Lab, Korea University",
-      "position": "Undergraduate Researcher",
-      "summary": "Advisor: Prof. Sangmin Lee",
+      "name": "Pixel Lab, Sungkyunkwan University / Korea University",
+      "position": "Undergraduate Researcher (Advisor: Prof. Sangmin Lee)",
       "startDate": "2025-02",
       "highlights": [
-        "Spectral Contrastive Flow Matching (SCFM): proposed contrastive objectives extending Flow Matching-based generative frameworks, improving spectral discrimination across concurrent sound sources.",
-        "Energy-Guided Calibration (EGC): designed a calibration technique addressing energy imbalance between separated sources, enhancing perceptual quality of isolated audio streams.",
-        "Co-first-authored a paper submitted to Interspeech 2026 (under review)."
+        "Designed a contrastive training objective (Spectral Contrastive Flow Matching) that prevents one generated output from leaking into another, using repulsive terms and hard negatives constructed by swapping frequency bands.",
+        "Built an inference-time calibration step (Energy-Guided Calibration) that enforces a hard constraint — the observed input as an energy budget — on what the model may emit, correcting systematic over- and under-generation.",
+        "Owned the work end to end as co-first author: problem formulation, objective design, PyTorch implementation, ablations, and evaluation on two public benchmarks (14.67 dB SDR on MUSIC)."
       ]
     },
     {
       "name": "V-Lab, Sungkyunkwan University",
-      "position": "Undergraduate Research Program",
-      "summary": "Advisor: Prof. Eunbyung Park",
+      "position": "Undergraduate Researcher, URP (Advisor: Prof. Eunbyung Park)",
       "startDate": "2024-07",
       "endDate": "2024-08",
       "highlights": [
-        "DDPM-based 3D Synthesis: developed a generative pipeline combining score-based diffusion with neural rendering for automated architectural model synthesis and texturing.",
-        "Conducted empirical analysis on noise schedules and loss function design to improve visual fidelity of generated 3D assets."
+        "Built a diffusion-based (DDPM) pipeline for 3D model synthesis with text-driven texturing, improving texture consistency through loss and geometry adjustments."
       ]
     },
     {
       "name": "AIoT Lab, Seoul National University",
-      "position": "Undergraduate Researcher",
-      "summary": "Advisor: Prof. Hyung-Sin Kim",
+      "position": "Undergraduate Researcher (Advisor: Prof. Hyung-Sin Kim)",
       "startDate": "2023-12",
       "endDate": "2024-02",
       "highlights": [
-        "OOD & Robustness Benchmark: contributed to robust dataset evaluation pipelines for visual perception covariate shifts (cf. ImageNet-ES, CVPR 2024).",
-        "On-Device AI: explored model compression techniques and edge deployment on Google Coral Board, supported by the Google ExploreCSR program."
+        "Studied robustness and out-of-distribution failure of vision models under sensor-induced distribution shift alongside the ImageNet-ES (CVPR 2024) team; worked on model compression for on-device deployment (Google ExploreCSR)."
       ]
     }
   ],
   "projects": [
     {
-      "name": "Sign Language Interpreter in Emergency Situations",
-      "summary": "Python, Flutter, MediaPipe",
+      "name": "Sign Language Interpreter for Emergency Situations",
+      "summary": "PyTorch, MediaPipe, Flutter, Flask",
       "startDate": "2023-08",
       "highlights": [
-        "Built a real-time emergency medical communication system with a custom 70-word sign language dataset, LSTM/GRU classifiers on MediaPipe keypoints, and full-stack tablet deployment.",
-        "Awarded Grand Prize at the Ambient AI Competition, SNU GSDS."
+        "Curated a 70-word medical sign-language dataset and trained LSTM/GRU sequence classifiers over 30-frame MediaPipe keypoint windows; deployed as a Flutter tablet client on a Flask inference server."
       ]
     }
   ],
   "awards": [
     {
-      "title": "Grand Prize, Ambient AI Competition",
-      "awarder": "SNU GSDS",
+      "title": "Grand Prize (1st place), Ambient AI Competition",
+      "awarder": "Seoul National University GSDS",
       "date": "2023-08"
     },
     {
@@ -107,21 +100,23 @@
   ],
   "skills": [
     {
-      "name": "ML / DL",
+      "name": "Programming",
       "keywords": [
-        "PyTorch",
-        "JAX/Flax",
-        "Flow Matching",
-        "Diffusion Models",
-        "Reinforcement Learning (SAC, Policy Gradient)",
-        "OOD Detection"
+        "Python",
+        "C/C++"
       ]
     },
     {
-      "name": "Programming & Tools",
+      "name": "Frameworks",
       "keywords": [
-        "Python",
-        "C/C++",
+        "PyTorch",
+        "JAX/Flax",
+        "OpenCV"
+      ]
+    },
+    {
+      "name": "Tools",
+      "keywords": [
         "Git",
         "Linux",
         "Docker",
@@ -137,7 +132,7 @@
     },
     {
       "language": "English",
-      "fluency": "Upper-Intermediate"
+      "fluency": "Professional"
     }
   ]
 }

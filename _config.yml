@@ -8,12 +8,12 @@ last_name: Lee
 contact_note: >
   Feel free to reach out via email.
 description: >
-  Personal academic website of Yohan Lee. Research interests in generative models,
-  sequential decision-making, and AI safety.
+  Personal academic website of Yohan Lee. Research interests in preventing AI monopolization
+  and developing preemptive defense against the malicious exploitation of AI.
 footer_text: >
   Powered by <a href="https://jekyllrb.com/" target="_blank">Jekyll</a> with <a href="https://github.com/alshedivat/al-folio">al-folio</a> theme.
   Hosted by <a href="https://pages.github.com/" target="_blank">GitHub Pages</a>.
-keywords: ai-safety, reinforcement-learning, generative-models, flow-matching, academic-website
+keywords: ai-safety, ai-monopolization, preemptive-defense, generative-models, flow-matching, academic-website
 lang: en
 icon: ⚛️
 
