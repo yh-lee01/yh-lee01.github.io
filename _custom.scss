@@ -167,3 +167,68 @@ blockquote {
     margin-bottom: 0.5rem;
   }
 }
+
+/* ---------- 9. Language Toggle (Kor / Eng) ---------- */
+.lang-toggle-container {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  margin: 0;
+  padding: 0 0.5rem;
+}
+
+.lang-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  background: var(--global-bg-color);
+  border: 1px solid var(--global-divider-color);
+  border-radius: 6px;
+  padding: 2px 4px;
+}
+
+.lang-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  padding: 3px 8px;
+  border-radius: 4px;
+  color: var(--global-text-color-light);
+  transition: all 0.2s ease;
+  line-height: 1;
+}
+
+.lang-btn:hover {
+  color: var(--global-theme-color);
+}
+
+.lang-btn.active {
+  background: var(--global-theme-color);
+  color: #fff;
+}
+
+.lang-divider {
+  font-size: 0.75rem;
+  color: var(--global-text-color-light);
+  opacity: 0.4;
+  user-select: none;
+  line-height: 1;
+}
+
+/* 모바일에서 navbar 내 배치 */
+@media (max-width: 575px) {
+  .lang-toggle-container {
+    padding: 0.4rem 0;
+    justify-content: flex-end;
+  }
+}
+
+/* ---------- 10. Language content show/hide ---------- */
+/* 기본: 한국어 콘텐츠 숨김 (JS가 로드되기 전 깜빡임 방지) */
+.lang-ko {
+  display: none;
+}

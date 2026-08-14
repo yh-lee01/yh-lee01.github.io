@@ -52,7 +52,7 @@ layout: default
     {% if page.announcements and page.announcements.enabled %}
       <div class="news-card">
         <h2>
-          <a href="{{ '/news/' | relative_url }}" style="color: inherit">news</a>
+          <a href="{{ '/news/' | relative_url }}" style="color: inherit"><span class="lang-en">news</span><span class="lang-ko">소식</span></a>
         </h2>
         {% include news.liquid limit=true %}
       </div>
@@ -61,7 +61,7 @@ layout: default
     <!-- Latest posts -->
     {% if page.latest_posts and page.latest_posts.enabled %}
       <h2>
-        <a href="{{ '/blog/' | relative_url }}" style="color: inherit">latest posts</a>
+        <a href="{{ '/blog/' | relative_url }}" style="color: inherit"><span class="lang-en">latest posts</span><span class="lang-ko">최근 글</span></a>
       </h2>
       {% include latest_posts.liquid %}
     {% endif %}
@@ -69,7 +69,7 @@ layout: default
     <!-- Selected papers -->
     {% if page.selected_papers %}
       <h2>
-        <a href="{{ '/publications/' | relative_url }}" style="color: inherit">selected publications</a>
+        <a href="{{ '/publications/' | relative_url }}" style="color: inherit"><span class="lang-en">selected publications</span><span class="lang-ko">주요 논문</span></a>
       </h2>
       {% include selected_papers.liquid %}
     {% endif %}
