@@ -180,9 +180,9 @@
     <div class="periodical">
       {{ periodical | strip }}
     </div>
-    <div class="periodical">
-      {{ entry.note | strip }}
-    </div>
+    {% if entry.note and entry.note != blank %}
+      <div class="periodical">{{ entry.note | strip }}</div>
+    {% endif %}
 
     <!-- Links/Buttons -->
     <div class="links">
@@ -192,7 +192,7 @@
         </a>
       {% endif %}
       {% if entry.abstract %}
-        <a class="abstract btn btn-sm z-depth-0" role="button">Abs</a>
+        <button type="button" class="abstract btn btn-sm z-depth-0" aria-expanded="false" aria-controls="abstract-{{ entry.key }}">Abstract</button>
       {% endif %}
       {% if entry.doi %}
         <a href="https://doi.org/{{ entry.doi }}" class="btn btn-sm z-depth-0" role="button">DOI</a>
@@ -201,7 +201,7 @@
         <a href="http://arxiv.org/abs/{{ entry.arxiv }}" class="btn btn-sm z-depth-0" role="button">arXiv</a>
       {% endif %}
       {% if entry.bibtex_show %}
-        <a class="bibtex btn btn-sm z-depth-0" role="button">Bib</a>
+        <button type="button" class="bibtex btn btn-sm z-depth-0" aria-expanded="false" aria-controls="bibtex-{{ entry.key }}">BibTeX</button>
       {% endif %}
       {% if entry.html %}
         {% if entry.html contains '://' %}
@@ -347,14 +347,14 @@
 
     {% if entry.abstract %}
       <!-- Hidden abstract block -->
-      <div class="abstract hidden">
+      <div id="abstract-{{ entry.key }}" class="abstract hidden">
         <p>{{ entry.abstract }}</p>
       </div>
     {% endif %}
 
     {% if entry.bibtex_show %}
       <!-- Hidden bibtex block -->
-      <div class="bibtex hidden">
+      <div id="bibtex-{{ entry.key }}" class="bibtex hidden">
         {% highlight bibtex %}
         {{- entry.bibtex | hideCustomBibtex -}}
         {% endhighlight %}

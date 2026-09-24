@@ -1,19 +1,15 @@
 $(document).ready(function () {
-  // add toggle functionality to abstract, award and bibtex buttons
-  $("a.abstract").click(function () {
-    $(this).parent().parent().find(".abstract.hidden").toggleClass("open");
-    $(this).parent().parent().find(".award.hidden.open").toggleClass("open");
-    $(this).parent().parent().find(".bibtex.hidden.open").toggleClass("open");
-  });
-  $("a.award").click(function () {
-    $(this).parent().parent().find(".abstract.hidden.open").toggleClass("open");
-    $(this).parent().parent().find(".award.hidden").toggleClass("open");
-    $(this).parent().parent().find(".bibtex.hidden.open").toggleClass("open");
-  });
-  $("a.bibtex").click(function () {
-    $(this).parent().parent().find(".abstract.hidden.open").toggleClass("open");
-    $(this).parent().parent().find(".award.hidden.open").toggleClass("open");
-    $(this).parent().parent().find(".bibtex.hidden").toggleClass("open");
+  // Keep disclosure styling and accessible state in sync, including keyboard clicks.
+  $("a.abstract, button.abstract, a.award, a.bibtex, button.bibtex").on("click", function () {
+    const entry = $(this).closest(".row");
+    const kind = ["abstract", "award", "bibtex"].find((name) => $(this).hasClass(name));
+    const target = entry.find(`.${kind}.hidden`);
+    entry.find(".abstract.hidden, .award.hidden, .bibtex.hidden").not(target).removeClass("open");
+    target.toggleClass("open");
+    entry.find(".links [aria-controls]").each(function () {
+      const panel = document.getElementById(this.getAttribute("aria-controls"));
+      this.setAttribute("aria-expanded", panel && panel.classList.contains("open") ? "true" : "false");
+    });
   });
   $("a").removeClass("waves-effect waves-light");
 

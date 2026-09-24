@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+set -euo pipefail
+cd "$(dirname "$0")/.."
+
+# Optional, ignored machine-local toolchain configuration.
+if [[ -f .bundle/local-env.sh ]]; then
+  source .bundle/local-env.sh
+fi
+
+case "${1:-serve}" in
+  build) JEKYLL_ENV=production bundle exec jekyll build ;;
+  serve) bundle exec jekyll serve --host 127.0.0.1 --port "${PORT:-4000}" --livereload ;;
+  *) echo "Usage: bin/site [build|serve]" >&2; exit 2 ;;
+esac

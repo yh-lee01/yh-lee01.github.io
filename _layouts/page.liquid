@@ -8,7 +8,7 @@ layout: default
   </style>
 {% endif %}
 
-<div class="post">
+<div class="post{% if page.collection == 'projects' %} reading-page{% endif %}">
   {% if page.title and page.no_title != true %}
     <header class="post-header">
       <div class="page-head">

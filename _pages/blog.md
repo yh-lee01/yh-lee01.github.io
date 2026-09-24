@@ -111,6 +111,7 @@ pagination:
         <span class="pc-meta">{{ read_time }} min read &middot; {{ post.date | date: "%b %d, %Y" }}{% if post.external_source %} &middot; {{ post.external_source }}{% endif %}</span>
       </div>
       <h3 class="post-card-title"><a class="post-title" href="{{ post_url }}">{{ post.title }}</a></h3>
+      {% if post.description %}<p class="post-card-description">{{ post.description }}</p>{% endif %}
       <div class="pc-foot">
         <div class="post-tags">
           {% for tag in post.tags limit: 3 %}<a class="tag" href="{{ tag | slugify | prepend: '/blog/tag/' | relative_url }}">{{ tag }}</a>{% endfor %}

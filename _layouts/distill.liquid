@@ -1,5 +1,5 @@
 <!doctype html>
-<html>
+<html lang="{{ site.lang }}" class="distill-page">
   <head>
     {% include head.liquid %}
 
@@ -53,11 +53,12 @@
   </d-front-matter>
 
   <body class="{% if site.navbar_fixed %}fixed-top-nav{% endif %} {% unless site.footer_fixed %}sticky-bottom-footer{% endunless %}">
+    <a class="skip-link" href="#main-content">Skip to content</a>
     <!-- Header -->
     {% include header.liquid %}
 
     <!-- Content -->
-    <div class="post distill">
+    <main id="main-content" class="post distill" tabindex="-1">
       <d-title>
         <h1>{{ page.title }}</h1>
         <p>{{ page.description }}</p>
@@ -96,7 +97,9 @@
         <d-citation-list></d-citation-list>
       </d-appendix>
 
-      <d-bibliography src="{{ page.bibliography | prepend: '/assets/bibliography/' | relative_url }}"></d-bibliography>
+      {% if page.bibliography %}
+        <d-bibliography src="{{ page.bibliography | prepend: '/assets/bibliography/' | relative_url }}"></d-bibliography>
+      {% endif %}
 
       <d-article>
         {% if site.related_blog_posts and site.related_blog_posts.enabled %}
@@ -111,7 +114,7 @@
           {% include giscus.liquid %}
         {% endif %}
       </d-article>
-    </div>
+    </main>
 
     <!-- Footer -->
     {% include footer.liquid %}
