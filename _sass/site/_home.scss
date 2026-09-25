@@ -12,7 +12,10 @@
 .about-photo figure { margin: 0; }
 .about-photo img { display: block; width: 136px; height: 136px; object-fit: cover; border-radius: 50%; }
 .about-intro p { max-width: none !important; font-size: var(--fs-prose); }
-.about-intro strong { font-weight: 500; }
+.about-intro strong { font-weight: 600; }
+.about-intro ul { list-style: none; margin: 0 0 var(--sp-5); padding: 0; }
+.about-intro li { position: relative; margin: var(--sp-2) 0; padding-left: var(--sp-5); font-size: var(--fs-prose); line-height: var(--lh-base); }
+.about-intro li::before { content: ""; position: absolute; left: 2px; top: 0.8em; width: 12px; height: 1px; background: var(--global-theme-color); }
 
 // Home sections (research interests, news, selected publications) share one heading style.
 .about-intro h2, .section-head h2 { font-size: var(--fs-lg); font-weight: 500; margin: 0; }

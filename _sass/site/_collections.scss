@@ -55,8 +55,12 @@
 .publications .periodical:empty { display: none; }
 .publications ol.bibliography > li .title { order: 2; font-size: var(--fs-md); font-weight: 500; line-height: 1.4; letter-spacing: -0.01em; margin-bottom: var(--sp-2); }
 .publications .author { order: 3; font-size: var(--fs-sm); color: var(--global-text-color-light); margin-bottom: var(--sp-3); }
-.publications .author a { color: var(--global-text-color); }
-.publications .author em { font-style: normal; }
+// Own name in text color and weight; coauthor links stay quiet until hovered.
+.publications .author > em { font-style: normal; font-weight: 600; color: var(--global-text-color); border-bottom: 0 !important; }
+.publications .author a { color: inherit; border-bottom: 0 !important; }
+.publications .author a:hover { color: var(--global-theme-color); text-decoration: underline; }
+.publications .author .fa-circle-info { font-size: var(--fs-xs); color: var(--global-divider-color); filter: brightness(0.8); cursor: help; }
+.publications .author .fa-circle-info:hover { color: var(--global-text-color-light); filter: none; }
 .publications .links { order: 4; display: flex; flex-wrap: wrap; gap: var(--sp-2); }
 .publications .hidden { order: 5; width: 100%; }
 .publications ol.bibliography > li div.hidden:is(.abstract, .bibtex, .award) { text-align: left; border: 0; }
