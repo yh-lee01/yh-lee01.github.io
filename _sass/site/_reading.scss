@@ -1,9 +1,11 @@
-// Long-form pages and Distill share a reading measure and type scale.
+// Long-form pages and Distill posts share a reading measure and type scale.
+// Distill's own structure (title, byline, side contents, appendix) is kept as is.
 .reading-page { max-width: var(--reading-width); margin-inline: auto; }
 .reading-page > article { line-height: 1.8; }
 .reading-page > article p, .reading-page > article li { max-width: none; }
-.reading-page > article h2 { font-size: 1.75rem; margin-top: 2.5rem; }
+.reading-page > article h2 { font-size: var(--fs-article-h2); margin-top: 2.5rem; }
 .reading-page > article img { max-width: 100%; height: auto; }
+.reading-page > article .z-depth-1 { box-shadow: none; border: 1px solid var(--global-divider-color); border-radius: var(--radius-lg); }
 .reading-page .post-content pre { overflow-x: auto; }
 .project-meta { font-size: var(--fs-sm); color: var(--global-text-color-light); margin-bottom: 1.25rem; }
 .award-badge { display: inline-block; background: var(--accent-subtle-bg); color: var(--accent-subtle-text); padding: 0.15rem 0.5rem; border-radius: var(--radius-sm); font-size: var(--fs-sm); font-weight: 600; }
@@ -19,7 +21,7 @@
 .distill d-article > * { max-width: 100%; min-width: 0; }
 .distill d-article p, .distill d-article li { font-size: var(--fs-base); line-height: 1.8; }
 .distill d-article p { margin: 0 0 1.25rem; }
-.distill d-article h2 { font-size: 1.6rem; font-weight: 500; line-height: 1.4; margin: 2.5rem 0 1rem; padding: 0; border: 0; }
+.distill d-article h2 { font-size: var(--fs-article-h2); font-weight: 500; line-height: 1.4; margin: 2.5rem 0 1rem; padding: 0; border: 0; }
 .distill d-article h3 { font-size: 1.1rem; font-weight: 500; margin: 1.75rem 0 0.75rem; }
 .distill d-article hr { margin: 2rem 0; width: 100%; border: 0; border-top: 1px solid var(--global-divider-color); }
 .distill d-article d-contents { display: block; width: 100%; margin: 0 0 2rem; padding: 1.25rem 0; border: 0; border-block: 1px solid var(--global-divider-color); border-radius: 0; }
@@ -29,6 +31,8 @@
 .distill d-contents nav a { color: var(--global-text-color-light) !important; }
 .distill d-contents nav a:hover { color: var(--global-theme-color) !important; }
 .distill d-article .katex-display { overflow-x: auto; overflow-y: hidden; padding: 0.65rem 0; margin: 1.25rem 0; }
+// Long display equations scroll inside their own box instead of being clipped on narrow screens.
+mjx-container[display="true"] { display: block; max-width: 100%; overflow-x: auto; overflow-y: hidden; }
 .distill d-article pre { padding: 1rem; border-radius: var(--radius-sm); font-size: 0.85rem; line-height: 1.65; }
 .distill d-article blockquote { margin: 1.5rem 0; padding: 0.25rem 1.25rem; }
 .distill d-appendix { margin-top: 2rem; font-size: 0.85rem; }
@@ -43,7 +47,6 @@
   .distill { margin-inline: 20px; }
   .distill d-title h1 { font-size: 2rem; }
   .distill d-title p { font-size: var(--fs-base); }
-  .distill d-article h2, .reading-page > article h2 { font-size: 1.4rem; }
   .distill d-contents nav { grid-template-columns: 1fr; }
   .distill d-article d-contents { padding: 1rem 0; }
   .distill d-byline .byline { gap: 1rem 1.5rem; }

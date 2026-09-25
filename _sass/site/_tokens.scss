@@ -14,13 +14,17 @@
   --font-mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, monospace;
   --fs-base: 1rem;
   --fs-sm: 0.875rem;
+  --fs-xs: 0.75rem;
   --fs-h1: clamp(2rem, 4vw, 2.5rem);
   --fs-h2: 1.3rem;
   --fs-h3: 1.25rem;
+  --fs-article-h2: 1.6rem;
   --lh-base: 1.75;
   --reading-width: 760px;
   --measure: 68ch;
   --page-space: 3rem;
+  --section-space: 3rem;
+  --date-col: 5.5rem;
   --radius-sm: 3px;
   --radius-lg: 8px;
 }
@@ -36,4 +40,4 @@ html[data-theme="dark"] {
   --accent-subtle-bg: rgba(144, 197, 232, 0.12);
   --accent-subtle-text: #90c5e8;
 }
-@media (max-width: 767px) { :root { --page-space: 2rem; } }
+@media (max-width: 767px) { :root { --page-space: 2rem; --section-space: 2.5rem; --fs-article-h2: 1.4rem; } }

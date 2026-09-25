@@ -1,0 +1,10 @@
+<footer class="site-footer" role="contentinfo">
+  <div class="container">
+    <div class="site-footer-inner">
+      <span>&copy; {{ site.time | date: '%Y' }} {{ site.first_name }} {{ site.last_name }}</span>
+      {% if site.last_updated %}
+        <span>Last updated {{ site.time | date: '%b %-d, %Y' }}</span>
+      {% endif %}
+    </div>
+  </div>
+</footer>

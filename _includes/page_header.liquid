@@ -1,0 +1,38 @@
+{% comment %}
+  Shared header for index pages (publications, projects, blog, news, archives, CV).
+  Parameters:
+    title        page heading
+    description  optional one-line summary under the heading
+    count        optional: 'papers', 'projects', 'posts', or 'documents' (archive pages)
+    action_url   optional: link shown on the right instead of the count
+    action_text  label for action_url
+{% endcomment %}
+{%- assign ph_count = nil -%}
+{%- case include.count -%}
+  {%- when 'papers' -%}
+    {%- capture ph_count -%}{% bibliography_count %}{%- endcapture -%}
+    {%- assign ph_count = ph_count | strip | plus: 0 -%}
+    {%- assign ph_noun = 'paper' -%}
+  {%- when 'projects' -%}
+    {%- assign ph_count = site.projects | size -%}
+    {%- assign ph_noun = 'project' -%}
+  {%- when 'posts' -%}
+    {%- assign ph_count = site.posts | size -%}
+    {%- assign ph_noun = 'post' -%}
+  {%- when 'documents' -%}
+    {%- assign ph_count = page.documents | size -%}
+    {%- assign ph_noun = 'post' -%}
+{%- endcase -%}
+<header class="post-header page-header">
+  <div class="page-head">
+    <h1 class="post-title">{{ include.title }}</h1>
+    {%- if include.action_url %}
+      <a class="page-action" href="{{ include.action_url }}" target="_blank" rel="noopener noreferrer">{{ include.action_text }}</a>
+    {%- elsif ph_count %}
+      <span class="page-count">{{ ph_count }} {{ ph_noun }}{% if ph_count != 1 %}s{% endif %}</span>
+    {%- endif %}
+  </div>
+  {%- if include.description and include.description != '' %}
+    <p class="post-description">{{ include.description }}</p>
+  {%- endif %}
+</header>

@@ -6,29 +6,25 @@
 .about-affiliation a { color: inherit; }
 .about-photo figure { margin: 0; }
 .about-photo img { display: block; width: 144px; height: 144px; object-fit: cover; border-radius: 50%; }
-.about .contact-icons { display: flex; align-items: center; gap: 0.5rem; font-size: 1.05rem; }
+.about .contact-icons { display: flex; align-items: center; gap: 0.5rem; margin-left: -8px; font-size: 1.05rem; }
 .about .contact-icons a { display: inline-flex; align-items: center; justify-content: center; width: 32px; height: 32px; color: var(--global-text-color); }
 .about .contact-icons a:hover { color: var(--global-theme-color); }
-.about .contact-icons .contact-cv { font-size: 0.8rem; font-weight: 500; }
+.about .contact-icons .contact-cv { font-size: 0.8rem; font-weight: 600; letter-spacing: 0.02em; }
 .about-email a { color: inherit; }
-.about-email p { color: var(--global-text-color-light); font-size: 0.75rem; margin: 0.45rem 0 0; }
+.about-email a:hover { color: var(--global-theme-color); }
+.about-email p { color: var(--global-text-color-light); font-size: var(--fs-xs); margin: 0.45rem 0 0; }
 .about-intro p { max-width: none !important; }
 .about-intro strong { font-weight: 500; }
-.news-card { margin-top: 2rem; padding: 0; border: 0; background: transparent; }
-.news-card > h2 { margin-top: 0 !important; margin-bottom: 1rem; padding-bottom: 0.85rem; border-bottom: 1px solid var(--global-divider-color) !important; }
-.news table { border-collapse: separate; border-spacing: 0; margin-bottom: 0; }
-.news table, .news tbody { display: block; width: 100%; }
-.news table tr { display: flex; align-items: baseline; gap: 1rem; padding: 0.75rem 0; border-bottom: 1px solid var(--global-divider-color); }
-.news table tr:last-child { border-bottom: 0; }
-.news table th { flex: none; width: 78px !important; padding: 0 !important; font-size: 0.75rem; font-weight: 400; font-variant-numeric: tabular-nums; white-space: nowrap; text-align: left; color: var(--global-text-color-light); }
-.news table td { flex: 1; min-width: 0; padding: 0 !important; border: 0 !important; font-size: 0.9rem; line-height: 1.65; color: var(--global-text-color); }
-.news .news-title { font-weight: 600; }
-.news-chip { display: inline-block; font-size: 0.75rem; font-weight: 500; color: var(--global-text-color-light); margin-right: 0.6rem; white-space: nowrap; }
-.news-chip i { display: none; }
-@media (max-width: 767px) {
-  .news table tr { flex-direction: column; gap: 0.35rem; }
-  .news table th { width: auto !important; }
-}
+
+// Home sections (research interests, news, selected publications) share one heading style.
+.about-intro h2, .section-head h2 { font-size: var(--fs-h2); font-weight: 500; margin: 0; }
+.about-intro h2, .section-head { padding-bottom: 0.85rem; border-bottom: 1px solid var(--global-divider-color); }
+.about-intro h2 { margin: var(--section-space) 0 1.1rem; }
+.home-section { margin-top: var(--section-space); }
+.section-head { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; }
+.section-more { font-size: 0.8rem; color: var(--global-text-color-light); white-space: nowrap; }
+.section-more:hover { color: var(--global-theme-color); text-decoration: none; }
+.home-section .publications ol.bibliography > li:last-child { border-bottom: 0 !important; margin-bottom: 0 !important; }
 
 @media (max-width: 575px) {
   .about .about-header { grid-template-columns: minmax(0, 1fr) 88px; gap: 1rem; align-items: start; padding-bottom: 1.75rem; margin-bottom: 1.75rem; }
