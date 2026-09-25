@@ -2,6 +2,12 @@
 set -euo pipefail
 cd "$(dirname "$0")/.."
 
+# Jekyll reads sources as UTF-8; a POSIX/C locale fails with "invalid byte sequence".
+case "${LC_ALL:-${LANG:-}}" in
+  *UTF-8*|*utf8*) ;;
+  *) export LC_ALL=C.UTF-8 LANG=C.UTF-8 ;;
+esac
+
 # Optional, ignored machine-local toolchain configuration.
 if [[ -f .bundle/local-env.sh ]]; then
   source .bundle/local-env.sh

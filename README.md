@@ -1,6 +1,6 @@
 # Yohan Lee · academic website
 
-Jekyll / al-folio 기반 개인 연구 홈페이지입니다. [Distill](https://distill.pub/)의 문서 중심 스타일을 공통 기준으로 사용합니다. 일정한 본문 폭과 목차·수식 구조를 유지합니다. 홈과 목록은 Sangdon Park의 연구자 홈페이지와 OpenAI 리서치 페이지의 절제된 정보 배치를 참고합니다. 폰트는 Inter이며 OpenAI Sans 자체를 포함하지 않습니다.
+Jekyll / al-folio 기반 개인 연구 홈페이지입니다. 블로그 글은 [Distill](https://distill.pub/) 형식(제목·byline·옆 목차·수식)을 그대로 사용하고, 나머지 페이지도 같은 본문 폭과 타이포를 따릅니다. 홈과 목록은 Sangdon Park의 연구자 홈페이지와 OpenAI 리서치 페이지의 절제된 정보 배치를 참고합니다. 폰트는 Inter이며 OpenAI Sans 자체를 포함하지 않습니다.
 
 ## 로컬 실행
 
@@ -19,7 +19,7 @@ bin/site serve
 bin/site build       # production 전체 빌드 → _site/
 ```
 
-기기별 환경 변수는 선택적으로 `.bundle/local-env.sh`에 둘 수 있습니다. 이 파일은 Git에 포함하지 않습니다. 현재 작업 세션의 임시 Ruby/ImageMagick 경로도 여기에 연결되어 있으며, `/tmp`가 삭제되면 위의 표준 설치 과정으로 환경을 준비해야 합니다.
+`bin/site`는 로케일이 UTF-8이 아니면 `C.UTF-8`로 맞춥니다(아니면 bibtex 파싱이 `invalid byte sequence`로 실패). 기기별 환경 변수는 선택적으로 `.bundle/local-env.sh`에 둘 수 있으며 Git에 포함하지 않습니다.
 
 ## 어디를 수정하나요?
 
@@ -27,25 +27,44 @@ bin/site build       # production 전체 빌드 → _site/
 | --- | --- |
 | 홈 소개, 페이지 설정 | `_pages/` |
 | 블로그 글 | `_posts/` (연구 글은 `layout: distill`) |
-| 연구 프로젝트 | `_projects/` |
-| 소식 | `_news/` |
-| 논문 정보 | `_bibliography/papers.bib` |
-| 연락처, 공동저자 등 | `_data/` |
+| 연구 프로젝트 | `_projects/` (`importance`가 작을수록 앞) |
+| 소식 | `_news/` (`type`: paper · post · joined · award · update) |
+| 논문 정보 | `_bibliography/papers.bib` (`selected = {true}`면 홈에 표시) |
+| 연락처, 공동저자 | `_data/` |
+| CV PDF | `assets/pdf/YohanLee_CV.pdf` |
 | 페이지 구조 / 재사용 요소 | `_layouts/` / `_includes/` |
-| 공통 색상·폰트·크기 | `_sass/site/_tokens.scss` |
-| 기본 타이포·헤더·내비게이션 | `_sass/site/_foundation.scss` |
-| 홈 프로필·소식 | `_sass/site/_home.scss` |
-| 논문·프로젝트·블로그 목록·CV | `_sass/site/_collections.scss` |
-| 긴 글·Distill 목차·수식 | `_sass/site/_reading.scss` |
 
-`assets/css/main.scss` → `_sass/_custom.scss` → `_sass/site/` 순서로 사이트 스타일을 불러옵니다. 기본 al-folio/Distill 및 아이콘 라이브러리 파일은 유지하고, 사이트 변경은 해당 역할의 파일에서 수정합니다. 같은 셀렉터를 끝에 계속 덧붙이지 않습니다. 반응형 규칙은 해당 컴포넌트 파일에 함께 둡니다.
+### 공통 구성 요소
+
+모든 페이지가 같은 구성 요소를 사용하므로, 한 곳을 고치면 전체에 반영됩니다.
+
+| 요소 | 파일 | 사용하는 곳 |
+| --- | --- | --- |
+| 페이지 머리말 (제목 · 개수/버튼 · 설명 · 구분선) | `_includes/page_header.liquid` | 논문, 프로젝트, 블로그, 소식, 태그/연도 보관함, CV, 프로젝트 상세 |
+| 날짜 목록 (`.date-list`) | `_includes/news.liquid`, `_layouts/archive.liquid` | 홈 소식, 소식, 태그/카테고리/연도 보관함 |
+| 푸터 | `_includes/footer.liquid` | 모든 페이지 (Distill 글 포함) |
+
+페이지 머리말의 개수는 자동으로 계산됩니다. 페이지 front matter에 `count: papers` / `projects` / `posts`를 적으면 됩니다.
+
+### 스타일
+
+`assets/css/main.scss` → `_sass/_custom.scss` → `_sass/site/` 순서로 불러옵니다. al-folio/Distill 기본 스타일과 아이콘 라이브러리 파일은 그대로 두고, 사이트 변경은 아래 역할별 파일에서 합니다. 같은 셀렉터를 끝에 계속 덧붙이지 않고, 반응형 규칙은 해당 컴포넌트 파일에 함께 둡니다.
+
+| 파일 | 역할 |
+| --- | --- |
+| `_sass/site/_tokens.scss` | 색상(라이트/다크) · 폰트 · 크기 · 간격 변수 |
+| `_sass/site/_foundation.scss` | 기본 타이포 · 링크 · 페이지 머리말 · 태그 · 내비게이션 · 푸터 |
+| `_sass/site/_home.scss` | 홈 프로필 · 홈 섹션 제목 |
+| `_sass/site/_collections.scss` | 날짜 목록 · 블로그 · 논문 · 프로젝트 · CV |
+| `_sass/site/_reading.scss` | 긴 글 · Distill 목차 · 수식 |
 
 ## 디자인 확인
 
 - 홈, 논문, 프로젝트 목록/상세, 블로그 목록/상세/태그, 소식, CV를 확인합니다.
 - 1440 / 768 / 576 / 390 / 320px에서 밝은 모드와 어두운 모드를 확인합니다.
 - 메뉴, 논문 필터, Abstract/BibTeX 버튼, 목차 링크, 수식과 PDF를 확인합니다.
-- PC의 Distill 목차는 본문 옆에, 좁은 화면에서는 본문 위에 배치합니다. 수식은 필요하면 수식 영역 안에서 스크롤됩니다.
+- PC의 Distill 목차는 본문 옆에, 좁은 화면에서는 본문 위에 배치합니다. 긴 수식은 화면 밖으로 잘리지 않고 수식 영역 안에서 가로로 스크롤됩니다.
+- 글 안의 인라인 수식에 `_`가 두 번 이상 들어가면 Markdown이 기울임으로 해석할 수 있습니다. 이때는 `$...$` 대신 `$$...$$`를 씁니다.
 
 `docs/archive/`는 사용하지 않는 과거 디자인 제안의 보관 위치입니다. `_site/`, `output/`, `.bundle/`, `vendor/`와 로컬 다운로드 자산은 소스 편집 대상이 아닙니다. 문서와 화면 검사 산출물은 Jekyll 빌드에서 제외됩니다.
 
