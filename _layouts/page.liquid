@@ -10,18 +10,7 @@ layout: default
 
 <div class="post{% if page.collection == 'projects' %} reading-page{% endif %}">
   {% if page.title and page.no_title != true %}
-    <header class="post-header">
-      <div class="page-head">
-        <h1 class="post-title">{{ page.title }}</h1>
-        {% if page.page_count %}
-          <span class="blog-count">{{ page.page_count }}</span>
-        {% endif %}
-      </div>
-      {% if page.description %}
-        <p class="post-description">{{ page.description }}</p>
-        <hr>
-      {% endif %}
-    </header>
+    {% include page_header.liquid title=page.title description=page.description count=page.count %}
   {% endif %}
   <article>
     {{ content }}

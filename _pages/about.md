@@ -10,7 +10,7 @@ profile:
   image: profile_pic.jpg
   image_circular: true
   more_info: >
-    <p><a href="mailto:john1111369@g.skku.edu">john1111369@g.skku.edu</a></p>
+    <p><a href="mailto:john1111369@gmail.com">john1111369@gmail.com</a></p>
 
 selected_papers: true
 social: true

@@ -10,9 +10,6 @@ contact_note: >
 description: >
   Personal academic website of Yohan Lee. Research interests in preventing AI monopolization
   and developing preemptive defense against the malicious exploitation of AI.
-footer_text: >
-  Powered by <a href="https://jekyllrb.com/" target="_blank">Jekyll</a> with <a href="https://github.com/alshedivat/al-folio">al-folio</a> theme.
-  Hosted by <a href="https://pages.github.com/" target="_blank">GitHub Pages</a>.
 keywords: ai-safety, ai-monopolization, preemptive-defense, generative-models, flow-matching, academic-website
 lang: en
 icon: ⚛️
@@ -42,7 +39,7 @@ repo_trophies:
 # -----------------------------------------------------------------------------
 
 navbar_fixed: true
-footer_fixed: true
+footer_fixed: false
 search_enabled: true
 socials_in_search: true
 posts_in_search: true
@@ -115,8 +112,6 @@ newsletter:
 # -----------------------------------------------------------------------------
 
 collections:
-  books:
-    output: true
   news:
     defaults:
       layout: post
@@ -142,30 +137,20 @@ kramdown:
       line_numbers: false
       start_line: 1
 
-include: ["_pages", "_scripts", "index.md"]
+include: ["_pages", "_scripts"]
 exclude:
+  - bin/
   - docs/
   - output/
   - test-results/
-  - bin/
-  - CONTRIBUTING.md
-  - CUSTOMIZE.md
-  - Dockerfile
-  - docker-compose.yml
-  - docker-compose-slim.yml
-  - FAQ.md
+  - vendor
   - Gemfile
   - Gemfile.lock
-  - INSTALL.md
   - LICENSE
-  - lighthouse_results/
-  - package.json
-  - package-lock.json
-  - _pages/about_einstein.md
   - purgecss.config.js
   - README.md
-  - readme_preview/
-  - vendor
+  - requirements.txt
+  # Local reference copy of ICLR Blogposts 2026 source (see .gitignore)
   - 2026-main.zip
   - 2026-main/
 keep_files:
@@ -176,7 +161,6 @@ plugins:
   - jekyll-archives-v2
   - jekyll-email-protect
   - jekyll-feed
-  - jekyll-get-json
   - jekyll-imagemagick
   - jekyll-jupyter-notebook
   - jekyll-link-attributes
@@ -228,17 +212,6 @@ jekyll-archives:
       year: "/blog/:year/"
       tags: "/blog/:type/:name/"
       categories: "/blog/:type/:name/"
-  books:
-    enabled: [year, tags, categories]
-
-display_tags:
-  [
-    "reinforcement-learning",
-    "machine-learning",
-    "information-theory",
-    "generative-models",
-  ]
-display_categories: ["RL", "background", "paper_review", "infotheory"]
 
 # -----------------------------------------------------------------------------
 # Jekyll Scholar
@@ -355,7 +328,6 @@ enable_math: true
 enable_tooltips: false
 enable_darkmode: true
 enable_navbar_social: false
-enable_project_categories: true
 enable_medium_zoom: true
 enable_progressbar: true
 enable_video_embedding: false
@@ -579,25 +551,3 @@ third_party_libraries:
       css: "https://cdn.jsdelivr.net/npm/venobox@{{version}}/dist/venobox.min.css"
       js: "https://cdn.jsdelivr.net/npm/venobox@{{version}}/dist/venobox.min.js"
     version: "2.1.8"
-
-# -----------------------------------------------------------------------------
-# Get external JSON data
-# -----------------------------------------------------------------------------
-
-jekyll_get_json:
-  - data: resume
-    json: assets/json/resume.json
-
-jsonresume:
-  - basics
-  - work
-  - education
-  - publications
-  - projects
-  - volunteer
-  - awards
-  - certificates
-  - skills
-  - languages
-  - interests
-  - references

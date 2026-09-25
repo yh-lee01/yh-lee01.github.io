@@ -70,7 +70,7 @@ $$
 \mathcal{L}_{\text{CFM}}(\theta) = \mathbb{E}_{t,\, x_1 \sim p_1,\, x \sim p_t(\cdot|x_1)} \| v_\theta(x, t) - u_t(x \mid x_1) \|^2
 $$
 
-**Key theorem:** $\mathcal{L}_{\text{CFM}}$ and $\mathcal{L}_{\text{FM}}$ have identical gradients with respect to $\theta$. So minimizing the tractable CFM objective is equivalent to minimizing the intractable FM objective.
+**Key theorem:** $$\mathcal{L}_{\text{CFM}}$$ and $$\mathcal{L}_{\text{FM}}$$ have identical gradients with respect to $\theta$. So minimizing the tractable CFM objective is equivalent to minimizing the intractable FM objective.
 
 ---
 

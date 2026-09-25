@@ -1,43 +1,23 @@
 ---
 layout: default
 ---
+{% if page.cv_pdf contains '://' %}
+  {% assign cv_url = page.cv_pdf %}
+{% else %}
+  {% assign cv_url = page.cv_pdf | relative_url %}
+{% endif %}
+
 <div class="post">
-  <header class="post-header cv-header">
-    <h1 class="post-title">{{ page.title }}</h1>
-    {% if page.cv_pdf %}
-      <a
-        class="cv-download"
-        {% if page.cv_pdf contains '://' %}
-          href="{{ page.cv_pdf }}"
-        {% else %}
-          href="{{ page.cv_pdf | relative_url }}"
-        {% endif %}
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        <i class="fa-solid fa-file-pdf"></i> Download CV (PDF)
-      </a>
-    {% endif %}
-  </header>
+  {% include page_header.liquid title=page.title description=page.description action_url=cv_url action_text="Download PDF" %}
 
   <article>
     {% if page.cv_pdf %}
       <div class="cv-pdf-embed">
-        <iframe
-          {% if page.cv_pdf contains '://' %}
-            src="{{ page.cv_pdf }}"
-          {% else %}
-            src="{{ page.cv_pdf | relative_url }}"
-          {% endif %}
-          title="CV PDF"
-          loading="lazy"
-        ></iframe>
-        <noscript>
-          <div class="cv-pdf-fallback">
-            <p>PDF viewer unavailable. <a href="{{ page.cv_pdf | relative_url }}" target="_blank">Download CV (PDF)</a></p>
-          </div>
-        </noscript>
+        <iframe src="{{ cv_url }}" title="Curriculum vitae (PDF)" loading="lazy"></iframe>
       </div>
+      <p class="cv-pdf-fallback">
+        PDF not showing? <a href="{{ cv_url }}" target="_blank" rel="noopener noreferrer">Open the CV in a new tab</a>.
+      </p>
     {% endif %}
   </article>
 </div>
