@@ -44,7 +44,7 @@ pagination:
       <li class="post-card">
         <div class="pc-head">
           {% if post.categories.size > 0 %}
-            <a class="cat" href="{{ post.categories.first | slugify | prepend: '/blog/category/' | relative_url }}">{{ post.categories.first }}</a>
+            <a class="cat" href="{{ post.categories.first | slugify | prepend: '/blog/category/' | relative_url }}">{{ post.categories.first | replace: '-', ' ' | capitalize }}</a>
           {% endif %}
           <span class="pc-meta">
             {{- post.date | date: '%b %-d, %Y' }} &middot; {{ read_time }} min read

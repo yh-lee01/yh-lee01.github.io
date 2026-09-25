@@ -29,6 +29,9 @@ I am a senior undergraduate at [Sungkyunkwan University](https://www.skku.edu) (
 
 ## research interests
 
-My research is driven by a fundamental concern: as AI systems grow increasingly powerful, the risks of concentrated control and deliberate misuse demand proactive, principled countermeasures. I focus on two interrelated challenges — (1) preventing the monopolization of AI by individuals or corporations, and (2) developing preemptive methodologies to defend against the malicious exploitation of AI.
+My research is driven by a fundamental concern: as AI systems grow increasingly powerful, the risks of concentrated control and deliberate misuse demand proactive, principled countermeasures. I focus on two interrelated challenges:
+
+- **Preventing AI monopolization** by individuals or corporations
+- **Preemptive defense** against the malicious exploitation of AI
 
 Ultimately, my goal is to establish robust frameworks that anticipate and mitigate the latent dangers of advanced AI before they materialize, ensuring that transformative AI technologies serve the broad public good rather than becoming instruments of harm.

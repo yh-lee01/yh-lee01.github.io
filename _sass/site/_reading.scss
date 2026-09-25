@@ -40,6 +40,8 @@ mjx-container[display="true"] { display: block; max-width: 100%; overflow-x: aut
 .distill d-article pre { padding: var(--sp-4); border-radius: var(--radius-sm); font-size: var(--fs-sm); line-height: 1.65; }
 .distill d-article blockquote { margin: var(--sp-5) 0; padding: var(--sp-1) var(--sp-5); }
 .distill d-appendix { margin-top: var(--sp-6); font-size: var(--fs-sm); }
+// Hide Distill's appendix bar when the post has no footnotes or citations.
+.distill d-appendix:not(:has(li)) { display: none; }
 @media (min-width: 1280px) {
   .distill d-article d-contents { position: absolute; right: calc(100% + 40px); top: 0; width: 200px; margin: 0; padding: 0 var(--sp-5) 0 0; border: 0; border-right: 1px solid var(--global-divider-color); }
   .distill d-contents nav { display: block; }
