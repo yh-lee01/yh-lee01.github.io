@@ -3,14 +3,13 @@ layout: about
 title: about
 permalink: /
 subtitle: >
-  Senior Undergraduate, <a href="https://www.skku.edu">Sungkyunkwan University</a>, Computer Science and Engineering
+  Senior Undergraduate, Computer Science and Engineering, <a href="https://www.skku.edu">Sungkyunkwan University</a>
+status: Seeking graduate research positions for Fall 2027
 
 profile:
   align: right
   image: profile_pic.jpg
   image_circular: true
-  more_info: >
-    <p><a href="mailto:john1111369@gmail.com">john1111369@gmail.com</a></p>
 
 selected_papers: true
 social: true

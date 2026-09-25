@@ -102,8 +102,8 @@
           {% if site.search_enabled %}
             <!-- Search -->
             <li class="nav-item">
-              <button id="search-toggle" title="Search" onclick="openSearchModal()">
-                <span class="nav-link">ctrl k <i class="ti ti-search"></i></span>
+              <button id="search-toggle" title="Search" aria-label="Search" onclick="openSearchModal()">
+                <span class="nav-link"><i class="ti ti-search" aria-hidden="true"></i><kbd class="search-key">Ctrl K</kbd></span>
               </button>
             </li>
           {% endif %}

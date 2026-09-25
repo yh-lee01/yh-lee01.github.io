@@ -20,17 +20,15 @@ authors:
     name: Sungkyunkwan University
 toc:
 - name: Overview
-- name: 'Background: Continuous Normalizing Flows'
+- name: 'Background: continuous normalizing flows'
 - name: Conditional Flow Matching
-- name: Gaussian Conditional Paths
-- name: Connection to Diffusion Models
-- name: Why It Matters for Robotics
+- name: Gaussian conditional paths
+- name: Connection to diffusion models
+- name: Why it matters for robotics
 - name: Summary
 ---
 
 **Paper:** Lipman et al., _Flow Matching for Generative Modeling_, ICLR 2023. [[arXiv]](https://arxiv.org/abs/2210.02747)
-
----
 
 ## Overview
 
@@ -38,9 +36,7 @@ Flow Matching (FM) is a simulation-free framework for training Continuous Normal
 
 The key insight: instead of working with the intractable marginal vector field, FM conditions on individual data points to construct simple, tractable per-sample paths — then aggregates them.
 
----
-
-## Background: Continuous Normalizing Flows
+## Background: continuous normalizing flows
 
 A CNF defines a time-dependent vector field $u_t : \mathbb{R}^d \to \mathbb{R}^d$ that induces a flow $\phi_t$ via the ODE:
 
@@ -58,8 +54,6 @@ lets us sample by solving the ODE from $t=0$ to $t=1$.
 
 The problem: the marginal $p_t$ and $u_t$ are intractable for general data distributions.
 
----
-
 ## Conditional Flow Matching
 
 The fix is to condition on a data point $x_1 \sim p_1$ and define a simple **conditional probability path** $p_t(x \mid x_1)$ with a known conditional vector field $u_t(x \mid x_1)$.
@@ -72,9 +66,7 @@ $$
 
 **Key theorem:** $$\mathcal{L}_{\text{CFM}}$$ and $$\mathcal{L}_{\text{FM}}$$ have identical gradients with respect to $\theta$. So minimizing the tractable CFM objective is equivalent to minimizing the intractable FM objective.
 
----
-
-## Gaussian Conditional Paths
+## Gaussian conditional paths
 
 The simplest choice: connect $x_0 \sim \mathcal{N}(0, I)$ to $x_1$ with a straight line.
 
@@ -94,26 +86,20 @@ $$
 
 In practice, we sample $x = \mu_t(x_1) + \sigma_t(x_1)\, \epsilon$ with $\epsilon \sim \mathcal{N}(0,I)$ and plug into the loss.
 
----
-
-## Connection to Diffusion Models
+## Connection to diffusion models
 
 Score-based diffusion can be seen as a special case of FM with non-straight paths (e.g., variance-preserving schedules). FM with straight paths (Optimal Transport paths) has two practical advantages:
 
 - **Straighter trajectories** → fewer NFE (Number of Function Evaluations) at inference.
 - **Simulation-free training** → no expensive SDE rollouts needed during training.
 
----
-
-## Why It Matters for Robotics
+## Why it matters for robotics
 
 Flow Matching has become the backbone of robot action generation (e.g., $\pi_0$, Diffusion Policy variants). The straight-path property means:
 
 - Fast inference (critical for real-time control).
 - Stable training compared to score-matching with complex noise schedules.
 - Easy to condition on multimodal inputs (language, vision).
-
----
 
 ## Summary
 
