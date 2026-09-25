@@ -1,7 +1,18 @@
 <div class="col mb-4">
   <div class="card h-100">
     <a class="project-card-link" href="{% if project.redirect %}{{ project.redirect }}{% else %}{{ project.url | relative_url }}{% endif %}">
-      {% if project.img %}
+      {% if project.youtube %}
+        {% comment %} Video projects use the YouTube thumbnail (max-res, falling back to the always-present hq size). {% endcomment %}
+        <figure class="card-video">
+          <img
+            src="https://i.ytimg.com/vi/{{ project.youtube }}/maxresdefault.jpg"
+            onerror="this.onerror=null;this.src='https://i.ytimg.com/vi/{{ project.youtube }}/hqdefault.jpg'"
+            alt="{{ project.title | escape }} (video)"
+            loading="lazy"
+          >
+          <span class="card-video-badge" aria-hidden="true"><i class="fa-solid fa-play"></i> Video</span>
+        </figure>
+      {% elsif project.img %}
         {% include figure.liquid loading="lazy" path=project.img sizes="(min-width: 768px) 440px, 90vw" alt=project.title class="card-img-top" %}
       {% endif %}
       <div class="card-body">

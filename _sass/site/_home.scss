@@ -1,37 +1,32 @@
-// Profile and introduction are separate, so the reading measure stays constant.
-.about { max-width: var(--reading-width); margin-inline: auto; }
-.about .about-header { display: grid; grid-template-columns: minmax(0, 1fr) 144px; gap: 2.5rem; align-items: center; padding-bottom: 2.5rem; margin-bottom: 2.5rem; border-bottom: 1px solid var(--global-divider-color); }
-.about .post-title { font-size: 2.25rem; font-weight: 500; letter-spacing: -0.035em; margin-bottom: 0.75rem; }
-.about-affiliation { font-size: 0.85rem; line-height: 1.7; color: var(--global-text-color-light); max-width: 400px; margin-bottom: 0.75rem; }
+// Home: profile header, then introduction and sections in the shared column.
+.about .about-header { display: grid; grid-template-columns: minmax(0, 1fr) 136px; gap: var(--sp-6); align-items: center; padding-bottom: 2.5rem; margin-bottom: 2.5rem; border-bottom: 1px solid var(--global-divider-color); }
+.about .post-title { font-size: var(--fs-h1); font-weight: 500; letter-spacing: -0.035em; margin-bottom: var(--sp-3); }
+.about-affiliation { font-size: var(--fs-sm); line-height: var(--lh-snug); color: var(--global-text-color-light); margin-bottom: var(--sp-2); }
 .about-affiliation a { color: inherit; }
+.about-affiliation a:hover { color: var(--global-theme-color); }
+.about-status { display: inline-flex; align-items: center; gap: var(--sp-2); font-size: var(--fs-sm); font-weight: 500; line-height: var(--lh-snug); color: var(--global-theme-color); margin-bottom: var(--sp-4); }
+.about-status::before { content: ""; flex: none; width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
+.about-links { display: flex; flex-wrap: wrap; gap: var(--sp-1) var(--sp-4); margin: 0; font-size: var(--fs-sm); line-height: var(--lh-snug); }
+.about-links a { color: var(--global-text-color); font-weight: 500; }
+.about-links a:hover { color: var(--global-theme-color); }
 .about-photo figure { margin: 0; }
-.about-photo img { display: block; width: 144px; height: 144px; object-fit: cover; border-radius: 50%; }
-.about .contact-icons { display: flex; align-items: center; gap: 0.5rem; margin-left: -8px; font-size: 1.05rem; }
-.about .contact-icons a { display: inline-flex; align-items: center; justify-content: center; width: 32px; height: 32px; color: var(--global-text-color); }
-.about .contact-icons a:hover { color: var(--global-theme-color); }
-.about .contact-icons .contact-cv { font-size: 0.8rem; font-weight: 600; letter-spacing: 0.02em; }
-.about-email a { color: inherit; }
-.about-email a:hover { color: var(--global-theme-color); }
-.about-email p { color: var(--global-text-color-light); font-size: var(--fs-xs); margin: 0.45rem 0 0; }
-.about-intro p { max-width: none !important; }
+.about-photo img { display: block; width: 136px; height: 136px; object-fit: cover; border-radius: 50%; }
+.about-intro p { max-width: none !important; font-size: var(--fs-prose); }
 .about-intro strong { font-weight: 500; }
 
 // Home sections (research interests, news, selected publications) share one heading style.
-.about-intro h2, .section-head h2 { font-size: var(--fs-h2); font-weight: 500; margin: 0; }
-.about-intro h2, .section-head { padding-bottom: 0.85rem; border-bottom: 1px solid var(--global-divider-color); }
-.about-intro h2 { margin: var(--section-space) 0 1.1rem; }
+.about-intro h2, .section-head h2 { font-size: var(--fs-lg); font-weight: 500; margin: 0; }
+.about-intro h2, .section-head { padding-bottom: var(--sp-3); border-bottom: 1px solid var(--global-divider-color); }
+.about-intro h2 { margin: var(--section-space) 0 var(--sp-5); }
 .home-section { margin-top: var(--section-space); }
-.section-head { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; }
-.section-more { font-size: 0.8rem; color: var(--global-text-color-light); white-space: nowrap; }
+.section-head { display: flex; justify-content: space-between; align-items: baseline; gap: var(--sp-4); }
+.section-more { font-size: var(--fs-sm); color: var(--global-text-color-light); white-space: nowrap; }
 .section-more:hover { color: var(--global-theme-color); text-decoration: none; }
 .home-section .publications ol.bibliography > li:last-child { border-bottom: 0 !important; margin-bottom: 0 !important; }
 
 @media (max-width: 575px) {
-  .about .about-header { grid-template-columns: minmax(0, 1fr) 88px; gap: 1rem; align-items: start; padding-bottom: 1.75rem; margin-bottom: 1.75rem; }
-  .about .post-title { font-size: 1.85rem; }
+  .about .about-header { grid-template-columns: minmax(0, 1fr) 88px; gap: var(--sp-4); align-items: start; padding-bottom: 1.75rem; margin-bottom: 1.75rem; }
   .about-photo img { width: 88px; height: 88px; }
-  .about-affiliation { font-size: 0.78rem; }
-  .about-email { overflow-wrap: anywhere; }
-  .about .contact-icons { gap: 0.2rem; }
-  .about .contact-icons a { width: 32px; height: 40px; }
+  .about-status { align-items: baseline; }
+  .about-status::before { transform: translateY(-2px); }
 }

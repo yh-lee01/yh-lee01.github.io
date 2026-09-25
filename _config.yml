@@ -12,7 +12,7 @@ description: >
   and developing preemptive defense against the malicious exploitation of AI.
 keywords: ai-safety, ai-monopolization, preemptive-defense, generative-models, flow-matching, academic-website
 lang: en
-icon: ⚛️
+icon: favicon.svg # in assets/img/
 
 url: https://yh-lee01.github.io
 baseurl: ""

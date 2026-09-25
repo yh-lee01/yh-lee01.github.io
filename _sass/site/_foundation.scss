@@ -1,4 +1,4 @@
-// Base type, links, page headers, navigation and footer.
+// Base type, links, layout column, page headers, navigation and footer.
 html, html.distill-page { font-size: 16px; scroll-behavior: smooth; }
 body {
   font-family: var(--font-sans); font-weight: 400; font-size: var(--fs-base); line-height: var(--lh-base);
@@ -11,85 +11,101 @@ body, h1, h2, h3, h4, h5, h6, nav, .navbar, .btn, p, li, td, th, input, button, 
 .post-title, .card-title, .publications .title, .author, .periodical { font-family: var(--font-sans); }
 pre, code, kbd, samp, .highlight { font-family: var(--font-mono); }
 strong, b { font-weight: 600; }
-h1, h2, h3, h4 { color: var(--global-text-color); font-weight: 500; letter-spacing: -0.025em; line-height: 1.3; }
+h1, h2, h3, h4 { color: var(--global-text-color); font-weight: 500; letter-spacing: -0.025em; line-height: var(--lh-tight); }
 h1 { font-size: var(--fs-h1); text-wrap: balance; }
-h2 { font-size: var(--fs-h2); text-wrap: balance; }
-h3 { font-size: var(--fs-h3); }
-p { margin-bottom: 1rem; }
-a { color: var(--global-theme-color); background: none; text-decoration: none; }
+h2 { font-size: var(--fs-lg); text-wrap: balance; }
+h3 { font-size: var(--fs-md); }
+p { margin-bottom: var(--sp-4); }
+a { color: var(--global-theme-color); background: none; text-decoration: none; transition: color var(--ease), background-color var(--ease), border-color var(--ease); }
 a:hover { color: var(--global-hover-color); text-decoration: underline; text-underline-offset: 3px; }
-.btn, .nav-link, .navbar-brand, .post-tags a, .tag, .page-action, .contact-icons a, .post-title { text-decoration: none !important; }
+.btn, .nav-link, .navbar-brand, .post-tags a, .tag, .page-action, .post-title { text-decoration: none !important; }
 :focus-visible { outline: 2px solid var(--global-theme-color); outline-offset: 3px; border-radius: 3px; }
 :focus:not(:focus-visible) { outline: none; }
 ::selection { background: var(--accent-subtle-bg); color: var(--accent-subtle-text); }
+
+// One centered column for every page; the navigation and footer line up with it.
 body > .container[role="main"] { margin-top: var(--page-space) !important; }
+body > .container[role="main"] > .post { max-width: var(--reading-width); margin-inline: auto; }
+@media (min-width: 768px) {
+  #navbar > .container, .site-footer > .container { max-width: calc(var(--reading-width) + 30px); }
+}
 
 // Page header: title, optional count or action on the right, description, divider.
-.post-header { margin-bottom: 2rem; }
+.post-header { margin-bottom: var(--sp-6); }
 .post-header .post-title, .page-head .post-title {
-  font-size: var(--fs-h1); font-weight: 500; line-height: 1.25; letter-spacing: -0.025em;
+  font-size: var(--fs-h1); font-weight: 500; line-height: 1.2; letter-spacing: -0.025em;
 }
-.post-header .post-title { margin-bottom: 0.75rem; }
-.page-header { padding-bottom: 1.25rem; border-bottom: 1px solid var(--global-divider-color); }
-.page-head { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; }
+.post-header .post-title { margin-bottom: var(--sp-3); }
+.page-header { padding-bottom: var(--sp-5); border-bottom: 1px solid var(--global-divider-color); }
+.page-head { display: flex; justify-content: space-between; align-items: baseline; gap: var(--sp-4); }
 .page-head .post-title { margin: 0; text-transform: none; }
-.post-description { font-family: var(--font-sans); font-style: normal; font-size: 0.95rem; line-height: 1.65; color: var(--global-text-color-light); margin: 0.5rem 0 0; }
+.post-description { font-family: var(--font-sans); font-style: normal; font-size: var(--fs-base); line-height: var(--lh-snug); color: var(--global-text-color-light); margin: var(--sp-2) 0 0; }
 .post-meta, .pc-meta, .page-count { font-family: var(--font-sans); font-size: var(--fs-xs); line-height: 1.6; font-variant-numeric: tabular-nums; color: var(--global-text-color-light); }
 .page-count { white-space: nowrap; }
 .page-action {
-  align-self: center; display: inline-flex; align-items: center; min-height: 36px; padding: 0.35rem 0.9rem; white-space: nowrap;
-  font-size: 0.85rem; font-weight: 500; color: var(--global-theme-color); border: 1px solid var(--global-divider-color); border-radius: var(--radius-sm);
+  align-self: center; display: inline-flex; align-items: center; min-height: 36px; padding: var(--sp-1) var(--sp-4); white-space: nowrap;
+  font-size: var(--fs-sm); font-weight: 500; color: var(--global-theme-color); border: 1px solid var(--global-divider-color); border-radius: var(--radius-sm);
 }
 .page-action:hover { color: var(--global-theme-color); border-color: var(--global-theme-color); background: var(--accent-subtle-bg); }
 
 // Markdown content: rules target direct children so components (cards, lists) keep their own spacing.
 // Markdown output has no class attribute on lists, which keeps these rules off component lists.
 .post > article > p, .post > article > ul:not([class]) > li, .post > article > ol:not([class]) > li, .post-content p, .post-content li { max-width: var(--measure); }
-.post > article > h2 { padding-left: 0; border: 0; text-transform: none; margin: 3rem 0 1rem; font-size: var(--fs-h2); font-weight: 500; }
+.post > article > h2 { padding-left: 0; border: 0; text-transform: none; margin: var(--sp-7) 0 var(--sp-4); font-size: var(--fs-lg); font-weight: 500; }
 .post > article > h2::before { content: none; }
 .post > article > h2:first-of-type { margin-top: 2.5rem; }
 .post > article > h2 a { color: inherit; }
-.post > article > ul:not([class]), .post-content ul { padding-left: 1.2rem; }
-.post > article > ul:not([class]) > li, .post-content ul li { margin: 0.35rem 0; }
-figcaption, .caption { color: var(--global-text-color-light); font-size: var(--fs-sm); margin-top: 0.5rem; text-align: center; }
+.post > article > ul:not([class]), .post-content ul { padding-left: 1.25rem; }
+.post > article > ul:not([class]) > li, .post-content ul li { margin: var(--sp-2) 0; }
+figcaption, .caption { color: var(--global-text-color-light); font-size: var(--fs-sm); margin-top: var(--sp-2); text-align: center; }
+
+// Content images sit slightly dimmer in dark mode so white figures do not glare.
+.post article img, .distill d-article img, .projects .card img, .publications .preview { filter: var(--image-dim); }
+.about-photo img { filter: none; }
 
 // Tags: quiet text links, same everywhere.
 .post-tags { line-height: 2.1; }
-.post-tags a, .tag, .pj-tags .tag { display: inline-flex; font-family: var(--font-sans); font-size: var(--fs-xs); line-height: 1.4; padding: 0; margin-right: 0.6rem; border: 0; border-radius: 0; color: var(--global-text-color-light); background: transparent; }
+.post-tags a, .tag, .pj-tags .tag { display: inline-flex; font-family: var(--font-sans); font-size: var(--fs-xs); line-height: 1.4; padding: 0; margin-right: var(--sp-3); border: 0; border-radius: 0; color: var(--global-text-color-light); background: transparent; }
 .post-tags a:hover, a.tag:hover { color: var(--global-theme-color); }
 .post-tags i { display: none; }
 
-.skip-link { position: fixed; top: -100px; left: 1rem; z-index: 1100; padding: 0.75rem 1rem; background: var(--global-card-bg-color); }
-.skip-link:focus { top: 0.5rem; }
+.skip-link { position: fixed; top: -100px; left: var(--sp-4); z-index: 1100; padding: var(--sp-3) var(--sp-4); background: var(--global-card-bg-color); }
+.skip-link:focus { top: var(--sp-2); }
 
 // Navigation
 #navbar { box-shadow: none; border-bottom: 1px solid var(--global-divider-color); background: color-mix(in srgb, var(--global-bg-color) 90%, transparent); backdrop-filter: blur(8px); }
-.navbar .navbar-brand.wordmark { font-family: var(--font-sans); font-size: 1.1rem; font-weight: 500; color: var(--global-text-color); }
-.navbar .navbar-brand.wordmark .font-weight-bold { font-weight: 500; }
-.navbar.navbar-light .navbar-nav .nav-item .nav-link { padding-inline: 0.75rem; font-size: 0.9rem; font-weight: 500; position: relative; color: var(--global-text-color); }
+.navbar .navbar-brand.wordmark { font-family: var(--font-sans); font-size: var(--fs-md); font-weight: 500; letter-spacing: -0.01em; color: var(--global-text-color); }
+.navbar .navbar-brand.wordmark .font-weight-bold { font-weight: 600; }
+.navbar.navbar-light .navbar-nav .nav-item .nav-link { padding-inline: var(--sp-3); font-size: var(--fs-sm); font-weight: 500; position: relative; color: var(--global-text-color); transition: color var(--ease); }
 .navbar.navbar-light .navbar-nav .nav-item .nav-link:hover, .navbar.navbar-light .navbar-nav .nav-item.active > .nav-link { color: var(--global-theme-color); }
-.navbar.navbar-light .navbar-nav .nav-item.active > .nav-link::after { content: ""; position: absolute; left: 0.75rem; right: 0.75rem; bottom: -2px; height: 1px; background: var(--global-theme-color); }
+.navbar.navbar-light .navbar-nav .nav-item.active > .nav-link::after { content: ""; position: absolute; left: var(--sp-3); right: var(--sp-3); bottom: -2px; height: 1px; background: var(--global-theme-color); }
 // Search and theme toggle are utilities, so they sit quieter than the page links.
-.navbar.navbar-light .navbar-nav .nav-item #search-toggle .nav-link { font-weight: 400; color: var(--global-text-color-light); }
+.navbar.navbar-light .navbar-nav .nav-item #search-toggle .nav-link { display: inline-flex; align-items: center; gap: var(--sp-2); font-weight: 400; color: var(--global-text-color-light); }
 .navbar.navbar-light .navbar-nav .nav-item #search-toggle:hover .nav-link { color: var(--global-theme-color); }
-#search-toggle .ti { font-size: 0.95rem; vertical-align: -2px; }
+#search-toggle .ti { font-size: 1rem; }
+.search-key {
+  padding: 1px 5px; font-family: var(--font-sans); font-size: 0.6875rem; font-weight: 500; line-height: 1.5; letter-spacing: 0.02em;
+  color: inherit; background: transparent; border: 1px solid var(--global-divider-color); border-radius: 4px; box-shadow: none;
+}
 
 // Footer
 // The upstream theme colors every span/div directly, so the footer text color is set on them too.
-.site-footer { margin-top: auto; padding-top: 4rem; font-size: var(--fs-xs); }
+.site-footer { margin-top: auto; padding-top: var(--sp-8); font-size: var(--fs-xs); }
 .site-footer-inner, .site-footer-inner span { color: var(--global-text-color-light); }
-.site-footer-inner { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 0.25rem 1.5rem; padding-block: 1.5rem; border-top: 1px solid var(--global-divider-color); }
+.site-footer-inner { display: flex; flex-wrap: wrap; justify-content: space-between; gap: var(--sp-1) var(--sp-5); padding-block: var(--sp-5); border-top: 1px solid var(--global-divider-color); }
+.site-footer-inner a { color: inherit; }
+.site-footer-inner a:hover { color: var(--global-theme-color); }
 
 @media (max-width: 767px) {
-  .post-header { margin-bottom: 1.5rem; }
-  #navbarNav { padding: 0.75rem 0; text-align: left !important; }
-  .navbar.navbar-light .navbar-nav .nav-item .nav-link { padding: 0.65rem 0.5rem; }
+  .post-header { margin-bottom: var(--sp-5); }
+  #navbarNav { padding: var(--sp-3) 0; text-align: left !important; }
+  .navbar.navbar-light .navbar-nav .nav-item .nav-link { padding: 0.625rem var(--sp-2); }
   .navbar.navbar-light .navbar-nav .nav-item.active > .nav-link::after { display: none; }
-  #navbarNav .toggle-container { padding-left: 0.5rem; }
+  #navbarNav .toggle-container { padding-left: var(--sp-2); }
 }
 @media (max-width: 575px) {
   body > .container[role="main"], .site-footer .container { padding-inline: 20px; }
-  .page-head { flex-wrap: wrap; gap: 0.65rem; }
+  .page-head { flex-wrap: wrap; gap: var(--sp-3); }
 }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }

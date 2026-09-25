@@ -6,8 +6,17 @@ layout: default
     <div class="about-identity">
       <h1 class="post-title">{% if site.title == 'blank' %}{{ site.first_name }} {{ site.middle_name }} {{ site.last_name }}{% else %}{{ site.title }}{% endif %}</h1>
       <p class="about-affiliation">{{ page.subtitle }}</p>
-      {% if page.social %}<div class="contact-icons">{% include social.liquid %}<a class="contact-cv" href="{{ '/cv/' | relative_url }}" aria-label="Curriculum vitae">CV</a></div>{% endif %}
-      {% if page.profile.more_info %}<div class="about-email">{{ page.profile.more_info }}</div>{% endif %}
+      {% if page.status %}<p class="about-status">{{ page.status }}</p>{% endif %}
+      {% if page.social %}
+        {% assign socials = site.data.socials %}
+        <p class="about-links">
+          {% if socials.email %}<a href="mailto:{{ socials.email | encode_email }}">{{ socials.email }}</a>{% endif %}
+          {% if socials.scholar_userid %}<a href="https://scholar.google.com/citations?user={{ socials.scholar_userid }}">Scholar</a>{% endif %}
+          {% if socials.github_username %}<a href="https://github.com/{{ socials.github_username }}">GitHub</a>{% endif %}
+          {% if socials.linkedin_username %}<a href="https://www.linkedin.com/in/{{ socials.linkedin_username }}">LinkedIn</a>{% endif %}
+          <a href="{{ '/cv/' | relative_url }}">CV</a>
+        </p>
+      {% endif %}
     </div>
     {% if page.profile.image %}
       <div class="about-photo">

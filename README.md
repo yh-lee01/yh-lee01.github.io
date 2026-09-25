@@ -27,10 +27,11 @@ bin/site build       # production 전체 빌드 → _site/
 | --- | --- |
 | 홈 소개, 페이지 설정 | `_pages/` |
 | 블로그 글 | `_posts/` (연구 글은 `layout: distill`) |
-| 연구 프로젝트 | `_projects/` (`importance`가 작을수록 앞) |
+| 연구 프로젝트 | `_projects/` (`importance`가 작을수록 앞, `youtube: <영상 ID>`를 적으면 카드 썸네일과 상세 페이지 영상이 자동으로 붙음) |
 | 소식 | `_news/` (`type`: paper · post · joined · award · update) |
 | 논문 정보 | `_bibliography/papers.bib` (`selected = {true}`면 홈에 표시) |
-| 연락처, 공동저자 | `_data/` |
+| 연락처, 공동저자 | `_data/` (`socials.yml`에 `scholar_userid`를 적으면 홈에 Scholar 링크 표시) |
+| 홈 상태 문구 (예: Fall 2027 지원) | `_pages/about.md`의 `status` |
 | CV PDF | `assets/pdf/YohanLee_CV.pdf` |
 | 페이지 구조 / 재사용 요소 | `_layouts/` / `_includes/` |
 
@@ -48,11 +49,11 @@ bin/site build       # production 전체 빌드 → _site/
 
 ### 스타일
 
-`assets/css/main.scss` → `_sass/_custom.scss` → `_sass/site/` 순서로 불러옵니다. al-folio/Distill 기본 스타일과 아이콘 라이브러리 파일은 그대로 두고, 사이트 변경은 아래 역할별 파일에서 합니다. 같은 셀렉터를 끝에 계속 덧붙이지 않고, 반응형 규칙은 해당 컴포넌트 파일에 함께 둡니다.
+`assets/css/main.scss` → `_sass/_custom.scss` → `_sass/site/` 순서로 불러옵니다. al-folio/Distill 기본 스타일과 아이콘 라이브러리 파일은 그대로 두고, 사이트 변경은 아래 역할별 파일에서 합니다. 같은 셀렉터를 끝에 계속 덧붙이지 않고, 반응형 규칙은 해당 컴포넌트 파일에 함께 둡니다. 크기와 간격은 새 숫자를 만들지 말고 `_tokens.scss`의 단계를 사용합니다. 모든 페이지는 680px 한 열(`--reading-width`)을 쓰고, 메뉴와 푸터도 이 열에 맞춥니다.
 
 | 파일 | 역할 |
 | --- | --- |
-| `_sass/site/_tokens.scss` | 색상(라이트/다크) · 폰트 · 크기 · 간격 변수 |
+| `_sass/site/_tokens.scss` | 색상(라이트/다크) · 글자 크기 단계(`--fs-*`) · 간격 단계(`--sp-*`, 4px 단위) · 본문 폭 |
 | `_sass/site/_foundation.scss` | 기본 타이포 · 링크 · 페이지 머리말 · 태그 · 내비게이션 · 푸터 |
 | `_sass/site/_home.scss` | 홈 프로필 · 홈 섹션 제목 |
 | `_sass/site/_collections.scss` | 날짜 목록 · 블로그 · 논문 · 프로젝트 · CV |
