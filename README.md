@@ -49,7 +49,7 @@ bin/site build       # production 전체 빌드 → _site/
 
 ### 스타일
 
-`assets/css/main.scss` → `_sass/_custom.scss` → `_sass/site/` 순서로 불러옵니다. al-folio/Distill 기본 스타일과 아이콘 라이브러리 파일은 그대로 두고, 사이트 변경은 아래 역할별 파일에서 합니다. 같은 셀렉터를 끝에 계속 덧붙이지 않고, 반응형 규칙은 해당 컴포넌트 파일에 함께 둡니다. 크기와 간격은 새 숫자를 만들지 말고 `_tokens.scss`의 단계를 사용합니다. 모든 페이지는 680px 한 열(`--reading-width`)을 쓰고, 메뉴와 푸터도 이 열에 맞춥니다.
+`assets/css/main.scss` → `_sass/_custom.scss` → `_sass/site/` 순서로 불러옵니다. al-folio/Distill 기본 스타일과 아이콘 라이브러리 파일은 그대로 두고, 사이트 변경은 아래 역할별 파일에서 합니다. 같은 셀렉터를 끝에 계속 덧붙이지 않고, 반응형 규칙은 해당 컴포넌트 파일에 함께 둡니다. 크기와 간격은 새 숫자를 만들지 말고 `_tokens.scss`의 단계를 사용합니다. 모든 페이지는 720px 한 열(`--reading-width`)을 쓰고, 메뉴와 푸터도 이 열에 맞춥니다.
 
 | 파일 | 역할 |
 | --- | --- |

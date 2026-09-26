@@ -38,8 +38,8 @@
   --sp-7: 3rem;
   --sp-8: 4rem;
 
-  // One column for every page: about 75 characters per line of prose.
-  --reading-width: 680px;
+  // One column for every page: about 80 characters per line of 17px prose (Distill-like).
+  --reading-width: 720px;
   --measure: 68ch;
   --page-space: var(--sp-7);
   --section-space: var(--sp-7);
