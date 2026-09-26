@@ -1,3 +1,10 @@
+# =============================================================================
+# Start here: "Site settings" and "Blog" below are the parts to personalize.
+# Content lives in _pages/, _posts/, _projects/, _news/, _bibliography/ and _data/.
+# Guides: README.md, docs/USING-THIS-TEMPLATE.md, docs/CONTENT.md, docs/DESIGN.md
+# Sections after "Jekyll settings" are theme wiring; change them only to toggle features.
+# =============================================================================
+
 # -----------------------------------------------------------------------------
 # Site settings
 # -----------------------------------------------------------------------------
@@ -149,6 +156,7 @@ exclude:
   - LICENSE
   - purgecss.config.js
   - README.md
+  - README.ko.md
   - requirements.txt
   # Local reference copy of ICLR Blogposts 2026 source (see .gitignore)
   - 2026-main.zip
