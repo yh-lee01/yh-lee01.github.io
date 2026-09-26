@@ -50,6 +50,7 @@
 @media (hover: none) { .heading-anchor { opacity: 0.5; } }
 // Long display equations scroll inside their own box instead of being clipped on narrow screens.
 mjx-container[display="true"] { display: block; max-width: 100%; overflow-x: auto; overflow-y: hidden; }
+@media (max-width: 575px) { mjx-container[display="true"] { font-size: 92% !important; } }
 .distill d-article pre { padding: var(--sp-4); border-radius: var(--radius-sm); font-size: var(--fs-sm); line-height: 1.65; }
 .distill d-article blockquote { margin: var(--sp-5) 0; padding: var(--sp-1) var(--sp-5); }
 .distill d-appendix { margin-top: var(--sp-6); font-size: var(--fs-sm); }
@@ -61,13 +62,16 @@ mjx-container[display="true"] { display: block; max-width: 100%; overflow-x: aut
   .distill d-article d-contents { position: absolute; grid-area: auto; align-self: stretch; top: 0; bottom: 0; right: calc(100% + 40px); width: 200px; margin: 0; padding: 0; border: 0; }
   .distill d-contents nav {
     display: block; position: sticky; top: calc(var(--nav-height) + var(--sp-6));
-    max-height: calc(100vh - var(--nav-height) - var(--sp-8)); overflow-y: auto;
-    padding-right: var(--sp-5); border-right: 1px solid var(--global-divider-color);
+    max-height: calc(100vh - var(--nav-height) - var(--sp-8)); overflow: hidden auto; scrollbar-width: thin;
+    padding-right: var(--sp-5);
+    // The rail is drawn inside the box (not as a border) so the current-section marker can sit on it
+    // without overflowing, which showed a horizontal scrollbar on Windows.
+    background: linear-gradient(var(--global-divider-color), var(--global-divider-color)) right top / 1px 100% no-repeat;
   }
   .distill d-contents nav div { margin-bottom: var(--sp-3); }
   .distill d-contents nav h3 { margin-bottom: var(--sp-4); }
   // Marker on the rail next to the current section.
-  .distill d-contents nav a.is-active::after { content: ""; position: absolute; top: 2px; bottom: 2px; right: calc(-1 * var(--sp-5) - 1px); width: 2px; border-radius: 1px; background: var(--global-theme-color); }
+  .distill d-contents nav a.is-active::after { content: ""; position: absolute; top: 2px; bottom: 2px; right: calc(-1 * var(--sp-5)); width: 2px; border-radius: 1px; background: var(--global-theme-color); }
 }
 @media (max-width: 767px) {
   .distill { margin-inline: 20px; }

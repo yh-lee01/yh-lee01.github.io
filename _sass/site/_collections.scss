@@ -15,7 +15,11 @@
 .date-list.is-scrollable { max-height: 60vw; overflow-y: auto; }
 .news-chip { font-size: var(--fs-xs); font-weight: 500; white-space: nowrap; color: var(--global-text-color-light); }
 .news .news-title, .archive .post-link { font-weight: 500; }
-.archive-back { margin: var(--sp-5) 0 0; font-size: var(--fs-sm); }
+// "← All …" link at the end of archives, posts and project pages.
+.back-link { margin: var(--sp-6) 0 0; font-size: var(--fs-sm); }
+.distill d-article.back-row { margin-top: var(--sp-6); padding-top: var(--sp-5); border-top: 1px solid var(--global-divider-color); }
+.distill d-article .back-link { margin: 0; font-size: var(--fs-sm); }
+.distill d-article .back-link a { border-bottom: 0 !important; }
 
 // Blog
 .post-list { display: flex; flex-direction: column; gap: 0; list-style: none; margin: 0; padding: 0; width: 100%; }
@@ -102,8 +106,15 @@
 .cv-pdf-embed iframe { display: block; width: 100%; height: 85vh; min-height: 600px; border: 0; }
 .cv-pdf-fallback { margin: var(--sp-3) 0 0; font-size: var(--fs-xs); color: var(--global-text-color-light); }
 
+.cv-open { display: none; }
 @media (max-width: 767px) {
-  .cv-pdf-embed iframe { height: 60vh; min-height: 400px; }
+  .cv-pdf-embed, .cv-pdf-fallback { display: none; }
+  .cv-open { display: flex; align-items: center; gap: var(--sp-4); padding: var(--sp-5); color: var(--global-text-color); border: 1px solid var(--global-divider-color); border-radius: var(--radius-lg); }
+  .cv-open:hover { color: var(--global-theme-color); border-color: var(--global-theme-color); text-decoration: none; }
+  .cv-open i { font-size: 1.75rem; color: var(--global-theme-color); }
+  .cv-open span { display: flex; flex-direction: column; }
+  .cv-open strong { font-size: var(--fs-base); font-weight: 500; }
+  .cv-open small { font-size: var(--fs-xs); color: var(--global-text-color-light); }
 }
 @media (max-width: 575px) {
   // Phones: date and label on one line, text below.
@@ -112,6 +123,8 @@
   .date-list > li > div { flex-basis: 100%; }
   .publications .links .btn { min-height: 40px; padding-inline: var(--sp-3) !important; }
   .publications .row { flex-wrap: wrap; gap: var(--sp-3); }
+  .publications .abbr, .publications .col-sm-2 { width: 100% !important; max-width: none !important; }
+  .publications .preview, .publications .abbr img { width: 100% !important; height: auto !important; max-height: 220px; }
   .publications .col-sm-8, .publications .col-sm-10 { flex-basis: 100% !important; }
   .pc-head, .pc-foot { flex-wrap: wrap; gap: var(--sp-2) var(--sp-3); }
   .pc-meta { white-space: normal; }
