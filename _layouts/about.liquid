@@ -34,7 +34,10 @@ layout: default
       <section class="home-section">
         <div class="section-head">
           <h2>news</h2>
-          <a class="section-more" href="{{ '/news/' | relative_url }}">All news <span aria-hidden="true">&rarr;</span></a>
+          {% assign news_count = site.news | size %}
+          {% if page.announcements.limit and news_count > page.announcements.limit %}
+            <a class="section-more" href="{{ '/news/' | relative_url }}">All news <span aria-hidden="true">&rarr;</span></a>
+          {% endif %}
         </div>
         {% include news.liquid limit=true %}
       </section>
@@ -54,7 +57,13 @@ layout: default
       <section class="home-section">
         <div class="section-head">
           <h2>selected publications</h2>
-          <a class="section-more" href="{{ '/publications/' | relative_url }}">All publications <span aria-hidden="true">&rarr;</span></a>
+          {% capture all_papers %}{% bibliography_count %}{% endcapture %}
+          {% capture selected_papers %}{% bibliography_count --query @*[selected=true]* %}{% endcapture %}
+          {% assign all_papers = all_papers | strip | plus: 0 %}
+          {% assign selected_papers = selected_papers | strip | plus: 0 %}
+          {% if all_papers > selected_papers %}
+            <a class="section-more" href="{{ '/publications/' | relative_url }}">All publications <span aria-hidden="true">&rarr;</span></a>
+          {% endif %}
         </div>
         {% include selected_papers.liquid %}
       </section>

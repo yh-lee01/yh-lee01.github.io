@@ -89,13 +89,33 @@
             </nav>
           </d-contents>
         {% endif %}
+        {% if page.paper %}
+          {% comment %} Paper reviewed in this post (front matter `paper:` with title, authors, venue, url). {% endcomment %}
+          <aside class="paper-card" aria-label="Paper reviewed in this post">
+            <span class="paper-card-label">Paper</span>
+            <a class="paper-card-title" href="{{ page.paper.url }}">{{ page.paper.title }}</a>
+            <span class="paper-card-meta">
+              {{- page.paper.authors }}{% if page.paper.venue %} &middot; {{ page.paper.venue }}{% endif -%}
+            </span>
+          </aside>
+        {% endif %}
         {{ content }}
       </d-article>
 
       <d-appendix>
+        {% if page.paper %}
+          <h3 class="post-reference-title">Reference</h3>
+          <p class="post-reference">
+            {{ page.paper.authors }}. <a href="{{ page.paper.url }}"><em>{{ page.paper.title }}</em></a>{% if page.paper.venue %}. {{ page.paper.venue }}{% endif %}.
+          </p>
+        {% endif %}
         <d-footnote-list></d-footnote-list>
         <d-citation-list></d-citation-list>
       </d-appendix>
+
+      <d-article class="back-row">
+        <p class="back-link"><a href="{{ '/blog/' | relative_url }}">&larr; All posts</a></p>
+      </d-article>
 
       {% if page.bibliography %}
         <d-bibliography src="{{ page.bibliography | prepend: '/assets/bibliography/' | relative_url }}"></d-bibliography>

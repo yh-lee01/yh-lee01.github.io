@@ -18,6 +18,11 @@ authors:
   url: https://yh-lee01.github.io
   affiliations:
     name: Sungkyunkwan University
+paper:
+  title: Flow Matching for Generative Modeling
+  authors: Y. Lipman, R. T. Q. Chen, H. Ben-Hamu, M. Nickel, M. Le
+  venue: ICLR 2023
+  url: https://arxiv.org/abs/2210.02747
 toc:
 - name: Overview
 - name: 'Background: continuous normalizing flows'
@@ -27,8 +32,6 @@ toc:
 - name: Why it matters for robotics
 - name: Summary
 ---
-
-**Paper:** Lipman et al., _Flow Matching for Generative Modeling_, ICLR 2023. [[arXiv]](https://arxiv.org/abs/2210.02747)
 
 ## Overview
 
@@ -109,9 +112,3 @@ Flow Matching has become the backbone of robot action generation (e.g., $\pi_0$,
 | Inference  | Many steps (DDIM ~50) | Fewer steps (OT paths ~10) |
 | Path       | Curved (VP/VE SDE)    | Straight (OT)              |
 | Likelihood | Requires SDE          | Easy via ODE               |
-
----
-
-**Reference**
-
-Y. Lipman, R. T. Q. Chen, H. Ben-Hamu, M. Nickel, M. Le, _Flow Matching for Generative Modeling_, ICLR 2023.

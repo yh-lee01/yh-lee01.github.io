@@ -15,6 +15,9 @@ layout: default
   <article>
     {{ content }}
   </article>
+  {% if page.collection == 'projects' %}
+    <p class="back-link"><a href="{{ '/projects/' | relative_url }}">&larr; All projects</a></p>
+  {% endif %}
 
   {% if page.related_publications %}
     <h2>References</h2>

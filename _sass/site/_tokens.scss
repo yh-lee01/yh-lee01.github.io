@@ -12,6 +12,11 @@
   --accent-subtle-bg: #eef3f7;
   --accent-subtle-text: #245878;
   --image-dim: none;
+  // News labels (muted so they sort the list without competing with it)
+  --tag-paper: #245878;
+  --tag-post: #2f7a4d;
+  --tag-joined: #6b4f9e;
+  --tag-award: #a4670a;
   --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
   --font-mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, monospace;
 
@@ -38,8 +43,8 @@
   --sp-7: 3rem;
   --sp-8: 4rem;
 
-  // One column for every page: about 75 characters per line of prose.
-  --reading-width: 680px;
+  // One column for every page: about 80 characters per line of 17px prose (Distill-like).
+  --reading-width: 720px;
   --measure: 68ch;
   --page-space: var(--sp-7);
   --section-space: var(--sp-7);
@@ -61,5 +66,9 @@ html[data-theme="dark"] {
   --accent-subtle-bg: rgba(144, 197, 232, 0.12);
   --accent-subtle-text: #90c5e8;
   --image-dim: brightness(0.88);
+  --tag-paper: #90c5e8;
+  --tag-post: #86cfa2;
+  --tag-joined: #bba7e6;
+  --tag-award: #e4b866;
 }
 @media (max-width: 767px) { :root { --page-space: var(--sp-6); --section-space: 2.5rem; --fs-xl: var(--fs-lg); } }

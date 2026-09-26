@@ -14,7 +14,7 @@
       {% for item in news limit: news_limit %}
         <li>
           <time datetime="{{ item.date | date_to_xmlschema }}">{{ item.date | date: '%b %Y' }}</time>
-          {% if item.type %}<span class="news-chip">{{ item.type }}</span>{% endif %}
+          {% if item.type %}<span class="news-chip news-chip--{{ item.type }}">{{ item.type }}</span>{% endif %}
           <div>
             {% if item.inline %}
               {{ item.content | remove: '<p>' | remove: '</p>' | emojify }}
