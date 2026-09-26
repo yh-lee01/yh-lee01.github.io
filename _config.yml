@@ -191,6 +191,9 @@ sass:
 
 jekyll-minifier:
   compress_javascript: false
+  # Sass already outputs compressed CSS. The minifier's CSS pass breaks calc() with
+  # hyphenated custom properties (calc(var(--nav-height) ...) -> "var( -  - nav - height)").
+  compress_css: false
   exclude: ["robots.txt", "assets/js/search/*.js"]
 
 # -----------------------------------------------------------------------------

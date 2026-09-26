@@ -1,5 +1,5 @@
 // Lists share a quiet divider, without hover movement or enclosing cards.
-.post-list li, .projects .card, .publications ol.bibliography > li {
+.post-list li, .project-item, .publications ol.bibliography > li {
   background: transparent !important; border: 0 !important;
   border-bottom: 1px solid var(--global-divider-color) !important;
   border-radius: 0 !important; box-shadow: none !important;
@@ -27,7 +27,7 @@
 .post-card .cat, .pj-chip { display: inline-block; font-size: var(--fs-xs); font-weight: 500; color: var(--global-text-color-light); }
 .post-card a.cat:hover { color: var(--global-theme-color); text-decoration: none; }
 .pc-meta { white-space: nowrap; }
-.post-card-title, .projects .card-title { font-family: var(--font-sans); font-size: var(--fs-md) !important; font-weight: 500; line-height: 1.4; margin: 0; }
+.post-card-title, .project-title { font-family: var(--font-sans); font-size: var(--fs-md) !important; font-weight: 500; line-height: 1.4; margin: 0; }
 .post-card-title a { color: var(--global-text-color); font-weight: inherit; }
 .post-card-title a:hover { color: var(--global-theme-color); text-decoration: none; }
 .post-card-description { font-size: var(--fs-sm); line-height: 1.7; color: var(--global-text-color-light); margin: var(--sp-2) 0 0; max-width: var(--measure); }
@@ -77,25 +77,23 @@
 #bibsearch:focus { outline: none; border-color: var(--global-theme-color); box-shadow: 0 0 0 3px var(--accent-subtle-bg); }
 
 // Projects
-.projects .card { height: auto !important; overflow: visible; }
-.projects .card figure { width: 100%; margin: 0; padding: 0; line-height: 0; }
-.projects .card picture { display: block; }
-.projects .card img { display: block; width: 100%; height: auto; aspect-ratio: 16 / 10; object-fit: contain; border: 1px solid var(--global-divider-color); border-radius: var(--radius-sm); margin: 0; background: #fff; }
-.projects .card-body { padding: var(--sp-4) 0 var(--sp-5) !important; }
-.projects .card-title { padding: 0 !important; border: 0 !important; margin: 0 0 var(--sp-2); }
-.projects .card-title::before { content: none !important; }
-.projects .card-text { font-size: var(--fs-sm); line-height: 1.6; color: var(--global-text-color-light); margin-bottom: var(--sp-3); }
-.projects .card-video { position: relative; }
-.projects .card-video img { aspect-ratio: 16 / 9; object-fit: cover; background: #000; }
+// Project rows: same shape as publication rows (thumbnail left, text right).
+.project-item { padding: var(--sp-5) 0; }
+.project-card-link { display: grid; grid-template-columns: 200px minmax(0, 1fr); gap: var(--sp-5); align-items: start; color: inherit; }
+.project-card-link:hover { color: inherit; text-decoration: none; }
+.project-thumb, .project-thumb figure { margin: 0; line-height: 0; }
+.project-thumb { position: relative; overflow: hidden; border: 1px solid var(--global-divider-color); border-radius: var(--radius-sm); background: #000; }
+.project-thumb img { display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: cover; margin: 0; border: 0; border-radius: 0; transition: transform 0.3s ease; }
+.project-card-link:hover .project-thumb img { transform: scale(1.03); }
+.project-title { padding: 0 !important; border: 0 !important; margin: 0 0 var(--sp-2); text-wrap: pretty; transition: color var(--ease); }
+.project-card-link:hover .project-title { color: var(--global-theme-color); }
+.project-text { font-size: var(--fs-sm); line-height: 1.6; color: var(--global-text-color-light); margin: 0 0 var(--sp-3); }
 .card-video-badge {
-  position: absolute; left: var(--sp-3); bottom: var(--sp-3); display: inline-flex; align-items: center; gap: 6px; padding: 2px var(--sp-2);
+  position: absolute; left: var(--sp-2); bottom: var(--sp-2); display: inline-flex; align-items: center; gap: 6px; padding: 1px var(--sp-2);
   font-size: var(--fs-xs); font-weight: 500; line-height: 1.6; color: #fff; background: rgba(0, 0, 0, 0.6); border-radius: var(--radius-sm);
 }
 .card-video-badge i { font-size: 0.625rem; }
-.project-card-link { display: block; color: inherit; }
-.project-card-link:hover { color: inherit; text-decoration: none; }
-.project-card-link:hover .card-title { color: var(--global-theme-color); }
-.project-code-link { padding: 0 0 var(--sp-4); font-size: var(--fs-sm); }
+.project-code-link { margin: var(--sp-3) 0 0 calc(200px + var(--sp-5)); font-size: var(--fs-sm); }
 .pj-chip { margin-bottom: var(--sp-1); }
 .pj-tags { display: flex; flex-wrap: wrap; gap: var(--sp-1) 0; }
 
@@ -118,4 +116,6 @@
   .pc-head, .pc-foot { flex-wrap: wrap; gap: var(--sp-2) var(--sp-3); }
   .pc-meta { white-space: normal; }
   #bibsearch { max-width: none; }
+  .project-card-link { grid-template-columns: 1fr; gap: var(--sp-3); }
+  .project-code-link { margin-left: 0; }
 }

@@ -52,6 +52,15 @@ jobs:
         run: |
           npm install -g purgecss
           purgecss -c purgecss.config.js
+      - name: Check CSS integrity 🔍
+        # A CSS minifier once rewrote calc(var(--nav-height) ...) as "var( -  - nav - height)",
+        # which browsers drop silently. Fail the deploy instead of shipping broken layout rules.
+        run: |
+          if grep -q 'var( -' _site/assets/css/main.css; then
+            echo "::error::Broken custom property in _site/assets/css/main.css"
+            grep -o '[a-z-]*:[^;{}]*var( [^;}]*' _site/assets/css/main.css | head
+            exit 1
+          fi
       - name: Upload artifact 📤
         uses: actions/upload-pages-artifact@v4
         with:

@@ -61,7 +61,7 @@ body > .container[role="main"] > .post { max-width: var(--reading-width); margin
 figcaption, .caption { color: var(--global-text-color-light); font-size: var(--fs-sm); margin-top: var(--sp-2); text-align: center; }
 
 // Content images sit slightly dimmer in dark mode so white figures do not glare.
-.post article img, .distill d-article img, .projects .card img, .publications .preview { filter: var(--image-dim); }
+.post article img, .distill d-article img, .project-thumb img, .publications .preview { filter: var(--image-dim); }
 .about-photo img { filter: none; }
 
 // Tags: quiet text links, same everywhere.
@@ -111,6 +111,17 @@ body :is(h1, h2, h3, h4, h5, h6) { scroll-margin-top: calc(var(--nav-height) + v
 }
 :root body #back-to-top:hover { color: var(--global-theme-color); border-color: var(--global-theme-color); }
 :root body #back-to-top svg { width: 20px; height: 20px; fill: currentColor; }
+
+// Copy button on code and BibTeX blocks: always visible and labeled.
+.code-display-wrapper .copy {
+  display: inline-flex; align-items: center; gap: 6px; top: var(--sp-2); right: var(--sp-2); padding: 2px var(--sp-2);
+  font-family: var(--font-sans); font-size: var(--fs-xs); font-weight: 500; line-height: 1.6; opacity: 1;
+  color: var(--global-text-color-light); background: var(--global-bg-color); border: 1px solid var(--global-divider-color); border-radius: var(--radius-sm);
+  transition: color var(--ease), border-color var(--ease);
+}
+.code-display-wrapper .copy:hover, .code-display-wrapper .copy:focus-visible { color: var(--global-theme-color); border-color: var(--global-theme-color); }
+.code-display-wrapper .copy.is-copied { color: var(--global-theme-color); border-color: var(--global-theme-color); }
+.code-display-wrapper .copy i { font-size: 0.6875rem; }
 
 // Footer
 // The upstream theme colors every span/div directly, so the footer text color is set on them too.
