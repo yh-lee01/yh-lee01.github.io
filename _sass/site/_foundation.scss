@@ -98,6 +98,20 @@ html #light-toggle .ti { line-height: 1; padding: 0; }
   color: inherit; background: transparent; border: 1px solid var(--global-divider-color); border-radius: 4px; box-shadow: none;
 }
 
+// Reading progress: a thin accent line that sits on the navbar's bottom edge.
+progress#progress { top: calc(var(--nav-height) - 2px); height: 2px; z-index: 1031; }
+// Linked headings land clear of the fixed navbar.
+body :is(h1, h2, h3, h4, h5, h6) { scroll-margin-top: calc(var(--nav-height) + var(--sp-6)); }
+
+// Back to top: a quiet outlined button in the page colors (selector outranks the upstream :root rule).
+:root body #back-to-top {
+  width: 40px; height: 40px; right: var(--sp-6); bottom: var(--sp-6); display: flex; align-items: center; justify-content: center;
+  color: var(--global-text-color-light); background: var(--global-bg-color); border: 1px solid var(--global-divider-color); box-shadow: none;
+  transition: color var(--ease), border-color var(--ease), opacity 0.2s ease, transform 0.2s ease;
+}
+:root body #back-to-top:hover { color: var(--global-theme-color); border-color: var(--global-theme-color); }
+:root body #back-to-top svg { width: 20px; height: 20px; fill: currentColor; }
+
 // Footer
 // The upstream theme colors every span/div directly, so the footer text color is set on them too.
 .site-footer { margin-top: auto; padding-top: var(--sp-8); font-size: var(--fs-xs); }
