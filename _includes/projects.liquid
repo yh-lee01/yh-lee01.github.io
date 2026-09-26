@@ -1,32 +1,36 @@
-<div class="col mb-4">
-  <div class="card h-100">
-    <a class="project-card-link" href="{% if project.redirect %}{{ project.redirect }}{% else %}{{ project.url | relative_url }}{% endif %}">
-      {% if project.youtube %}
-        {% comment %} Video projects use the YouTube thumbnail (max-res, falling back to the always-present hq size). {% endcomment %}
-        <figure class="card-video">
-          <img
-            src="https://i.ytimg.com/vi/{{ project.youtube }}/maxresdefault.jpg"
-            onerror="this.onerror=null;this.src='https://i.ytimg.com/vi/{{ project.youtube }}/hqdefault.jpg'"
-            alt="{{ project.title | escape }} (video)"
-            loading="lazy"
-          >
-          <span class="card-video-badge" aria-hidden="true"><i class="fa-solid fa-play"></i> Video</span>
-        </figure>
-      {% elsif project.img %}
-        {% include figure.liquid loading="lazy" path=project.img sizes="(min-width: 768px) 440px, 90vw" alt=project.title class="card-img-top" %}
-      {% endif %}
-      <div class="card-body">
-        {% if project.chip %}<span class="pj-chip">{{ project.chip }}</span>{% endif %}
-        <h2 class="card-title">{{ project.title }}</h2>
-        <p class="card-text">{{ project.description }}</p>
-        {% if project.tech %}<div class="pj-tags">{% for t in project.tech %}<span class="tag">{{ t }}</span>{% endfor %}</div>{% endif %}
-      </div>
-    </a>
-    {% if project.github %}
-      <div class="project-code-link">
-        <a href="{{ project.github }}" aria-label="Code for {{ project.title | escape }}"><i class="fa-brands fa-github" aria-hidden="true"></i> Code</a>
-        {% if project.github_stars %}<span class="stars"><i class="fa-solid fa-star" aria-hidden="true"></i> <span id="{{ project.github_stars }}-stars"></span></span>{% endif %}
+{% comment %}
+  One project row: thumbnail on the left, text on the right (stacked on phones),
+  matching the publication rows. Video projects (`youtube:` in front matter) use the
+  YouTube thumbnail with a "Video" badge; others use `img`.
+{% endcomment %}
+<article class="project-item">
+  <a class="project-card-link" href="{% if project.redirect %}{{ project.redirect }}{% else %}{{ project.url | relative_url }}{% endif %}">
+    {% if project.youtube %}
+      <figure class="project-thumb card-video">
+        <img
+          src="https://i.ytimg.com/vi/{{ project.youtube }}/maxresdefault.jpg"
+          onerror="this.onerror=null;this.src='https://i.ytimg.com/vi/{{ project.youtube }}/hqdefault.jpg'"
+          alt="{{ project.title | escape }} (video)"
+          loading="lazy"
+        >
+        <span class="card-video-badge" aria-hidden="true"><i class="fa-solid fa-play"></i> Video</span>
+      </figure>
+    {% elsif project.img %}
+      <div class="project-thumb">
+        {% include figure.liquid loading="lazy" path=project.img sizes="(min-width: 576px) 200px, 90vw" alt=project.title %}
       </div>
     {% endif %}
-  </div>
-</div>
+    <div class="project-body">
+      {% if project.chip %}<span class="pj-chip">{{ project.chip }}</span>{% endif %}
+      <h2 class="project-title">{{ project.title }}</h2>
+      <p class="project-text">{{ project.description }}</p>
+      {% if project.tech %}<div class="pj-tags">{% for t in project.tech %}<span class="tag">{{ t }}</span>{% endfor %}</div>{% endif %}
+    </div>
+  </a>
+  {% if project.github %}
+    <p class="project-code-link">
+      <a href="{{ project.github }}" aria-label="Code for {{ project.title | escape }}"><i class="fa-brands fa-github" aria-hidden="true"></i> Code</a>
+      {% if project.github_stars %}<span class="stars"><i class="fa-solid fa-star" aria-hidden="true"></i> <span id="{{ project.github_stars }}-stars"></span></span>{% endif %}
+    </p>
+  {% endif %}
+</article>

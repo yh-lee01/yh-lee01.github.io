@@ -39,6 +39,15 @@
 // Current section (set by assets/js/toc-spy.js).
 .distill d-contents nav a.is-active { color: var(--global-text-color) !important; font-weight: 500; }
 .distill d-article .katex-display { overflow-x: auto; overflow-y: hidden; padding: var(--sp-3) 0; margin: var(--sp-5) 0; }
+// Section links ("#" after headings, added by assets/js/heading-anchors.js): shown on hover or focus.
+.heading-anchor {
+  margin-left: 0.4em; padding: 0 0.15em; font-size: 0.7em; font-weight: 400; vertical-align: 0.1em;
+  color: var(--global-text-color-light) !important; border-bottom: 0 !important; text-decoration: none !important;
+  opacity: 0; transition: opacity var(--ease), color var(--ease);
+}
+:is(h2, h3):hover > .heading-anchor, .heading-anchor:focus-visible, .heading-anchor.is-copied { opacity: 1; }
+.heading-anchor:hover, .heading-anchor.is-copied { color: var(--global-theme-color) !important; }
+@media (hover: none) { .heading-anchor { opacity: 0.5; } }
 // Long display equations scroll inside their own box instead of being clipped on narrow screens.
 mjx-container[display="true"] { display: block; max-width: 100%; overflow-x: auto; overflow-y: hidden; }
 .distill d-article pre { padding: var(--sp-4); border-radius: var(--radius-sm); font-size: var(--fs-sm); line-height: 1.65; }

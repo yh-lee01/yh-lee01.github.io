@@ -55,5 +55,8 @@
 
     <!-- JavaScripts -->
     {% include scripts.liquid %}
+    {% if page.collection == 'projects' or page.layout == 'post' %}
+      <script defer src="{{ '/assets/js/heading-anchors.js' | relative_url | bust_file_cache }}"></script>
+    {% endif %}
   </body>
 </html>
