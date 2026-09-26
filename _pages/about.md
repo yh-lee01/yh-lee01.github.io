@@ -25,7 +25,7 @@ latest_posts:
   limit: 5
 ---
 
-I am a senior undergraduate at [Sungkyunkwan University](https://www.skku.edu) (Computer Science and Engineering, expected Aug. 2027). I have research experience at [Pixel Lab](https://sites.google.com/view/pixel-lab-ai/home) (Korea University), [AIoT Lab](https://aiot.snu.ac.kr/home) (Seoul National University), and [V-Lab](https://v-laboratory.github.io/#/) (Sungkyunkwan University). I am seeking graduate research opportunities for **Fall 2027**.
+I am a senior undergraduate at [Sungkyunkwan University](https://www.skku.edu) (Computer Science and Engineering, expected Aug. 2027). I have research experience at [Pixel Lab](https://sites.google.com/view/pixel-lab-ai/home) (Korea University), [AIoT Lab](https://aiot.snu.ac.kr/home) (Seoul National University), and [V-Lab](https://v-laboratory.github.io/#/) (Sungkyunkwan University).
 
 ## research interests
 
