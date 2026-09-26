@@ -28,12 +28,16 @@
 .distill d-article h3 { font-size: var(--fs-md); font-weight: 500; margin: var(--sp-6) 0 var(--sp-3); }
 .distill d-article hr { margin: var(--sp-6) 0; width: 100%; border: 0; border-top: 1px solid var(--global-divider-color); }
 .distill d-article table { font-size: var(--fs-sm); }
-.distill d-article d-contents { display: block; width: 100%; margin: 0 0 var(--sp-6); padding: var(--sp-5) 0; border: 0; border-block: 1px solid var(--global-divider-color); border-radius: 0; }
+// Above the article (narrow screens) the byline's rule already separates it, so only a bottom rule.
+.distill d-article d-contents { display: block; width: 100%; margin: 0 0 var(--sp-6); padding: 0 0 var(--sp-5); border: 0; border-bottom: 1px solid var(--global-divider-color); border-radius: 0; }
 .distill d-contents nav { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--sp-2) var(--sp-5); }
-.distill d-contents nav h3 { grid-column: 1 / -1; margin: 0 0 var(--sp-1); font-size: var(--fs-sm); }
-.distill d-contents nav div { margin: 0; font-weight: 400; font-size: 0.8125rem; line-height: 1.6; }
-.distill d-contents nav a { color: var(--global-text-color-light) !important; }
-.distill d-contents nav a:hover { color: var(--global-theme-color) !important; }
+.distill d-contents nav h3 { grid-column: 1 / -1; margin: 0 0 var(--sp-1); font-size: 0.6875rem; font-weight: 500; letter-spacing: 0.05em; text-transform: uppercase; }
+.distill d-contents nav div { margin: 0; font-weight: 400; font-size: 0.8125rem; line-height: 1.5; }
+.distill d-contents nav a { position: relative; display: block; color: var(--global-text-color-light) !important; border-bottom: 0 !important; transition: color var(--ease); }
+// Hover changes color only; the upstream hover underline read as a second "current" marker.
+.distill d-article d-contents nav a:hover { color: var(--global-theme-color) !important; text-decoration: none; border-bottom: 0 !important; }
+// Current section (set by assets/js/toc-spy.js).
+.distill d-contents nav a.is-active { color: var(--global-text-color) !important; font-weight: 500; }
 .distill d-article .katex-display { overflow-x: auto; overflow-y: hidden; padding: var(--sp-3) 0; margin: var(--sp-5) 0; }
 // Long display equations scroll inside their own box instead of being clipped on narrow screens.
 mjx-container[display="true"] { display: block; max-width: 100%; overflow-x: auto; overflow-y: hidden; }
@@ -43,16 +47,24 @@ mjx-container[display="true"] { display: block; max-width: 100%; overflow-x: aut
 // Hide Distill's appendix bar when the post has no footnotes or citations.
 .distill d-appendix:not(:has(li)) { display: none; }
 @media (min-width: 1280px) {
-  .distill d-article d-contents { position: absolute; right: calc(100% + 40px); top: 0; width: 200px; margin: 0; padding: 0 var(--sp-5) 0 0; border: 0; border-right: 1px solid var(--global-divider-color); }
-  .distill d-contents nav { display: block; }
+  // The column spans the whole article so the list inside can stay pinned while reading.
+  // d-article is a grid: with auto placement and stretch alignment the absolutely positioned column spans the full article.
+  .distill d-article d-contents { position: absolute; grid-area: auto; align-self: stretch; top: 0; bottom: 0; right: calc(100% + 40px); width: 200px; margin: 0; padding: 0; border: 0; }
+  .distill d-contents nav {
+    display: block; position: sticky; top: calc(var(--nav-height) + var(--sp-6));
+    max-height: calc(100vh - var(--nav-height) - var(--sp-8)); overflow-y: auto;
+    padding-right: var(--sp-5); border-right: 1px solid var(--global-divider-color);
+  }
   .distill d-contents nav div { margin-bottom: var(--sp-3); }
   .distill d-contents nav h3 { margin-bottom: var(--sp-4); }
+  // Marker on the rail next to the current section.
+  .distill d-contents nav a.is-active::after { content: ""; position: absolute; top: 2px; bottom: 2px; right: calc(-1 * var(--sp-5) - 1px); width: 2px; border-radius: 1px; background: var(--global-theme-color); }
 }
 @media (max-width: 767px) {
   .distill { margin-inline: 20px; }
   .distill d-title h1 { font-size: 2rem; }
   .distill d-title p { font-size: var(--fs-base); }
   .distill d-contents nav { grid-template-columns: 1fr; }
-  .distill d-article d-contents { padding: var(--sp-4) 0; }
+  .distill d-article d-contents { padding: 0 0 var(--sp-4); }
   .distill d-byline .byline { gap: var(--sp-4) var(--sp-5); }
 }
