@@ -58,8 +58,24 @@
   <meta property="og:title" content="{% if page.title %}{{ title }} | {{ page.title }}{% else %}{{ title }}{% endif %}">
   <meta property="og:url" content="{{ page.url | prepend: site.baseurl | prepend: site.url | remove_first: 'index.html' }}">
   <meta property="og:description" content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}">
-  {% if page.og_image or site.og_image %}
-    <meta property="og:image" content="{% if page.og_image %}{{ page.og_image }}{% else %}{{ site.og_image }}{% endif %}">
+  {% comment %}
+    Share image: explicit og_image, else the project video thumbnail or image, else the site default.
+    Crawlers need an absolute URL.
+  {% endcomment %}
+  {% if page.og_image %}
+    {% assign share_image = page.og_image %}
+  {% elsif page.youtube %}
+    {% assign share_image = 'https://i.ytimg.com/vi/' | append: page.youtube | append: '/hqdefault.jpg' %}
+  {% elsif page.img %}
+    {% assign share_image = page.img %}
+  {% else %}
+    {% assign share_image = site.og_image %}
+  {% endif %}
+  {% unless share_image contains '://' %}
+    {% assign share_image = share_image | prepend: '/' | replace: '//', '/' | absolute_url %}
+  {% endunless %}
+  {% if share_image %}
+    <meta property="og:image" content="{{ share_image }}">
   {% endif %}
   <meta property="og:locale" content="{{ site.lang }}">
 
@@ -67,8 +83,8 @@
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="{% if page.title %}{{ page.title }}{% else %}{{ title }}{% endif %}">
   <meta name="twitter:description" content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}">
-  {% if page.og_image or site.og_image %}
-    <meta name="twitter:image" content="{% if page.og_image %}{{ page.og_image }}{% else %}{{ site.og_image }}{% endif %}">
+  {% if share_image %}
+    <meta name="twitter:image" content="{{ share_image }}">
   {% endif %}
   {% if site.x_username %}
     <meta name="twitter:site" content="@{{ site.x_username }}">

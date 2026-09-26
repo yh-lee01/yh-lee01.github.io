@@ -11,9 +11,14 @@
 .date-list > li:last-child { border-bottom: 0; }
 .date-list time { flex: none; width: var(--date-col); font-size: var(--fs-xs); font-variant-numeric: tabular-nums; white-space: nowrap; color: var(--global-text-color-light); }
 .date-list > li > div { flex: 1; min-width: 0; font-size: var(--fs-sm); line-height: var(--lh-snug); color: var(--global-text-color); }
-.date-list .news-chip { flex: none; width: 3.5rem; }
+.date-list .news-chip { flex: none; width: 4.25rem; }
 .date-list.is-scrollable { max-height: 60vw; overflow-y: auto; }
-.news-chip { font-size: var(--fs-xs); font-weight: 500; white-space: nowrap; color: var(--global-text-color-light); }
+.news-chip { display: inline-flex; align-items: center; gap: 6px; font-size: var(--fs-xs); font-weight: 500; white-space: nowrap; color: var(--global-text-color-light); }
+.news-chip::before { content: ""; flex: none; width: 6px; height: 6px; border-radius: 50%; background: var(--chip-color, var(--global-divider-color)); }
+.news-chip--paper { --chip-color: var(--tag-paper); }
+.news-chip--post { --chip-color: var(--tag-post); }
+.news-chip--joined { --chip-color: var(--tag-joined); }
+.news-chip--award { --chip-color: var(--tag-award); }
 .news .news-title, .archive .post-link { font-weight: 500; }
 // "← All …" link at the end of archives, posts and project pages.
 .back-link { margin: var(--sp-6) 0 0; font-size: var(--fs-sm); }
@@ -83,6 +88,8 @@
 // Projects
 // Project rows: same shape as publication rows (thumbnail left, text right).
 .project-item { padding: var(--sp-5) 0; }
+// First row sits as close to the page header as the first blog card does.
+.post > article > .publications ol.bibliography > li:first-child, .post > article > .projects > .project-item:first-child { padding-top: var(--sp-1) !important; }
 .project-card-link { display: grid; grid-template-columns: 200px minmax(0, 1fr); gap: var(--sp-5); align-items: start; color: inherit; }
 .project-card-link:hover { color: inherit; text-decoration: none; }
 .project-thumb, .project-thumb figure { margin: 0; line-height: 0; }
